@@ -34,13 +34,11 @@ int add_blacklist_entry (char *number, char *name, char *reason, int priority) {
 	blacklist[0]->number = number;
 	blacklist[0]->name = name;
 	blacklist[0]->reason = reason;
-	printf("\nName: %s \nNumber: %s \nReason: %s\n\n", blacklist[0]->name, blacklist[0]->number, blacklist[0]->reason);
 	free(blacklist[0]);
 	
 	blacklist[1]->number = "3493424242";
 	blacklist[1]->name = "testing";
 	blacklist[1]->reason = "don't know";
-	printf("\nName: %s \nNumber: %s \nReason: %s\n\n", blacklist[1]->name, blacklist[1]->number, blacklist[1]->reason);
 	free(blacklist[1]);
 
 	return 0;

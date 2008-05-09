@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Phone Firewall: phonefirewall_administration.c Source File</title>
+<title>Phone Firewall: /home/obale/sourcecode/myprograms/phone-firewall/src/phonefirewall_administration.c Source File</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -12,7 +12,7 @@
     <li class="current"><a href="files.html"><span>Files</span></a></li>
   </ul>
 </div>
-<h1>phonefirewall_administration.c</h1><a href="phonefirewall__administration_8c.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/*</span>
+<h1>/home/obale/sourcecode/myprograms/phone-firewall/src/phonefirewall_administration.c</h1><a href="phonefirewall__administration_8c.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/*</span>
 <a name="l00002"></a>00002 <span class="comment"> * phonefirewall_administration.c</span>
 <a name="l00003"></a>00003 <span class="comment"> * </span>
 <a name="l00004"></a>00004 <span class="comment"> * (C) 2008 by Networld Consulting, Ltd. </span>
@@ -48,30 +48,28 @@
 <a name="l00034"></a>00034         blacklist[0]-&gt;<a class="code" href="structBlacklist.html#110cfabadd75ee3c1305f48ac4d49c62">number</a> = number;
 <a name="l00035"></a>00035         blacklist[0]-&gt;<a class="code" href="structBlacklist.html#85e3b3043e9490ab2851dea24e456104">name</a> = name;
 <a name="l00036"></a>00036         blacklist[0]-&gt;<a class="code" href="structBlacklist.html#4aaebfcc863267f326258e0622bf7303">reason</a> = reason;
-<a name="l00037"></a>00037         printf(<span class="stringliteral">"\nName: %s \nNumber: %s \nReason: %s\n\n"</span>, blacklist[0]-&gt;name, blacklist[0]-&gt;number, blacklist[0]-&gt;reason);
-<a name="l00038"></a>00038         free(blacklist[0]);
-<a name="l00039"></a>00039         
-<a name="l00040"></a>00040         blacklist[1]-&gt;<a class="code" href="structBlacklist.html#110cfabadd75ee3c1305f48ac4d49c62">number</a> = <span class="stringliteral">"3493424242"</span>;
-<a name="l00041"></a>00041         blacklist[1]-&gt;<a class="code" href="structBlacklist.html#85e3b3043e9490ab2851dea24e456104">name</a> = <span class="stringliteral">"testing"</span>;
-<a name="l00042"></a>00042         blacklist[1]-&gt;<a class="code" href="structBlacklist.html#4aaebfcc863267f326258e0622bf7303">reason</a> = <span class="stringliteral">"don't know"</span>;
-<a name="l00043"></a>00043         printf(<span class="stringliteral">"\nName: %s \nNumber: %s \nReason: %s\n\n"</span>, blacklist[1]-&gt;name, blacklist[1]-&gt;number, blacklist[1]-&gt;reason);
-<a name="l00044"></a>00044         free(blacklist[1]);
-<a name="l00045"></a>00045 
-<a name="l00046"></a>00046         <span class="keywordflow">return</span> 0;
-<a name="l00047"></a>00047 }
-<a name="l00048"></a>00048 
-<a name="l00049"></a><a class="code" href="phonefirewall__administration_8c.html#5054a65f2dffa39cd56ddbb852314e1a">00049</a> <span class="keywordtype">int</span> <a class="code" href="libphonefirewall_8h.html#5054a65f2dffa39cd56ddbb852314e1a">rm_blacklist_entry</a> (<span class="keywordtype">char</span> *number) {
-<a name="l00050"></a>00050         <span class="keywordflow">return</span> 0;
-<a name="l00051"></a>00051 }
-<a name="l00052"></a>00052 
-<a name="l00053"></a><a class="code" href="phonefirewall__administration_8c.html#6ff23c996da4efd7ae26d38a317813e0">00053</a> <span class="keywordtype">int</span> <a class="code" href="libphonefirewall_8h.html#6ff23c996da4efd7ae26d38a317813e0">add_whitelist_entry</a> (<span class="keywordtype">char</span> *number, <span class="keywordtype">char</span> *name, <span class="keywordtype">char</span> *reason, <span class="keywordtype">int</span> priority) {
-<a name="l00054"></a>00054         <span class="keywordflow">return</span> 0;
-<a name="l00055"></a>00055 }
-<a name="l00056"></a>00056 
-<a name="l00057"></a><a class="code" href="phonefirewall__administration_8c.html#be3e9ad52c2f2ab7fb9f9f30e37c2257">00057</a> <span class="keywordtype">int</span> <a class="code" href="libphonefirewall_8h.html#be3e9ad52c2f2ab7fb9f9f30e37c2257">rm_whitelist_entry</a> (<span class="keywordtype">char</span> *number) {
-<a name="l00058"></a>00058         <span class="keywordflow">return</span> 0;
-<a name="l00059"></a>00059 }
-</pre></div><hr size="1"><address style="text-align: right;"><small>Generated on Thu May 8 14:01:48 2008 for Phone Firewall by&nbsp;
+<a name="l00037"></a>00037         free(blacklist[0]);
+<a name="l00038"></a>00038         
+<a name="l00039"></a>00039         blacklist[1]-&gt;<a class="code" href="structBlacklist.html#110cfabadd75ee3c1305f48ac4d49c62">number</a> = <span class="stringliteral">"3493424242"</span>;
+<a name="l00040"></a>00040         blacklist[1]-&gt;<a class="code" href="structBlacklist.html#85e3b3043e9490ab2851dea24e456104">name</a> = <span class="stringliteral">"testing"</span>;
+<a name="l00041"></a>00041         blacklist[1]-&gt;<a class="code" href="structBlacklist.html#4aaebfcc863267f326258e0622bf7303">reason</a> = <span class="stringliteral">"don't know"</span>;
+<a name="l00042"></a>00042         free(blacklist[1]);
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044         <span class="keywordflow">return</span> 0;
+<a name="l00045"></a>00045 }
+<a name="l00046"></a>00046 
+<a name="l00047"></a><a class="code" href="phonefirewall__administration_8c.html#5054a65f2dffa39cd56ddbb852314e1a">00047</a> <span class="keywordtype">int</span> <a class="code" href="libphonefirewall_8h.html#5054a65f2dffa39cd56ddbb852314e1a">rm_blacklist_entry</a> (<span class="keywordtype">char</span> *number) {
+<a name="l00048"></a>00048         <span class="keywordflow">return</span> 0;
+<a name="l00049"></a>00049 }
+<a name="l00050"></a>00050 
+<a name="l00051"></a><a class="code" href="phonefirewall__administration_8c.html#6ff23c996da4efd7ae26d38a317813e0">00051</a> <span class="keywordtype">int</span> <a class="code" href="libphonefirewall_8h.html#6ff23c996da4efd7ae26d38a317813e0">add_whitelist_entry</a> (<span class="keywordtype">char</span> *number, <span class="keywordtype">char</span> *name, <span class="keywordtype">char</span> *reason, <span class="keywordtype">int</span> priority) {
+<a name="l00052"></a>00052         <span class="keywordflow">return</span> 0;
+<a name="l00053"></a>00053 }
+<a name="l00054"></a>00054 
+<a name="l00055"></a><a class="code" href="phonefirewall__administration_8c.html#be3e9ad52c2f2ab7fb9f9f30e37c2257">00055</a> <span class="keywordtype">int</span> <a class="code" href="libphonefirewall_8h.html#be3e9ad52c2f2ab7fb9f9f30e37c2257">rm_whitelist_entry</a> (<span class="keywordtype">char</span> *number) {
+<a name="l00056"></a>00056         <span class="keywordflow">return</span> 0;
+<a name="l00057"></a>00057 }
+</pre></div><hr size="1"><address style="text-align: right;"><small>Generated on Fri May 9 12:21:16 2008 for Phone Firewall by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>
