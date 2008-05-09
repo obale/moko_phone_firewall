@@ -1,0 +1,85 @@
+\begin{theindex}
+
+  \item {add\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}
+    \subitem {libphonefirewall.h}, \hyperpage{10}
+    \subitem {phonefirewall\_\discretionary {-}{}{}administration.c}, 
+		\hyperpage{12}
+  \item {add\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}
+    \subitem {libphonefirewall.h}, \hyperpage{10}
+    \subitem {phonefirewall\_\discretionary {-}{}{}administration.c}, 
+		\hyperpage{12}
+
+  \indexspace
+
+  \item {blacklist}, \hyperpage{5}
+    \subitem {name}, \hyperpage{5}
+    \subitem {number}, \hyperpage{5}
+    \subitem {priority}, \hyperpage{5}
+    \subitem {reason}, \hyperpage{6}
+
+  \indexspace
+
+  \item {libphonefirewall.h}, \hyperpage{9}
+    \subitem {add\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}, 
+		\hyperpage{10}
+    \subitem {add\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}, 
+		\hyperpage{10}
+    \subitem {rm\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}, 
+		\hyperpage{11}
+    \subitem {rm\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}, 
+		\hyperpage{11}
+    \subitem {TELNR\_\discretionary {-}{}{}MAXLEN}, \hyperpage{10}
+
+  \indexspace
+
+  \item {name}
+    \subitem {blacklist}, \hyperpage{5}
+    \subitem {whitelist}, \hyperpage{7}
+  \item {number}
+    \subitem {blacklist}, \hyperpage{5}
+    \subitem {whitelist}, \hyperpage{7}
+
+  \indexspace
+
+  \item {phonefirewall\_\discretionary {-}{}{}administration.c}, 
+		\hyperpage{12}
+    \subitem {add\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}, 
+		\hyperpage{12}
+    \subitem {add\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}, 
+		\hyperpage{12}
+    \subitem {rm\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}, 
+		\hyperpage{13}
+    \subitem {rm\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}, 
+		\hyperpage{13}
+  \item {priority}
+    \subitem {blacklist}, \hyperpage{5}
+    \subitem {whitelist}, \hyperpage{7}
+
+  \indexspace
+
+  \item {reason}
+    \subitem {blacklist}, \hyperpage{6}
+    \subitem {whitelist}, \hyperpage{7}
+  \item {rm\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}
+    \subitem {libphonefirewall.h}, \hyperpage{11}
+    \subitem {phonefirewall\_\discretionary {-}{}{}administration.c}, 
+		\hyperpage{13}
+  \item {rm\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}
+    \subitem {libphonefirewall.h}, \hyperpage{11}
+    \subitem {phonefirewall\_\discretionary {-}{}{}administration.c}, 
+		\hyperpage{13}
+
+  \indexspace
+
+  \item {TELNR\_\discretionary {-}{}{}MAXLEN}
+    \subitem {libphonefirewall.h}, \hyperpage{10}
+
+  \indexspace
+
+  \item {whitelist}, \hyperpage{7}
+    \subitem {name}, \hyperpage{7}
+    \subitem {number}, \hyperpage{7}
+    \subitem {priority}, \hyperpage{7}
+    \subitem {reason}, \hyperpage{7}
+
+\end{theindex}

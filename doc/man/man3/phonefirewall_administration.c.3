@@ -1,0 +1,98 @@
+.TH "phonefirewall_administration.c" 3 "8 May 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+phonefirewall_administration.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdio.h>\fP
+.br
+\fC#include <stdlib.h>\fP
+.br
+\fC#include <errno.h>\fP
+.br
+\fC#include <string.h>\fP
+.br
+\fC#include 'libphonefirewall.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBadd_blacklist_entry\fP (char *number, char *name, char *reason, int priority)"
+.br
+.ti -1c
+.RI "int \fBrm_blacklist_entry\fP (char *number)"
+.br
+.ti -1c
+.RI "int \fBadd_whitelist_entry\fP (char *number, char *name, char *reason, int priority)"
+.br
+.ti -1c
+.RI "int \fBrm_whitelist_entry\fP (char *number)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "int add_blacklist_entry (char * number, char * name, char * reason, int priority)"
+.PP
+Add a number to the blacklist. The number will be blocked after that.
+.PP
+\fBParameters:\fP
+.RS 4
+\fInumber\fP The telephone number of the person. 
+.br
+\fIname\fP The name of the person. 
+.br
+\fIreason\fP Why you have blocked this person. 
+.br
+\fIpriority\fP Has no affect at the moment. Later one it will be possible to give each number priority. So you have more control when a number will be blocked/accepted.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+If all goes well 0 (zero) otherwise an errno code. 
+.RE
+.PP
+
+.PP
+Definition at line 26 of file phonefirewall_administration.c.
+.PP
+References MAX_ENTRIES, Blacklist::name, Blacklist::number, Blacklist::reason, and TELNR_MAXLEN.
+.SS "int add_whitelist_entry (char * number, char * name, char * reason, int priority)"
+.PP
+Add a number to the \fBwhitelist\fP. The number will be accepted after that.
+.PP
+\fBParameters:\fP
+.RS 4
+\fInumber\fP The telephone number of the person. 
+.br
+\fIname\fP The name of the person. 
+.br
+\fIreason\fP Why you have blocked this person. 
+.br
+\fIpriority\fP Has no affect at the moment. Later one it will be possible to give each number priority. So you have more control when a number will be blocked/accepted.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+If all goes well 0 (zero) otherwise an errno code. 
+.RE
+.PP
+
+.PP
+Definition at line 53 of file phonefirewall_administration.c.
+.SS "int rm_blacklist_entry (char * number)"
+.PP
+Removes a blocked number from the blacklist. 
+.PP
+Definition at line 49 of file phonefirewall_administration.c.
+.SS "int rm_whitelist_entry (char * number)"
+.PP
+Removes a accepted number from the \fBwhitelist\fP. 
+.PP
+Definition at line 57 of file phonefirewall_administration.c.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Phone Firewall from the source code.

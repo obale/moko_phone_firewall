@@ -1,0 +1,35 @@
+\contentsline {chapter}{\numberline {1}Phone Firewall Data Structure Index}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Phone Firewall Data Structures}{1}{section.1.1}
+\contentsline {chapter}{\numberline {2}Phone Firewall File Index}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}Phone Firewall File List}{3}{section.2.1}
+\contentsline {chapter}{\numberline {3}Phone Firewall Data Structure Documentation}{5}{chapter.3}
+\contentsline {section}{\numberline {3.1}blacklist Struct Reference}{5}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Detailed Description}{5}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Field Documentation}{5}{subsection.3.1.2}
+\contentsline {subsubsection}{\numberline {3.1.2.1}\setlength {\rightskip }{0pt plus 5cm}char$\ast $ {\bf blacklist::name}}{5}{subsubsection.3.1.2.1}
+\contentsline {subsubsection}{\numberline {3.1.2.2}\setlength {\rightskip }{0pt plus 5cm}char {\bf blacklist::number}\unhbox \voidb@x \hbox {[}TELNR\_\discretionary {-}{}{}MAXLEN+1\unhbox \voidb@x \hbox {]}}{5}{subsubsection.3.1.2.2}
+\contentsline {subsubsection}{\numberline {3.1.2.3}\setlength {\rightskip }{0pt plus 5cm}int {\bf blacklist::priority}}{6}{subsubsection.3.1.2.3}
+\contentsline {subsubsection}{\numberline {3.1.2.4}\setlength {\rightskip }{0pt plus 5cm}char$\ast $ {\bf blacklist::reason}}{6}{subsubsection.3.1.2.4}
+\contentsline {section}{\numberline {3.2}whitelist Struct Reference}{7}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Detailed Description}{7}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Field Documentation}{7}{subsection.3.2.2}
+\contentsline {subsubsection}{\numberline {3.2.2.1}\setlength {\rightskip }{0pt plus 5cm}char$\ast $ {\bf whitelist::name}}{7}{subsubsection.3.2.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2.2}\setlength {\rightskip }{0pt plus 5cm}char {\bf whitelist::number}\unhbox \voidb@x \hbox {[}TELNR\_\discretionary {-}{}{}MAXLEN+1\unhbox \voidb@x \hbox {]}}{7}{subsubsection.3.2.2.2}
+\contentsline {subsubsection}{\numberline {3.2.2.3}\setlength {\rightskip }{0pt plus 5cm}int {\bf whitelist::priority}}{7}{subsubsection.3.2.2.3}
+\contentsline {subsubsection}{\numberline {3.2.2.4}\setlength {\rightskip }{0pt plus 5cm}char$\ast $ {\bf whitelist::reason}}{7}{subsubsection.3.2.2.4}
+\contentsline {chapter}{\numberline {4}Phone Firewall File Documentation}{9}{chapter.4}
+\contentsline {section}{\numberline {4.1}libphonefirewall.h File Reference}{9}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Detailed Description}{10}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Define Documentation}{10}{subsection.4.1.2}
+\contentsline {subsubsection}{\numberline {4.1.2.1}\setlength {\rightskip }{0pt plus 5cm}\#define TELNR\_\discretionary {-}{}{}MAXLEN\nobreakspace {}32}{10}{subsubsection.4.1.2.1}
+\contentsline {subsection}{\numberline {4.1.3}Function Documentation}{10}{subsection.4.1.3}
+\contentsline {subsubsection}{\numberline {4.1.3.1}\setlength {\rightskip }{0pt plus 5cm}int add\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry (char {\em number}\unhbox \voidb@x \hbox {[}$\,$\unhbox \voidb@x \hbox {]}, char $\ast $ {\em name}, char $\ast $ {\em reason}, int {\em priority})}{10}{subsubsection.4.1.3.1}
+\contentsline {subsubsection}{\numberline {4.1.3.2}\setlength {\rightskip }{0pt plus 5cm}int add\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry (char {\em number}\unhbox \voidb@x \hbox {[}$\,$\unhbox \voidb@x \hbox {]}, char $\ast $ {\em name}, char $\ast $ {\em reason}, int {\em priority})}{10}{subsubsection.4.1.3.2}
+\contentsline {subsubsection}{\numberline {4.1.3.3}\setlength {\rightskip }{0pt plus 5cm}int rm\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry (char {\em number}\unhbox \voidb@x \hbox {[}$\,$\unhbox \voidb@x \hbox {]})}{11}{subsubsection.4.1.3.3}
+\contentsline {subsubsection}{\numberline {4.1.3.4}\setlength {\rightskip }{0pt plus 5cm}int rm\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry (char {\em number}\unhbox \voidb@x \hbox {[}$\,$\unhbox \voidb@x \hbox {]})}{11}{subsubsection.4.1.3.4}
+\contentsline {section}{\numberline {4.2}phonefirewall\_\discretionary {-}{}{}administration.c File Reference}{12}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Function Documentation}{12}{subsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.1.1}\setlength {\rightskip }{0pt plus 5cm}int add\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry (char {\em number}\unhbox \voidb@x \hbox {[}$\,$\unhbox \voidb@x \hbox {]}, char $\ast $ {\em name}, char $\ast $ {\em reason}, int {\em priority})}{12}{subsubsection.4.2.1.1}
+\contentsline {subsubsection}{\numberline {4.2.1.2}\setlength {\rightskip }{0pt plus 5cm}int add\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry (char {\em number}\unhbox \voidb@x \hbox {[}$\,$\unhbox \voidb@x \hbox {]}, char $\ast $ {\em name}, char $\ast $ {\em reason}, int {\em priority})}{12}{subsubsection.4.2.1.2}
+\contentsline {subsubsection}{\numberline {4.2.1.3}\setlength {\rightskip }{0pt plus 5cm}int rm\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry (char {\em number}\unhbox \voidb@x \hbox {[}$\,$\unhbox \voidb@x \hbox {]})}{13}{subsubsection.4.2.1.3}
+\contentsline {subsubsection}{\numberline {4.2.1.4}\setlength {\rightskip }{0pt plus 5cm}int rm\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry (char {\em number}\unhbox \voidb@x \hbox {[}$\,$\unhbox \voidb@x \hbox {]})}{13}{subsubsection.4.2.1.4}
