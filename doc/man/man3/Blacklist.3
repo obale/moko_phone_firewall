@@ -1,4 +1,4 @@
-.TH "Blacklist" 3 "9 May 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
+.TH "Blacklist" 3 "10 May 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -17,7 +17,7 @@ Blacklist \- Contains the blocked numbers.
 .RI "char * \fBname\fP"
 .br
 .ti -1c
-.RI "char * \fBnumber\fP"
+.RI "long long int \fBnumber\fP"
 .br
 .ti -1c
 .RI "int \fBpriority\fP"
@@ -25,32 +25,50 @@ Blacklist \- Contains the blocked numbers.
 .ti -1c
 .RI "char * \fBreason\fP"
 .br
+.ti -1c
+.RI "struct \fBBlacklist\fP * \fBleft\fP"
+.br
+.ti -1c
+.RI "struct \fBBlacklist\fP * \fBright\fP"
+.br
 .in -1c
 .SH "Detailed Description"
 .PP 
 Contains the blocked numbers. 
 .PP
-Definition at line 43 of file libphonefirewall.h.
+Definition at line 42 of file libphonefirewall.h.
 .SH "Field Documentation"
 .PP 
 .SS "char* \fBBlacklist::name\fP"
 .PP
+Definition at line 43 of file libphonefirewall.h.
+.PP
+Referenced by add_to_blacklist().
+.SS "long long int \fBBlacklist::number\fP"
+.PP
 Definition at line 44 of file libphonefirewall.h.
 .PP
-Referenced by add_blacklist_entry().
-.SS "char* \fBBlacklist::number\fP"
+Referenced by add_to_blacklist().
+.SS "int \fBBlacklist::priority\fP"
 .PP
 Definition at line 45 of file libphonefirewall.h.
 .PP
-Referenced by add_blacklist_entry().
-.SS "int \fBBlacklist::priority\fP"
+Referenced by add_to_blacklist().
+.SS "char* \fBBlacklist::reason\fP"
 .PP
 Definition at line 46 of file libphonefirewall.h.
-.SS "char* \fBBlacklist::reason\fP"
+.PP
+Referenced by add_to_blacklist().
+.SS "struct \fBBlacklist\fP* \fBBlacklist::left\fP\fC [read]\fP"
 .PP
 Definition at line 47 of file libphonefirewall.h.
 .PP
-Referenced by add_blacklist_entry().
+Referenced by add_to_blacklist().
+.SS "struct \fBBlacklist\fP* \fBBlacklist::right\fP\fC [read]\fP"
+.PP
+Definition at line 48 of file libphonefirewall.h.
+.PP
+Referenced by add_to_blacklist().
 
 .SH "Author"
 .PP 

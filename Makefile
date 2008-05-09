@@ -2,7 +2,7 @@ CCMOKO = /usr/local/openmoko/arm/bin/arm-angstrom-linux-gnueabi-gcc
 CCMOKOLD = /usr/local/openmoko/arm/bin/arm-angstrom-linux-gnueabi-ld
 GCC = /usr/bin/gcc
 RM = /bin/rm
-CLFLAGS += -Wall
+CLFLAGS += --std=c99 -Wall
 TEST_LIB = -lcunit -ltestphonefirewall
 DOXYGEN = /usr/bin/doxygen
 SRCDIR = src
@@ -24,7 +24,7 @@ doc:
 
 
 phonefirewall_administration.o: $(SRCDIR)/phonefirewall_administration.c $(SRCDIR)/libphonefirewall.h
-	$(CCMOKO) $(CFLAGS) -fpic -c $(SRCDIR)/phonefirewall_administration.c -o $(SRCDIR)/$@
+	$(CCMOKO) $(CLFLAGS) -fpic -c $(SRCDIR)/phonefirewall_administration.c -o $(SRCDIR)/$@
 
 libphonefirewall.so: $(SRCDIR)/phonefirewall_administration.o 
 	$(CCMOKOLD) -shared $(SRCDIR)/phonefirewall_administration.o -o $(LIBDIR)/$@

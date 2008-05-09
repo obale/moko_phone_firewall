@@ -1,0 +1,19 @@
+2008-05-10 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* src/phonefirewall_administration.c:
+	Beginning with the implementation of the functions which adds telephone
+	numbers (at the moment only for the blacklist) at the base of a binary tree.
+
+	* ChangeLog:
+	From now one we should write a detailed "ChangeLog" file to have a
+	better overview over the changes.
+
+	* doc/*:
+	Updating the documentation.
+	From now one I will always update the documentation before a
+	commit/push.
+	
+	* src_test/:
+	I don't have written the testing part of the code. (I promise the
+	nexts commits will come with the full tests ;) )
+

@@ -34,29 +34,32 @@
  * The maximum length of a telephone number.
  */
 #define TELNR_MAXLEN	32
-#define MAX_ENTRIES	512
  
 /**
  * @struct Blacklist 
  * @brief Contains the blocked numbers.
  */
-typedef struct {
+struct Blacklist {
 	char *name;
-	char *number;
+	long long int number;
 	int priority;
 	char *reason;
-} Blacklist;
+	struct Blacklist *left;
+	struct Blacklist *right;
+};
 
 /**
- * @struct whitelist
+ * @struct Whitelist
  * @brief Contains the accepted numbers.
  */
-typedef struct {
+struct Whitelist {
 	char *name;
-	char *number;
+	long long int number;
 	int priority;
 	char *reason;
-} Whitelist;
+	struct Whitelist *left;
+	struct Whitelist *right;
+};
 
 /**
  * Add a number to the blacklist. The number will be blocked after that.
@@ -70,12 +73,12 @@ typedef struct {
  *
  * @return If all goes well 0 (zero) otherwise an errno code.
  */
-int add_blacklist_entry(char *number, char *name, char *reason, int priority);
+int add_blacklist_entry(long long int number, char *name, char *reason, int priority);
 
 /**
  * Removes a blocked number from the blacklist.
  */
-int rm_blacklist_entry(char *number);
+int rm_blacklist_entry(long long int number);
 
 /**
  * Add a number to the whitelist. The number will be accepted after that.
@@ -89,9 +92,9 @@ int rm_blacklist_entry(char *number);
  *
  * @return If all goes well 0 (zero) otherwise an errno code.
  */
-int add_whitelist_entry(char *number, char *name, char *reason, int priority);
+int add_whitelist_entry(long long int number, char *name, char *reason, int priority);
 
 /**
  * Removes a accepted number from the whitelist.
  */
-int rm_whitelist_entry(char *number);
+int rm_whitelist_entry(long long int number);

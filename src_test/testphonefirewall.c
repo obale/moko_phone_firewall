@@ -7,8 +7,6 @@
 
 void test_add_blacklist_entry(void) {
 	CU_PASS("A success message.");
-	CU_ASSERT(add_blacklist_entry("+393286823221", "foobar", "spammer", 0) == 0);
-	CU_ASSERT(add_blacklist_entry("+393286823222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222", "foobar", "spammer", 0) == -EOVERFLOW);
 }
 
 void test_rm_blacklist_entry(void) {

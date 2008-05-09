@@ -23,35 +23,63 @@
 #include <string.h>
 #include "libphonefirewall.h" 
 
-int add_blacklist_entry (char *number, char *name, char *reason, int priority) {
+typedef struct Blacklist blacklist_t;
+typedef struct Whitelist whitelist_t;
 
-	if ( TELNR_MAXLEN < strlen(number) ) return -EOVERFLOW;
+blacklist_t *add_to_blacklist(blacklist_t *node, long long int number, char *name, char *reason, int priority) {
+	printf("%llu", number);
+   	if( NULL == node ) {
+      		node = (blacklist_t *)malloc(sizeof(blacklist_t));
+      		if( NULL == node ) exit(-ENOMEM);
+      		node->number = number;
+      		node->name = name;
+      		node->reason = reason;
+		node->priority = priority;
+		node->left = node->right = NULL;
+   	} 
+	else if( node->number >= number )
+      		node->left = add_to_blacklist(node->left, number, name, reason, priority);
+	else if( node->number < number )
+      		node->right = add_to_blacklist(node->right, number, name, reason, priority);
 
-	Blacklist *blacklist[MAX_ENTRIES+1];
-	blacklist[0] = (Blacklist *) malloc(sizeof(Blacklist));
-	blacklist[1] = (Blacklist *) malloc(sizeof(Blacklist));
+   	return node;
+}
 
-	blacklist[0]->number = number;
-	blacklist[0]->name = name;
-	blacklist[0]->reason = reason;
-	free(blacklist[0]);
-	
-	blacklist[1]->number = "3493424242";
-	blacklist[1]->name = "testing";
-	blacklist[1]->reason = "don't know";
-	free(blacklist[1]);
+whitelist_t *add_to_whitelist(whitelist_t *node, long long int number, char *name, char *reason, int priority) {
+   	if( NULL == node ) {
+      		node = (whitelist_t *)malloc(sizeof(whitelist_t));
+      		if( NULL == node ) exit(-ENOMEM);
+      		node->number = number;
+      		node->name = name;
+      		node->reason = reason;
+		node->priority = priority;
+		node->left = node->right = NULL;
+   	} 
+	else if( node->number >= number )
+      		node->left = add_to_whitelist(node->left, number, name, reason, priority);
+	else if( node->number < number )
+      		node->right = add_to_whitelist(node->right, number, name, reason, priority);
+
+   	return node;
+}
+
+int add_blacklist_entry(long long int number, char *name, char *reason, int priority) {
+
+	blacklist_t *root = NULL;
+	root = add_to_blacklist(root, number, name, reason, priority);
 
 	return 0;
 }
 
-int rm_blacklist_entry (char *number) {
-	return 0;
+int rm_blacklist_entry (long long int number) {
+	return -ENOSYS;
 }
 
-int add_whitelist_entry (char *number, char *name, char *reason, int priority) {
-	return 0;
+int add_whitelist_entry (long long int number, char *name, char *reason, int priority) {
+	return -ENOSYS;
 }
 
-int rm_whitelist_entry (char *number) {
-	return 0;
+int rm_whitelist_entry (long long int number) {
+	return -ENOSYS;
 }
+
