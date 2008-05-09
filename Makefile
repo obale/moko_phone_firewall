@@ -12,8 +12,7 @@ SRCTESTDIR = src_test
 BINTESTDIR = bin_test
 
 
-all: 	doc \
-	libphonefirewall.so\
+all: 	libphonefirewall.so\
 	test
 
 .PHONY: doc
