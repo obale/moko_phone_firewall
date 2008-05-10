@@ -4,21 +4,35 @@
     \subitem {libphonefirewall.h}, \hyperpage{10}
     \subitem {phonefirewall\_\discretionary {-}{}{}administration.c}, 
 		\hyperpage{12}
+  \item {add\_\discretionary {-}{}{}to\_\discretionary {-}{}{}blacklist}
+    \subitem {phonefirewall\_\discretionary {-}{}{}administration.c}, 
+		\hyperpage{13}
+  \item {add\_\discretionary {-}{}{}to\_\discretionary {-}{}{}whitelist}
+    \subitem {phonefirewall\_\discretionary {-}{}{}administration.c}, 
+		\hyperpage{13}
   \item {add\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}
     \subitem {libphonefirewall.h}, \hyperpage{10}
+    \subitem {phonefirewall\_\discretionary {-}{}{}administration.c}, 
+		\hyperpage{13}
+
+  \indexspace
+
+  \item {Blacklist}, \hyperpage{5}
+    \subitem {left}, \hyperpage{6}
+    \subitem {name}, \hyperpage{5}
+    \subitem {number}, \hyperpage{5}
+    \subitem {priority}, \hyperpage{6}
+    \subitem {reason}, \hyperpage{6}
+    \subitem {right}, \hyperpage{6}
+  \item {blacklist\_\discretionary {-}{}{}t}
     \subitem {phonefirewall\_\discretionary {-}{}{}administration.c}, 
 		\hyperpage{12}
 
   \indexspace
 
-  \item {blacklist}, \hyperpage{5}
-    \subitem {name}, \hyperpage{5}
-    \subitem {number}, \hyperpage{5}
-    \subitem {priority}, \hyperpage{5}
-    \subitem {reason}, \hyperpage{6}
-
-  \indexspace
-
+  \item {left}
+    \subitem {Blacklist}, \hyperpage{6}
+    \subitem {Whitelist}, \hyperpage{7}
   \item {libphonefirewall.h}, \hyperpage{9}
     \subitem {add\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}, 
 		\hyperpage{10}
@@ -33,11 +47,11 @@
   \indexspace
 
   \item {name}
-    \subitem {blacklist}, \hyperpage{5}
-    \subitem {whitelist}, \hyperpage{7}
+    \subitem {Blacklist}, \hyperpage{5}
+    \subitem {Whitelist}, \hyperpage{7}
   \item {number}
-    \subitem {blacklist}, \hyperpage{5}
-    \subitem {whitelist}, \hyperpage{7}
+    \subitem {Blacklist}, \hyperpage{5}
+    \subitem {Whitelist}, \hyperpage{7}
 
   \indexspace
 
@@ -45,29 +59,38 @@
 		\hyperpage{12}
     \subitem {add\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}, 
 		\hyperpage{12}
+    \subitem {add\_\discretionary {-}{}{}to\_\discretionary {-}{}{}blacklist}, 
+		\hyperpage{13}
+    \subitem {add\_\discretionary {-}{}{}to\_\discretionary {-}{}{}whitelist}, 
+		\hyperpage{13}
     \subitem {add\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}, 
-		\hyperpage{12}
+		\hyperpage{13}
+    \subitem {blacklist\_\discretionary {-}{}{}t}, \hyperpage{12}
     \subitem {rm\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}, 
-		\hyperpage{13}
+		\hyperpage{14}
     \subitem {rm\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}, 
-		\hyperpage{13}
+		\hyperpage{14}
+    \subitem {whitelist\_\discretionary {-}{}{}t}, \hyperpage{12}
   \item {priority}
-    \subitem {blacklist}, \hyperpage{5}
-    \subitem {whitelist}, \hyperpage{7}
+    \subitem {Blacklist}, \hyperpage{6}
+    \subitem {Whitelist}, \hyperpage{7}
 
   \indexspace
 
   \item {reason}
-    \subitem {blacklist}, \hyperpage{6}
-    \subitem {whitelist}, \hyperpage{7}
+    \subitem {Blacklist}, \hyperpage{6}
+    \subitem {Whitelist}, \hyperpage{7}
+  \item {right}
+    \subitem {Blacklist}, \hyperpage{6}
+    \subitem {Whitelist}, \hyperpage{8}
   \item {rm\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}
     \subitem {libphonefirewall.h}, \hyperpage{11}
     \subitem {phonefirewall\_\discretionary {-}{}{}administration.c}, 
-		\hyperpage{13}
+		\hyperpage{14}
   \item {rm\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}
     \subitem {libphonefirewall.h}, \hyperpage{11}
     \subitem {phonefirewall\_\discretionary {-}{}{}administration.c}, 
-		\hyperpage{13}
+		\hyperpage{14}
 
   \indexspace
 
@@ -76,10 +99,15 @@
 
   \indexspace
 
-  \item {whitelist}, \hyperpage{7}
+  \item {Whitelist}, \hyperpage{7}
+    \subitem {left}, \hyperpage{7}
     \subitem {name}, \hyperpage{7}
     \subitem {number}, \hyperpage{7}
     \subitem {priority}, \hyperpage{7}
     \subitem {reason}, \hyperpage{7}
+    \subitem {right}, \hyperpage{8}
+  \item {whitelist\_\discretionary {-}{}{}t}
+    \subitem {phonefirewall\_\discretionary {-}{}{}administration.c}, 
+		\hyperpage{12}
 
 \end{theindex}

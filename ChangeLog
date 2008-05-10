@@ -1,5 +1,23 @@
 2008-05-10 Alex Oberhauser <oberhauseralex@networld.to>
 
+	* src_test/libphonefirewall.h:
+	Deleting this header file. It was a copie of an old
+	src/libphonefirewall.h which causes errors (wrong parameter type in
+	the add functions).
+
+	* src_test/testphonefirewall.c:
+	Including not the src_test/libphonefirewall.h (see reasons above), but
+	the header file src/libphonefirewall.h.
+
+	* COPYING:
+	Adding the GPLv2 licence
+
+	* README:
+	Adding a README file, to explain how compiling of the project works
+	and other usefull informations.
+
+2008-05-10 Alex Oberhauser <oberhauseralex@networld.to>
+
 	* src/phonefirewall_administration.c:
 	Beginning with the implementation of the functions which adds telephone
 	numbers (at the moment only for the blacklist) at the base of a binary tree.

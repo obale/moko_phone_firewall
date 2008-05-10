@@ -31,11 +31,6 @@
  */
 
 /**
- * The maximum length of a telephone number.
- */
-#define TELNR_MAXLEN	32
- 
-/**
  * @struct Blacklist 
  * @brief Contains the blocked numbers.
  */

@@ -2,11 +2,12 @@
 #include <errno.h>
 #include <string.h>
 #include <CUnit/Basic.h>
-#include "libphonefirewall.h"
+#include "../src/libphonefirewall.h"
 
 
 void test_add_blacklist_entry(void) {
 	CU_PASS("A success message.");
+	CU_ASSERT(add_blacklist_entry(3281231313212, "John Smith", "I don't like him.", 0) == 0);
 }
 
 void test_rm_blacklist_entry(void) {
@@ -15,6 +16,7 @@ void test_rm_blacklist_entry(void) {
 
 void test_add_whitelist_entry(void) {
 	CU_PASS("A success message.");
+	CU_ASSERT(add_blacklist_entry(3281231313212, "John Smith", "I like him.", 0) == 0);
 }
 
 void test_rm_whitelist_entry(void) {

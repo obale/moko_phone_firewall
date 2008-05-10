@@ -27,7 +27,6 @@ typedef struct Blacklist blacklist_t;
 typedef struct Whitelist whitelist_t;
 
 blacklist_t *add_to_blacklist(blacklist_t *node, long long int number, char *name, char *reason, int priority) {
-	printf("%llu", number);
    	if( NULL == node ) {
       		node = (blacklist_t *)malloc(sizeof(blacklist_t));
       		if( NULL == node ) exit(-ENOMEM);
@@ -76,7 +75,11 @@ int rm_blacklist_entry (long long int number) {
 }
 
 int add_whitelist_entry (long long int number, char *name, char *reason, int priority) {
-	return -ENOSYS;
+
+	whitelist_t *root = NULL;
+	root = add_to_whitelist(root, number, name, reason, priority);
+
+	return 0;
 }
 
 int rm_whitelist_entry (long long int number) {

@@ -1,0 +1,53 @@
+PHONE FIREWALL README 
+=====================
+
+Informations
+============
+
+The Phone Firewall is a library which allows you to block telephone calls from
+numbers which you don't like (also possible with SMS). You can also accept
+only a few numbers and block the others. To realize this we use a blacklist
+(all blocked numbers) and a whitelist (all accepted numbers).
+
+
+Maintainer
+==========
+
+Alex Oberhauser
+<oberhauseralex@networld.to>
+http://moksec.networld.to
+
+
+Starting 
+========
+
+To compile the source code you need to have installed the toolchain for the OpenMoko
+framework ([1] (i686) and [2] (x86_64)). If you have installed the toolchain into 
+the standart path you can execute the script "env-export" with the command and
+after that compile all: 
+
+	$ . env-export
+	$ make
+
+If you want compile only special parts use:
+	
+	$ make doc                    # Compiles only the documentation.
+	$ make test                   # Compiles only the test suite.
+	$ make libphonefirewall.so    # Compiles only the library for the ARM
+	                              # architecture.
+
+
+Troubleshouting
+===============
+
+If the compiling fails or the test suite doesn't work check the Makefile if
+all paths to the programs are correct. If they are and you have installed all
+stuff you need to run and compile the software contact one of the maintainer.
+
+
+Links
+=====
+
+[1]-http://downloads.openmoko.org/toolchains/openmoko-i686-arm-linux-gnueabi-toolchain.tar.bz2
+[2]-http://downloads.openmoko.org/toolchains/openmoko-x86_64-arm-linux-gnueabi-toolchain.tar.bz2
+
