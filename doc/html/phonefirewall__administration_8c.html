@@ -8,7 +8,6 @@
 <div class="tabs">
   <ul>
     <li><a href="main.html"><span>Main&nbsp;Page</span></a></li>
-    <li><a href="classes.html"><span>Data&nbsp;Structures</span></a></li>
     <li class="current"><a href="files.html"><span>Files</span></a></li>
   </ul>
 </div>
@@ -30,32 +29,35 @@ Include dependency graph for phonefirewall_administration.c:</div>
 <p>
 <a href="phonefirewall__administration_8c-source.html">Go to the source code of this file.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
-<tr><td colspan="2"><br><h2>Typedefs</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef struct <a class="el" href="structBlacklist.html">Blacklist</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="phonefirewall__administration_8c.html#423de6f8f476af2cac860172184b28f5">blacklist_t</a></td></tr>
+<tr><td colspan="2"><br><h2>Defines</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="phonefirewall__administration_8c.html#c0120f27d973f4ea90962305431fedce">BLACKLIST_PREFIX</a>&nbsp;&nbsp;&nbsp;&quot;db/blacklist_&quot;</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef struct <a class="el" href="structWhitelist.html">Whitelist</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="phonefirewall__administration_8c.html#958e5a9da3b1faa340643f9f9e784fd5">whitelist_t</a></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="phonefirewall__administration_8c.html#b5b8614b1e4d5e316cc4a8102ce9636c">WHITELIST_PREFIX</a>&nbsp;&nbsp;&nbsp;&quot;db/whitelist_&quot;</td></tr>
 
 <tr><td colspan="2"><br><h2>Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structBlacklist.html">blacklist_t</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="phonefirewall__administration_8c.html#12ea11411729dc427517642a601f33dc">add_to_blacklist</a> (<a class="el" href="structBlacklist.html">blacklist_t</a> *node, long long int number, char *name, char *reason, int priority)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="phonefirewall__administration_8c.html#ca47a7a15cc44ee9c44ccbaf61ab63b7">add_blacklist_entry</a> (int country_code, int area_code, long long int number, char *name, char *reason, int priority)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structWhitelist.html">whitelist_t</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="phonefirewall__administration_8c.html#7576c66d6eb51574047a4792cb88ee15">add_to_whitelist</a> (<a class="el" href="structWhitelist.html">whitelist_t</a> *node, long long int number, char *name, char *reason, int priority)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="phonefirewall__administration_8c.html#23f18831c9677c1a3b7f8cb6b20f3e02">add_blacklist_entry</a> (long long int number, char *name, char *reason, int priority)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="phonefirewall__administration_8c.html#979a7b693ec5468f9caa2487bd1b7217">add_whitelist_entry</a> (int country_code, int area_code, long long int number, char *name, char *reason, int priority)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="phonefirewall__administration_8c.html#c1875490cf592d507798a292f8a772e9">rm_blacklist_entry</a> (long long int number)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="phonefirewall__administration_8c.html#2f8998691bfe087c701006c9efd2a6cd">add_whitelist_entry</a> (long long int number, char *name, char *reason, int priority)</td></tr>
-
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="phonefirewall__administration_8c.html#c3a77117dbcade02ab233836e559814a">rm_whitelist_entry</a> (long long int number)</td></tr>
 
+<tr><td class="memItemLeft" nowrap align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="phonefirewall__administration_8c.html#737cba40ba261f05830a454be982f56e">check_blacklist_entry</a> (int country_code, int area_code, long long int number)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="phonefirewall__administration_8c.html#db8b63f034438c47d82a80ed205f0ad2">check_whitelist_entry</a> (int country_code, int area_code, long long int number)</td></tr>
+
+<tr><td colspan="2"><br><h2>Variables</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="phonefirewall__administration_8c.html#6c7d3710dd8e86998206dad075d6fc27">DELIM</a> = &quot;::&quot;</td></tr>
+
 </table>
-<hr><h2>Typedef Documentation</h2>
-<a class="anchor" name="423de6f8f476af2cac860172184b28f5"></a><!-- doxytag: member="phonefirewall_administration.c::blacklist_t" ref="423de6f8f476af2cac860172184b28f5" args="" -->
+<hr><h2>Define Documentation</h2>
+<a class="anchor" name="c0120f27d973f4ea90962305431fedce"></a><!-- doxytag: member="phonefirewall_administration.c::BLACKLIST_PREFIX" ref="c0120f27d973f4ea90962305431fedce" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef struct <a class="el" href="structBlacklist.html">Blacklist</a> <a class="el" href="structBlacklist.html">blacklist_t</a>          </td>
+          <td class="memname">#define BLACKLIST_PREFIX&nbsp;&nbsp;&nbsp;&quot;db/blacklist_&quot;          </td>
         </tr>
       </table>
 </div>
@@ -67,12 +69,12 @@ Include dependency graph for phonefirewall_administration.c:</div>
 
 </div>
 </div><p>
-<a class="anchor" name="958e5a9da3b1faa340643f9f9e784fd5"></a><!-- doxytag: member="phonefirewall_administration.c::whitelist_t" ref="958e5a9da3b1faa340643f9f9e784fd5" args="" -->
+<a class="anchor" name="b5b8614b1e4d5e316cc4a8102ce9636c"></a><!-- doxytag: member="phonefirewall_administration.c::WHITELIST_PREFIX" ref="b5b8614b1e4d5e316cc4a8102ce9636c" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef struct <a class="el" href="structWhitelist.html">Whitelist</a> <a class="el" href="structWhitelist.html">whitelist_t</a>          </td>
+          <td class="memname">#define WHITELIST_PREFIX&nbsp;&nbsp;&nbsp;&quot;db/whitelist_&quot;          </td>
         </tr>
       </table>
 </div>
@@ -85,13 +87,25 @@ Include dependency graph for phonefirewall_administration.c:</div>
 </div>
 </div><p>
 <hr><h2>Function Documentation</h2>
-<a class="anchor" name="23f18831c9677c1a3b7f8cb6b20f3e02"></a><!-- doxytag: member="phonefirewall_administration.c::add_blacklist_entry" ref="23f18831c9677c1a3b7f8cb6b20f3e02" args="(long long int number, char *name, char *reason, int priority)" -->
+<a class="anchor" name="ca47a7a15cc44ee9c44ccbaf61ab63b7"></a><!-- doxytag: member="phonefirewall_administration.c::add_blacklist_entry" ref="ca47a7a15cc44ee9c44ccbaf61ab63b7" args="(int country_code, int area_code, long long int number, char *name, char *reason, int priority)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">int add_blacklist_entry           </td>
           <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>country_code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>area_code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">long long int&nbsp;</td>
           <td class="paramname"> <em>number</em>, </td>
         </tr>
@@ -126,6 +140,8 @@ Include dependency graph for phonefirewall_administration.c:</div>
 Add a number to the blacklist. The number will be blocked after that.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>country_code</em>&nbsp;</td><td>The country code (for example 39 for Italy, 43 for Austria, and so one) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>area_code</em>&nbsp;</td><td>The area code which indicates your mobile operator. </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>number</em>&nbsp;</td><td>The telephone number of the person. </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>The name of the person. </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>reason</em>&nbsp;</td><td>Why you have blocked this person. </td></tr>
@@ -134,132 +150,31 @@ Add a number to the blacklist. The number will be blocked after that.<p>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If all goes well 0 (zero) otherwise an errno code. </dd></dl>
 
-<p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00066">66</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
+<p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00031">31</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
 
-<p>References <a class="el" href="phonefirewall__administration_8c-source.html#l00029">add_to_blacklist()</a>.</p>
-
-<p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dynsection">
-<p><center><img src="phonefirewall__administration_8c_23f18831c9677c1a3b7f8cb6b20f3e02_cgraph.png" border="0" usemap="#phonefirewall__administration_8c_23f18831c9677c1a3b7f8cb6b20f3e02_cgraph_map" alt=""></center>
-<map name="phonefirewall__administration_8c_23f18831c9677c1a3b7f8cb6b20f3e02_cgraph_map">
-<area shape="rect" href="phonefirewall__administration_8c.html#12ea11411729dc427517642a601f33dc" title="add_to_blacklist" alt="" coords="203,5,331,32"></map>
-</div>
+<p>References <a class="el" href="phonefirewall__administration_8c-source.html#l00029">DELIM</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="12ea11411729dc427517642a601f33dc"></a><!-- doxytag: member="phonefirewall_administration.c::add_to_blacklist" ref="12ea11411729dc427517642a601f33dc" args="(blacklist_t *node, long long int number, char *name, char *reason, int priority)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structBlacklist.html">blacklist_t</a>* add_to_blacklist           </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structBlacklist.html">blacklist_t</a> *&nbsp;</td>
-          <td class="paramname"> <em>node</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">long long int&nbsp;</td>
-          <td class="paramname"> <em>number</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&nbsp;</td>
-          <td class="paramname"> <em>name</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&nbsp;</td>
-          <td class="paramname"> <em>reason</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>priority</em></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td><td width="100%"></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-
-<p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00029">29</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
-
-<p>References <a class="el" href="libphonefirewall_8h-source.html#l00047">Blacklist::left</a>, <a class="el" href="libphonefirewall_8h-source.html#l00043">Blacklist::name</a>, <a class="el" href="libphonefirewall_8h-source.html#l00044">Blacklist::number</a>, <a class="el" href="libphonefirewall_8h-source.html#l00045">Blacklist::priority</a>, <a class="el" href="libphonefirewall_8h-source.html#l00046">Blacklist::reason</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00048">Blacklist::right</a>.</p>
-
-<p>Referenced by <a class="el" href="phonefirewall__administration_8c-source.html#l00066">add_blacklist_entry()</a>.</p>
-
-</div>
-</div><p>
-<a class="anchor" name="7576c66d6eb51574047a4792cb88ee15"></a><!-- doxytag: member="phonefirewall_administration.c::add_to_whitelist" ref="7576c66d6eb51574047a4792cb88ee15" args="(whitelist_t *node, long long int number, char *name, char *reason, int priority)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structWhitelist.html">whitelist_t</a>* add_to_whitelist           </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structWhitelist.html">whitelist_t</a> *&nbsp;</td>
-          <td class="paramname"> <em>node</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">long long int&nbsp;</td>
-          <td class="paramname"> <em>number</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&nbsp;</td>
-          <td class="paramname"> <em>name</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&nbsp;</td>
-          <td class="paramname"> <em>reason</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>priority</em></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td><td width="100%"></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-
-<p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00048">48</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
-
-<p>References <a class="el" href="libphonefirewall_8h-source.html#l00060">Whitelist::left</a>, <a class="el" href="libphonefirewall_8h-source.html#l00056">Whitelist::name</a>, <a class="el" href="libphonefirewall_8h-source.html#l00057">Whitelist::number</a>, <a class="el" href="libphonefirewall_8h-source.html#l00058">Whitelist::priority</a>, <a class="el" href="libphonefirewall_8h-source.html#l00059">Whitelist::reason</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00061">Whitelist::right</a>.</p>
-
-</div>
-</div><p>
-<a class="anchor" name="2f8998691bfe087c701006c9efd2a6cd"></a><!-- doxytag: member="phonefirewall_administration.c::add_whitelist_entry" ref="2f8998691bfe087c701006c9efd2a6cd" args="(long long int number, char *name, char *reason, int priority)" -->
+<a class="anchor" name="979a7b693ec5468f9caa2487bd1b7217"></a><!-- doxytag: member="phonefirewall_administration.c::add_whitelist_entry" ref="979a7b693ec5468f9caa2487bd1b7217" args="(int country_code, int area_code, long long int number, char *name, char *reason, int priority)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">int add_whitelist_entry           </td>
           <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>country_code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>area_code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">long long int&nbsp;</td>
           <td class="paramname"> <em>number</em>, </td>
         </tr>
@@ -294,6 +209,8 @@ Here is the call graph for this function:</div>
 Add a number to the whitelist. The number will be accepted after that.<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>country_code</em>&nbsp;</td><td>The country code (for example 39 for Italy, 43 for Austria, and so one) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>area_code</em>&nbsp;</td><td>The area code which indicates your mobile operator. </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>number</em>&nbsp;</td><td>The telephone number of the person. </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>The name of the person. </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>reason</em>&nbsp;</td><td>Why you have blocked this person. </td></tr>
@@ -302,7 +219,103 @@ Add a number to the whitelist. The number will be accepted after that.<p>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If all goes well 0 (zero) otherwise an errno code. </dd></dl>
 
-<p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00078">78</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
+<p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00047">47</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
+
+<p>References <a class="el" href="phonefirewall__administration_8c-source.html#l00029">DELIM</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="737cba40ba261f05830a454be982f56e"></a><!-- doxytag: member="phonefirewall_administration.c::check_blacklist_entry" ref="737cba40ba261f05830a454be982f56e" args="(int country_code, int area_code, long long int number)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* check_blacklist_entry           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>country_code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>area_code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long long int&nbsp;</td>
+          <td class="paramname"> <em>number</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Checks if a number is on the blacklist.<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>country_code</em>&nbsp;</td><td>The country code (for example 39 for Italy, 43 for Austria, and so one) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>area_code</em>&nbsp;</td><td>The area code which indicates your mobile operator. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>number</em>&nbsp;</td><td>The telephone number of the person.</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>If noting is found NULL, otherwise the number. </dd></dl>
+
+<p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00071">71</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
+
+<p>References <a class="el" href="phonefirewall__administration_8c-source.html#l00029">DELIM</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00033">MAX_LINE_LENGTH</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="db8b63f034438c47d82a80ed205f0ad2"></a><!-- doxytag: member="phonefirewall_administration.c::check_whitelist_entry" ref="db8b63f034438c47d82a80ed205f0ad2" args="(int country_code, int area_code, long long int number)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* check_whitelist_entry           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>country_code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>area_code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long long int&nbsp;</td>
+          <td class="paramname"> <em>number</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Checks if a number is on the whitelist.<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>country_code</em>&nbsp;</td><td>The country code (for example 39 for Italy, 43 for Austria, and so one) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>area_code</em>&nbsp;</td><td>The area code which indicates your mobile operator. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>number</em>&nbsp;</td><td>The telephone number of the person.</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>If noting is found NULL, otherwise the number. </dd></dl>
+
+<p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00100">100</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
 
 </div>
 </div><p>
@@ -324,7 +337,7 @@ Add a number to the whitelist. The number will be accepted after that.<p>
 
 <p>
 Removes a blocked number from the blacklist. 
-<p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00074">74</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
+<p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00063">63</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
 
 </div>
 </div><p>
@@ -346,11 +359,31 @@ Removes a blocked number from the blacklist.
 
 <p>
 Removes a accepted number from the whitelist. 
-<p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00082">82</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
+<p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00067">67</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
 
 </div>
 </div><p>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat May 10 00:11:44 2008 for Phone Firewall by&nbsp;
+<hr><h2>Variable Documentation</h2>
+<a class="anchor" name="6c7d3710dd8e86998206dad075d6fc27"></a><!-- doxytag: member="phonefirewall_administration.c::DELIM" ref="6c7d3710dd8e86998206dad075d6fc27" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* <a class="el" href="phonefirewall__administration_8c.html#6c7d3710dd8e86998206dad075d6fc27">DELIM</a> = &quot;::&quot;<code> [static]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00029">29</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
+
+<p>Referenced by <a class="el" href="phonefirewall__administration_8c-source.html#l00031">add_blacklist_entry()</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00047">add_whitelist_entry()</a>, and <a class="el" href="phonefirewall__administration_8c-source.html#l00071">check_blacklist_entry()</a>.</p>
+
+</div>
+</div><p>
+<hr size="1"><address style="text-align: right;"><small>Generated on Mon May 12 12:42:10 2008 for Phone Firewall by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

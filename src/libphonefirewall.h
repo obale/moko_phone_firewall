@@ -30,35 +30,14 @@
  * Implemented for the OpenMoko framework.
  */
 
-/**
- * @struct Blacklist 
- * @brief Contains the blocked numbers.
- */
-struct Blacklist {
-	char *name;
-	long long int number;
-	int priority;
-	char *reason;
-	struct Blacklist *left;
-	struct Blacklist *right;
-};
-
-/**
- * @struct Whitelist
- * @brief Contains the accepted numbers.
- */
-struct Whitelist {
-	char *name;
-	long long int number;
-	int priority;
-	char *reason;
-	struct Whitelist *left;
-	struct Whitelist *right;
-};
+#define MAX_LINE_LENGTH 512
 
 /**
  * Add a number to the blacklist. The number will be blocked after that.
  *
+ * @param country_code The country code (for example 39 for Italy, 43 for
+ * Austria, and so one)
+ * @param area_code The area code which indicates your mobile operator.
  * @param number The telephone number of the person.
  * @param name The name of the person.
  * @param reason Why you have blocked this person.
@@ -68,7 +47,7 @@ struct Whitelist {
  *
  * @return If all goes well 0 (zero) otherwise an errno code.
  */
-int add_blacklist_entry(long long int number, char *name, char *reason, int priority);
+int add_blacklist_entry(int country_code, int area_code, long long int number, char *name, char *reason, int priority); 
 
 /**
  * Removes a blocked number from the blacklist.
@@ -78,6 +57,9 @@ int rm_blacklist_entry(long long int number);
 /**
  * Add a number to the whitelist. The number will be accepted after that.
  *
+ * @param country_code The country code (for example 39 for Italy, 43 for
+ * Austria, and so one)
+ * @param area_code The area code which indicates your mobile operator.
  * @param number The telephone number of the person.
  * @param name The name of the person.
  * @param reason Why you have blocked this person.
@@ -87,9 +69,33 @@ int rm_blacklist_entry(long long int number);
  *
  * @return If all goes well 0 (zero) otherwise an errno code.
  */
-int add_whitelist_entry(long long int number, char *name, char *reason, int priority);
+int add_whitelist_entry(int country_code, int area_code, long long int number, char *name, char *reason, int priority); 
 
 /**
  * Removes a accepted number from the whitelist.
  */
 int rm_whitelist_entry(long long int number);
+
+/**
+ * Checks if a number is on the blacklist.
+ *
+ * @param country_code The country code (for example 39 for Italy, 43 for
+ * Austria, and so one)
+ * @param area_code The area code which indicates your mobile operator.
+ * @param number The telephone number of the person.
+ *
+ * @return If noting is found NULL, otherwise the number.
+ */
+char *check_blacklist_entry(int country_code, int area_code, long long int number);
+
+/**
+ * Checks if a number is on the whitelist.
+ *
+ * @param country_code The country code (for example 39 for Italy, 43 for
+ * Austria, and so one)
+ * @param area_code The area code which indicates your mobile operator.
+ * @param number The telephone number of the person.
+ *
+ * @return If noting is found NULL, otherwise the number.
+ */
+char *check_whitelist_entry(int country_code, int area_code, long long int number);

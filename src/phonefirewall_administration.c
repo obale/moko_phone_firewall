@@ -23,66 +23,80 @@
 #include <string.h>
 #include "libphonefirewall.h" 
 
-typedef struct Blacklist blacklist_t;
-typedef struct Whitelist whitelist_t;
+#define BLACKLIST_PREFIX "db/blacklist_"
+#define WHITELIST_PREFIX "db/whitelist_"
 
-blacklist_t *add_to_blacklist(blacklist_t *node, long long int number, char *name, char *reason, int priority) {
-   	if( NULL == node ) {
-      		node = (blacklist_t *)malloc(sizeof(blacklist_t));
-      		if( NULL == node ) exit(-ENOMEM);
-      		node->number = number;
-      		node->name = name;
-      		node->reason = reason;
-		node->priority = priority;
-		node->left = node->right = NULL;
-   	} 
-	else if( node->number >= number )
-      		node->left = add_to_blacklist(node->left, number, name, reason, priority);
-	else if( node->number < number )
-      		node->right = add_to_blacklist(node->right, number, name, reason, priority);
+static char* DELIM = "::";
 
-   	return node;
+int add_blacklist_entry(int country_code, int area_code, long long int number, char *name, char *reason, int priority) {
+	FILE *file;
+	char *prefix = "db/blacklist_";
+	int filename_size = sizeof(country_code) + sizeof(area_code) + sizeof(prefix) + 10;
+	char filename[filename_size];
+
+	snprintf(filename, filename_size, "%s%d-%d", prefix, country_code, area_code);
+
+	if ( NULL == (file = fopen(filename, "a+"))) return -EINVAL;
+	fprintf(file, "%d%s%lld%s%d%s%d%s%s%s%s\n", priority, DELIM, number, DELIM, country_code, DELIM, area_code, DELIM, name, DELIM, reason);
+	fflush(file);
+	fclose(file);
+
+   	return 0;
 }
 
-whitelist_t *add_to_whitelist(whitelist_t *node, long long int number, char *name, char *reason, int priority) {
-   	if( NULL == node ) {
-      		node = (whitelist_t *)malloc(sizeof(whitelist_t));
-      		if( NULL == node ) exit(-ENOMEM);
-      		node->number = number;
-      		node->name = name;
-      		node->reason = reason;
-		node->priority = priority;
-		node->left = node->right = NULL;
-   	} 
-	else if( node->number >= number )
-      		node->left = add_to_whitelist(node->left, number, name, reason, priority);
-	else if( node->number < number )
-      		node->right = add_to_whitelist(node->right, number, name, reason, priority);
+int add_whitelist_entry(int country_code, int area_code, long long int number, char *name, char *reason, int priority) {
+	FILE *file;
+	char *prefix = "db/whitelist_";
+	int filename_size = sizeof(country_code) + sizeof(area_code) + sizeof(prefix) + 10;
+	char filename[filename_size];
 
-   	return node;
-}
+	snprintf(filename, filename_size, "%s%d-%d", prefix, country_code, area_code);
 
-int add_blacklist_entry(long long int number, char *name, char *reason, int priority) {
+	if ( NULL == (file = fopen(filename, "a+"))) return -EINVAL;
+	fprintf(file, "%d%s%d%s%d%s%lld%s%s%s%s\n", priority, DELIM, country_code, DELIM, area_code, DELIM, number, DELIM, name, DELIM, reason);
+	fflush(file);
+	fclose(file);
 
-	blacklist_t *root = NULL;
-	root = add_to_blacklist(root, number, name, reason, priority);
-
-	return 0;
+   	return 0;
 }
 
 int rm_blacklist_entry (long long int number) {
 	return -ENOSYS;
 }
 
-int add_whitelist_entry (long long int number, char *name, char *reason, int priority) {
-
-	whitelist_t *root = NULL;
-	root = add_to_whitelist(root, number, name, reason, priority);
-
-	return 0;
-}
-
 int rm_whitelist_entry (long long int number) {
 	return -ENOSYS;
 }
 
+char *check_blacklist_entry(int country_code, int area_code, long long int number) {
+	FILE *file;
+	char *prefix = "db/blacklist_";
+	int filename_size = sizeof(country_code) + sizeof(area_code) + sizeof(prefix) + 10;
+	char filename[filename_size];
+
+	snprintf(filename, filename_size, "%s%d-%d", prefix, country_code, area_code);
+
+	if ( NULL == (file = fopen(filename, "a+"))) return NULL;
+
+	char line[MAX_LINE_LENGTH];
+	char *substr = NULL; 
+	char strnumber[MAX_LINE_LENGTH];
+	char *hit = NULL;
+	snprintf(strnumber, sizeof(strnumber), "%lld", number);
+
+	while ( !feof(file) ) {
+		if( 0 != fgets(line, sizeof(line), file) ) {
+			substr = strtok(line, DELIM);
+			substr = strtok(NULL, DELIM);
+			if ( 0 == strcmp(substr, strnumber)  ) {
+				hit = substr;
+				return hit;
+			}
+		} 
+	}
+	return hit;
+}
+
+char *check_whitelist_entry(int country_code, int area_code, long long int number) {
+	return NULL;
+}

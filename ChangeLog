@@ -1,3 +1,27 @@
+2008-05-12 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* src/phonefirewall_administration.c:
+	Implementing the check of the blacklist entries. It seams to work.
+	When you start the program than from the directory where the Makefile
+	is saved (bin_test/testphonefirewall), because the path is relativ to
+	Makefile directory. There is the directory "db" where the entries will
+	be saved.
+
+2008-05-11 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* src/libphonefirewall.h
+	* src/phonefirewall_administration.c:
+	Changing the implementation from binary tree to a simple saving to
+	files. The files are named as follows:
+		
+		blacklist_$COUNTRYCODE_$AREACODE
+		whitelist_$COUNTRYCODE_$AREACODE
+	
+	So it's possible to have a smaller number of numbers, because they are
+	grouped by countrycode and than also by areacode. If a incoming call
+	take place, we need only to parse the one specific file.
+
+
 2008-05-10 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* src_test/libphonefirewall.h:

@@ -2,3 +2,5 @@
 *~
 *.swp
 core
+blacklist*
+whitelist*

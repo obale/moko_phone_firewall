@@ -50,4 +50,5 @@ clean:
 	       	lib/*\
 	       	src/*.o\
 		src_test/*.o\
-		bin_test/*
+		bin_test/*\
+		db/*

@@ -8,7 +8,6 @@
 <div class="tabs">
   <ul>
     <li><a href="main.html"><span>Main&nbsp;Page</span></a></li>
-    <li><a href="classes.html"><span>Data&nbsp;Structures</span></a></li>
     <li class="current"><a href="files.html"><span>Files</span></a></li>
   </ul>
 </div>
@@ -37,67 +36,84 @@
 <a name="l00023"></a>00023 <span class="preprocessor">#include &lt;string.h&gt;</span>
 <a name="l00024"></a>00024 <span class="preprocessor">#include "<a class="code" href="libphonefirewall_8h.html" title="API of the phone firewall.">libphonefirewall.h</a>"</span> 
 <a name="l00025"></a>00025 
-<a name="l00026"></a><a class="code" href="phonefirewall__administration_8c.html#423de6f8f476af2cac860172184b28f5">00026</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structBlacklist.html" title="Contains the blocked numbers.">Blacklist</a> <a class="code" href="structBlacklist.html" title="Contains the blocked numbers.">blacklist_t</a>;
-<a name="l00027"></a><a class="code" href="phonefirewall__administration_8c.html#958e5a9da3b1faa340643f9f9e784fd5">00027</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structWhitelist.html" title="Contains the accepted numbers.">Whitelist</a> <a class="code" href="structWhitelist.html" title="Contains the accepted numbers.">whitelist_t</a>;
-<a name="l00028"></a>00028 
-<a name="l00029"></a><a class="code" href="phonefirewall__administration_8c.html#12ea11411729dc427517642a601f33dc">00029</a> <a class="code" href="structBlacklist.html" title="Contains the blocked numbers.">blacklist_t</a> *<a class="code" href="phonefirewall__administration_8c.html#12ea11411729dc427517642a601f33dc">add_to_blacklist</a>(<a class="code" href="structBlacklist.html" title="Contains the blocked numbers.">blacklist_t</a> *node, <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> <a class="code" href="structWhitelist.html#b6be6094565f6cafd60edf5573ade306">number</a>, <span class="keywordtype">char</span> *<a class="code" href="structWhitelist.html#cf7f59535ba0988817c45bd3c16b34d0">name</a>, <span class="keywordtype">char</span> *<a class="code" href="structWhitelist.html#22d667946147519356f386dee8a05a17">reason</a>, <span class="keywordtype">int</span> <a class="code" href="structWhitelist.html#a88dab00804dbe50d9255e0fa75d1438">priority</a>) {
-<a name="l00030"></a>00030         printf(<span class="stringliteral">"%llu"</span>, number);
-<a name="l00031"></a>00031         <span class="keywordflow">if</span>( NULL == node ) {
-<a name="l00032"></a>00032                 node = (<a class="code" href="structBlacklist.html" title="Contains the blocked numbers.">blacklist_t</a> *)malloc(<span class="keyword">sizeof</span>(<a class="code" href="structBlacklist.html" title="Contains the blocked numbers.">blacklist_t</a>));
-<a name="l00033"></a>00033                 <span class="keywordflow">if</span>( NULL == node ) exit(-ENOMEM);
-<a name="l00034"></a>00034                 node-&gt;<a class="code" href="structBlacklist.html#f49a3f50339083daf291a6237c9a9bef">number</a> = number;
-<a name="l00035"></a>00035                 node-&gt;<a class="code" href="structBlacklist.html#85e3b3043e9490ab2851dea24e456104">name</a> = name;
-<a name="l00036"></a>00036                 node-&gt;<a class="code" href="structBlacklist.html#4aaebfcc863267f326258e0622bf7303">reason</a> = reason;
-<a name="l00037"></a>00037                 node-&gt;<a class="code" href="structBlacklist.html#a5370eb6240b6e528ce56fb10d7e9249">priority</a> = priority;
-<a name="l00038"></a>00038                 node-&gt;<a class="code" href="structBlacklist.html#0be77041c99c30786d7aa28d6612d90f">left</a> = node-&gt;<a class="code" href="structBlacklist.html#86826704e9c8385b086560b4ec190a8f">right</a> = NULL;
-<a name="l00039"></a>00039         } 
-<a name="l00040"></a>00040         <span class="keywordflow">else</span> <span class="keywordflow">if</span>( node-&gt;<a class="code" href="structBlacklist.html#f49a3f50339083daf291a6237c9a9bef">number</a> &gt;= number )
-<a name="l00041"></a>00041                 node-&gt;<a class="code" href="structBlacklist.html#0be77041c99c30786d7aa28d6612d90f">left</a> = <a class="code" href="phonefirewall__administration_8c.html#12ea11411729dc427517642a601f33dc">add_to_blacklist</a>(node-&gt;<a class="code" href="structBlacklist.html#0be77041c99c30786d7aa28d6612d90f">left</a>, number, name, reason, priority);
-<a name="l00042"></a>00042         <span class="keywordflow">else</span> <span class="keywordflow">if</span>( node-&gt;<a class="code" href="structBlacklist.html#f49a3f50339083daf291a6237c9a9bef">number</a> &lt; number )
-<a name="l00043"></a>00043                 node-&gt;<a class="code" href="structBlacklist.html#86826704e9c8385b086560b4ec190a8f">right</a> = <a class="code" href="phonefirewall__administration_8c.html#12ea11411729dc427517642a601f33dc">add_to_blacklist</a>(node-&gt;<a class="code" href="structBlacklist.html#86826704e9c8385b086560b4ec190a8f">right</a>, number, name, reason, priority);
-<a name="l00044"></a>00044 
-<a name="l00045"></a>00045         <span class="keywordflow">return</span> node;
-<a name="l00046"></a>00046 }
-<a name="l00047"></a>00047 
-<a name="l00048"></a><a class="code" href="phonefirewall__administration_8c.html#7576c66d6eb51574047a4792cb88ee15">00048</a> <a class="code" href="structWhitelist.html" title="Contains the accepted numbers.">whitelist_t</a> *<a class="code" href="phonefirewall__administration_8c.html#7576c66d6eb51574047a4792cb88ee15">add_to_whitelist</a>(<a class="code" href="structWhitelist.html" title="Contains the accepted numbers.">whitelist_t</a> *node, <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> <a class="code" href="structWhitelist.html#b6be6094565f6cafd60edf5573ade306">number</a>, <span class="keywordtype">char</span> *<a class="code" href="structWhitelist.html#cf7f59535ba0988817c45bd3c16b34d0">name</a>, <span class="keywordtype">char</span> *<a class="code" href="structWhitelist.html#22d667946147519356f386dee8a05a17">reason</a>, <span class="keywordtype">int</span> <a class="code" href="structWhitelist.html#a88dab00804dbe50d9255e0fa75d1438">priority</a>) {
-<a name="l00049"></a>00049         <span class="keywordflow">if</span>( NULL == node ) {
-<a name="l00050"></a>00050                 node = (<a class="code" href="structWhitelist.html" title="Contains the accepted numbers.">whitelist_t</a> *)malloc(<span class="keyword">sizeof</span>(<a class="code" href="structWhitelist.html" title="Contains the accepted numbers.">whitelist_t</a>));
-<a name="l00051"></a>00051                 <span class="keywordflow">if</span>( NULL == node ) exit(-ENOMEM);
-<a name="l00052"></a>00052                 node-&gt;<a class="code" href="structWhitelist.html#b6be6094565f6cafd60edf5573ade306">number</a> = number;
-<a name="l00053"></a>00053                 node-&gt;<a class="code" href="structWhitelist.html#cf7f59535ba0988817c45bd3c16b34d0">name</a> = name;
-<a name="l00054"></a>00054                 node-&gt;<a class="code" href="structWhitelist.html#22d667946147519356f386dee8a05a17">reason</a> = reason;
-<a name="l00055"></a>00055                 node-&gt;<a class="code" href="structWhitelist.html#a88dab00804dbe50d9255e0fa75d1438">priority</a> = priority;
-<a name="l00056"></a>00056                 node-&gt;<a class="code" href="structWhitelist.html#954a1d648ca2342328577e06b98385ba">left</a> = node-&gt;<a class="code" href="structWhitelist.html#2600043be14c3f8e10d3939afe796d58">right</a> = NULL;
-<a name="l00057"></a>00057         } 
-<a name="l00058"></a>00058         <span class="keywordflow">else</span> <span class="keywordflow">if</span>( node-&gt;<a class="code" href="structWhitelist.html#b6be6094565f6cafd60edf5573ade306">number</a> &gt;= number )
-<a name="l00059"></a>00059                 node-&gt;<a class="code" href="structWhitelist.html#954a1d648ca2342328577e06b98385ba">left</a> = <a class="code" href="phonefirewall__administration_8c.html#7576c66d6eb51574047a4792cb88ee15">add_to_whitelist</a>(node-&gt;<a class="code" href="structWhitelist.html#954a1d648ca2342328577e06b98385ba">left</a>, number, name, reason, priority);
-<a name="l00060"></a>00060         <span class="keywordflow">else</span> <span class="keywordflow">if</span>( node-&gt;<a class="code" href="structWhitelist.html#b6be6094565f6cafd60edf5573ade306">number</a> &lt; number )
-<a name="l00061"></a>00061                 node-&gt;<a class="code" href="structWhitelist.html#2600043be14c3f8e10d3939afe796d58">right</a> = <a class="code" href="phonefirewall__administration_8c.html#7576c66d6eb51574047a4792cb88ee15">add_to_whitelist</a>(node-&gt;<a class="code" href="structWhitelist.html#2600043be14c3f8e10d3939afe796d58">right</a>, number, name, reason, priority);
+<a name="l00026"></a><a class="code" href="phonefirewall__administration_8c.html#c0120f27d973f4ea90962305431fedce">00026</a> <span class="preprocessor">#define BLACKLIST_PREFIX "db/blacklist_"</span>
+<a name="l00027"></a><a class="code" href="phonefirewall__administration_8c.html#b5b8614b1e4d5e316cc4a8102ce9636c">00027</a> <span class="preprocessor"></span><span class="preprocessor">#define WHITELIST_PREFIX "db/whitelist_"</span>
+<a name="l00028"></a>00028 <span class="preprocessor"></span>
+<a name="l00029"></a><a class="code" href="phonefirewall__administration_8c.html#6c7d3710dd8e86998206dad075d6fc27">00029</a> <span class="keyword">static</span> <span class="keywordtype">char</span>* <a class="code" href="phonefirewall__administration_8c.html#6c7d3710dd8e86998206dad075d6fc27">DELIM</a> = <span class="stringliteral">"::"</span>;
+<a name="l00030"></a>00030 
+<a name="l00031"></a><a class="code" href="phonefirewall__administration_8c.html#ca47a7a15cc44ee9c44ccbaf61ab63b7">00031</a> <span class="keywordtype">int</span> <a class="code" href="libphonefirewall_8h.html#ca47a7a15cc44ee9c44ccbaf61ab63b7">add_blacklist_entry</a>(<span class="keywordtype">int</span> country_code, <span class="keywordtype">int</span> area_code, <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> number, <span class="keywordtype">char</span> *name, <span class="keywordtype">char</span> *reason, <span class="keywordtype">int</span> priority) {
+<a name="l00032"></a>00032         FILE *file;
+<a name="l00033"></a>00033         <span class="keywordtype">char</span> *prefix = <span class="stringliteral">"db/blacklist_"</span>;
+<a name="l00034"></a>00034         <span class="keywordtype">int</span> filename_size = <span class="keyword">sizeof</span>(country_code) + <span class="keyword">sizeof</span>(area_code) + <span class="keyword">sizeof</span>(prefix) + 10;
+<a name="l00035"></a>00035         <span class="keywordtype">char</span> filename[filename_size];
+<a name="l00036"></a>00036 
+<a name="l00037"></a>00037         snprintf(filename, filename_size, <span class="stringliteral">"%s%d-%d"</span>, prefix, country_code, area_code);
+<a name="l00038"></a>00038 
+<a name="l00039"></a>00039         <span class="keywordflow">if</span> ( NULL == (file = fopen(filename, <span class="stringliteral">"a+"</span>))) <span class="keywordflow">return</span> -EINVAL;
+<a name="l00040"></a>00040         fprintf(file, <span class="stringliteral">"%d%s%lld%s%d%s%d%s%s%s%s\n"</span>, priority, <a class="code" href="phonefirewall__administration_8c.html#6c7d3710dd8e86998206dad075d6fc27">DELIM</a>, number, <a class="code" href="phonefirewall__administration_8c.html#6c7d3710dd8e86998206dad075d6fc27">DELIM</a>, country_code, <a class="code" href="phonefirewall__administration_8c.html#6c7d3710dd8e86998206dad075d6fc27">DELIM</a>, area_code, <a class="code" href="phonefirewall__administration_8c.html#6c7d3710dd8e86998206dad075d6fc27">DELIM</a>, name, <a class="code" href="phonefirewall__administration_8c.html#6c7d3710dd8e86998206dad075d6fc27">DELIM</a>, reason);
+<a name="l00041"></a>00041         fflush(file);
+<a name="l00042"></a>00042         fclose(file);
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044         <span class="keywordflow">return</span> 0;
+<a name="l00045"></a>00045 }
+<a name="l00046"></a>00046 
+<a name="l00047"></a><a class="code" href="phonefirewall__administration_8c.html#979a7b693ec5468f9caa2487bd1b7217">00047</a> <span class="keywordtype">int</span> <a class="code" href="libphonefirewall_8h.html#979a7b693ec5468f9caa2487bd1b7217">add_whitelist_entry</a>(<span class="keywordtype">int</span> country_code, <span class="keywordtype">int</span> area_code, <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> number, <span class="keywordtype">char</span> *name, <span class="keywordtype">char</span> *reason, <span class="keywordtype">int</span> priority) {
+<a name="l00048"></a>00048         FILE *file;
+<a name="l00049"></a>00049         <span class="keywordtype">char</span> *prefix = <span class="stringliteral">"db/whitelist_"</span>;
+<a name="l00050"></a>00050         <span class="keywordtype">int</span> filename_size = <span class="keyword">sizeof</span>(country_code) + <span class="keyword">sizeof</span>(area_code) + <span class="keyword">sizeof</span>(prefix) + 10;
+<a name="l00051"></a>00051         <span class="keywordtype">char</span> filename[filename_size];
+<a name="l00052"></a>00052 
+<a name="l00053"></a>00053         snprintf(filename, filename_size, <span class="stringliteral">"%s%d-%d"</span>, prefix, country_code, area_code);
+<a name="l00054"></a>00054 
+<a name="l00055"></a>00055         <span class="keywordflow">if</span> ( NULL == (file = fopen(filename, <span class="stringliteral">"a+"</span>))) <span class="keywordflow">return</span> -EINVAL;
+<a name="l00056"></a>00056         fprintf(file, <span class="stringliteral">"%d%s%d%s%d%s%lld%s%s%s%s\n"</span>, priority, <a class="code" href="phonefirewall__administration_8c.html#6c7d3710dd8e86998206dad075d6fc27">DELIM</a>, country_code, <a class="code" href="phonefirewall__administration_8c.html#6c7d3710dd8e86998206dad075d6fc27">DELIM</a>, area_code, <a class="code" href="phonefirewall__administration_8c.html#6c7d3710dd8e86998206dad075d6fc27">DELIM</a>, number, <a class="code" href="phonefirewall__administration_8c.html#6c7d3710dd8e86998206dad075d6fc27">DELIM</a>, name, <a class="code" href="phonefirewall__administration_8c.html#6c7d3710dd8e86998206dad075d6fc27">DELIM</a>, reason);
+<a name="l00057"></a>00057         fflush(file);
+<a name="l00058"></a>00058         fclose(file);
+<a name="l00059"></a>00059 
+<a name="l00060"></a>00060         <span class="keywordflow">return</span> 0;
+<a name="l00061"></a>00061 }
 <a name="l00062"></a>00062 
-<a name="l00063"></a>00063         <span class="keywordflow">return</span> node;
-<a name="l00064"></a>00064 }
-<a name="l00065"></a>00065 
-<a name="l00066"></a><a class="code" href="phonefirewall__administration_8c.html#23f18831c9677c1a3b7f8cb6b20f3e02">00066</a> <span class="keywordtype">int</span> <a class="code" href="libphonefirewall_8h.html#23f18831c9677c1a3b7f8cb6b20f3e02">add_blacklist_entry</a>(<span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> <a class="code" href="structWhitelist.html#b6be6094565f6cafd60edf5573ade306">number</a>, <span class="keywordtype">char</span> *<a class="code" href="structWhitelist.html#cf7f59535ba0988817c45bd3c16b34d0">name</a>, <span class="keywordtype">char</span> *<a class="code" href="structWhitelist.html#22d667946147519356f386dee8a05a17">reason</a>, <span class="keywordtype">int</span> <a class="code" href="structWhitelist.html#a88dab00804dbe50d9255e0fa75d1438">priority</a>) {
-<a name="l00067"></a>00067 
-<a name="l00068"></a>00068         <a class="code" href="structBlacklist.html" title="Contains the blocked numbers.">blacklist_t</a> *root = NULL;
-<a name="l00069"></a>00069         root = <a class="code" href="phonefirewall__administration_8c.html#12ea11411729dc427517642a601f33dc">add_to_blacklist</a>(root, number, name, reason, priority);
+<a name="l00063"></a><a class="code" href="phonefirewall__administration_8c.html#c1875490cf592d507798a292f8a772e9">00063</a> <span class="keywordtype">int</span> <a class="code" href="libphonefirewall_8h.html#c1875490cf592d507798a292f8a772e9">rm_blacklist_entry</a> (<span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> number) {
+<a name="l00064"></a>00064         <span class="keywordflow">return</span> -ENOSYS;
+<a name="l00065"></a>00065 }
+<a name="l00066"></a>00066 
+<a name="l00067"></a><a class="code" href="phonefirewall__administration_8c.html#c3a77117dbcade02ab233836e559814a">00067</a> <span class="keywordtype">int</span> <a class="code" href="libphonefirewall_8h.html#c3a77117dbcade02ab233836e559814a">rm_whitelist_entry</a> (<span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> number) {
+<a name="l00068"></a>00068         <span class="keywordflow">return</span> -ENOSYS;
+<a name="l00069"></a>00069 }
 <a name="l00070"></a>00070 
-<a name="l00071"></a>00071         <span class="keywordflow">return</span> 0;
-<a name="l00072"></a>00072 }
-<a name="l00073"></a>00073 
-<a name="l00074"></a><a class="code" href="phonefirewall__administration_8c.html#c1875490cf592d507798a292f8a772e9">00074</a> <span class="keywordtype">int</span> <a class="code" href="libphonefirewall_8h.html#c1875490cf592d507798a292f8a772e9">rm_blacklist_entry</a> (<span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> <a class="code" href="structWhitelist.html#b6be6094565f6cafd60edf5573ade306">number</a>) {
-<a name="l00075"></a>00075         <span class="keywordflow">return</span> -ENOSYS;
-<a name="l00076"></a>00076 }
-<a name="l00077"></a>00077 
-<a name="l00078"></a><a class="code" href="phonefirewall__administration_8c.html#2f8998691bfe087c701006c9efd2a6cd">00078</a> <span class="keywordtype">int</span> <a class="code" href="libphonefirewall_8h.html#2f8998691bfe087c701006c9efd2a6cd">add_whitelist_entry</a> (<span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> <a class="code" href="structWhitelist.html#b6be6094565f6cafd60edf5573ade306">number</a>, <span class="keywordtype">char</span> *<a class="code" href="structWhitelist.html#cf7f59535ba0988817c45bd3c16b34d0">name</a>, <span class="keywordtype">char</span> *<a class="code" href="structWhitelist.html#22d667946147519356f386dee8a05a17">reason</a>, <span class="keywordtype">int</span> <a class="code" href="structWhitelist.html#a88dab00804dbe50d9255e0fa75d1438">priority</a>) {
-<a name="l00079"></a>00079         <span class="keywordflow">return</span> -ENOSYS;
-<a name="l00080"></a>00080 }
-<a name="l00081"></a>00081 
-<a name="l00082"></a><a class="code" href="phonefirewall__administration_8c.html#c3a77117dbcade02ab233836e559814a">00082</a> <span class="keywordtype">int</span> <a class="code" href="libphonefirewall_8h.html#c3a77117dbcade02ab233836e559814a">rm_whitelist_entry</a> (<span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> <a class="code" href="structWhitelist.html#b6be6094565f6cafd60edf5573ade306">number</a>) {
-<a name="l00083"></a>00083         <span class="keywordflow">return</span> -ENOSYS;
-<a name="l00084"></a>00084 }
-<a name="l00085"></a>00085 
-</pre></div><hr size="1"><address style="text-align: right;"><small>Generated on Sat May 10 00:11:43 2008 for Phone Firewall by&nbsp;
+<a name="l00071"></a><a class="code" href="phonefirewall__administration_8c.html#737cba40ba261f05830a454be982f56e">00071</a> <span class="keywordtype">char</span> *<a class="code" href="libphonefirewall_8h.html#737cba40ba261f05830a454be982f56e">check_blacklist_entry</a>(<span class="keywordtype">int</span> country_code, <span class="keywordtype">int</span> area_code, <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> number) {
+<a name="l00072"></a>00072         FILE *file;
+<a name="l00073"></a>00073         <span class="keywordtype">char</span> *prefix = <span class="stringliteral">"db/blacklist_"</span>;
+<a name="l00074"></a>00074         <span class="keywordtype">int</span> filename_size = <span class="keyword">sizeof</span>(country_code) + <span class="keyword">sizeof</span>(area_code) + <span class="keyword">sizeof</span>(prefix) + 10;
+<a name="l00075"></a>00075         <span class="keywordtype">char</span> filename[filename_size];
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077         snprintf(filename, filename_size, <span class="stringliteral">"%s%d-%d"</span>, prefix, country_code, area_code);
+<a name="l00078"></a>00078 
+<a name="l00079"></a>00079         <span class="keywordflow">if</span> ( NULL == (file = fopen(filename, <span class="stringliteral">"a+"</span>))) <span class="keywordflow">return</span> NULL;
+<a name="l00080"></a>00080 
+<a name="l00081"></a>00081         <span class="keywordtype">char</span> line[<a class="code" href="libphonefirewall_8h.html#f0f2173e3b202ddf5756531b4471dcb2">MAX_LINE_LENGTH</a>];
+<a name="l00082"></a>00082         <span class="keywordtype">char</span> *substr = NULL; 
+<a name="l00083"></a>00083         <span class="keywordtype">char</span> strnumber[<a class="code" href="libphonefirewall_8h.html#f0f2173e3b202ddf5756531b4471dcb2">MAX_LINE_LENGTH</a>];
+<a name="l00084"></a>00084         <span class="keywordtype">char</span> *hit = NULL;
+<a name="l00085"></a>00085         snprintf(strnumber, <span class="keyword">sizeof</span>(strnumber), <span class="stringliteral">"%lld"</span>, number);
+<a name="l00086"></a>00086 
+<a name="l00087"></a>00087         <span class="keywordflow">while</span> ( !feof(file) ) {
+<a name="l00088"></a>00088                 <span class="keywordflow">if</span>( 0 != fgets(line, <span class="keyword">sizeof</span>(line), file) ) {
+<a name="l00089"></a>00089                         substr = strtok(line, <a class="code" href="phonefirewall__administration_8c.html#6c7d3710dd8e86998206dad075d6fc27">DELIM</a>);
+<a name="l00090"></a>00090                         substr = strtok(NULL, <a class="code" href="phonefirewall__administration_8c.html#6c7d3710dd8e86998206dad075d6fc27">DELIM</a>);
+<a name="l00091"></a>00091                         <span class="keywordflow">if</span> ( 0 == strcmp(substr, strnumber)  ) {
+<a name="l00092"></a>00092                                 hit = substr;
+<a name="l00093"></a>00093                                 <span class="keywordflow">return</span> hit;
+<a name="l00094"></a>00094                         }
+<a name="l00095"></a>00095                 } 
+<a name="l00096"></a>00096         }
+<a name="l00097"></a>00097         <span class="keywordflow">return</span> hit;
+<a name="l00098"></a>00098 }
+<a name="l00099"></a>00099 
+<a name="l00100"></a><a class="code" href="phonefirewall__administration_8c.html#db8b63f034438c47d82a80ed205f0ad2">00100</a> <span class="keywordtype">char</span> *<a class="code" href="libphonefirewall_8h.html#db8b63f034438c47d82a80ed205f0ad2">check_whitelist_entry</a>(<span class="keywordtype">int</span> country_code, <span class="keywordtype">int</span> area_code, <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> number) {
+<a name="l00101"></a>00101         <span class="keywordflow">return</span> NULL;
+<a name="l00102"></a>00102 }
+</pre></div><hr size="1"><address style="text-align: right;"><small>Generated on Mon May 12 12:42:10 2008 for Phone Firewall by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>
