@@ -22,7 +22,6 @@ doc:
 	 && ( echo -e '[\E[32mDONE\033[0m]'; tput sgr0 )\
 	 || ( echo -e '[\E[31mFAILED\033[0m]'; tput sgr0 )
 
-
 phonefirewall_administration.o: $(SRCDIR)/phonefirewall_administration.c $(SRCDIR)/libphonefirewall.h
 	$(CCMOKO) $(CLFLAGS) -fpic -c $(SRCDIR)/phonefirewall_administration.c -o $(SRCDIR)/$@
 
@@ -51,4 +50,4 @@ clean:
 	       	src/*.o\
 		src_test/*.o\
 		bin_test/*\
-		db/*
+		db/* 

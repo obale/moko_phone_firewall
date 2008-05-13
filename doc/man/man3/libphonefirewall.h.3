@@ -1,4 +1,4 @@
-.TH "libphonefirewall.h" 3 "12 May 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
+.TH "libphonefirewall.h" 3 "13 May 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -23,13 +23,13 @@ libphonefirewall.h \- API of the phone firewall.
 .RI "int \fBrm_blacklist_entry\fP (long long int number)"
 .br
 .ti -1c
+.RI "char * \fBcheck_blacklist_entry\fP (int country_code, int area_code, long long int number)"
+.br
+.ti -1c
 .RI "int \fBadd_whitelist_entry\fP (int country_code, int area_code, long long int number, char *name, char *reason, int priority)"
 .br
 .ti -1c
 .RI "int \fBrm_whitelist_entry\fP (long long int number)"
-.br
-.ti -1c
-.RI "char * \fBcheck_blacklist_entry\fP (int country_code, int area_code, long long int number)"
 .br
 .ti -1c
 .RI "char * \fBcheck_whitelist_entry\fP (int country_code, int area_code, long long int number)"
@@ -55,7 +55,7 @@ Definition in file \fBlibphonefirewall.h\fP.
 .PP
 Definition at line 33 of file libphonefirewall.h.
 .PP
-Referenced by check_blacklist_entry().
+Referenced by check_blacklist_entry(), and check_whitelist_entry().
 .SH "Function Documentation"
 .PP 
 .SS "int add_blacklist_entry (int country_code, int area_code, long long int number, char * name, char * reason, int priority)"
@@ -160,14 +160,40 @@ If noting is found NULL, otherwise the number.
 
 .PP
 Definition at line 100 of file phonefirewall_administration.c.
+.PP
+References DELIM, and MAX_LINE_LENGTH.
 .SS "int rm_blacklist_entry (long long int number)"
 .PP
-Removes a blocked number from the blacklist. 
+Removes a blocked number from the blacklist.
+.PP
+\fBParameters:\fP
+.RS 4
+\fInumber\fP The number which will be deleted.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+If all goes right 0, otherwise an error code. 
+.RE
+.PP
+
 .PP
 Definition at line 63 of file phonefirewall_administration.c.
 .SS "int rm_whitelist_entry (long long int number)"
 .PP
-Removes a accepted number from the whitelist. 
+Removes a accepted number from the whitelist.
+.PP
+\fBParameters:\fP
+.RS 4
+\fInumber\fP The number which will be deleted.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+If all goes right 0, otherwise an error code. 
+.RE
+.PP
+
 .PP
 Definition at line 67 of file phonefirewall_administration.c.
 .SH "Author"

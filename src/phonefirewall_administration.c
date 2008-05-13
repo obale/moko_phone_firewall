@@ -53,7 +53,7 @@ int add_whitelist_entry(int country_code, int area_code, long long int number, c
 	snprintf(filename, filename_size, "%s%d-%d", prefix, country_code, area_code);
 
 	if ( NULL == (file = fopen(filename, "a+"))) return -EINVAL;
-	fprintf(file, "%d%s%d%s%d%s%lld%s%s%s%s\n", priority, DELIM, country_code, DELIM, area_code, DELIM, number, DELIM, name, DELIM, reason);
+	fprintf(file, "%d%s%lld%s%d%s%d%s%s%s%s\n", priority, DELIM, number, DELIM, country_code, DELIM, area_code, DELIM, name, DELIM, reason);
 	fflush(file);
 	fclose(file);
 
@@ -98,5 +98,30 @@ char *check_blacklist_entry(int country_code, int area_code, long long int numbe
 }
 
 char *check_whitelist_entry(int country_code, int area_code, long long int number) {
-	return NULL;
+	FILE *file;
+	char *prefix = "db/whitelist_";
+	int filename_size = sizeof(country_code) + sizeof(area_code) + sizeof(prefix) + 10;
+	char filename[filename_size];
+
+	snprintf(filename, filename_size, "%s%d-%d", prefix, country_code, area_code);
+
+	if ( NULL == (file = fopen(filename, "a+"))) return NULL;
+
+	char line[MAX_LINE_LENGTH];
+	char *substr = NULL; 
+	char strnumber[MAX_LINE_LENGTH];
+	char *hit = NULL;
+	snprintf(strnumber, sizeof(strnumber), "%lld", number);
+
+	while ( !feof(file) ) {
+		if( 0 != fgets(line, sizeof(line), file) ) {
+			substr = strtok(line, DELIM);
+			substr = strtok(NULL, DELIM);
+			if ( 0 == strcmp(substr, strnumber)  ) {
+				hit = substr;
+				return hit;
+			}
+		} 
+	}
+	return hit;
 }

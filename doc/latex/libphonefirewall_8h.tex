@@ -25,11 +25,11 @@ int \hyperlink{libphonefirewall_8h_ca47a7a15cc44ee9c44ccbaf61ab63b7}{add\_\-blac
 \item 
 int \hyperlink{libphonefirewall_8h_c1875490cf592d507798a292f8a772e9}{rm\_\-blacklist\_\-entry} (long long int number)
 \item 
+char $\ast$ \hyperlink{libphonefirewall_8h_737cba40ba261f05830a454be982f56e}{check\_\-blacklist\_\-entry} (int country\_\-code, int area\_\-code, long long int number)
+\item 
 int \hyperlink{libphonefirewall_8h_979a7b693ec5468f9caa2487bd1b7217}{add\_\-whitelist\_\-entry} (int country\_\-code, int area\_\-code, long long int number, char $\ast$name, char $\ast$reason, int priority)
 \item 
 int \hyperlink{libphonefirewall_8h_c3a77117dbcade02ab233836e559814a}{rm\_\-whitelist\_\-entry} (long long int number)
-\item 
-char $\ast$ \hyperlink{libphonefirewall_8h_737cba40ba261f05830a454be982f56e}{check\_\-blacklist\_\-entry} (int country\_\-code, int area\_\-code, long long int number)
 \item 
 char $\ast$ \hyperlink{libphonefirewall_8h_db8b63f034438c47d82a80ed205f0ad2}{check\_\-whitelist\_\-entry} (int country\_\-code, int area\_\-code, long long int number)
 \end{CompactItemize}
@@ -58,7 +58,7 @@ Definition in file \hyperlink{libphonefirewall_8h-source}{libphonefirewall.h}.
 
 Definition at line 33 of file libphonefirewall.h.
 
-Referenced by check\_\-blacklist\_\-entry().
+Referenced by check\_\-blacklist\_\-entry(), and check\_\-whitelist\_\-entry().
 
 \subsection{Function Documentation}
 \hypertarget{libphonefirewall_8h_ca47a7a15cc44ee9c44ccbaf61ab63b7}{
@@ -139,14 +139,25 @@ Checks if a number is on the whitelist.
 \item[Returns:]If noting is found NULL, otherwise the number. \end{Desc}
 
 
-Definition at line 100 of file phonefirewall\_\-administration.c.\hypertarget{libphonefirewall_8h_c1875490cf592d507798a292f8a772e9}{
+Definition at line 100 of file phonefirewall\_\-administration.c.
+
+References DELIM, and MAX\_\-LINE\_\-LENGTH.\hypertarget{libphonefirewall_8h_c1875490cf592d507798a292f8a772e9}{
 \index{libphonefirewall.h@{libphonefirewall.h}!rm\_\-blacklist\_\-entry@{rm\_\-blacklist\_\-entry}}
 \index{rm\_\-blacklist\_\-entry@{rm\_\-blacklist\_\-entry}!libphonefirewall.h@{libphonefirewall.h}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}int rm\_\-blacklist\_\-entry (long long int {\em number})}}
 \label{libphonefirewall_8h_c1875490cf592d507798a292f8a772e9}
 
 
-Removes a blocked number from the blacklist. 
+Removes a blocked number from the blacklist.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em number}]The number which will be deleted.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]If all goes right 0, otherwise an error code. \end{Desc}
+
 
 Definition at line 63 of file phonefirewall\_\-administration.c.\hypertarget{libphonefirewall_8h_c3a77117dbcade02ab233836e559814a}{
 \index{libphonefirewall.h@{libphonefirewall.h}!rm\_\-whitelist\_\-entry@{rm\_\-whitelist\_\-entry}}
@@ -155,6 +166,15 @@ Definition at line 63 of file phonefirewall\_\-administration.c.\hypertarget{lib
 \label{libphonefirewall_8h_c3a77117dbcade02ab233836e559814a}
 
 
-Removes a accepted number from the whitelist. 
+Removes a accepted number from the whitelist.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em number}]The number which will be deleted.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]If all goes right 0, otherwise an error code. \end{Desc}
+
 
 Definition at line 67 of file phonefirewall\_\-administration.c.

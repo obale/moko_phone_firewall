@@ -9,9 +9,16 @@ numbers which you don't like (also possible with SMS). You can also accept
 only a few numbers and block the others. To realize this we use a blacklist
 (all blocked numbers) and a whitelist (all accepted numbers).
 
+The sourcecode and all other files which are related to the project (and other
+projects) you can find here [4]. If you want know more about our project see
+[3], here you find all important informations.
+
 
 Maintainer
 ==========
+
+Please add your name here when you are also a developer which works on the
+project.
 
 Alex Oberhauser
 <oberhauseralex@networld.to>
@@ -28,6 +35,11 @@ after that compile all:
 
 	$ . env-export
 	$ make
+	$ bin_test/testphonefirwall   # Start the program from the root
+					direcotry (where the Makefile is), so
+					that the program can save the
+					blacklist/whitelist in the "db"
+					directory.
 
 If you want compile only special parts use:
 	
@@ -50,4 +62,5 @@ Links
 
 [1]-http://downloads.openmoko.org/toolchains/openmoko-i686-arm-linux-gnueabi-toolchain.tar.bz2
 [2]-http://downloads.openmoko.org/toolchains/openmoko-x86_64-arm-linux-gnueabi-toolchain.tar.bz2
-
+[3]-http://moksec.networld.to
+[4]-http://moko.networld.to

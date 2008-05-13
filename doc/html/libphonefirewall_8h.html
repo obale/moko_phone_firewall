@@ -34,11 +34,11 @@ This graph shows which files directly or indirectly include this file:</div>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="libphonefirewall_8h.html#c1875490cf592d507798a292f8a772e9">rm_blacklist_entry</a> (long long int number)</td></tr>
 
+<tr><td class="memItemLeft" nowrap align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="libphonefirewall_8h.html#737cba40ba261f05830a454be982f56e">check_blacklist_entry</a> (int country_code, int area_code, long long int number)</td></tr>
+
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="libphonefirewall_8h.html#979a7b693ec5468f9caa2487bd1b7217">add_whitelist_entry</a> (int country_code, int area_code, long long int number, char *name, char *reason, int priority)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="libphonefirewall_8h.html#c3a77117dbcade02ab233836e559814a">rm_whitelist_entry</a> (long long int number)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="libphonefirewall_8h.html#737cba40ba261f05830a454be982f56e">check_blacklist_entry</a> (int country_code, int area_code, long long int number)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="libphonefirewall_8h.html#db8b63f034438c47d82a80ed205f0ad2">check_whitelist_entry</a> (int country_code, int area_code, long long int number)</td></tr>
 
@@ -66,7 +66,7 @@ Implemented for the OpenMoko framework.
 
 <p>Definition at line <a class="el" href="libphonefirewall_8h-source.html#l00033">33</a> of file <a class="el" href="libphonefirewall_8h-source.html">libphonefirewall.h</a>.</p>
 
-<p>Referenced by <a class="el" href="phonefirewall__administration_8c-source.html#l00071">check_blacklist_entry()</a>.</p>
+<p>Referenced by <a class="el" href="phonefirewall__administration_8c-source.html#l00071">check_blacklist_entry()</a>, and <a class="el" href="phonefirewall__administration_8c-source.html#l00100">check_whitelist_entry()</a>.</p>
 
 </div>
 </div><p>
@@ -301,6 +301,8 @@ Checks if a number is on the whitelist.<p>
 
 <p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00100">100</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
 
+<p>References <a class="el" href="phonefirewall__administration_8c-source.html#l00029">DELIM</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00033">MAX_LINE_LENGTH</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="c1875490cf592d507798a292f8a772e9"></a><!-- doxytag: member="libphonefirewall.h::rm_blacklist_entry" ref="c1875490cf592d507798a292f8a772e9" args="(long long int number)" -->
@@ -320,7 +322,14 @@ Checks if a number is on the whitelist.<p>
 <div class="memdoc">
 
 <p>
-Removes a blocked number from the blacklist. 
+Removes a blocked number from the blacklist.<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>number</em>&nbsp;</td><td>The number which will be deleted.</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>If all goes right 0, otherwise an error code. </dd></dl>
+
 <p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00063">63</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
 
 </div>
@@ -342,12 +351,19 @@ Removes a blocked number from the blacklist.
 <div class="memdoc">
 
 <p>
-Removes a accepted number from the whitelist. 
+Removes a accepted number from the whitelist.<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>number</em>&nbsp;</td><td>The number which will be deleted.</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>If all goes right 0, otherwise an error code. </dd></dl>
+
 <p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00067">67</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
 
 </div>
 </div><p>
-<hr size="1"><address style="text-align: right;"><small>Generated on Mon May 12 12:42:10 2008 for Phone Firewall by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Tue May 13 13:40:56 2008 for Phone Firewall by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

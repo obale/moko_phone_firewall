@@ -145,14 +145,25 @@ Checks if a number is on the whitelist.
 \item[Returns:]If noting is found NULL, otherwise the number. \end{Desc}
 
 
-Definition at line 100 of file phonefirewall\_\-administration.c.\hypertarget{phonefirewall__administration_8c_c1875490cf592d507798a292f8a772e9}{
+Definition at line 100 of file phonefirewall\_\-administration.c.
+
+References DELIM, and MAX\_\-LINE\_\-LENGTH.\hypertarget{phonefirewall__administration_8c_c1875490cf592d507798a292f8a772e9}{
 \index{phonefirewall\_\-administration.c@{phonefirewall\_\-administration.c}!rm\_\-blacklist\_\-entry@{rm\_\-blacklist\_\-entry}}
 \index{rm\_\-blacklist\_\-entry@{rm\_\-blacklist\_\-entry}!phonefirewall_administration.c@{phonefirewall\_\-administration.c}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}int rm\_\-blacklist\_\-entry (long long int {\em number})}}
 \label{phonefirewall__administration_8c_c1875490cf592d507798a292f8a772e9}
 
 
-Removes a blocked number from the blacklist. 
+Removes a blocked number from the blacklist.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em number}]The number which will be deleted.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]If all goes right 0, otherwise an error code. \end{Desc}
+
 
 Definition at line 63 of file phonefirewall\_\-administration.c.\hypertarget{phonefirewall__administration_8c_c3a77117dbcade02ab233836e559814a}{
 \index{phonefirewall\_\-administration.c@{phonefirewall\_\-administration.c}!rm\_\-whitelist\_\-entry@{rm\_\-whitelist\_\-entry}}
@@ -161,7 +172,16 @@ Definition at line 63 of file phonefirewall\_\-administration.c.\hypertarget{pho
 \label{phonefirewall__administration_8c_c3a77117dbcade02ab233836e559814a}
 
 
-Removes a accepted number from the whitelist. 
+Removes a accepted number from the whitelist.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em number}]The number which will be deleted.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]If all goes right 0, otherwise an error code. \end{Desc}
+
 
 Definition at line 67 of file phonefirewall\_\-administration.c.
 
@@ -177,4 +197,4 @@ Definition at line 67 of file phonefirewall\_\-administration.c.
 
 Definition at line 29 of file phonefirewall\_\-administration.c.
 
-Referenced by add\_\-blacklist\_\-entry(), add\_\-whitelist\_\-entry(), and check\_\-blacklist\_\-entry().
+Referenced by add\_\-blacklist\_\-entry(), add\_\-whitelist\_\-entry(), check\_\-blacklist\_\-entry(), and check\_\-whitelist\_\-entry().

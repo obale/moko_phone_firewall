@@ -51,8 +51,24 @@ int add_blacklist_entry(int country_code, int area_code, long long int number, c
 
 /**
  * Removes a blocked number from the blacklist.
+ *
+ * @param number The number which will be deleted.
+ *
+ * @return If all goes right 0, otherwise an error code.
  */
 int rm_blacklist_entry(long long int number);
+
+/**
+ * Checks if a number is on the blacklist.
+ *
+ * @param country_code The country code (for example 39 for Italy, 43 for
+ * Austria, and so one)
+ * @param area_code The area code which indicates your mobile operator.
+ * @param number The telephone number of the person.
+ *
+ * @return If noting is found NULL, otherwise the number.
+ */
+char *check_blacklist_entry(int country_code, int area_code, long long int number);
 
 /**
  * Add a number to the whitelist. The number will be accepted after that.
@@ -73,20 +89,12 @@ int add_whitelist_entry(int country_code, int area_code, long long int number, c
 
 /**
  * Removes a accepted number from the whitelist.
+ *
+ * @param number The number which will be deleted.
+ *
+ * @return If all goes right 0, otherwise an error code.
  */
 int rm_whitelist_entry(long long int number);
-
-/**
- * Checks if a number is on the blacklist.
- *
- * @param country_code The country code (for example 39 for Italy, 43 for
- * Austria, and so one)
- * @param area_code The area code which indicates your mobile operator.
- * @param number The telephone number of the person.
- *
- * @return If noting is found NULL, otherwise the number.
- */
-char *check_blacklist_entry(int country_code, int area_code, long long int number);
 
 /**
  * Checks if a number is on the whitelist.

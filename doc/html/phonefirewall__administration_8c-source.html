@@ -66,7 +66,7 @@
 <a name="l00053"></a>00053         snprintf(filename, filename_size, <span class="stringliteral">"%s%d-%d"</span>, prefix, country_code, area_code);
 <a name="l00054"></a>00054 
 <a name="l00055"></a>00055         <span class="keywordflow">if</span> ( NULL == (file = fopen(filename, <span class="stringliteral">"a+"</span>))) <span class="keywordflow">return</span> -EINVAL;
-<a name="l00056"></a>00056         fprintf(file, <span class="stringliteral">"%d%s%d%s%d%s%lld%s%s%s%s\n"</span>, priority, <a class="code" href="phonefirewall__administration_8c.html#6c7d3710dd8e86998206dad075d6fc27">DELIM</a>, country_code, <a class="code" href="phonefirewall__administration_8c.html#6c7d3710dd8e86998206dad075d6fc27">DELIM</a>, area_code, <a class="code" href="phonefirewall__administration_8c.html#6c7d3710dd8e86998206dad075d6fc27">DELIM</a>, number, <a class="code" href="phonefirewall__administration_8c.html#6c7d3710dd8e86998206dad075d6fc27">DELIM</a>, name, <a class="code" href="phonefirewall__administration_8c.html#6c7d3710dd8e86998206dad075d6fc27">DELIM</a>, reason);
+<a name="l00056"></a>00056         fprintf(file, <span class="stringliteral">"%d%s%lld%s%d%s%d%s%s%s%s\n"</span>, priority, <a class="code" href="phonefirewall__administration_8c.html#6c7d3710dd8e86998206dad075d6fc27">DELIM</a>, number, <a class="code" href="phonefirewall__administration_8c.html#6c7d3710dd8e86998206dad075d6fc27">DELIM</a>, country_code, <a class="code" href="phonefirewall__administration_8c.html#6c7d3710dd8e86998206dad075d6fc27">DELIM</a>, area_code, <a class="code" href="phonefirewall__administration_8c.html#6c7d3710dd8e86998206dad075d6fc27">DELIM</a>, name, <a class="code" href="phonefirewall__administration_8c.html#6c7d3710dd8e86998206dad075d6fc27">DELIM</a>, reason);
 <a name="l00057"></a>00057         fflush(file);
 <a name="l00058"></a>00058         fclose(file);
 <a name="l00059"></a>00059 
@@ -111,9 +111,34 @@
 <a name="l00098"></a>00098 }
 <a name="l00099"></a>00099 
 <a name="l00100"></a><a class="code" href="phonefirewall__administration_8c.html#db8b63f034438c47d82a80ed205f0ad2">00100</a> <span class="keywordtype">char</span> *<a class="code" href="libphonefirewall_8h.html#db8b63f034438c47d82a80ed205f0ad2">check_whitelist_entry</a>(<span class="keywordtype">int</span> country_code, <span class="keywordtype">int</span> area_code, <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> number) {
-<a name="l00101"></a>00101         <span class="keywordflow">return</span> NULL;
-<a name="l00102"></a>00102 }
-</pre></div><hr size="1"><address style="text-align: right;"><small>Generated on Mon May 12 12:42:10 2008 for Phone Firewall by&nbsp;
+<a name="l00101"></a>00101         FILE *file;
+<a name="l00102"></a>00102         <span class="keywordtype">char</span> *prefix = <span class="stringliteral">"db/whitelist_"</span>;
+<a name="l00103"></a>00103         <span class="keywordtype">int</span> filename_size = <span class="keyword">sizeof</span>(country_code) + <span class="keyword">sizeof</span>(area_code) + <span class="keyword">sizeof</span>(prefix) + 10;
+<a name="l00104"></a>00104         <span class="keywordtype">char</span> filename[filename_size];
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106         snprintf(filename, filename_size, <span class="stringliteral">"%s%d-%d"</span>, prefix, country_code, area_code);
+<a name="l00107"></a>00107 
+<a name="l00108"></a>00108         <span class="keywordflow">if</span> ( NULL == (file = fopen(filename, <span class="stringliteral">"a+"</span>))) <span class="keywordflow">return</span> NULL;
+<a name="l00109"></a>00109 
+<a name="l00110"></a>00110         <span class="keywordtype">char</span> line[<a class="code" href="libphonefirewall_8h.html#f0f2173e3b202ddf5756531b4471dcb2">MAX_LINE_LENGTH</a>];
+<a name="l00111"></a>00111         <span class="keywordtype">char</span> *substr = NULL; 
+<a name="l00112"></a>00112         <span class="keywordtype">char</span> strnumber[<a class="code" href="libphonefirewall_8h.html#f0f2173e3b202ddf5756531b4471dcb2">MAX_LINE_LENGTH</a>];
+<a name="l00113"></a>00113         <span class="keywordtype">char</span> *hit = NULL;
+<a name="l00114"></a>00114         snprintf(strnumber, <span class="keyword">sizeof</span>(strnumber), <span class="stringliteral">"%lld"</span>, number);
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116         <span class="keywordflow">while</span> ( !feof(file) ) {
+<a name="l00117"></a>00117                 <span class="keywordflow">if</span>( 0 != fgets(line, <span class="keyword">sizeof</span>(line), file) ) {
+<a name="l00118"></a>00118                         substr = strtok(line, <a class="code" href="phonefirewall__administration_8c.html#6c7d3710dd8e86998206dad075d6fc27">DELIM</a>);
+<a name="l00119"></a>00119                         substr = strtok(NULL, <a class="code" href="phonefirewall__administration_8c.html#6c7d3710dd8e86998206dad075d6fc27">DELIM</a>);
+<a name="l00120"></a>00120                         <span class="keywordflow">if</span> ( 0 == strcmp(substr, strnumber)  ) {
+<a name="l00121"></a>00121                                 hit = substr;
+<a name="l00122"></a>00122                                 <span class="keywordflow">return</span> hit;
+<a name="l00123"></a>00123                         }
+<a name="l00124"></a>00124                 } 
+<a name="l00125"></a>00125         }
+<a name="l00126"></a>00126         <span class="keywordflow">return</span> hit;
+<a name="l00127"></a>00127 }
+</pre></div><hr size="1"><address style="text-align: right;"><small>Generated on Tue May 13 13:40:56 2008 for Phone Firewall by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

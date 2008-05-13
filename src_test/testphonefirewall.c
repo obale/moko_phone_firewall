@@ -30,6 +30,12 @@ void test_check_blacklist_entry(void) {
 	CU_ASSERT(NULL == check_blacklist_entry(43, 328, 1231313212) );
 }
 
+void test_check_whitelist_entry(void) {
+	CU_ASSERT(NULL != check_whitelist_entry(43, 1234, 1231313212) );
+	CU_ASSERT(NULL == check_whitelist_entry(43, 1234, 2323232223) );	
+	CU_ASSERT(NULL == check_whitelist_entry(43, 1234, 1231313213) );
+}
+
 int main(int argc, char *argv[]) {
 	CU_pSuite pSuite = NULL;
 
@@ -41,6 +47,7 @@ int main(int argc, char *argv[]) {
 	CU_add_test(pSuite, "test of add_whitelist_entry()", test_add_whitelist_entry);
 	CU_add_test(pSuite, "test of rm_whitelist_entry()", test_rm_whitelist_entry);
 	CU_add_test(pSuite, "test of check_blacklist_entry()", test_check_blacklist_entry);
+	CU_add_test(pSuite, "test of check_whitelist_entry()", test_check_whitelist_entry);
 	
    	CU_basic_set_mode(CU_BRM_VERBOSE);
 
