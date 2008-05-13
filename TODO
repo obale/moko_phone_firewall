@@ -1,0 +1,10 @@
+The following points are to do (there are not complete):
+
+	- Implementing the remove functions for the black- and whitelist
+	- Making a .bb (bitbake) file, which install the library (if we would
+	  use it also as a single part).
+	- Using a git tag for the .bb-file, so during the install process the
+	  files will be downloaded from our (other) server.
+	- Changing the compiling process that all works well at the OpenMoko
+	- Using autoconf to compile the stuff. (see the openmoko-sample2 in
+	  the toolchain direcotry).
