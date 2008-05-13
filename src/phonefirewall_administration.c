@@ -28,7 +28,7 @@
 
 static char* DELIM = "::";
 
-int add_blacklist_entry(int country_code, int area_code, long long int number, char *name, char *reason, int priority) {
+int add_blacklist_entry(int country_code, int area_code, unsigned long long number, char *name, char *reason, int priority) {
 	FILE *file;
 	char *prefix = "db/blacklist_";
 	int filename_size = sizeof(country_code) + sizeof(area_code) + sizeof(prefix) + 10;
@@ -44,7 +44,7 @@ int add_blacklist_entry(int country_code, int area_code, long long int number, c
    	return 0;
 }
 
-int add_whitelist_entry(int country_code, int area_code, long long int number, char *name, char *reason, int priority) {
+int add_whitelist_entry(int country_code, int area_code, unsigned long long number, char *name, char *reason, int priority) {
 	FILE *file;
 	char *prefix = "db/whitelist_";
 	int filename_size = sizeof(country_code) + sizeof(area_code) + sizeof(prefix) + 10;
@@ -60,15 +60,15 @@ int add_whitelist_entry(int country_code, int area_code, long long int number, c
    	return 0;
 }
 
-int rm_blacklist_entry (long long int number) {
+int rm_blacklist_entry (unsigned long long number) {
 	return -ENOSYS;
 }
 
-int rm_whitelist_entry (long long int number) {
+int rm_whitelist_entry (unsigned long long number) {
 	return -ENOSYS;
 }
 
-char *check_blacklist_entry(int country_code, int area_code, long long int number) {
+char *check_blacklist_entry(int country_code, int area_code, unsigned long long number) {
 	FILE *file;
 	char *prefix = "db/blacklist_";
 	int filename_size = sizeof(country_code) + sizeof(area_code) + sizeof(prefix) + 10;
@@ -97,7 +97,7 @@ char *check_blacklist_entry(int country_code, int area_code, long long int numbe
 	return hit;
 }
 
-char *check_whitelist_entry(int country_code, int area_code, long long int number) {
+char *check_whitelist_entry(int country_code, int area_code, unsigned long long number) {
 	FILE *file;
 	char *prefix = "db/whitelist_";
 	int filename_size = sizeof(country_code) + sizeof(area_code) + sizeof(prefix) + 10;

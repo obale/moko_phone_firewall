@@ -5,9 +5,13 @@
 	Adding the add function for the whitelist, with appendant tests (at
 	the moment there are only trivial tests).
 
+	Changing the number type from "long long int" to "unsigned long long".
+
 	* README:
 	Adding our link and a description how you should start the program
 	to the README file.
+
+	Adding the information that CUnit is needed.
 
 	* TODO:
 	Adding a TODO file, so that a new developer knows what is planned and

@@ -47,7 +47,7 @@
  *
  * @return If all goes well 0 (zero) otherwise an errno code.
  */
-int add_blacklist_entry(int country_code, int area_code, long long int number, char *name, char *reason, int priority); 
+int add_blacklist_entry(int country_code, int area_code, unsigned long long number, char *name, char *reason, int priority); 
 
 /**
  * Removes a blocked number from the blacklist.
@@ -56,7 +56,7 @@ int add_blacklist_entry(int country_code, int area_code, long long int number, c
  *
  * @return If all goes right 0, otherwise an error code.
  */
-int rm_blacklist_entry(long long int number);
+int rm_blacklist_entry(unsigned long long number);
 
 /**
  * Checks if a number is on the blacklist.
@@ -68,7 +68,7 @@ int rm_blacklist_entry(long long int number);
  *
  * @return If noting is found NULL, otherwise the number.
  */
-char *check_blacklist_entry(int country_code, int area_code, long long int number);
+char *check_blacklist_entry(int country_code, int area_code, unsigned long long number);
 
 /**
  * Add a number to the whitelist. The number will be accepted after that.
@@ -85,7 +85,7 @@ char *check_blacklist_entry(int country_code, int area_code, long long int numbe
  *
  * @return If all goes well 0 (zero) otherwise an errno code.
  */
-int add_whitelist_entry(int country_code, int area_code, long long int number, char *name, char *reason, int priority); 
+int add_whitelist_entry(int country_code, int area_code, unsigned long long number, char *name, char *reason, int priority); 
 
 /**
  * Removes a accepted number from the whitelist.
@@ -94,7 +94,7 @@ int add_whitelist_entry(int country_code, int area_code, long long int number, c
  *
  * @return If all goes right 0, otherwise an error code.
  */
-int rm_whitelist_entry(long long int number);
+int rm_whitelist_entry(unsigned long long number);
 
 /**
  * Checks if a number is on the whitelist.
@@ -106,4 +106,4 @@ int rm_whitelist_entry(long long int number);
  *
  * @return If noting is found NULL, otherwise the number.
  */
-char *check_whitelist_entry(int country_code, int area_code, long long int number);
+char *check_whitelist_entry(int country_code, int area_code, unsigned long long number);

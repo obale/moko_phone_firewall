@@ -29,9 +29,10 @@ Starting
 ========
 
 To compile the source code you need to have installed the toolchain for the OpenMoko
-framework ([1] (i686) and [2] (x86_64)). If you have installed the toolchain into 
-the standart path you can execute the script "env-export" with the command and
-after that compile all: 
+framework ([1] (i686) and [2] (x86_64)), you need also the CUnit framework for
+the testing (tested with CUnit 2.1). If you have installed the toolchain into the 
+standart path you can execute the script "env-export" with the command and after 
+that compile all: 
 
 	$ . env-export
 	$ make
