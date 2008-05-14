@@ -1,6 +1,10 @@
 *.o
 *~
 *.swp
+*.log
+bin/*
+bin_test/*
+*.so
 core
 blacklist*
 whitelist*

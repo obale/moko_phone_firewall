@@ -1,5 +1,20 @@
 2008-05-14 Alex Oberhauser <oberhauseralex@networld.to>
 
+	* build.sh:
+	Writing a script which makes it easier to build the program and starts
+	the testing suite automatically.
+
+	* log:
+	Adding a log directory for the build script.
+
+	* .gitignore:
+	Ignoring the binary files, the libraries and the logfiles.
+
+	* Makefile:
+	Removing the cleaning of bin/*, because the direcotry doesn't exist.
+
+2008-05-14 Alex Oberhauser <oberhauseralex@networld.to>
+
 	* TODO:
 	Adding a few ideas for a alternative blocking/accepting system.
 
