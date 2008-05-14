@@ -24,16 +24,16 @@ void test_rm_whitelist_entry(void) {
 }
 
 void test_check_blacklist_entry(void) {
-	CU_ASSERT(NULL != check_blacklist_entry(39, 328, 1231313212) );
-	CU_ASSERT(NULL != check_blacklist_entry(43, 328, 1234324223) );
-	CU_ASSERT(NULL == check_blacklist_entry(39, 328, 283732) );
-	CU_ASSERT(NULL == check_blacklist_entry(43, 328, 1231313212) );
+	CU_ASSERT(NULL != check_blacklist_entry(39, 328, 1231313212, 0) );
+	CU_ASSERT(NULL != check_blacklist_entry(43, 328, 1234324223, 0) );
+	CU_ASSERT(NULL == check_blacklist_entry(39, 328, 283732, 0) );
+	CU_ASSERT(NULL == check_blacklist_entry(43, 328, 1231313212, 0) );
 }
 
 void test_check_whitelist_entry(void) {
-	CU_ASSERT(NULL != check_whitelist_entry(43, 1234, 1231313212) );
-	CU_ASSERT(NULL == check_whitelist_entry(43, 1234, 2323232223) );	
-	CU_ASSERT(NULL == check_whitelist_entry(43, 1234, 1231313213) );
+	CU_ASSERT(NULL != check_whitelist_entry(43, 1234, 1231313212, 0) );
+	CU_ASSERT(NULL == check_whitelist_entry(43, 1234, 2323232223, 0) );	
+	CU_ASSERT(NULL == check_whitelist_entry(43, 1234, 1231313213, 0) );
 }
 
 int main(int argc, char *argv[]) {

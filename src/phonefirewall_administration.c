@@ -25,16 +25,22 @@
 
 #define BLACKLIST_PREFIX "db/blacklist_"
 #define WHITELIST_PREFIX "db/whitelist_"
+#define FILENAME_SIZE 256
 
 static char* DELIM = "::";
 
-int add_blacklist_entry(int country_code, int area_code, unsigned long long number, char *name, char *reason, int priority) {
-	FILE *file;
-	char *prefix = "db/blacklist_";
-	int filename_size = sizeof(country_code) + sizeof(area_code) + sizeof(prefix) + 10;
-	char filename[filename_size];
+char filename[FILENAME_SIZE];
 
-	snprintf(filename, filename_size, "%s%d-%d", prefix, country_code, area_code);
+int set_filename(char *prefix, int country_code, int area_code) {
+	snprintf(filename, sizeof(filename), "%s%d-%d", prefix, country_code, area_code);
+	if ( NULL != filename ) return 0;
+	else return -ENOENT;
+}
+
+int add_blacklist_entry(int country_code, int area_code, unsigned long long number, char *name, char *reason, int priority) {
+	if ( 0 != set_filename(BLACKLIST_PREFIX, country_code, area_code) ) return errno;
+
+	FILE *file;
 
 	if ( NULL == (file = fopen(filename, "a+"))) return -EINVAL;
 	fprintf(file, "%d%s%lld%s%d%s%d%s%s%s%s\n", priority, DELIM, number, DELIM, country_code, DELIM, area_code, DELIM, name, DELIM, reason);
@@ -45,12 +51,9 @@ int add_blacklist_entry(int country_code, int area_code, unsigned long long numb
 }
 
 int add_whitelist_entry(int country_code, int area_code, unsigned long long number, char *name, char *reason, int priority) {
-	FILE *file;
-	char *prefix = "db/whitelist_";
-	int filename_size = sizeof(country_code) + sizeof(area_code) + sizeof(prefix) + 10;
-	char filename[filename_size];
+	if ( 0 != set_filename(WHITELIST_PREFIX, country_code, area_code) ) return errno;
 
-	snprintf(filename, filename_size, "%s%d-%d", prefix, country_code, area_code);
+	FILE *file;
 
 	if ( NULL == (file = fopen(filename, "a+"))) return -EINVAL;
 	fprintf(file, "%d%s%lld%s%d%s%d%s%s%s%s\n", priority, DELIM, number, DELIM, country_code, DELIM, area_code, DELIM, name, DELIM, reason);
@@ -68,13 +71,10 @@ int rm_whitelist_entry (unsigned long long number) {
 	return -ENOSYS;
 }
 
-char *check_blacklist_entry(int country_code, int area_code, unsigned long long number) {
-	FILE *file;
-	char *prefix = "db/blacklist_";
-	int filename_size = sizeof(country_code) + sizeof(area_code) + sizeof(prefix) + 10;
-	char filename[filename_size];
+char *check_blacklist_entry(int country_code, int area_code, unsigned long long number, int priority) {
+	if ( 0 != set_filename(BLACKLIST_PREFIX, country_code, area_code) ) return NULL;
 
-	snprintf(filename, filename_size, "%s%d-%d", prefix, country_code, area_code);
+	FILE *file;
 
 	if ( NULL == (file = fopen(filename, "a+"))) return NULL;
 
@@ -97,13 +97,10 @@ char *check_blacklist_entry(int country_code, int area_code, unsigned long long 
 	return hit;
 }
 
-char *check_whitelist_entry(int country_code, int area_code, unsigned long long number) {
-	FILE *file;
-	char *prefix = "db/whitelist_";
-	int filename_size = sizeof(country_code) + sizeof(area_code) + sizeof(prefix) + 10;
-	char filename[filename_size];
+char *check_whitelist_entry(int country_code, int area_code, unsigned long long number, int priority) {
+	if ( 0 != set_filename(WHITELIST_PREFIX, country_code, area_code) ) return NULL;
 
-	snprintf(filename, filename_size, "%s%d-%d", prefix, country_code, area_code);
+	FILE *file;
 
 	if ( NULL == (file = fopen(filename, "a+"))) return NULL;
 

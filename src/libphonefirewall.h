@@ -68,7 +68,7 @@ int rm_blacklist_entry(unsigned long long number);
  *
  * @return If noting is found NULL, otherwise the number.
  */
-char *check_blacklist_entry(int country_code, int area_code, unsigned long long number);
+char *check_blacklist_entry(int country_code, int area_code, unsigned long long number, int priority);
 
 /**
  * Add a number to the whitelist. The number will be accepted after that.
@@ -106,4 +106,4 @@ int rm_whitelist_entry(unsigned long long number);
  *
  * @return If noting is found NULL, otherwise the number.
  */
-char *check_whitelist_entry(int country_code, int area_code, unsigned long long number);
+char *check_whitelist_entry(int country_code, int area_code, unsigned long long number, int priority);

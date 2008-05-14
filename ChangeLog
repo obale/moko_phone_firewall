@@ -1,3 +1,12 @@
+2008-05-14 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* TODO:
+	Adding a few ideas for a alternative blocking/accepting system.
+
+	* src/phonefirewall_administration.c:
+	Making a function which sets the filename. Used 4 times in the
+	program. So it's easier to change the filename format.
+
 2008-05-13 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* src/phonefirewall_administration.c
@@ -33,8 +42,8 @@
 	Changing the implementation from binary tree to a simple saving to
 	files. The files are named as follows:
 		
-		blacklist_$COUNTRYCODE_$AREACODE
-		whitelist_$COUNTRYCODE_$AREACODE
+		blacklist_$COUNTRYCODE-$AREACODE
+		whitelist_$COUNTRYCODE-$AREACODE
 	
 	So it's possible to have a smaller number of numbers, because they are
 	grouped by countrycode and than also by areacode. If a incoming call
