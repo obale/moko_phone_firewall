@@ -1,3 +1,8 @@
+2008-05-15 Stanciu Corneliu <stanciucorneliu@networld.to>
+
+	* build.sh:
+	Changing the console in the script from "/bin/sh" to "/bin/bash".
+
 2008-05-14 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* build.sh:

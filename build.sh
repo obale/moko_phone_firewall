@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 echo -en "Starting the build process... \t\t\t\t\t\t";
 . env-export;
 make clean &> log/make_clean.log;
