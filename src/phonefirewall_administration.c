@@ -82,15 +82,20 @@ char *check_blacklist_entry(int country_code, int area_code, unsigned long long 
 	char *substr = NULL; 
 	char strnumber[MAX_LINE_LENGTH];
 	char *hit = NULL;
+	int tmppriority;
+
 	snprintf(strnumber, sizeof(strnumber), "%lld", number);
 
 	while ( !feof(file) ) {
 		if( 0 != fgets(line, sizeof(line), file) ) {
 			substr = strtok(line, DELIM);
-			substr = strtok(NULL, DELIM);
-			if ( 0 == strcmp(substr, strnumber)  ) {
-				hit = substr;
-				return hit;
+			tmppriority = atoi(substr);
+			if ( tmppriority >= priority ) {
+				substr = strtok(NULL, DELIM);
+				if ( 0 == strcmp(substr, strnumber)  ) {
+					hit = substr;
+					return hit;
+				}
 			}
 		} 
 	}
@@ -108,15 +113,20 @@ char *check_whitelist_entry(int country_code, int area_code, unsigned long long 
 	char *substr = NULL; 
 	char strnumber[MAX_LINE_LENGTH];
 	char *hit = NULL;
+	int tmppriority;
+
 	snprintf(strnumber, sizeof(strnumber), "%lld", number);
 
 	while ( !feof(file) ) {
 		if( 0 != fgets(line, sizeof(line), file) ) {
 			substr = strtok(line, DELIM);
-			substr = strtok(NULL, DELIM);
-			if ( 0 == strcmp(substr, strnumber)  ) {
-				hit = substr;
-				return hit;
+			tmppriority = atoi(substr);
+			if ( tmppriority >= priority ) {
+				substr = strtok(NULL, DELIM);
+				if ( 0 == strcmp(substr, strnumber)  ) {
+					hit = substr;
+					return hit;
+				}
 			}
 		} 
 	}

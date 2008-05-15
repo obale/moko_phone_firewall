@@ -1,3 +1,21 @@
+2008-05-14 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* src/phonefirewall_administration.c:
+	Adding a priority system for the checking of the numbers. 
+	
+	Testing with a number with priority 2, if priority greater than 2 (3 
+	and more) is used the number was not found. Less and equal 2 the 
+	number was found - this means it would be blocked. Checking also 
+	with an entry with priority -1. The numbers can also be negativ. 
+	
+	There ar no limitations of the priority, only that it must be an
+	Integer.
+
+	Changing also the documentation entry for the priority.	
+
+	* README:
+	Adding the notation that a build script (build.sh) exists.
+
 2008-05-15 Stanciu Corneliu <stanciucorneliu@networld.to>
 
 	* build.sh:

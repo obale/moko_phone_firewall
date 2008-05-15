@@ -25,6 +25,13 @@ Alex Oberhauser
 http://moksec.networld.to
 
 
+Quickstart
+==========
+
+If you want start quickly you can use the "./build.sh" script. If something
+goes wrong you find under log/ the detailed output of the compile process.
+
+
 Starting 
 ========
 

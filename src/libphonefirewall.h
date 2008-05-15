@@ -41,9 +41,9 @@
  * @param number The telephone number of the person.
  * @param name The name of the person.
  * @param reason Why you have blocked this person.
- * @param priority Has no affect at the moment. Later one it will be possible
- * to give each number priority. So you have more control when a number will
- * be blocked/accepted.
+ * @param priority Gives the entry a priority. 0 is standard. If the priority
+ * is higher the value will be also blocked/accepted if a higher priority is
+ * choosen.
  *
  * @return If all goes well 0 (zero) otherwise an errno code.
  */
@@ -65,6 +65,10 @@ int rm_blacklist_entry(unsigned long long number);
  * Austria, and so one)
  * @param area_code The area code which indicates your mobile operator.
  * @param number The telephone number of the person.
+ * @param priority Gives the entry a priority. 0 is standard. If the priority
+ * is higher the value will be also blocked/accepted if a higher priority is
+ * choosen.
+ *
  *
  * @return If noting is found NULL, otherwise the number.
  */
@@ -79,9 +83,9 @@ char *check_blacklist_entry(int country_code, int area_code, unsigned long long 
  * @param number The telephone number of the person.
  * @param name The name of the person.
  * @param reason Why you have blocked this person.
- * @param priority Has no affect at the moment. Later one it will be possible
- * to give each number priority. So you have more control when a number will
- * be blocked/accepted.
+ * @param priority Gives the entry a priority. 0 is standard. If the priority
+ * is higher the value will be also blocked/accepted if a higher priority is
+ * choosen.
  *
  * @return If all goes well 0 (zero) otherwise an errno code.
  */
@@ -103,6 +107,10 @@ int rm_whitelist_entry(unsigned long long number);
  * Austria, and so one)
  * @param area_code The area code which indicates your mobile operator.
  * @param number The telephone number of the person.
+ * @param priority Gives the entry a priority. 0 is standard. If the priority
+ * is higher the value will be also blocked/accepted if a higher priority is
+ * choosen.
+ *
  *
  * @return If noting is found NULL, otherwise the number.
  */
