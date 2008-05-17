@@ -98,7 +98,7 @@ Add a number to the blacklist. The number will be blocked after that.
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em country\_\-code}]The country code (for example 39 for Italy, 43 for Austria, and so one) \item[{\em area\_\-code}]The area code which indicates your mobile operator. \item[{\em number}]The telephone number of the person. \item[{\em name}]The name of the person. \item[{\em reason}]Why you have blocked this person. \item[{\em priority}]Gives the entry a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.\end{description}
+\item[{\em country\_\-code}]The country code (for example 39 for Italy, 43 for Austria, and so one) \item[{\em area\_\-code}]The area code which indicates your mobile operator. \item[{\em number}]The telephone number of the person (without country and area code. \item[{\em name}]The name of the person. \item[{\em reason}]Why you have blocked this person. \item[{\em priority}]Gives the \hyperlink{structentry}{entry} a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.\end{description}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]If all goes well 0 (zero) otherwise an errno code. \end{Desc}
@@ -127,13 +127,13 @@ Add a number to the whitelist. The number will be accepted after that.
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em country\_\-code}]The country code (for example 39 for Italy, 43 for Austria, and so one) \item[{\em area\_\-code}]The area code which indicates your mobile operator. \item[{\em number}]The telephone number of the person. \item[{\em name}]The name of the person. \item[{\em reason}]Why you have blocked this person. \item[{\em priority}]Gives the entry a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.\end{description}
+\item[{\em country\_\-code}]The country code (for example 39 for Italy, 43 for Austria, and so one) \item[{\em area\_\-code}]The area code which indicates your mobile operator. \item[{\em number}]The telephone number of the person (without country and area code. \item[{\em name}]The name of the person. \item[{\em reason}]Why you have blocked this person. \item[{\em priority}]Gives the \hyperlink{structentry}{entry} a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.\end{description}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]If all goes well 0 (zero) otherwise an errno code. \end{Desc}
 
 
-Definition at line 53 of file phonefirewall\_\-administration.c.
+Definition at line 54 of file phonefirewall\_\-administration.c.
 
 References DELIM, filename, set\_\-filename(), and WHITELIST\_\-PREFIX.
 
@@ -156,13 +156,13 @@ Checks if a number is on the blacklist.
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em country\_\-code}]The country code (for example 39 for Italy, 43 for Austria, and so one) \item[{\em area\_\-code}]The area code which indicates your mobile operator. \item[{\em number}]The telephone number of the person. \item[{\em priority}]Gives the entry a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.\end{description}
+\item[{\em country\_\-code}]The country code (for example 39 for Italy, 43 for Austria, and so one) \item[{\em area\_\-code}]The area code which indicates your mobile operator. \item[{\em number}]The telephone number of the person (without country and area code. \item[{\em priority}]Gives the \hyperlink{structentry}{entry} a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.\end{description}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]If noting is found NULL, otherwise the number. \end{Desc}
 
 
-Definition at line 74 of file phonefirewall\_\-administration.c.
+Definition at line 76 of file phonefirewall\_\-administration.c.
 
 References BLACKLIST\_\-PREFIX, DELIM, filename, MAX\_\-LINE\_\-LENGTH, and set\_\-filename().
 
@@ -185,13 +185,13 @@ Checks if a number is on the whitelist.
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em country\_\-code}]The country code (for example 39 for Italy, 43 for Austria, and so one) \item[{\em area\_\-code}]The area code which indicates your mobile operator. \item[{\em number}]The telephone number of the person. \item[{\em priority}]Gives the entry a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.\end{description}
+\item[{\em country\_\-code}]The country code (for example 39 for Italy, 43 for Austria, and so one) \item[{\em area\_\-code}]The area code which indicates your mobile operator. \item[{\em number}]The telephone number of the person (without country and area code. \item[{\em priority}]Gives the \hyperlink{structentry}{entry} a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.\end{description}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]If noting is found NULL, otherwise the number. \end{Desc}
 
 
-Definition at line 105 of file phonefirewall\_\-administration.c.
+Definition at line 110 of file phonefirewall\_\-administration.c.
 
 References DELIM, filename, MAX\_\-LINE\_\-LENGTH, set\_\-filename(), and WHITELIST\_\-PREFIX.
 
@@ -220,7 +220,7 @@ Removes a blocked number from the blacklist.
 \item[Returns:]If all goes right 0, otherwise an error code. \end{Desc}
 
 
-Definition at line 66 of file phonefirewall\_\-administration.c.\hypertarget{phonefirewall__administration_8c_e8a4ee30cf26b05a55680dc3a972f1a4}{
+Definition at line 68 of file phonefirewall\_\-administration.c.\hypertarget{phonefirewall__administration_8c_e8a4ee30cf26b05a55680dc3a972f1a4}{
 \index{phonefirewall\_\-administration.c@{phonefirewall\_\-administration.c}!rm\_\-whitelist\_\-entry@{rm\_\-whitelist\_\-entry}}
 \index{rm\_\-whitelist\_\-entry@{rm\_\-whitelist\_\-entry}!phonefirewall_administration.c@{phonefirewall\_\-administration.c}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}int rm\_\-whitelist\_\-entry (unsigned long long {\em number})}}
@@ -238,7 +238,7 @@ Removes a accepted number from the whitelist.
 \item[Returns:]If all goes right 0, otherwise an error code. \end{Desc}
 
 
-Definition at line 70 of file phonefirewall\_\-administration.c.\hypertarget{phonefirewall__administration_8c_d42187af304bf25d98f7f7f76853c6f7}{
+Definition at line 72 of file phonefirewall\_\-administration.c.\hypertarget{phonefirewall__administration_8c_d42187af304bf25d98f7f7f76853c6f7}{
 \index{phonefirewall\_\-administration.c@{phonefirewall\_\-administration.c}!set\_\-filename@{set\_\-filename}}
 \index{set\_\-filename@{set\_\-filename}!phonefirewall_administration.c@{phonefirewall\_\-administration.c}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}int set\_\-filename (char $\ast$ {\em prefix}, int {\em country\_\-code}, int {\em area\_\-code})}}

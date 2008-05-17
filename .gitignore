@@ -4,6 +4,8 @@
 *.log
 *.so
 core
+core.*
+vgcore*
 blacklist*
 whitelist*
 bin_test/testphonefirewall

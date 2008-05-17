@@ -8,6 +8,7 @@
 <div class="tabs">
   <ul>
     <li><a href="main.html"><span>Main&nbsp;Page</span></a></li>
+    <li><a href="classes.html"><span>Data&nbsp;Structures</span></a></li>
     <li class="current"><a href="files.html"><span>Files</span></a></li>
   </ul>
 </div>
@@ -26,6 +27,10 @@ This graph shows which files directly or indirectly include this file:</div>
 <p>
 <a href="libphonefirewall_8h-source.html">Go to the source code of this file.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Data Structures</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structentry.html">entry</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Includes all informations for an <a class="el" href="structentry.html" title="Includes all informations for an entry.">entry</a>.  <a href="structentry.html#_details">More...</a><br></td></tr>
 <tr><td colspan="2"><br><h2>Defines</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="libphonefirewall_8h.html#f0f2173e3b202ddf5756531b4471dcb2">MAX_LINE_LENGTH</a>&nbsp;&nbsp;&nbsp;512</td></tr>
 
@@ -38,9 +43,17 @@ This graph shows which files directly or indirectly include this file:</div>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="libphonefirewall_8h.html#eec16cb88eb546b1a2490e6716d75f8b">add_whitelist_entry</a> (int country_code, int area_code, unsigned long long number, char *name, char *reason, int priority)</td></tr>
 
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct <a class="el" href="structentry.html">entry</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="libphonefirewall_8h.html#04b29323de592cc442250d7c952213de">get_blacklist_entry_by_name</a> (char *name)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct <a class="el" href="structentry.html">entry</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="libphonefirewall_8h.html#80b7f603605d9ea57e83847bed7840f3">get_blacklist_entry_by_number</a> (int country_code, int area_code, unsigned long long number)</td></tr>
+
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="libphonefirewall_8h.html#e8a4ee30cf26b05a55680dc3a972f1a4">rm_whitelist_entry</a> (unsigned long long number)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="libphonefirewall_8h.html#032c45d6c7830492ddeaa8cabfc845c3">check_whitelist_entry</a> (int country_code, int area_code, unsigned long long number, int priority)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct <a class="el" href="structentry.html">entry</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="libphonefirewall_8h.html#f7f20dcd932db52fce6beac057995533">get_whitelist_entry_by_name</a> (char *name)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct <a class="el" href="structentry.html">entry</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="libphonefirewall_8h.html#9569cf612525d13ec3443a5df88afe78">get_whitelist_entry_by_number</a> (int country_code, int area_code, unsigned long long number)</td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
@@ -66,7 +79,7 @@ Implemented for the OpenMoko framework.
 
 <p>Definition at line <a class="el" href="libphonefirewall_8h-source.html#l00033">33</a> of file <a class="el" href="libphonefirewall_8h-source.html">libphonefirewall.h</a>.</p>
 
-<p>Referenced by <a class="el" href="phonefirewall__administration_8c-source.html#l00074">check_blacklist_entry()</a>, and <a class="el" href="phonefirewall__administration_8c-source.html#l00105">check_whitelist_entry()</a>.</p>
+<p>Referenced by <a class="el" href="phonefirewall__administration_8c-source.html#l00076">check_blacklist_entry()</a>, and <a class="el" href="phonefirewall__administration_8c-source.html#l00110">check_whitelist_entry()</a>.</p>
 
 </div>
 </div><p>
@@ -126,10 +139,10 @@ Add a number to the blacklist. The number will be blocked after that.<p>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>country_code</em>&nbsp;</td><td>The country code (for example 39 for Italy, 43 for Austria, and so one) </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>area_code</em>&nbsp;</td><td>The area code which indicates your mobile operator. </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>number</em>&nbsp;</td><td>The telephone number of the person. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>number</em>&nbsp;</td><td>The telephone number of the person (without country and area code. </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>The name of the person. </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>reason</em>&nbsp;</td><td>Why you have blocked this person. </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>priority</em>&nbsp;</td><td>Gives the entry a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.</td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>priority</em>&nbsp;</td><td>Gives the <a class="el" href="structentry.html" title="Includes all informations for an entry.">entry</a> a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.</td></tr>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If all goes well 0 (zero) otherwise an errno code. </dd></dl>
@@ -204,15 +217,15 @@ Add a number to the whitelist. The number will be accepted after that.<p>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>country_code</em>&nbsp;</td><td>The country code (for example 39 for Italy, 43 for Austria, and so one) </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>area_code</em>&nbsp;</td><td>The area code which indicates your mobile operator. </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>number</em>&nbsp;</td><td>The telephone number of the person. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>number</em>&nbsp;</td><td>The telephone number of the person (without country and area code. </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>The name of the person. </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>reason</em>&nbsp;</td><td>Why you have blocked this person. </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>priority</em>&nbsp;</td><td>Gives the entry a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.</td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>priority</em>&nbsp;</td><td>Gives the <a class="el" href="structentry.html" title="Includes all informations for an entry.">entry</a> a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.</td></tr>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If all goes well 0 (zero) otherwise an errno code. </dd></dl>
 
-<p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00053">53</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
+<p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00054">54</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
 
 <p>References <a class="el" href="phonefirewall__administration_8c-source.html#l00030">DELIM</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00032">filename</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00034">set_filename()</a>, and <a class="el" href="phonefirewall__administration_8c-source.html#l00027">WHITELIST_PREFIX</a>.</p>
 
@@ -270,13 +283,13 @@ Checks if a number is on the blacklist.<p>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>country_code</em>&nbsp;</td><td>The country code (for example 39 for Italy, 43 for Austria, and so one) </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>area_code</em>&nbsp;</td><td>The area code which indicates your mobile operator. </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>number</em>&nbsp;</td><td>The telephone number of the person. </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>priority</em>&nbsp;</td><td>Gives the entry a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.</td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>number</em>&nbsp;</td><td>The telephone number of the person (without country and area code. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>priority</em>&nbsp;</td><td>Gives the <a class="el" href="structentry.html" title="Includes all informations for an entry.">entry</a> a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.</td></tr>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If noting is found NULL, otherwise the number. </dd></dl>
 
-<p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00074">74</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
+<p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00076">76</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
 
 <p>References <a class="el" href="phonefirewall__administration_8c-source.html#l00026">BLACKLIST_PREFIX</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00030">DELIM</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00032">filename</a>, <a class="el" href="libphonefirewall_8h-source.html#l00033">MAX_LINE_LENGTH</a>, and <a class="el" href="phonefirewall__administration_8c-source.html#l00034">set_filename()</a>.</p>
 
@@ -334,13 +347,13 @@ Checks if a number is on the whitelist.<p>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>country_code</em>&nbsp;</td><td>The country code (for example 39 for Italy, 43 for Austria, and so one) </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>area_code</em>&nbsp;</td><td>The area code which indicates your mobile operator. </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>number</em>&nbsp;</td><td>The telephone number of the person. </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>priority</em>&nbsp;</td><td>Gives the entry a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.</td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>number</em>&nbsp;</td><td>The telephone number of the person (without country and area code. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>priority</em>&nbsp;</td><td>Gives the <a class="el" href="structentry.html" title="Includes all informations for an entry.">entry</a> a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.</td></tr>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If noting is found NULL, otherwise the number. </dd></dl>
 
-<p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00105">105</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
+<p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00110">110</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
 
 <p>References <a class="el" href="phonefirewall__administration_8c-source.html#l00030">DELIM</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00032">filename</a>, <a class="el" href="libphonefirewall_8h-source.html#l00033">MAX_LINE_LENGTH</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00034">set_filename()</a>, and <a class="el" href="phonefirewall__administration_8c-source.html#l00027">WHITELIST_PREFIX</a>.</p>
 
@@ -352,6 +365,148 @@ Here is the call graph for this function:</div>
 <map name="libphonefirewall_8h_032c45d6c7830492ddeaa8cabfc845c3_cgraph_map">
 <area shape="rect" href="phonefirewall__administration_8c.html#d42187af304bf25d98f7f7f76853c6f7" title="set_filename" alt="" coords="221,5,325,32"></map>
 </div>
+
+</div>
+</div><p>
+<a class="anchor" name="04b29323de592cc442250d7c952213de"></a><!-- doxytag: member="libphonefirewall.h::get_blacklist_entry_by_name" ref="04b29323de592cc442250d7c952213de" args="(char *name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structentry.html">entry</a>* get_blacklist_entry_by_name           </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>name</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"><code> [read]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Search a entrie by name.<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>The name of the person which is blocked.</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd><a class="el" href="structentry.html" title="Includes all informations for an entry.">entry</a> Returns the found <a class="el" href="structentry.html" title="Includes all informations for an entry.">entry</a>. </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="80b7f603605d9ea57e83847bed7840f3"></a><!-- doxytag: member="libphonefirewall.h::get_blacklist_entry_by_number" ref="80b7f603605d9ea57e83847bed7840f3" args="(int country_code, int area_code, unsigned long long number)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structentry.html">entry</a>* get_blacklist_entry_by_number           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>country_code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>area_code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned long long&nbsp;</td>
+          <td class="paramname"> <em>number</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"><code> [read]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Search a entrie by number (country code + area code + number).<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>country_code</em>&nbsp;</td><td>The country code (for example 39 for Italy, 43 for Austria, and so one) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>area_code</em>&nbsp;</td><td>The area code which indicates your mobile operator. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>number</em>&nbsp;</td><td>The telephone number of the person (without country and area code.</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd><a class="el" href="structentry.html" title="Includes all informations for an entry.">entry</a> Returns the found <a class="el" href="structentry.html" title="Includes all informations for an entry.">entry</a>. </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="f7f20dcd932db52fce6beac057995533"></a><!-- doxytag: member="libphonefirewall.h::get_whitelist_entry_by_name" ref="f7f20dcd932db52fce6beac057995533" args="(char *name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structentry.html">entry</a>* get_whitelist_entry_by_name           </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>name</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"><code> [read]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Search a entrie by name.<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>The name of the person which is accepted.</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd><a class="el" href="structentry.html" title="Includes all informations for an entry.">entry</a> Returns the found <a class="el" href="structentry.html" title="Includes all informations for an entry.">entry</a>. </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="9569cf612525d13ec3443a5df88afe78"></a><!-- doxytag: member="libphonefirewall.h::get_whitelist_entry_by_number" ref="9569cf612525d13ec3443a5df88afe78" args="(int country_code, int area_code, unsigned long long number)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structentry.html">entry</a>* get_whitelist_entry_by_number           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>country_code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>area_code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned long long&nbsp;</td>
+          <td class="paramname"> <em>number</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"><code> [read]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Search a entrie by number (country code + area code + number).<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>country_code</em>&nbsp;</td><td>The country code (for example 39 for Italy, 43 for Austria, and so one) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>area_code</em>&nbsp;</td><td>The area code which indicates your mobile operator. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>number</em>&nbsp;</td><td>The telephone number of the person (without country and area code.</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd><a class="el" href="structentry.html" title="Includes all informations for an entry.">entry</a> Returns the found <a class="el" href="structentry.html" title="Includes all informations for an entry.">entry</a>. </dd></dl>
 
 </div>
 </div><p>
@@ -380,7 +535,7 @@ Removes a blocked number from the blacklist.<p>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If all goes right 0, otherwise an error code. </dd></dl>
 
-<p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00066">66</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
+<p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00068">68</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
 
 </div>
 </div><p>
@@ -409,11 +564,11 @@ Removes a accepted number from the whitelist.<p>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If all goes right 0, otherwise an error code. </dd></dl>
 
-<p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00070">70</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
+<p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00072">72</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
 
 </div>
 </div><p>
-<hr size="1"><address style="text-align: right;"><small>Generated on Thu May 15 20:15:06 2008 for Phone Firewall by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sat May 17 14:12:44 2008 for Phone Firewall by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

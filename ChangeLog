@@ -1,4 +1,49 @@
-2008-05-14 Alex Oberhauser <oberhauseralex@networld.to>
+2008-05-17 Alex Oberhauser <oberhauseralex@networld.to>
+	
+	* src/phonefirewall_administration.c:
+	After the check with valgrind (valgrind --leak-check=full
+	--show-reachable=yes bin_test/testphonefirewall) I have found an bug
+	that the file in check_function don't where closed. valgrind outputs
+	the following line:
+
+	...
+	==3866== 2,112 bytes in 6 blocks are still reachable in loss record 1
+	of 1
+	...
+
+	This is maybe the size of one of the blacklist files. I have fixed the
+	error with a fclose(file) statement before the return statements. Now
+	it seams to work well.
+
+	* src/libphonefirewall.h:
+	Adding the following declarations of searching functions to the header
+	file (with documentation):
+
+		struct entry *get_blacklist_entry_by_name(char *name);
+		struct entry *get_blacklist_entry_by_number(int country_code,
+		int area_code, unsigned long long number);
+
+		struct entry *get_whitelist_entry_by_name(char *name);
+		struct entry *get_whitelist_entry_by_number(int country_code,
+		int area_code, unsigned long long number);
+
+	Adding also the struct "entry" which is needed for the search
+	functions:
+
+		struct entry {
+			int country_code;
+			int area_code;
+			unsigned long long number;
+			char *name;
+			char *reason;
+			int priority;
+		};
+
+	Maybe it's also usefull to add a functions which returns all entries 
+	of one file or/and all files!?!
+
+
+2008-05-15 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* src/phonefirewall_administration.c:
 	Adding a priority system for the checking of the numbers. 

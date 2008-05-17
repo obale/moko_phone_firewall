@@ -44,6 +44,7 @@ int add_blacklist_entry(int country_code, int area_code, unsigned long long numb
 
 	if ( NULL == (file = fopen(filename, "a+"))) return -EINVAL;
 	fprintf(file, "%d%s%lld%s%d%s%d%s%s%s%s\n", priority, DELIM, number, DELIM, country_code, DELIM, area_code, DELIM, name, DELIM, reason);
+
 	fflush(file);
 	fclose(file);
 
@@ -57,6 +58,7 @@ int add_whitelist_entry(int country_code, int area_code, unsigned long long numb
 
 	if ( NULL == (file = fopen(filename, "a+"))) return -EINVAL;
 	fprintf(file, "%d%s%lld%s%d%s%d%s%s%s%s\n", priority, DELIM, number, DELIM, country_code, DELIM, area_code, DELIM, name, DELIM, reason);
+	
 	fflush(file);
 	fclose(file);
 
@@ -94,11 +96,14 @@ char *check_blacklist_entry(int country_code, int area_code, unsigned long long 
 				substr = strtok(NULL, DELIM);
 				if ( 0 == strcmp(substr, strnumber)  ) {
 					hit = substr;
+					fclose(file);
 					return hit;
 				}
 			}
 		} 
 	}
+
+	fclose(file);
 	return hit;
 }
 
@@ -125,10 +130,13 @@ char *check_whitelist_entry(int country_code, int area_code, unsigned long long 
 				substr = strtok(NULL, DELIM);
 				if ( 0 == strcmp(substr, strnumber)  ) {
 					hit = substr;
+					fclose(file);
 					return hit;
 				}
 			}
 		} 
 	}
+
+	fclose(file);
 	return hit;
 }

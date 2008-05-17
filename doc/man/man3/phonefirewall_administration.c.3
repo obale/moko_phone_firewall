@@ -1,4 +1,4 @@
-.TH "phonefirewall_administration.c" 3 "15 May 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
+.TH "phonefirewall_administration.c" 3 "17 May 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -92,13 +92,13 @@ Add a number to the blacklist. The number will be blocked after that.
 .br
 \fIarea_code\fP The area code which indicates your mobile operator. 
 .br
-\fInumber\fP The telephone number of the person. 
+\fInumber\fP The telephone number of the person (without country and area code. 
 .br
 \fIname\fP The name of the person. 
 .br
 \fIreason\fP Why you have blocked this person. 
 .br
-\fIpriority\fP Gives the entry a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.
+\fIpriority\fP Gives the \fBentry\fP a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.
 .RE
 .PP
 \fBReturns:\fP
@@ -121,13 +121,13 @@ Add a number to the whitelist. The number will be accepted after that.
 .br
 \fIarea_code\fP The area code which indicates your mobile operator. 
 .br
-\fInumber\fP The telephone number of the person. 
+\fInumber\fP The telephone number of the person (without country and area code. 
 .br
 \fIname\fP The name of the person. 
 .br
 \fIreason\fP Why you have blocked this person. 
 .br
-\fIpriority\fP Gives the entry a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.
+\fIpriority\fP Gives the \fBentry\fP a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.
 .RE
 .PP
 \fBReturns:\fP
@@ -137,7 +137,7 @@ If all goes well 0 (zero) otherwise an errno code.
 .PP
 
 .PP
-Definition at line 53 of file phonefirewall_administration.c.
+Definition at line 54 of file phonefirewall_administration.c.
 .PP
 References DELIM, filename, set_filename(), and WHITELIST_PREFIX.
 .SS "char* check_blacklist_entry (int country_code, int area_code, unsigned long long number, int priority)"
@@ -150,9 +150,9 @@ Checks if a number is on the blacklist.
 .br
 \fIarea_code\fP The area code which indicates your mobile operator. 
 .br
-\fInumber\fP The telephone number of the person. 
+\fInumber\fP The telephone number of the person (without country and area code. 
 .br
-\fIpriority\fP Gives the entry a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.
+\fIpriority\fP Gives the \fBentry\fP a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.
 .RE
 .PP
 \fBReturns:\fP
@@ -162,7 +162,7 @@ If noting is found NULL, otherwise the number.
 .PP
 
 .PP
-Definition at line 74 of file phonefirewall_administration.c.
+Definition at line 76 of file phonefirewall_administration.c.
 .PP
 References BLACKLIST_PREFIX, DELIM, filename, MAX_LINE_LENGTH, and set_filename().
 .SS "char* check_whitelist_entry (int country_code, int area_code, unsigned long long number, int priority)"
@@ -175,9 +175,9 @@ Checks if a number is on the whitelist.
 .br
 \fIarea_code\fP The area code which indicates your mobile operator. 
 .br
-\fInumber\fP The telephone number of the person. 
+\fInumber\fP The telephone number of the person (without country and area code. 
 .br
-\fIpriority\fP Gives the entry a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.
+\fIpriority\fP Gives the \fBentry\fP a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.
 .RE
 .PP
 \fBReturns:\fP
@@ -187,7 +187,7 @@ If noting is found NULL, otherwise the number.
 .PP
 
 .PP
-Definition at line 105 of file phonefirewall_administration.c.
+Definition at line 110 of file phonefirewall_administration.c.
 .PP
 References DELIM, filename, MAX_LINE_LENGTH, set_filename(), and WHITELIST_PREFIX.
 .SS "int rm_blacklist_entry (unsigned long long number)"
@@ -206,7 +206,7 @@ If all goes right 0, otherwise an error code.
 .PP
 
 .PP
-Definition at line 66 of file phonefirewall_administration.c.
+Definition at line 68 of file phonefirewall_administration.c.
 .SS "int rm_whitelist_entry (unsigned long long number)"
 .PP
 Removes a accepted number from the whitelist.
@@ -223,7 +223,7 @@ If all goes right 0, otherwise an error code.
 .PP
 
 .PP
-Definition at line 70 of file phonefirewall_administration.c.
+Definition at line 72 of file phonefirewall_administration.c.
 .SS "int set_filename (char * prefix, int country_code, int area_code)"
 .PP
 Definition at line 34 of file phonefirewall_administration.c.
