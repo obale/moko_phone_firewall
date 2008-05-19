@@ -31,6 +31,7 @@
  */
 
 #define MAX_LINE_LENGTH 512
+#define PRIO_ALL -999
 
 /**
  * The struct which includes all information about entries (black- and
@@ -60,7 +61,8 @@ struct entry {
  * @param reason Why you have blocked this person.
  * @param priority Gives the entry a priority. 0 is standard. If the priority
  * is higher the value will be also blocked/accepted if a higher priority is
- * choosen.
+ * choosen. <br>
+ * The value "PRIO_ALL" stands for all priorities.
  *
  * @return If all goes well 0 (zero) otherwise an errno code.
  */
@@ -85,8 +87,8 @@ int rm_blacklist_entry(unsigned long long number);
  * code.
  * @param priority Gives the entry a priority. 0 is standard. If the priority
  * is higher the value will be also blocked/accepted if a higher priority is
- * choosen.
- *
+ * choosen.<br>
+ * The value "PRIO_ALL" stands for all priorities.
  *
  * @return If noting is found NULL, otherwise the number.
  */
@@ -104,7 +106,8 @@ char *check_blacklist_entry(int country_code, int area_code, unsigned long long 
  * @param reason Why you have blocked this person.
  * @param priority Gives the entry a priority. 0 is standard. If the priority
  * is higher the value will be also blocked/accepted if a higher priority is
- * choosen.
+ * choosen.<br>
+ * The value "PRIO_ALL" stands for all priorities.
  *
  * @return If all goes well 0 (zero) otherwise an errno code.
  */
@@ -151,8 +154,8 @@ int rm_whitelist_entry(unsigned long long number);
  * code.
  * @param priority Gives the entry a priority. 0 is standard. If the priority
  * is higher the value will be also blocked/accepted if a higher priority is
- * choosen.
- *
+ * choosen.<br>
+ * The value "PRIO_ALL" stands for all priorities.
  *
  * @return If noting is found NULL, otherwise the number.
  */

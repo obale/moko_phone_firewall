@@ -74,7 +74,7 @@ Include dependency graph for phonefirewall_administration.c:</div>
 
 <p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00026">26</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
 
-<p>Referenced by <a class="el" href="phonefirewall__administration_8c-source.html#l00040">add_blacklist_entry()</a>, and <a class="el" href="phonefirewall__administration_8c-source.html#l00076">check_blacklist_entry()</a>.</p>
+<p>Referenced by <a class="el" href="phonefirewall__administration_8c-source.html#l00040">add_blacklist_entry()</a>, and <a class="el" href="phonefirewall__administration_8c-source.html#l00081">check_blacklist_entry()</a>.</p>
 
 </div>
 </div><p>
@@ -110,7 +110,7 @@ Include dependency graph for phonefirewall_administration.c:</div>
 
 <p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00027">27</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
 
-<p>Referenced by <a class="el" href="phonefirewall__administration_8c-source.html#l00054">add_whitelist_entry()</a>, and <a class="el" href="phonefirewall__administration_8c-source.html#l00110">check_whitelist_entry()</a>.</p>
+<p>Referenced by <a class="el" href="phonefirewall__administration_8c-source.html#l00057">add_whitelist_entry()</a>, and <a class="el" href="phonefirewall__administration_8c-source.html#l00121">check_whitelist_entry()</a>.</p>
 
 </div>
 </div><p>
@@ -173,14 +173,15 @@ Add a number to the blacklist. The number will be blocked after that.<p>
     <tr><td valign="top"></td><td valign="top"><em>number</em>&nbsp;</td><td>The telephone number of the person (without country and area code. </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>The name of the person. </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>reason</em>&nbsp;</td><td>Why you have blocked this person. </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>priority</em>&nbsp;</td><td>Gives the <a class="el" href="structentry.html" title="Includes all informations for an entry.">entry</a> a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.</td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>priority</em>&nbsp;</td><td>Gives the <a class="el" href="structentry.html" title="Includes all informations for an entry.">entry</a> a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen. <br>
+ The value "PRIO_ALL" stands for all priorities.</td></tr>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If all goes well 0 (zero) otherwise an errno code. </dd></dl>
 
 <p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00040">40</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
 
-<p>References <a class="el" href="phonefirewall__administration_8c-source.html#l00026">BLACKLIST_PREFIX</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00030">DELIM</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00032">filename</a>, and <a class="el" href="phonefirewall__administration_8c-source.html#l00034">set_filename()</a>.</p>
+<p>References <a class="el" href="phonefirewall__administration_8c-source.html#l00026">BLACKLIST_PREFIX</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00081">check_blacklist_entry()</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00030">DELIM</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00032">filename</a>, <a class="el" href="libphonefirewall_8h-source.html#l00034">PRIO_ALL</a>, and <a class="el" href="phonefirewall__administration_8c-source.html#l00034">set_filename()</a>.</p>
 
 <p>
 <div class="dynheader">
@@ -188,7 +189,7 @@ Here is the call graph for this function:</div>
 <div class="dynsection">
 <p><center><img src="phonefirewall__administration_8c_36847ed3459e2a89038772ece42a017d_cgraph.png" border="0" usemap="#phonefirewall__administration_8c_36847ed3459e2a89038772ece42a017d_cgraph_map" alt=""></center>
 <map name="phonefirewall__administration_8c_36847ed3459e2a89038772ece42a017d_cgraph_map">
-<area shape="rect" href="phonefirewall__administration_8c.html#d42187af304bf25d98f7f7f76853c6f7" title="set_filename" alt="" coords="203,5,307,32"></map>
+<area shape="rect" href="libphonefirewall_8h.html#651cdd0245f20256305b40f13bb9df2d" title="check_blacklist_entry" alt="" coords="204,6,367,32"><area shape="rect" href="phonefirewall__administration_8c.html#d42187af304bf25d98f7f7f76853c6f7" title="set_filename" alt="" coords="416,31,520,58"></map>
 </div>
 
 </div>
@@ -251,14 +252,15 @@ Add a number to the whitelist. The number will be accepted after that.<p>
     <tr><td valign="top"></td><td valign="top"><em>number</em>&nbsp;</td><td>The telephone number of the person (without country and area code. </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>The name of the person. </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>reason</em>&nbsp;</td><td>Why you have blocked this person. </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>priority</em>&nbsp;</td><td>Gives the <a class="el" href="structentry.html" title="Includes all informations for an entry.">entry</a> a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.</td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>priority</em>&nbsp;</td><td>Gives the <a class="el" href="structentry.html" title="Includes all informations for an entry.">entry</a> a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.<br>
+ The value "PRIO_ALL" stands for all priorities.</td></tr>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If all goes well 0 (zero) otherwise an errno code. </dd></dl>
 
-<p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00054">54</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
+<p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00057">57</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
 
-<p>References <a class="el" href="phonefirewall__administration_8c-source.html#l00030">DELIM</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00032">filename</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00034">set_filename()</a>, and <a class="el" href="phonefirewall__administration_8c-source.html#l00027">WHITELIST_PREFIX</a>.</p>
+<p>References <a class="el" href="phonefirewall__administration_8c-source.html#l00121">check_whitelist_entry()</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00030">DELIM</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00032">filename</a>, <a class="el" href="libphonefirewall_8h-source.html#l00034">PRIO_ALL</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00034">set_filename()</a>, and <a class="el" href="phonefirewall__administration_8c-source.html#l00027">WHITELIST_PREFIX</a>.</p>
 
 <p>
 <div class="dynheader">
@@ -266,7 +268,7 @@ Here is the call graph for this function:</div>
 <div class="dynsection">
 <p><center><img src="phonefirewall__administration_8c_eec16cb88eb546b1a2490e6716d75f8b_cgraph.png" border="0" usemap="#phonefirewall__administration_8c_eec16cb88eb546b1a2490e6716d75f8b_cgraph_map" alt=""></center>
 <map name="phonefirewall__administration_8c_eec16cb88eb546b1a2490e6716d75f8b_cgraph_map">
-<area shape="rect" href="phonefirewall__administration_8c.html#d42187af304bf25d98f7f7f76853c6f7" title="set_filename" alt="" coords="205,5,309,32"></map>
+<area shape="rect" href="libphonefirewall_8h.html#032c45d6c7830492ddeaa8cabfc845c3" title="check_whitelist_entry" alt="" coords="207,6,372,32"><area shape="rect" href="phonefirewall__administration_8c.html#d42187af304bf25d98f7f7f76853c6f7" title="set_filename" alt="" coords="421,31,525,58"></map>
 </div>
 
 </div>
@@ -315,14 +317,17 @@ Checks if a number is on the blacklist.<p>
     <tr><td valign="top"></td><td valign="top"><em>country_code</em>&nbsp;</td><td>The country code (for example 39 for Italy, 43 for Austria, and so one) </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>area_code</em>&nbsp;</td><td>The area code which indicates your mobile operator. </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>number</em>&nbsp;</td><td>The telephone number of the person (without country and area code. </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>priority</em>&nbsp;</td><td>Gives the <a class="el" href="structentry.html" title="Includes all informations for an entry.">entry</a> a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.</td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>priority</em>&nbsp;</td><td>Gives the <a class="el" href="structentry.html" title="Includes all informations for an entry.">entry</a> a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.<br>
+ The value "PRIO_ALL" stands for all priorities.</td></tr>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If noting is found NULL, otherwise the number. </dd></dl>
 
-<p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00076">76</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
+<p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00081">81</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
 
-<p>References <a class="el" href="phonefirewall__administration_8c-source.html#l00026">BLACKLIST_PREFIX</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00030">DELIM</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00032">filename</a>, <a class="el" href="libphonefirewall_8h-source.html#l00033">MAX_LINE_LENGTH</a>, and <a class="el" href="phonefirewall__administration_8c-source.html#l00034">set_filename()</a>.</p>
+<p>References <a class="el" href="phonefirewall__administration_8c-source.html#l00026">BLACKLIST_PREFIX</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00030">DELIM</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00032">filename</a>, <a class="el" href="libphonefirewall_8h-source.html#l00033">MAX_LINE_LENGTH</a>, <a class="el" href="libphonefirewall_8h-source.html#l00034">PRIO_ALL</a>, and <a class="el" href="phonefirewall__administration_8c-source.html#l00034">set_filename()</a>.</p>
+
+<p>Referenced by <a class="el" href="phonefirewall__administration_8c-source.html#l00040">add_blacklist_entry()</a>.</p>
 
 <p>
 <div class="dynheader">
@@ -331,6 +336,15 @@ Here is the call graph for this function:</div>
 <p><center><img src="phonefirewall__administration_8c_651cdd0245f20256305b40f13bb9df2d_cgraph.png" border="0" usemap="#phonefirewall__administration_8c_651cdd0245f20256305b40f13bb9df2d_cgraph_map" alt=""></center>
 <map name="phonefirewall__administration_8c_651cdd0245f20256305b40f13bb9df2d_cgraph_map">
 <area shape="rect" href="phonefirewall__administration_8c.html#d42187af304bf25d98f7f7f76853c6f7" title="set_filename" alt="" coords="219,5,323,32"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="phonefirewall__administration_8c_651cdd0245f20256305b40f13bb9df2d_icgraph.png" border="0" usemap="#phonefirewall__administration_8c_651cdd0245f20256305b40f13bb9df2d_icgraph_map" alt=""></center>
+<map name="phonefirewall__administration_8c_651cdd0245f20256305b40f13bb9df2d_icgraph_map">
+<area shape="rect" href="phonefirewall__administration_8c.html#36847ed3459e2a89038772ece42a017d" title="add_blacklist_entry" alt="" coords="219,5,368,32"></map>
 </div>
 
 </div>
@@ -379,14 +393,17 @@ Checks if a number is on the whitelist.<p>
     <tr><td valign="top"></td><td valign="top"><em>country_code</em>&nbsp;</td><td>The country code (for example 39 for Italy, 43 for Austria, and so one) </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>area_code</em>&nbsp;</td><td>The area code which indicates your mobile operator. </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>number</em>&nbsp;</td><td>The telephone number of the person (without country and area code. </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>priority</em>&nbsp;</td><td>Gives the <a class="el" href="structentry.html" title="Includes all informations for an entry.">entry</a> a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.</td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>priority</em>&nbsp;</td><td>Gives the <a class="el" href="structentry.html" title="Includes all informations for an entry.">entry</a> a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.<br>
+ The value "PRIO_ALL" stands for all priorities.</td></tr>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If noting is found NULL, otherwise the number. </dd></dl>
 
-<p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00110">110</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
+<p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00121">121</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
 
-<p>References <a class="el" href="phonefirewall__administration_8c-source.html#l00030">DELIM</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00032">filename</a>, <a class="el" href="libphonefirewall_8h-source.html#l00033">MAX_LINE_LENGTH</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00034">set_filename()</a>, and <a class="el" href="phonefirewall__administration_8c-source.html#l00027">WHITELIST_PREFIX</a>.</p>
+<p>References <a class="el" href="phonefirewall__administration_8c-source.html#l00030">DELIM</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00032">filename</a>, <a class="el" href="libphonefirewall_8h-source.html#l00033">MAX_LINE_LENGTH</a>, <a class="el" href="libphonefirewall_8h-source.html#l00034">PRIO_ALL</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00034">set_filename()</a>, and <a class="el" href="phonefirewall__administration_8c-source.html#l00027">WHITELIST_PREFIX</a>.</p>
+
+<p>Referenced by <a class="el" href="phonefirewall__administration_8c-source.html#l00057">add_whitelist_entry()</a>.</p>
 
 <p>
 <div class="dynheader">
@@ -395,6 +412,15 @@ Here is the call graph for this function:</div>
 <p><center><img src="phonefirewall__administration_8c_032c45d6c7830492ddeaa8cabfc845c3_cgraph.png" border="0" usemap="#phonefirewall__administration_8c_032c45d6c7830492ddeaa8cabfc845c3_cgraph_map" alt=""></center>
 <map name="phonefirewall__administration_8c_032c45d6c7830492ddeaa8cabfc845c3_cgraph_map">
 <area shape="rect" href="phonefirewall__administration_8c.html#d42187af304bf25d98f7f7f76853c6f7" title="set_filename" alt="" coords="221,5,325,32"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="phonefirewall__administration_8c_032c45d6c7830492ddeaa8cabfc845c3_icgraph.png" border="0" usemap="#phonefirewall__administration_8c_032c45d6c7830492ddeaa8cabfc845c3_icgraph_map" alt=""></center>
+<map name="phonefirewall__administration_8c_032c45d6c7830492ddeaa8cabfc845c3_icgraph_map">
+<area shape="rect" href="phonefirewall__administration_8c.html#eec16cb88eb546b1a2490e6716d75f8b" title="add_whitelist_entry" alt="" coords="221,5,373,32"></map>
 </div>
 
 </div>
@@ -424,7 +450,7 @@ Removes a blocked number from the blacklist.<p>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If all goes right 0, otherwise an error code. </dd></dl>
 
-<p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00068">68</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
+<p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00073">73</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
 
 </div>
 </div><p>
@@ -453,7 +479,7 @@ Removes a accepted number from the whitelist.<p>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If all goes right 0, otherwise an error code. </dd></dl>
 
-<p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00072">72</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
+<p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00077">77</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
 
 </div>
 </div><p>
@@ -494,7 +520,7 @@ Removes a accepted number from the whitelist.<p>
 
 <p>References <a class="el" href="phonefirewall__administration_8c-source.html#l00032">filename</a>.</p>
 
-<p>Referenced by <a class="el" href="phonefirewall__administration_8c-source.html#l00040">add_blacklist_entry()</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00054">add_whitelist_entry()</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00076">check_blacklist_entry()</a>, and <a class="el" href="phonefirewall__administration_8c-source.html#l00110">check_whitelist_entry()</a>.</p>
+<p>Referenced by <a class="el" href="phonefirewall__administration_8c-source.html#l00040">add_blacklist_entry()</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00057">add_whitelist_entry()</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00081">check_blacklist_entry()</a>, and <a class="el" href="phonefirewall__administration_8c-source.html#l00121">check_whitelist_entry()</a>.</p>
 
 <p>
 <div class="dynheader">
@@ -502,7 +528,7 @@ Here is the caller graph for this function:</div>
 <div class="dynsection">
 <p><center><img src="phonefirewall__administration_8c_d42187af304bf25d98f7f7f76853c6f7_icgraph.png" border="0" usemap="#phonefirewall__administration_8c_d42187af304bf25d98f7f7f76853c6f7_icgraph_map" alt=""></center>
 <map name="phonefirewall__administration_8c_d42187af304bf25d98f7f7f76853c6f7_icgraph_map">
-<area shape="rect" href="phonefirewall__administration_8c.html#36847ed3459e2a89038772ece42a017d" title="add_blacklist_entry" alt="" coords="167,5,316,32"><area shape="rect" href="phonefirewall__administration_8c.html#eec16cb88eb546b1a2490e6716d75f8b" title="add_whitelist_entry" alt="" coords="165,56,317,82"><area shape="rect" href="phonefirewall__administration_8c.html#651cdd0245f20256305b40f13bb9df2d" title="check_blacklist_entry" alt="" coords="160,106,323,133"><area shape="rect" href="phonefirewall__administration_8c.html#032c45d6c7830492ddeaa8cabfc845c3" title="check_whitelist_entry" alt="" coords="159,157,324,184"></map>
+<area shape="rect" href="phonefirewall__administration_8c.html#36847ed3459e2a89038772ece42a017d" title="add_blacklist_entry" alt="" coords="375,23,524,49"><area shape="rect" href="phonefirewall__administration_8c.html#eec16cb88eb546b1a2490e6716d75f8b" title="add_whitelist_entry" alt="" coords="373,99,525,125"><area shape="rect" href="phonefirewall__administration_8c.html#651cdd0245f20256305b40f13bb9df2d" title="check_blacklist_entry" alt="" coords="160,35,323,61"><area shape="rect" href="phonefirewall__administration_8c.html#032c45d6c7830492ddeaa8cabfc845c3" title="check_whitelist_entry" alt="" coords="159,136,324,163"></map>
 </div>
 
 </div>
@@ -523,7 +549,7 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00030">30</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
 
-<p>Referenced by <a class="el" href="phonefirewall__administration_8c-source.html#l00040">add_blacklist_entry()</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00054">add_whitelist_entry()</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00076">check_blacklist_entry()</a>, and <a class="el" href="phonefirewall__administration_8c-source.html#l00110">check_whitelist_entry()</a>.</p>
+<p>Referenced by <a class="el" href="phonefirewall__administration_8c-source.html#l00040">add_blacklist_entry()</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00057">add_whitelist_entry()</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00081">check_blacklist_entry()</a>, and <a class="el" href="phonefirewall__administration_8c-source.html#l00121">check_whitelist_entry()</a>.</p>
 
 </div>
 </div><p>
@@ -542,11 +568,11 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="phonefirewall__administration_8c-source.html#l00032">32</a> of file <a class="el" href="phonefirewall__administration_8c-source.html">phonefirewall_administration.c</a>.</p>
 
-<p>Referenced by <a class="el" href="phonefirewall__administration_8c-source.html#l00040">add_blacklist_entry()</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00054">add_whitelist_entry()</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00076">check_blacklist_entry()</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00110">check_whitelist_entry()</a>, and <a class="el" href="phonefirewall__administration_8c-source.html#l00034">set_filename()</a>.</p>
+<p>Referenced by <a class="el" href="phonefirewall__administration_8c-source.html#l00040">add_blacklist_entry()</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00057">add_whitelist_entry()</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00081">check_blacklist_entry()</a>, <a class="el" href="phonefirewall__administration_8c-source.html#l00121">check_whitelist_entry()</a>, and <a class="el" href="phonefirewall__administration_8c-source.html#l00034">set_filename()</a>.</p>
 
 </div>
 </div><p>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat May 17 14:12:44 2008 for Phone Firewall by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Mon May 19 15:06:51 2008 for Phone Firewall by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

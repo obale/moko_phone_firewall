@@ -38,12 +38,15 @@ int set_filename(char *prefix, int country_code, int area_code) {
 }
 
 int add_blacklist_entry(int country_code, int area_code, unsigned long long number, char *name, char *reason, int priority) {
-	if ( 0 != set_filename(BLACKLIST_PREFIX, country_code, area_code) ) return errno;
+	if ( 0 != set_filename(BLACKLIST_PREFIX, country_code, area_code) ||
+		NULL != check_blacklist_entry(country_code, area_code, number, PRIO_ALL) ||
+	  	priority < PRIO_ALL ) return -1;
+
 
 	FILE *file;
 
 	if ( NULL == (file = fopen(filename, "a+"))) return -EINVAL;
-	fprintf(file, "%d%s%lld%s%d%s%d%s%s%s%s\n", priority, DELIM, number, DELIM, country_code, DELIM, area_code, DELIM, name, DELIM, reason);
+	fprintf(file, "%d%2s%lld%2s%d%2s%d%2s%s%2s%s\n", priority, DELIM, number, DELIM, country_code, DELIM, area_code, DELIM, name, DELIM, reason);
 
 	fflush(file);
 	fclose(file);
@@ -52,12 +55,14 @@ int add_blacklist_entry(int country_code, int area_code, unsigned long long numb
 }
 
 int add_whitelist_entry(int country_code, int area_code, unsigned long long number, char *name, char *reason, int priority) {
-	if ( 0 != set_filename(WHITELIST_PREFIX, country_code, area_code) ) return errno;
+	if ( 0 != set_filename(WHITELIST_PREFIX, country_code, area_code) ||
+	  	NULL != check_whitelist_entry(country_code, area_code, number, PRIO_ALL) || 
+	  	priority < PRIO_ALL ) return -1;
 
 	FILE *file;
 
 	if ( NULL == (file = fopen(filename, "a+"))) return -EINVAL;
-	fprintf(file, "%d%s%lld%s%d%s%d%s%s%s%s\n", priority, DELIM, number, DELIM, country_code, DELIM, area_code, DELIM, name, DELIM, reason);
+	fprintf(file, "%d%2s%lld%2s%d%2s%d%2s%s%2s%s\n", priority, DELIM, number, DELIM, country_code, DELIM, area_code, DELIM, name, DELIM, reason);
 	
 	fflush(file);
 	fclose(file);
@@ -92,8 +97,14 @@ char *check_blacklist_entry(int country_code, int area_code, unsigned long long 
 		if( 0 != fgets(line, sizeof(line), file) ) {
 			substr = strtok(line, DELIM);
 			tmppriority = atoi(substr);
-			if ( tmppriority >= priority ) {
-				substr = strtok(NULL, DELIM);
+			substr = strtok(NULL, DELIM);
+			if ( PRIO_ALL == priority ) {
+				if ( 0 == strcmp(substr, strnumber)  ) {
+					hit = substr;
+					fclose(file);
+					return hit;
+				}
+			} else if ( tmppriority >= priority ) {
 				if ( 0 == strcmp(substr, strnumber)  ) {
 					hit = substr;
 					fclose(file);
@@ -126,8 +137,14 @@ char *check_whitelist_entry(int country_code, int area_code, unsigned long long 
 		if( 0 != fgets(line, sizeof(line), file) ) {
 			substr = strtok(line, DELIM);
 			tmppriority = atoi(substr);
-			if ( tmppriority >= priority ) {
-				substr = strtok(NULL, DELIM);
+			substr = strtok(NULL, DELIM);
+			if ( PRIO_ALL == priority ) {
+				if ( 0 == strcmp(substr, strnumber)  ) {
+					hit = substr;
+					fclose(file);
+					return hit;
+				}
+			} else if ( tmppriority >= priority ) {
 				if ( 0 == strcmp(substr, strnumber)  ) {
 					hit = substr;
 					fclose(file);

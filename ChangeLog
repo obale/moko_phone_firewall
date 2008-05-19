@@ -1,3 +1,23 @@
+2008-05-19 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* src/phonefirewall_administration.c:
+	Adding the constant "PRIO_ALL" to the library which indicates that all
+	priorities are used for the searching. It's not possible to give a
+	number a lower priority than PRIO_ALL, which is at the moment -999.
+
+	Testing if the number is saved, when is saved don't saved it another
+	time.
+
+	* src/libphonefirewall.h:
+	Adding the constant "PRIOR_ALL" with the value of -999.
+
+	* build.h:
+	build.h -> run.h
+
+	* run.h:
+	Fixing an error that the message where the logfiles are appears also
+	when the program execution fails.
+
 2008-05-17 Alex Oberhauser <oberhauseralex@networld.to>
 	
 	* src/phonefirewall_administration.c:

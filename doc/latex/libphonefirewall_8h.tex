@@ -22,6 +22,8 @@ struct \hyperlink{structentry}{entry}
 \begin{CompactItemize}
 \item 
 \#define \hyperlink{libphonefirewall_8h_f0f2173e3b202ddf5756531b4471dcb2}{MAX\_\-LINE\_\-LENGTH}~512
+\item 
+\#define \hyperlink{libphonefirewall_8h_6265f3115ead4b41b74ad4b8fe53a801}{PRIO\_\-ALL}~-999
 \end{CompactItemize}
 \subsection*{Functions}
 \begin{CompactItemize}
@@ -71,7 +73,18 @@ Definition in file \hyperlink{libphonefirewall_8h-source}{libphonefirewall.h}.
 
 Definition at line 33 of file libphonefirewall.h.
 
-Referenced by check\_\-blacklist\_\-entry(), and check\_\-whitelist\_\-entry().
+Referenced by check\_\-blacklist\_\-entry(), and check\_\-whitelist\_\-entry().\hypertarget{libphonefirewall_8h_6265f3115ead4b41b74ad4b8fe53a801}{
+\index{libphonefirewall.h@{libphonefirewall.h}!PRIO\_\-ALL@{PRIO\_\-ALL}}
+\index{PRIO\_\-ALL@{PRIO\_\-ALL}!libphonefirewall.h@{libphonefirewall.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define PRIO\_\-ALL~-999}}
+\label{libphonefirewall_8h_6265f3115ead4b41b74ad4b8fe53a801}
+
+
+
+
+Definition at line 34 of file libphonefirewall.h.
+
+Referenced by add\_\-blacklist\_\-entry(), add\_\-whitelist\_\-entry(), check\_\-blacklist\_\-entry(), and check\_\-whitelist\_\-entry().
 
 \subsection{Function Documentation}
 \hypertarget{libphonefirewall_8h_36847ed3459e2a89038772ece42a017d}{
@@ -86,7 +99,8 @@ Add a number to the blacklist. The number will be blocked after that.
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em country\_\-code}]The country code (for example 39 for Italy, 43 for Austria, and so one) \item[{\em area\_\-code}]The area code which indicates your mobile operator. \item[{\em number}]The telephone number of the person (without country and area code. \item[{\em name}]The name of the person. \item[{\em reason}]Why you have blocked this person. \item[{\em priority}]Gives the \hyperlink{structentry}{entry} a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.\end{description}
+\item[{\em country\_\-code}]The country code (for example 39 for Italy, 43 for Austria, and so one) \item[{\em area\_\-code}]The area code which indicates your mobile operator. \item[{\em number}]The telephone number of the person (without country and area code. \item[{\em name}]The name of the person. \item[{\em reason}]Why you have blocked this person. \item[{\em priority}]Gives the \hyperlink{structentry}{entry} a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen. \par
+ The value \char`\"{}PRIO\_\-ALL\char`\"{} stands for all priorities.\end{description}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]If all goes well 0 (zero) otherwise an errno code. \end{Desc}
@@ -94,13 +108,13 @@ Add a number to the blacklist. The number will be blocked after that.
 
 Definition at line 40 of file phonefirewall\_\-administration.c.
 
-References BLACKLIST\_\-PREFIX, DELIM, filename, and set\_\-filename().
+References BLACKLIST\_\-PREFIX, check\_\-blacklist\_\-entry(), DELIM, filename, PRIO\_\-ALL, and set\_\-filename().
 
 Here is the call graph for this function:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=135pt]{libphonefirewall_8h_36847ed3459e2a89038772ece42a017d_cgraph}
+\includegraphics[width=215pt]{libphonefirewall_8h_36847ed3459e2a89038772ece42a017d_cgraph}
 \end{center}
 \end{figure}
 \hypertarget{libphonefirewall_8h_eec16cb88eb546b1a2490e6716d75f8b}{
@@ -115,21 +129,22 @@ Add a number to the whitelist. The number will be accepted after that.
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em country\_\-code}]The country code (for example 39 for Italy, 43 for Austria, and so one) \item[{\em area\_\-code}]The area code which indicates your mobile operator. \item[{\em number}]The telephone number of the person (without country and area code. \item[{\em name}]The name of the person. \item[{\em reason}]Why you have blocked this person. \item[{\em priority}]Gives the \hyperlink{structentry}{entry} a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.\end{description}
+\item[{\em country\_\-code}]The country code (for example 39 for Italy, 43 for Austria, and so one) \item[{\em area\_\-code}]The area code which indicates your mobile operator. \item[{\em number}]The telephone number of the person (without country and area code. \item[{\em name}]The name of the person. \item[{\em reason}]Why you have blocked this person. \item[{\em priority}]Gives the \hyperlink{structentry}{entry} a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.\par
+ The value \char`\"{}PRIO\_\-ALL\char`\"{} stands for all priorities.\end{description}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]If all goes well 0 (zero) otherwise an errno code. \end{Desc}
 
 
-Definition at line 54 of file phonefirewall\_\-administration.c.
+Definition at line 57 of file phonefirewall\_\-administration.c.
 
-References DELIM, filename, set\_\-filename(), and WHITELIST\_\-PREFIX.
+References check\_\-whitelist\_\-entry(), DELIM, filename, PRIO\_\-ALL, set\_\-filename(), and WHITELIST\_\-PREFIX.
 
 Here is the call graph for this function:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=136pt]{libphonefirewall_8h_eec16cb88eb546b1a2490e6716d75f8b_cgraph}
+\includegraphics[width=217pt]{libphonefirewall_8h_eec16cb88eb546b1a2490e6716d75f8b_cgraph}
 \end{center}
 \end{figure}
 \hypertarget{libphonefirewall_8h_651cdd0245f20256305b40f13bb9df2d}{
@@ -144,21 +159,33 @@ Checks if a number is on the blacklist.
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em country\_\-code}]The country code (for example 39 for Italy, 43 for Austria, and so one) \item[{\em area\_\-code}]The area code which indicates your mobile operator. \item[{\em number}]The telephone number of the person (without country and area code. \item[{\em priority}]Gives the \hyperlink{structentry}{entry} a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.\end{description}
+\item[{\em country\_\-code}]The country code (for example 39 for Italy, 43 for Austria, and so one) \item[{\em area\_\-code}]The area code which indicates your mobile operator. \item[{\em number}]The telephone number of the person (without country and area code. \item[{\em priority}]Gives the \hyperlink{structentry}{entry} a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.\par
+ The value \char`\"{}PRIO\_\-ALL\char`\"{} stands for all priorities.\end{description}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]If noting is found NULL, otherwise the number. \end{Desc}
 
 
-Definition at line 76 of file phonefirewall\_\-administration.c.
+Definition at line 81 of file phonefirewall\_\-administration.c.
 
-References BLACKLIST\_\-PREFIX, DELIM, filename, MAX\_\-LINE\_\-LENGTH, and set\_\-filename().
+References BLACKLIST\_\-PREFIX, DELIM, filename, MAX\_\-LINE\_\-LENGTH, PRIO\_\-ALL, and set\_\-filename().
+
+Referenced by add\_\-blacklist\_\-entry().
 
 Here is the call graph for this function:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=141pt]{libphonefirewall_8h_651cdd0245f20256305b40f13bb9df2d_cgraph}
+\end{center}
+\end{figure}
+
+
+Here is the caller graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=158pt]{libphonefirewall_8h_651cdd0245f20256305b40f13bb9df2d_icgraph}
 \end{center}
 \end{figure}
 \hypertarget{libphonefirewall_8h_032c45d6c7830492ddeaa8cabfc845c3}{
@@ -173,21 +200,33 @@ Checks if a number is on the whitelist.
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em country\_\-code}]The country code (for example 39 for Italy, 43 for Austria, and so one) \item[{\em area\_\-code}]The area code which indicates your mobile operator. \item[{\em number}]The telephone number of the person (without country and area code. \item[{\em priority}]Gives the \hyperlink{structentry}{entry} a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.\end{description}
+\item[{\em country\_\-code}]The country code (for example 39 for Italy, 43 for Austria, and so one) \item[{\em area\_\-code}]The area code which indicates your mobile operator. \item[{\em number}]The telephone number of the person (without country and area code. \item[{\em priority}]Gives the \hyperlink{structentry}{entry} a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.\par
+ The value \char`\"{}PRIO\_\-ALL\char`\"{} stands for all priorities.\end{description}
 \end{Desc}
 \begin{Desc}
 \item[Returns:]If noting is found NULL, otherwise the number. \end{Desc}
 
 
-Definition at line 110 of file phonefirewall\_\-administration.c.
+Definition at line 121 of file phonefirewall\_\-administration.c.
 
-References DELIM, filename, MAX\_\-LINE\_\-LENGTH, set\_\-filename(), and WHITELIST\_\-PREFIX.
+References DELIM, filename, MAX\_\-LINE\_\-LENGTH, PRIO\_\-ALL, set\_\-filename(), and WHITELIST\_\-PREFIX.
+
+Referenced by add\_\-whitelist\_\-entry().
 
 Here is the call graph for this function:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=142pt]{libphonefirewall_8h_032c45d6c7830492ddeaa8cabfc845c3_cgraph}
+\end{center}
+\end{figure}
+
+
+Here is the caller graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=160pt]{libphonefirewall_8h_032c45d6c7830492ddeaa8cabfc845c3_icgraph}
 \end{center}
 \end{figure}
 \hypertarget{libphonefirewall_8h_04b29323de592cc442250d7c952213de}{
@@ -272,7 +311,7 @@ Removes a blocked number from the blacklist.
 \item[Returns:]If all goes right 0, otherwise an error code. \end{Desc}
 
 
-Definition at line 68 of file phonefirewall\_\-administration.c.\hypertarget{libphonefirewall_8h_e8a4ee30cf26b05a55680dc3a972f1a4}{
+Definition at line 73 of file phonefirewall\_\-administration.c.\hypertarget{libphonefirewall_8h_e8a4ee30cf26b05a55680dc3a972f1a4}{
 \index{libphonefirewall.h@{libphonefirewall.h}!rm\_\-whitelist\_\-entry@{rm\_\-whitelist\_\-entry}}
 \index{rm\_\-whitelist\_\-entry@{rm\_\-whitelist\_\-entry}!libphonefirewall.h@{libphonefirewall.h}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}int rm\_\-whitelist\_\-entry (unsigned long long {\em number})}}
@@ -290,4 +329,4 @@ Removes a accepted number from the whitelist.
 \item[Returns:]If all goes right 0, otherwise an error code. \end{Desc}
 
 
-Definition at line 72 of file phonefirewall\_\-administration.c.
+Definition at line 77 of file phonefirewall\_\-administration.c.

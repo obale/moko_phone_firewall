@@ -1,4 +1,4 @@
-.TH "libphonefirewall.h" 3 "17 May 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
+.TH "libphonefirewall.h" 3 "19 May 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -19,6 +19,9 @@ libphonefirewall.h \- API of the phone firewall.
 .in +1c
 .ti -1c
 .RI "#define \fBMAX_LINE_LENGTH\fP   512"
+.br
+.ti -1c
+.RI "#define \fBPRIO_ALL\fP   -999"
 .br
 .in -1c
 .SS "Functions"
@@ -76,6 +79,11 @@ Definition in file \fBlibphonefirewall.h\fP.
 Definition at line 33 of file libphonefirewall.h.
 .PP
 Referenced by check_blacklist_entry(), and check_whitelist_entry().
+.SS "#define PRIO_ALL   -999"
+.PP
+Definition at line 34 of file libphonefirewall.h.
+.PP
+Referenced by add_blacklist_entry(), add_whitelist_entry(), check_blacklist_entry(), and check_whitelist_entry().
 .SH "Function Documentation"
 .PP 
 .SS "int add_blacklist_entry (int country_code, int area_code, unsigned long long number, char * name, char * reason, int priority)"
@@ -94,7 +102,9 @@ Add a number to the blacklist. The number will be blocked after that.
 .br
 \fIreason\fP Why you have blocked this person. 
 .br
-\fIpriority\fP Gives the \fBentry\fP a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.
+\fIpriority\fP Gives the \fBentry\fP a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen. 
+.br
+ The value 'PRIO_ALL' stands for all priorities.
 .RE
 .PP
 \fBReturns:\fP
@@ -106,7 +116,7 @@ If all goes well 0 (zero) otherwise an errno code.
 .PP
 Definition at line 40 of file phonefirewall_administration.c.
 .PP
-References BLACKLIST_PREFIX, DELIM, filename, and set_filename().
+References BLACKLIST_PREFIX, check_blacklist_entry(), DELIM, filename, PRIO_ALL, and set_filename().
 .SS "int add_whitelist_entry (int country_code, int area_code, unsigned long long number, char * name, char * reason, int priority)"
 .PP
 Add a number to the whitelist. The number will be accepted after that.
@@ -124,6 +134,8 @@ Add a number to the whitelist. The number will be accepted after that.
 \fIreason\fP Why you have blocked this person. 
 .br
 \fIpriority\fP Gives the \fBentry\fP a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.
+.br
+ The value 'PRIO_ALL' stands for all priorities.
 .RE
 .PP
 \fBReturns:\fP
@@ -133,9 +145,9 @@ If all goes well 0 (zero) otherwise an errno code.
 .PP
 
 .PP
-Definition at line 54 of file phonefirewall_administration.c.
+Definition at line 57 of file phonefirewall_administration.c.
 .PP
-References DELIM, filename, set_filename(), and WHITELIST_PREFIX.
+References check_whitelist_entry(), DELIM, filename, PRIO_ALL, set_filename(), and WHITELIST_PREFIX.
 .SS "char* check_blacklist_entry (int country_code, int area_code, unsigned long long number, int priority)"
 .PP
 Checks if a number is on the blacklist.
@@ -149,6 +161,8 @@ Checks if a number is on the blacklist.
 \fInumber\fP The telephone number of the person (without country and area code. 
 .br
 \fIpriority\fP Gives the \fBentry\fP a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.
+.br
+ The value 'PRIO_ALL' stands for all priorities.
 .RE
 .PP
 \fBReturns:\fP
@@ -158,9 +172,11 @@ If noting is found NULL, otherwise the number.
 .PP
 
 .PP
-Definition at line 76 of file phonefirewall_administration.c.
+Definition at line 81 of file phonefirewall_administration.c.
 .PP
-References BLACKLIST_PREFIX, DELIM, filename, MAX_LINE_LENGTH, and set_filename().
+References BLACKLIST_PREFIX, DELIM, filename, MAX_LINE_LENGTH, PRIO_ALL, and set_filename().
+.PP
+Referenced by add_blacklist_entry().
 .SS "char* check_whitelist_entry (int country_code, int area_code, unsigned long long number, int priority)"
 .PP
 Checks if a number is on the whitelist.
@@ -174,6 +190,8 @@ Checks if a number is on the whitelist.
 \fInumber\fP The telephone number of the person (without country and area code. 
 .br
 \fIpriority\fP Gives the \fBentry\fP a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.
+.br
+ The value 'PRIO_ALL' stands for all priorities.
 .RE
 .PP
 \fBReturns:\fP
@@ -183,9 +201,11 @@ If noting is found NULL, otherwise the number.
 .PP
 
 .PP
-Definition at line 110 of file phonefirewall_administration.c.
+Definition at line 121 of file phonefirewall_administration.c.
 .PP
-References DELIM, filename, MAX_LINE_LENGTH, set_filename(), and WHITELIST_PREFIX.
+References DELIM, filename, MAX_LINE_LENGTH, PRIO_ALL, set_filename(), and WHITELIST_PREFIX.
+.PP
+Referenced by add_whitelist_entry().
 .SS "struct \fBentry\fP* get_blacklist_entry_by_name (char * name)\fC [read]\fP"
 .PP
 Search a entrie by name.
@@ -270,7 +290,7 @@ If all goes right 0, otherwise an error code.
 .PP
 
 .PP
-Definition at line 68 of file phonefirewall_administration.c.
+Definition at line 73 of file phonefirewall_administration.c.
 .SS "int rm_whitelist_entry (unsigned long long number)"
 .PP
 Removes a accepted number from the whitelist.
@@ -287,7 +307,7 @@ If all goes right 0, otherwise an error code.
 .PP
 
 .PP
-Definition at line 72 of file phonefirewall_administration.c.
+Definition at line 77 of file phonefirewall_administration.c.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Phone Firewall from the source code.
