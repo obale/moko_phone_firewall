@@ -27,6 +27,7 @@
  * phone calls, so it's possible to prevent disturbing phone calls.
  *  Provides a API which can used by other application to build nice programs.
  *
+ * Implemented for the OpenMoko framework.
  */
 
 #define MAX_LINE_LENGTH 512

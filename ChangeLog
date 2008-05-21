@@ -1,17 +1,3 @@
-2008-05-20 Alex Oberhauser <oberhauseralex@networld.to>
-
-	* src/libphonefirewall.h:
-	Deleting the line "Implemented for the OpenMoko framework." in the
-	comment.
-
-	* README:
-	Adding the hint that the maintainer list must be in an alphabetical
-	order.
-
-	* TODO:
-	Adding an new point to the ToDo-list, that we have to design a
-	suitable GUI for mobile devices.
-
 2008-05-19 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* src/phonefirewall_administration.c:
