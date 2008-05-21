@@ -45,8 +45,8 @@ libtestphonefirewall.so: $(SRCTESTDIR)/testphonefirewall_administration.o
 
 .PHONY: clean
 clean: 
-	$(RM)  	lib/*\
-	       	src/*.o\
-		src_test/*.o\
-		bin_test/*\
-		db/* 
+	$(RM) -f lib/*\
+	       	 src/*.o\
+		 src_test/*.o\
+		 bin_test/*\
+		 db/* 

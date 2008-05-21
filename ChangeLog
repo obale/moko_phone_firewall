@@ -1,3 +1,8 @@
+2008-05-22 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* Makefile:
+	Adding the -f parameter to the remove statement.
+
 2008-05-20 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* src/libphonefirewall.h:
