@@ -2,8 +2,8 @@ CCMOKO = /usr/local/openmoko/arm/bin/arm-angstrom-linux-gnueabi-gcc
 CCMOKOLD = /usr/local/openmoko/arm/bin/arm-angstrom-linux-gnueabi-ld
 GCC = /usr/bin/gcc
 RM = /bin/rm
-CLFLAGS += --std=c99 -Wall
-TEST_LIB = -lcunit -ltestphonefirewall
+CLFLAGS += --std=c99 -Wall `pkg-config --libs --cflags sqlite3`
+TEST_LIB = -lcunit -ltestphonefirewall 
 DOXYGEN = /usr/bin/doxygen
 SRCDIR = src
 BINDIR = bin
@@ -11,9 +11,10 @@ LIBDIR = lib
 SRCTESTDIR = src_test
 BINTESTDIR = bin_test
 
+all: 	test
 
-all: 	libphonefirewall.so\
-	test
+#all: 	libphonefirewall.so\
+#	test
 
 .PHONY: doc
 doc: 
@@ -50,3 +51,7 @@ clean:
 		 src_test/*.o\
 		 bin_test/*\
 		 db/* 
+
+.PHONY: clean-db
+clean-db:
+	$(RM) -f db/*

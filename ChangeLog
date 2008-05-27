@@ -1,3 +1,29 @@
+2008-05-26 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* src/phone_firewall.c:
+	Switching from file parsing to sqlite3 database.
+
+	* Makefile:
+	Using for "all" only the testing suite, because the toolchain don't
+	include the sqlite3 libraries.
+	
+	* run.sh:
+	Adding the creation of the SQL database.
+
+	* phonefirewall.sh:
+	SQL statements for the creation of the blacklist and whitelist table.
+
+	* src_test/testphonefirewall.c:
+	Commenting the testing functions for the check functions, which are
+	not implemented yet.
+
+2008-05-25 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* Makefile:
+	Adding the entry "clean-db" to remove only the blacklist and whitelist
+	files, otherwise the test failes because it's not possible to add an
+	entry twice.
+
 2008-05-22 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* Makefile:

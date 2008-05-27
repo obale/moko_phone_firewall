@@ -29,8 +29,10 @@
  *
  */
 
-#define MAX_LINE_LENGTH 512
 #define PRIO_ALL -999
+#define DB_FILE "db/phone-firewall.db"
+#define STMT_SIZE 1024
+#define MAX_LINE_LENGTH 512
 
 /**
  * The struct which includes all information about entries (black- and

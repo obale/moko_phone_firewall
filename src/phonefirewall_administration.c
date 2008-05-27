@@ -21,51 +21,63 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <string.h>
+#include <sqlite3.h>
 #include "libphonefirewall.h" 
 
-#define BLACKLIST_PREFIX "db/blacklist_"
-#define WHITELIST_PREFIX "db/whitelist_"
-#define FILENAME_SIZE 256
-
-static char* DELIM = "::";
-
-char filename[FILENAME_SIZE];
-
-int set_filename(char *prefix, int country_code, int area_code) {
-	snprintf(filename, sizeof(filename), "%s%d-%d", prefix, country_code, area_code);
-	if ( NULL != filename ) return 0;
-	else return -ENOENT;
-}
-
 int add_blacklist_entry(int country_code, int area_code, unsigned long long number, char *name, char *reason, int priority) {
-	if ( 0 != set_filename(BLACKLIST_PREFIX, country_code, area_code) ||
-		NULL != check_blacklist_entry(country_code, area_code, number, PRIO_ALL) ||
-	  	priority < PRIO_ALL ) return -1;
+	if ( priority <= PRIO_ALL ) return -1;
 
+	sqlite3 *db;
+	char *errMsg = 0;
+	char stmt[STMT_SIZE];
+	int rc;
 
-	FILE *file;
+	rc = sqlite3_open(DB_FILE, &db);
 
-	if ( NULL == (file = fopen(filename, "a+"))) return -EINVAL;
-	fprintf(file, "%d%2s%lld%2s%d%2s%d%2s%s%2s%s\n", priority, DELIM, number, DELIM, country_code, DELIM, area_code, DELIM, name, DELIM, reason);
+	if ( rc ) {
+		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+		sqlite3_close(db);
+		return -1;
+	}
 
-	fflush(file);
-	fclose(file);
+	sprintf(stmt, "insert into blacklist (priority, countrycode, areacode, number, name, reason) values(%d, %d, %d, %lld, \"%s\", \"%s\")", priority, country_code, area_code, number, name, reason);
+
+	rc = sqlite3_exec(db, stmt, NULL, 0, &errMsg);
+	if ( SQLITE_OK != rc ) {
+	       	fprintf(stderr, "SQL error: %s\n", errMsg);
+		sqlite3_close(db);
+		return -1;
+	}
+
+	sqlite3_close(db);	
 
    	return 0;
 }
 
 int add_whitelist_entry(int country_code, int area_code, unsigned long long number, char *name, char *reason, int priority) {
-	if ( 0 != set_filename(WHITELIST_PREFIX, country_code, area_code) ||
-	  	NULL != check_whitelist_entry(country_code, area_code, number, PRIO_ALL) || 
-	  	priority < PRIO_ALL ) return -1;
+	sqlite3 *db;
+	char *errMsg = 0;
+	char stmt[2048];
+	int rc;
 
-	FILE *file;
+	rc = sqlite3_open(DB_FILE, &db);
 
-	if ( NULL == (file = fopen(filename, "a+"))) return -EINVAL;
-	fprintf(file, "%d%2s%lld%2s%d%2s%d%2s%s%2s%s\n", priority, DELIM, number, DELIM, country_code, DELIM, area_code, DELIM, name, DELIM, reason);
-	
-	fflush(file);
-	fclose(file);
+	if ( rc ) {
+		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+		sqlite3_close(db);
+		return -1;
+	}
+
+	sprintf(stmt, "insert into whitelist (priority, countrycode, areacode, number, name, reason) values(%d, %d, %d, %lld, \"%s\", \"%s\")", priority, country_code, area_code, number, name, reason);
+
+	rc = sqlite3_exec(db, stmt, NULL, 0, &errMsg);
+	if ( SQLITE_OK != rc ) {
+	       	fprintf(stderr, "SQL error: %s\n", errMsg);
+		sqlite3_close(db);
+		return -1;
+	}
+
+	sqlite3_close(db);	
 
    	return 0;
 }
@@ -79,81 +91,9 @@ int rm_whitelist_entry (unsigned long long number) {
 }
 
 char *check_blacklist_entry(int country_code, int area_code, unsigned long long number, int priority) {
-	if ( 0 != set_filename(BLACKLIST_PREFIX, country_code, area_code) ) return NULL;
-
-	FILE *file;
-
-	if ( NULL == (file = fopen(filename, "a+"))) return NULL;
-
-	char line[MAX_LINE_LENGTH];
-	char *substr = NULL; 
-	char strnumber[MAX_LINE_LENGTH];
-	char *hit = NULL;
-	int tmppriority;
-
-	snprintf(strnumber, sizeof(strnumber), "%lld", number);
-
-	while ( !feof(file) ) {
-		if( 0 != fgets(line, sizeof(line), file) ) {
-			substr = strtok(line, DELIM);
-			tmppriority = atoi(substr);
-			substr = strtok(NULL, DELIM);
-			if ( PRIO_ALL == priority ) {
-				if ( 0 == strcmp(substr, strnumber)  ) {
-					hit = substr;
-					fclose(file);
-					return hit;
-				}
-			} else if ( tmppriority >= priority ) {
-				if ( 0 == strcmp(substr, strnumber)  ) {
-					hit = substr;
-					fclose(file);
-					return hit;
-				}
-			}
-		} 
-	}
-
-	fclose(file);
-	return hit;
+	return NULL;
 }
 
 char *check_whitelist_entry(int country_code, int area_code, unsigned long long number, int priority) {
-	if ( 0 != set_filename(WHITELIST_PREFIX, country_code, area_code) ) return NULL;
-
-	FILE *file;
-
-	if ( NULL == (file = fopen(filename, "a+"))) return NULL;
-
-	char line[MAX_LINE_LENGTH];
-	char *substr = NULL; 
-	char strnumber[MAX_LINE_LENGTH];
-	char *hit = NULL;
-	int tmppriority;
-
-	snprintf(strnumber, sizeof(strnumber), "%lld", number);
-
-	while ( !feof(file) ) {
-		if( 0 != fgets(line, sizeof(line), file) ) {
-			substr = strtok(line, DELIM);
-			tmppriority = atoi(substr);
-			substr = strtok(NULL, DELIM);
-			if ( PRIO_ALL == priority ) {
-				if ( 0 == strcmp(substr, strnumber)  ) {
-					hit = substr;
-					fclose(file);
-					return hit;
-				}
-			} else if ( tmppriority >= priority ) {
-				if ( 0 == strcmp(substr, strnumber)  ) {
-					hit = substr;
-					fclose(file);
-					return hit;
-				}
-			}
-		} 
-	}
-
-	fclose(file);
-	return hit;
+	return NULL;
 }
