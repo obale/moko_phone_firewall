@@ -1,3 +1,29 @@
+2008-05-25 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* phonefirewall.sql:
+	Changing the type of the column "number" from INTEGER to BIGINT.
+
+	* src/phonefirewall_administration.c:
+	Implementing the check functions for black- and whitelist. Checks now
+	the country code + area code + number with the priority system.
+
+	* src/libphonefirewall.h:
+	Adding constants for the column names.
+
+	* src_test/testphonefirewall.c:
+	Adding a few special test (for example an entry with an empty name or
+	reason). Uncommenting the test for the check functions.
+
+	* run.sh:
+	Redirect the stderr to /dev/null. Comes only the warning that the
+	entry with this primary key exists and this we have considered in the
+	CUnit tests.
+
+	* bin_test/testphonefirewall:
+	The checking of the numbers fails (for 3 tests). I don't know why.
+	Seams that flag don't can be read out in the function
+	check_blacklist_entry, but in a few tests seams to work.
+
 2008-05-26 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* src/phone_firewall.c:

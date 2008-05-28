@@ -34,6 +34,13 @@
 #define STMT_SIZE 1024
 #define MAX_LINE_LENGTH 512
 
+#define TB_COUNTRYCODE 	"countrycode"
+#define TB_AREACODE 	"areacode"
+#define TB_NUMBER	"number"
+#define TB_NAME		"name"
+#define TB_REASON	"reason"
+#define TB_PRIORITY	"priority"
+
 /**
  * The struct which includes all information about entries (black- and
  * whitelist).
@@ -41,14 +48,14 @@
  * @struct entry
  * @brief Includes all informations for an entry.
  */
-struct entry {
+struct Entry {
 	int country_code;
 	int area_code;
 	unsigned long long number;
 	char *name;
 	char *reason;
 	int priority;
-};
+} entry;
 
 /**
  * Add a number to the blacklist. The number will be blocked after that.
@@ -93,7 +100,7 @@ int rm_blacklist_entry(unsigned long long number);
  *
  * @return If noting is found NULL, otherwise the number.
  */
-char *check_blacklist_entry(int country_code, int area_code, unsigned long long number, int priority);
+int check_blacklist_entry(int country_code, int area_code, unsigned long long number, int priority);
 
 /**
  * Add a number to the whitelist. The number will be accepted after that.
@@ -160,7 +167,7 @@ int rm_whitelist_entry(unsigned long long number);
  *
  * @return If noting is found NULL, otherwise the number.
  */
-char *check_whitelist_entry(int country_code, int area_code, unsigned long long number, int priority);
+int check_whitelist_entry(int country_code, int area_code, unsigned long long number, int priority);
 
 /**
  * Search a entrie by name.

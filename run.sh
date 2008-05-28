@@ -7,4 +7,4 @@ make &> log/make.log\
 || ( echo -e '[\E[31mFAILED\033[0m]'; echo "For the output of the compile \
 process look at log/make.log and log/make_clean.log" );
 sqlite3 db/phone-firewall.db < phonefirewall.sql;
-./bin_test/testphonefirewall;
+./bin_test/testphonefirewall 2> /dev/null;

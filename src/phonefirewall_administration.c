@@ -24,8 +24,56 @@
 #include <sqlite3.h>
 #include "libphonefirewall.h" 
 
+/**
+ * 0 if nothing was found.
+ * 1 if and entry was found. 
+ */
+int found_flag = -1;
+
+static int check_callback(void *p_data, int argc, char **argv, char **col_name) {
+	int count;
+	int tmp_priority;
+	int tmp_country_code;
+	int tmp_area_code;
+	unsigned long long tmp_number;
+	struct Entry *p_entry = p_data;
+
+	for ( count = 0; count < argc; count++ ) {
+
+		found_flag = 0;
+
+		if ( 0 == strcmp(col_name[count], TB_PRIORITY) ) {
+			tmp_priority = atoi(argv[count]);
+		} else if ( 0 == strcmp(col_name[count], TB_COUNTRYCODE) ) {
+			tmp_country_code = atoi(argv[count]);
+		} else if ( 0 == strcmp(col_name[count], TB_AREACODE) ) {
+			tmp_area_code = atoi(argv[count]);
+		} else if ( 0 == strcmp(col_name[count], TB_NUMBER) ) {
+			tmp_number = atoll(argv[count]);
+		}
+
+		if ( PRIO_ALL == (p_entry->priority) ) {
+			if ( tmp_country_code == (p_entry->country_code)
+					&& tmp_area_code == (p_entry->area_code)
+					&& tmp_number == (p_entry->number) ) {
+				found_flag = 1;
+				return 0;
+			} 
+		} else if ( tmp_priority >= (p_entry->priority) ) {
+			if ( tmp_country_code == (p_entry->country_code)
+					&& tmp_area_code == (p_entry->area_code)
+					&& tmp_number == (p_entry->number) ) {
+				found_flag = 1;
+				return 0;
+			}
+		}
+	}
+		
+	return 0;
+}
+
 int add_blacklist_entry(int country_code, int area_code, unsigned long long number, char *name, char *reason, int priority) {
-	if ( priority <= PRIO_ALL ) return -1;
+	if ( priority < PRIO_ALL ) return -1;
 
 	sqlite3 *db;
 	char *errMsg = 0;
@@ -55,9 +103,11 @@ int add_blacklist_entry(int country_code, int area_code, unsigned long long numb
 }
 
 int add_whitelist_entry(int country_code, int area_code, unsigned long long number, char *name, char *reason, int priority) {
+	if ( priority < PRIO_ALL ) return -1;
+
 	sqlite3 *db;
 	char *errMsg = 0;
-	char stmt[2048];
+	char stmt[STMT_SIZE];
 	int rc;
 
 	rc = sqlite3_open(DB_FILE, &db);
@@ -90,10 +140,67 @@ int rm_whitelist_entry (unsigned long long number) {
 	return -ENOSYS;
 }
 
-char *check_blacklist_entry(int country_code, int area_code, unsigned long long number, int priority) {
-	return NULL;
+int check_blacklist_entry(int country_code, int area_code, unsigned long long number, int priority) {
+	sqlite3 *db;
+	char *errMsg = 0;
+	int rc;
+
+	struct Entry *p_entry = &entry;
+       	p_entry->country_code = country_code;
+	p_entry->area_code = area_code;
+	p_entry->number = number;
+	p_entry->priority = priority;
+
+	rc = sqlite3_open(DB_FILE, &db);
+
+	if ( rc ) {
+		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+		sqlite3_close(db);
+		return -1;
+	}
+
+	rc = sqlite3_exec(db, "select * from blacklist order by priority, countrycode, areacode, number", check_callback, p_entry, &errMsg );
+
+	if ( rc != SQLITE_OK ) {
+		fprintf(stderr, "SQL error: %s\n", errMsg);
+		sqlite3_close(db);
+		return -1;
+	}
+	
+	sqlite3_close(db);
+
+	return found_flag;
 }
 
-char *check_whitelist_entry(int country_code, int area_code, unsigned long long number, int priority) {
-	return NULL;
+int check_whitelist_entry(int country_code, int area_code, unsigned long long number, int priority) {
+	sqlite3 *db;
+	char *errMsg = 0;
+	int rc;
+
+	struct Entry *p_entry = &entry;
+       	p_entry->country_code = country_code;
+	p_entry->area_code = area_code;
+	p_entry->number = number;
+	p_entry->priority = priority;
+
+	rc = sqlite3_open(DB_FILE, &db);
+
+	if ( rc ) {
+		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+		sqlite3_close(db);
+		return -1;
+	}
+
+	rc = sqlite3_exec(db, "select * from whitelist order by priority, countrycode, areacode, number", check_callback, p_entry, &errMsg );
+
+	if ( rc != SQLITE_OK ) {
+		fprintf(stderr, "SQL error: %s\n", errMsg);
+		sqlite3_close(db);
+		return -1;
+	}
+	
+	sqlite3_close(db);
+
+	return found_flag;
 }
+
