@@ -1,9 +1,7 @@
-CCMOKO = /usr/local/openmoko/arm/bin/arm-angstrom-linux-gnueabi-gcc
-CCMOKOLD = /usr/local/openmoko/arm/bin/arm-angstrom-linux-gnueabi-ld
 GCC = /usr/bin/gcc
 RM = /bin/rm
-CLFLAGS += --std=c99 -Wall `pkg-config --libs --cflags sqlite3`
-TEST_LIB = -lcunit -ltestphonefirewall 
+CLFLAGS += --std=c99 -Wall #`/usr/local/openmoko/arm/bin/pkg-config --libs --cflags sqlite3`
+TEST_LIB = -lcunit -ltestphonefirewall `pkg-config --libs --cflags sqlite3`
 DOXYGEN = /usr/bin/doxygen
 SRCDIR = src
 BINDIR = bin
@@ -11,10 +9,11 @@ LIBDIR = lib
 SRCTESTDIR = src_test
 BINTESTDIR = bin_test
 
+#all: 	libphonefirewall.so	
 all: 	test
 
 #all: 	libphonefirewall.so\
-#	test
+	test
 
 .PHONY: doc
 doc: 
@@ -24,10 +23,10 @@ doc:
 	 || ( echo -e '[\E[31mFAILED\033[0m]'; tput sgr0 )
 
 phonefirewall_administration.o: $(SRCDIR)/phonefirewall_administration.c $(SRCDIR)/libphonefirewall.h
-	$(CCMOKO) $(CLFLAGS) -fpic -c $(SRCDIR)/phonefirewall_administration.c -o $(SRCDIR)/$@
+	$(CC) $(CLFLAGS) -fpic -c $(SRCDIR)/phonefirewall_administration.c -o $(SRCDIR)/$@
 
 libphonefirewall.so: $(SRCDIR)/phonefirewall_administration.o 
-	$(CCMOKOLD) -shared $(SRCDIR)/phonefirewall_administration.o -o $(LIBDIR)/$@
+	$(CC) -shared $(SRCDIR)/phonefirewall_administration.o -o $(LIBDIR)/$@
 
 # 
 # Begining of the testing part.

@@ -12,3 +12,4 @@ The following points are to do (there are not complete):
 	- Adding the filtering by time and by location (GPS!?! GSM Cells!?!)
 	- Designing and implementing a GUI which is suitable for a mobile
 	  device (for example the Neo 1973/FreeRunner)
+	- [BUG] Fix the checking function.

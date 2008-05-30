@@ -1,4 +1,26 @@
-2008-05-25 Alex Oberhauser <oberhauseralex@networld.to>
+2008-05-30 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* TODO:
+	Adding the task to fix the check_*_entry bug.
+
+	* src_test/testphonefirewall.c:
+	Rewriting the tests. Specially adding in the add tests a detailed
+	command was would be tested.
+
+	* src/phonefirewall_administration.c:
+	Adding temporary printf statements to isolate the bug. The functions
+	seams to work well, but the flag will be override.
+
+2008-05-29 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* Makefile:
+	Deleting the pkg-config argument for sqlite3 (now is directly in a
+	modified toolchain with sqlite3-library)
+
+	Deleting the variables for the ARMv4 cross compiler. It's not needed
+	for the build process.
+
+2008-05-28 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* phonefirewall.sql:
 	Changing the type of the column "number" from INTEGER to BIGINT.

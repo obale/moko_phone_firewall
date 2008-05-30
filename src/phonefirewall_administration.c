@@ -28,9 +28,9 @@
  * 0 if nothing was found.
  * 1 if and entry was found. 
  */
-int found_flag = -1;
+int found_flag;
 
-static int check_callback(void *p_data, int argc, char **argv, char **col_name) {
+int check_callback(void *p_data, int argc, char **argv, char **col_name) {
 	int count;
 	int tmp_priority;
 	int tmp_country_code;
@@ -38,9 +38,9 @@ static int check_callback(void *p_data, int argc, char **argv, char **col_name) 
 	unsigned long long tmp_number;
 	struct Entry *p_entry = p_data;
 
-	for ( count = 0; count < argc; count++ ) {
+	found_flag = 0;
 
-		found_flag = 0;
+	for ( count = 0; count < argc; count++ ) {
 
 		if ( 0 == strcmp(col_name[count], TB_PRIORITY) ) {
 			tmp_priority = atoi(argv[count]);
@@ -52,28 +52,32 @@ static int check_callback(void *p_data, int argc, char **argv, char **col_name) 
 			tmp_number = atoll(argv[count]);
 		}
 
-		if ( PRIO_ALL == (p_entry->priority) ) {
+		if ( PRIO_ALL == tmp_priority ) {
 			if ( tmp_country_code == (p_entry->country_code)
 					&& tmp_area_code == (p_entry->area_code)
 					&& tmp_number == (p_entry->number) ) {
 				found_flag = 1;
+				printf("%d :: number: %llu - %llu\n", found_flag, tmp_number, p_entry->number);
 				return 0;
-			} 
+			}
 		} else if ( tmp_priority >= (p_entry->priority) ) {
 			if ( tmp_country_code == (p_entry->country_code)
 					&& tmp_area_code == (p_entry->area_code)
 					&& tmp_number == (p_entry->number) ) {
 				found_flag = 1;
+				printf("%d :: number: %llu - %llu\n", found_flag, tmp_number, p_entry->number);
 				return 0;
-			}
-		}
+			} 
+		} 
 	}
-		
 	return 0;
 }
 
 int add_blacklist_entry(int country_code, int area_code, unsigned long long number, char *name, char *reason, int priority) {
-	if ( priority < PRIO_ALL ) return -1;
+	if ( priority < PRIO_ALL 
+			|| 0 == country_code
+			|| 0 == area_code 
+			|| 0 == number) return -1;
 
 	sqlite3 *db;
 	char *errMsg = 0;
@@ -103,7 +107,10 @@ int add_blacklist_entry(int country_code, int area_code, unsigned long long numb
 }
 
 int add_whitelist_entry(int country_code, int area_code, unsigned long long number, char *name, char *reason, int priority) {
-	if ( priority < PRIO_ALL ) return -1;
+	if ( priority < PRIO_ALL 
+			|| 0 == country_code
+			|| 0 == area_code 
+			|| 0 == number) return -1;
 
 	sqlite3 *db;
 	char *errMsg = 0;
@@ -159,7 +166,7 @@ int check_blacklist_entry(int country_code, int area_code, unsigned long long nu
 		return -1;
 	}
 
-	rc = sqlite3_exec(db, "select * from blacklist order by priority, countrycode, areacode, number", check_callback, p_entry, &errMsg );
+	rc = sqlite3_exec(db, "select priority, countrycode, areacode, number from blacklist order by priority, countrycode, areacode, number", check_callback, p_entry, &errMsg );
 
 	if ( rc != SQLITE_OK ) {
 		fprintf(stderr, "SQL error: %s\n", errMsg);
@@ -191,7 +198,7 @@ int check_whitelist_entry(int country_code, int area_code, unsigned long long nu
 		return -1;
 	}
 
-	rc = sqlite3_exec(db, "select * from whitelist order by priority, countrycode, areacode, number", check_callback, p_entry, &errMsg );
+	rc = sqlite3_exec(db, "select priority, countrycode, areacode, number from whitelist order by priority, countrycode, areacode, number", check_callback, p_entry, &errMsg );
 
 	if ( rc != SQLITE_OK ) {
 		fprintf(stderr, "SQL error: %s\n", errMsg);
@@ -201,6 +208,7 @@ int check_whitelist_entry(int country_code, int area_code, unsigned long long nu
 	
 	sqlite3_close(db);
 
+	printf("found_entry: %d -> %llu\n", found_flag, number);
 	return found_flag;
 }
 
