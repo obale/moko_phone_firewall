@@ -28,6 +28,13 @@ phonefirewall_administration.o: $(SRCDIR)/phonefirewall_administration.c $(SRCDI
 libphonefirewall.so: $(SRCDIR)/phonefirewall_administration.o 
 	$(CCMOKOLD) -shared $(SRCDIR)/phonefirewall_administration.o -o $(LIBDIR)/$@
 
+pf_daemon.o: $(SRCDIR)/pf_daemon.c $(SRCDIR)/libphonefirewall.h
+	$(CC) $(CFLAGS) -c $(SRCDIR)/pf_daemon -o $(SRCDIR)/$@
+
+pf_daemon: $(SRCDIR)/pf_daemon.o
+	$(CC) $(SRCDIR)/pf_daemon.o -o $(BINDIR)/$@
+
+
 # 
 # Begining of the testing part.
 #

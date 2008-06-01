@@ -1,3 +1,9 @@
+2008-06-01 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* src/pf_daemon.c:
+	Adding the prototype for the daemon code. It will run as a daemon and
+	interacts with other applications (the GUI or the system) over D-BUS.
+
 2008-05-22 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* Makefile:
