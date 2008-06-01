@@ -65,7 +65,7 @@ int check_callback(void *p_data, int argc, char **argv, char **col_name) {
 					&& tmp_area_code == (p_entry->area_code)
 					&& tmp_number == (p_entry->number) ) {
 				found_flag = 1;
-				printf("%d :: number: %llu - %llu\n", found_flag, tmp_number, p_entry->number);
+				printf("%d :: number: %llu - %llu -> priority: %d\n", found_flag, tmp_number, p_entry->number, p_entry->priority);
 				return 0;
 			} 
 		} 
@@ -77,7 +77,7 @@ int add_blacklist_entry(int country_code, int area_code, unsigned long long numb
 	if ( priority < PRIO_ALL 
 			|| 0 == country_code
 			|| 0 == area_code 
-			|| 0 == number) return -1;
+			|| 0 == number ) return -1;
 
 	sqlite3 *db;
 	char *errMsg = 0;
@@ -92,7 +92,7 @@ int add_blacklist_entry(int country_code, int area_code, unsigned long long numb
 		return -1;
 	}
 
-	sprintf(stmt, "insert into blacklist (priority, countrycode, areacode, number, name, reason) values(%d, %d, %d, %lld, \"%s\", \"%s\")", priority, country_code, area_code, number, name, reason);
+	sprintf(stmt, "INSERT INTO blacklist (%s, %s, %s, %s, %s, %s) VALUES(%d, %d, %d, %lld, \"%s\", \"%s\")", TB_PRIORITY, TB_COUNTRYCODE, TB_AREACODE, TB_NUMBER, TB_NAME, TB_REASON, priority, country_code, area_code, number, name, reason);
 
 	rc = sqlite3_exec(db, stmt, NULL, 0, &errMsg);
 	if ( SQLITE_OK != rc ) {
@@ -110,7 +110,7 @@ int add_whitelist_entry(int country_code, int area_code, unsigned long long numb
 	if ( priority < PRIO_ALL 
 			|| 0 == country_code
 			|| 0 == area_code 
-			|| 0 == number) return -1;
+			|| 0 == number ) return -1;
 
 	sqlite3 *db;
 	char *errMsg = 0;
@@ -125,7 +125,7 @@ int add_whitelist_entry(int country_code, int area_code, unsigned long long numb
 		return -1;
 	}
 
-	sprintf(stmt, "insert into whitelist (priority, countrycode, areacode, number, name, reason) values(%d, %d, %d, %lld, \"%s\", \"%s\")", priority, country_code, area_code, number, name, reason);
+	sprintf(stmt, "INSERT INTO whitelist (%s, %s, %s, %s, %s, %s) VALUES(%d, %d, %d, %lld, \"%s\", \"%s\")", TB_PRIORITY, TB_COUNTRYCODE, TB_AREACODE, TB_NUMBER, TB_NAME, TB_REASON, priority, country_code, area_code, number, name, reason);
 
 	rc = sqlite3_exec(db, stmt, NULL, 0, &errMsg);
 	if ( SQLITE_OK != rc ) {
@@ -139,17 +139,76 @@ int add_whitelist_entry(int country_code, int area_code, unsigned long long numb
    	return 0;
 }
 
-int rm_blacklist_entry (unsigned long long number) {
-	return -ENOSYS;
+int rm_blacklist_entry (int country_code, int area_code, unsigned long long number) {
+	if ( 0 == country_code
+			|| 0 == area_code
+			|| 0 == number ) return -1;
+
+	sqlite3 *db;
+	char *errMsg = 0;
+	char stmt[STMT_SIZE];
+	int rc;
+
+	rc = sqlite3_open(DB_FILE, &db);
+
+	if ( rc ) {
+		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+		sqlite3_close(db);
+		return -1;
+	}
+
+	sprintf(stmt, "DELETE FROM blacklist WHERE %s = %d AND %s = %d AND %s = %lld", TB_COUNTRYCODE, country_code, TB_AREACODE, area_code, TB_NUMBER, number);
+
+	rc = sqlite3_exec(db, stmt, NULL, 0, &errMsg);
+	if ( SQLITE_OK != rc ) {
+	       	fprintf(stderr, "SQL error: %s\n", errMsg);
+		sqlite3_close(db);
+		return -1;
+	}
+
+	sqlite3_close(db);	
+	return 0;
 }
 
-int rm_whitelist_entry (unsigned long long number) {
-	return -ENOSYS;
+int rm_whitelist_entry (int country_code, int area_code, unsigned long long number) {
+	if ( 0 == country_code
+			|| 0 == area_code
+			|| 0 == number ) return -1;
+
+	sqlite3 *db;
+	char *errMsg = 0;
+	char stmt[STMT_SIZE];
+	int rc;
+
+	rc = sqlite3_open(DB_FILE, &db);
+
+	if ( rc ) {
+		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+		sqlite3_close(db);
+		return -1;
+	}
+
+	sprintf(stmt, "DELETE FROM whitelist WHERE %s = %d AND %s = %d AND %s = %lld", TB_COUNTRYCODE, country_code, TB_AREACODE, area_code, TB_NUMBER, number);
+
+	rc = sqlite3_exec(db, stmt, NULL, 0, &errMsg);
+	if ( SQLITE_OK != rc ) {
+	       	fprintf(stderr, "SQL error: %s\n", errMsg);
+		sqlite3_close(db);
+		return -1;
+	}
+
+	sqlite3_close(db);	
+
+	return 0;
 }
 
+/**
+ * XXX: Check function doesn't work. Seams to override the found-flag.
+ */
 int check_blacklist_entry(int country_code, int area_code, unsigned long long number, int priority) {
 	sqlite3 *db;
 	char *errMsg = 0;
+	char stmt[STMT_SIZE];
 	int rc;
 
 	struct Entry *p_entry = &entry;
@@ -166,7 +225,9 @@ int check_blacklist_entry(int country_code, int area_code, unsigned long long nu
 		return -1;
 	}
 
-	rc = sqlite3_exec(db, "select priority, countrycode, areacode, number from blacklist order by priority, countrycode, areacode, number", check_callback, p_entry, &errMsg );
+	sprintf(stmt, "SELECT %1$s, %2$s, %3$s, %4$s FROM blacklist ORDER BY %1$s, %2$s, %3$s, %4$s", TB_PRIORITY, TB_COUNTRYCODE, TB_AREACODE, TB_NUMBER);
+
+	rc = sqlite3_exec(db, stmt, check_callback, p_entry, &errMsg );
 
 	if ( rc != SQLITE_OK ) {
 		fprintf(stderr, "SQL error: %s\n", errMsg);
@@ -179,9 +240,13 @@ int check_blacklist_entry(int country_code, int area_code, unsigned long long nu
 	return found_flag;
 }
 
+/**
+ * XXX: Check function doesn't work. Seams to override the found-flag.
+ */
 int check_whitelist_entry(int country_code, int area_code, unsigned long long number, int priority) {
 	sqlite3 *db;
 	char *errMsg = 0;
+	char *stmt[STMT_SIZE];
 	int rc;
 
 	struct Entry *p_entry = &entry;
@@ -198,7 +263,9 @@ int check_whitelist_entry(int country_code, int area_code, unsigned long long nu
 		return -1;
 	}
 
-	rc = sqlite3_exec(db, "select priority, countrycode, areacode, number from whitelist order by priority, countrycode, areacode, number", check_callback, p_entry, &errMsg );
+	sprintf(stmt, "SELECT %1$s, %2$s, %3$s, %4$s FROM whitelist ORDER BY %1$s, %2$s, %3$s, %4$s", TB_PRIORITY, TB_COUNTRYCODE, TB_AREACODE, TB_NUMBER);
+
+	rc = sqlite3_exec(db, stmt, check_callback, p_entry, &errMsg );
 
 	if ( rc != SQLITE_OK ) {
 		fprintf(stderr, "SQL error: %s\n", errMsg);

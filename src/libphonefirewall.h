@@ -83,7 +83,7 @@ int add_blacklist_entry(int country_code, int area_code, unsigned long long numb
  *
  * @return If all goes right 0, otherwise an error code.
  */
-int rm_blacklist_entry(unsigned long long number);
+int rm_blacklist_entry(int country_code, int area_code, unsigned long long number);
 
 /**
  * Checks if a number is on the blacklist.
@@ -150,7 +150,7 @@ struct entry *get_blacklist_entry_by_number(int country_code, int area_code, uns
  *
  * @return If all goes right 0, otherwise an error code.
  */
-int rm_whitelist_entry(unsigned long long number);
+int rm_whitelist_entry(int country_code, int area_code, unsigned long long number);
 
 /**
  * Checks if a number is on the whitelist.

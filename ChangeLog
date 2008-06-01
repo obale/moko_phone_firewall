@@ -1,3 +1,28 @@
+2008-06-01 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* run.sh:
+	Removing the forwarding of stderr to /dev/null during the execution of
+	the CUnit tests.
+
+	* src/libphonefirewall.h:
+	Adding the parameter "country_code" and "area_code" to the delete
+	function.
+
+	* src/phonefirewall_administration.c:
+	Substituting the column names with the TB_xxxx constants, which are
+	defined in the header file.
+
+	Writing all SQL-statements in capitals.
+
+	Implementing the delete functions for black- and whiteelist entries.
+
+	Marking the check functions as buggy (XXX). 
+
+	* src_test/testphonefirewall.c:
+	Adding a few trivial tests for the delete functions.
+
+	Changing the test mode from verbose to normal.
+
 2008-05-30 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* TODO:
