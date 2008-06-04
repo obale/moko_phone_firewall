@@ -102,14 +102,14 @@ void test_check_blacklist_entry(void) {
 }
 
 void test_check_whitelist_entry(void) {
-	/*
+	///*
 	CU_ASSERT(check_whitelist_entry(39, 128, 123456789, 0) == 1);
 	CU_ASSERT(check_whitelist_entry(39, 128, 103456785, 0) == 0);
 	CU_ASSERT(check_whitelist_entry(49, 129, 999999999, 0) == 1);
 	CU_ASSERT(check_whitelist_entry(49, 129, 222222222, 0) == 0);
 	CU_ASSERT(check_whitelist_entry(49, 129, 222222222, 2) == 1);
 	CU_ASSERT(check_whitelist_entry(49, 129, 222222222, 3) == 1);
-	*/
+	//*/
 }
 
 int main(int argc, char *argv[]) {

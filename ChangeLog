@@ -1,3 +1,19 @@
+2008-06-04 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* Makefile:
+	Adding the initiating of the database to the clean function.
+
+	* src/phonefirewall_administration.c:
+	- Deleting the pointer to the stmt[STMT_SIZE].
+	- Deleting the printf statements befor the return statement in
+	check_*_entry(...)
+
+	* src_test/testphonefirewall.c:
+	Uncommenting the tests for the check functions.
+
+	* bin/:
+	Adding the folder bin for the binary files.
+
 2008-06-01 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* run.sh:

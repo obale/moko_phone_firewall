@@ -25,9 +25,9 @@
 #include "libphonefirewall.h" 
 
 /**
- * 0 if nothing was found.
- * 1 if and entry was found. 
- */
+  * 0 if nothing was found.
+  * 1 if and entry was found.
+  */
 int found_flag;
 
 int check_callback(void *p_data, int argc, char **argv, char **col_name) {
@@ -37,7 +37,6 @@ int check_callback(void *p_data, int argc, char **argv, char **col_name) {
 	int tmp_area_code;
 	unsigned long long tmp_number;
 	struct Entry *p_entry = p_data;
-
 	found_flag = 0;
 
 	for ( count = 0; count < argc; count++ ) {
@@ -57,7 +56,7 @@ int check_callback(void *p_data, int argc, char **argv, char **col_name) {
 					&& tmp_area_code == (p_entry->area_code)
 					&& tmp_number == (p_entry->number) ) {
 				found_flag = 1;
-				printf("%d :: number: %llu - %llu\n", found_flag, tmp_number, p_entry->number);
+				printf("number: %llu - %llu\n", tmp_number, p_entry->number);
 				return 0;
 			}
 		} else if ( tmp_priority >= (p_entry->priority) ) {
@@ -65,7 +64,7 @@ int check_callback(void *p_data, int argc, char **argv, char **col_name) {
 					&& tmp_area_code == (p_entry->area_code)
 					&& tmp_number == (p_entry->number) ) {
 				found_flag = 1;
-				printf("%d :: number: %llu - %llu -> priority: %d\n", found_flag, tmp_number, p_entry->number, p_entry->priority);
+				printf("number: %llu - %llu -> priority: %d\n", tmp_number, p_entry->number, p_entry->priority);
 				return 0;
 			} 
 		} 
@@ -237,7 +236,7 @@ int check_blacklist_entry(int country_code, int area_code, unsigned long long nu
 	
 	sqlite3_close(db);
 
-	return found_flag;
+	return 0;
 }
 
 /**
@@ -246,7 +245,7 @@ int check_blacklist_entry(int country_code, int area_code, unsigned long long nu
 int check_whitelist_entry(int country_code, int area_code, unsigned long long number, int priority) {
 	sqlite3 *db;
 	char *errMsg = 0;
-	char *stmt[STMT_SIZE];
+	char stmt[STMT_SIZE];
 	int rc;
 
 	struct Entry *p_entry = &entry;
@@ -275,7 +274,6 @@ int check_whitelist_entry(int country_code, int area_code, unsigned long long nu
 	
 	sqlite3_close(db);
 
-	printf("found_entry: %d -> %llu\n", found_flag, number);
 	return found_flag;
 }
 

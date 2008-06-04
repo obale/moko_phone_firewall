@@ -50,6 +50,7 @@ clean:
 		 src_test/*.o\
 		 bin_test/*\
 		 db/* 
+	sqlite3 db/phone-firewall.db < phonefirewall.sql;
 
 .PHONY: clean-db
 clean-db:
