@@ -1,3 +1,13 @@
+2008-06-04 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* src/pf_daemon.c:
+	Making an daemon prototype which controls later one the gsm traffic
+	and reacts than.
+
+	* bin/pf_daemon:
+	Adding the binary file for the daemon (which is compiled for the Intel
+	x86 architecture).
+
 2008-06-01 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* src/pf_daemon.c:
