@@ -1,3 +1,20 @@
+2008-06-06 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* src/phonefirewall_administration.c:
+	Fixing the check_function:
+		- Deleting the check_callback function
+		- Don't use the sqlite3_exec statement. Now each row is
+		  evaluated singly.
+	
+	Adding comments "TODO" that the error message shouldn't be written 
+	through stderr. Better write it to a logfile.
+
+	* src_test/testphonefirewall.c:
+	Adding the tests for check_blacklist.
+	: [BUG]:  check_blacklist_entry() before check_whitelist_entry()
+	doesn't work. Error: segmentation fault in sqlite3_prepare function
+	call.
+
 2008-06-04 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* Makefile:

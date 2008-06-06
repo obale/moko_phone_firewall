@@ -99,17 +99,21 @@ void test_rm_whitelist_entry(void) {
 }
 
 void test_check_blacklist_entry(void) {
+	//CU_ASSERT(check_blacklist_entry(39, 328, 123456789, 0) == 1);
+	CU_ASSERT(check_blacklist_entry(39, 328, 103456785, 0) == 0);
+	//CU_ASSERT(check_blacklist_entry(49, 329, 999999999, 0) == 1);
+	CU_ASSERT(check_blacklist_entry(49, 329, 222222222, 0) == 0);
+	CU_ASSERT(check_blacklist_entry(49, 329, 222222222, 2) == 1);
+	CU_ASSERT(check_blacklist_entry(49, 329, 222222222, 3) == 1);
 }
 
 void test_check_whitelist_entry(void) {
-	///*
 	CU_ASSERT(check_whitelist_entry(39, 128, 123456789, 0) == 1);
 	CU_ASSERT(check_whitelist_entry(39, 128, 103456785, 0) == 0);
 	CU_ASSERT(check_whitelist_entry(49, 129, 999999999, 0) == 1);
 	CU_ASSERT(check_whitelist_entry(49, 129, 222222222, 0) == 0);
 	CU_ASSERT(check_whitelist_entry(49, 129, 222222222, 2) == 1);
 	CU_ASSERT(check_whitelist_entry(49, 129, 222222222, 3) == 1);
-	//*/
 }
 
 int main(int argc, char *argv[]) {
@@ -119,11 +123,15 @@ int main(int argc, char *argv[]) {
 
    	pSuite = CU_add_suite("Testing Phone Firewall", NULL, NULL); 
 	CU_add_test(pSuite, "test of add_blacklist_entry()", test_add_blacklist_entry);
+	CU_add_test(pSuite, "test of add_whitelist_entry()", test_add_whitelist_entry);
+	/* 
+	 * XXX: check_blacklist_entry() before check_whitelist_entry() doesn't
+	 * work.
+	 */
+	CU_add_test(pSuite, "test of check_whitelist_entry()", test_check_whitelist_entry);
 	CU_add_test(pSuite, "test of check_blacklist_entry()", test_check_blacklist_entry);
 	CU_add_test(pSuite, "test of rm_blacklist_entry()", test_rm_blacklist_entry);
-	CU_add_test(pSuite, "test of add_whitelist_entry()", test_add_whitelist_entry);
 	CU_add_test(pSuite, "test of rm_whitelist_entry()", test_rm_whitelist_entry);
-	CU_add_test(pSuite, "test of check_whitelist_entry()", test_check_whitelist_entry);
 	
    	CU_basic_set_mode(CU_BRM_NORMAL);
    	//CU_basic_set_mode(CU_BRM_SILENT);

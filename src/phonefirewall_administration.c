@@ -24,31 +24,32 @@
 #include <sqlite3.h>
 #include "libphonefirewall.h" 
 
-/**
-  * 0 if nothing was found.
-  * 1 if and entry was found.
-  */
-int found_flag;
-
-int check_callback(void *p_data, int argc, char **argv, char **col_name) {
+int evaluate_stmt(sqlite3_stmt *pp_stmt, struct Entry *p_entry) {
+	int num_column;
 	int count;
+	char *col_name;
+	char *col_value;
 	int tmp_priority;
 	int tmp_country_code;
 	int tmp_area_code;
 	unsigned long long tmp_number;
-	struct Entry *p_entry = p_data;
-	found_flag = 0;
+	int found_flag = 0;
 
-	for ( count = 0; count < argc; count++ ) {
 
-		if ( 0 == strcmp(col_name[count], TB_PRIORITY) ) {
-			tmp_priority = atoi(argv[count]);
-		} else if ( 0 == strcmp(col_name[count], TB_COUNTRYCODE) ) {
-			tmp_country_code = atoi(argv[count]);
-		} else if ( 0 == strcmp(col_name[count], TB_AREACODE) ) {
-			tmp_area_code = atoi(argv[count]);
-		} else if ( 0 == strcmp(col_name[count], TB_NUMBER) ) {
-			tmp_number = atoll(argv[count]);
+	num_column = sqlite3_column_count(pp_stmt);
+	col_name = sqlite3_malloc(2 * num_column * sizeof(const char *) + 1);
+
+	for(count = 0; count < num_column; count++){
+		col_name = (char *)sqlite3_column_name(pp_stmt, count);
+		col_value = (char *)sqlite3_column_text(pp_stmt, count);
+		if ( 0 == strcmp(col_name, TB_PRIORITY) ) {
+			tmp_priority = atoi(col_value);
+		} else if ( 0 == strcmp(col_name, TB_COUNTRYCODE) ) {
+			tmp_country_code = atoi(col_value);
+		} else if ( 0 == strcmp(col_name, TB_AREACODE) ) {
+			tmp_area_code = atoi(col_value);
+		} else if ( 0 == strcmp(col_name, TB_NUMBER) ) {
+			tmp_number = atoll(col_value);
 		}
 
 		if ( PRIO_ALL == tmp_priority ) {
@@ -56,20 +57,17 @@ int check_callback(void *p_data, int argc, char **argv, char **col_name) {
 					&& tmp_area_code == (p_entry->area_code)
 					&& tmp_number == (p_entry->number) ) {
 				found_flag = 1;
-				printf("number: %llu - %llu\n", tmp_number, p_entry->number);
-				return 0;
 			}
-		} else if ( tmp_priority >= (p_entry->priority) ) {
+		} else if ( tmp_priority <= (p_entry->priority) ) {
 			if ( tmp_country_code == (p_entry->country_code)
 					&& tmp_area_code == (p_entry->area_code)
 					&& tmp_number == (p_entry->number) ) {
 				found_flag = 1;
-				printf("number: %llu - %llu -> priority: %d\n", tmp_number, p_entry->number, p_entry->priority);
-				return 0;
 			} 
 		} 
 	}
-	return 0;
+	
+	return found_flag;
 }
 
 int add_blacklist_entry(int country_code, int area_code, unsigned long long number, char *name, char *reason, int priority) {
@@ -86,6 +84,7 @@ int add_blacklist_entry(int country_code, int area_code, unsigned long long numb
 	rc = sqlite3_open(DB_FILE, &db);
 
 	if ( rc ) {
+		// TODO: Don't print stuff to stderr or stderr
 		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
 		sqlite3_close(db);
 		return -1;
@@ -95,6 +94,7 @@ int add_blacklist_entry(int country_code, int area_code, unsigned long long numb
 
 	rc = sqlite3_exec(db, stmt, NULL, 0, &errMsg);
 	if ( SQLITE_OK != rc ) {
+		// TODO: Don't print stuff to stderr or stderr
 	       	fprintf(stderr, "SQL error: %s\n", errMsg);
 		sqlite3_close(db);
 		return -1;
@@ -119,6 +119,7 @@ int add_whitelist_entry(int country_code, int area_code, unsigned long long numb
 	rc = sqlite3_open(DB_FILE, &db);
 
 	if ( rc ) {
+		// TODO: Don't print stuff to stderr or stderr
 		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
 		sqlite3_close(db);
 		return -1;
@@ -128,6 +129,7 @@ int add_whitelist_entry(int country_code, int area_code, unsigned long long numb
 
 	rc = sqlite3_exec(db, stmt, NULL, 0, &errMsg);
 	if ( SQLITE_OK != rc ) {
+		// TODO: Don't print stuff to stderr or stderr
 	       	fprintf(stderr, "SQL error: %s\n", errMsg);
 		sqlite3_close(db);
 		return -1;
@@ -151,6 +153,7 @@ int rm_blacklist_entry (int country_code, int area_code, unsigned long long numb
 	rc = sqlite3_open(DB_FILE, &db);
 
 	if ( rc ) {
+		// TODO: Don't print stuff to stderr or stderr
 		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
 		sqlite3_close(db);
 		return -1;
@@ -160,6 +163,7 @@ int rm_blacklist_entry (int country_code, int area_code, unsigned long long numb
 
 	rc = sqlite3_exec(db, stmt, NULL, 0, &errMsg);
 	if ( SQLITE_OK != rc ) {
+		// TODO: Don't print stuff to stderr or stderr
 	       	fprintf(stderr, "SQL error: %s\n", errMsg);
 		sqlite3_close(db);
 		return -1;
@@ -182,6 +186,7 @@ int rm_whitelist_entry (int country_code, int area_code, unsigned long long numb
 	rc = sqlite3_open(DB_FILE, &db);
 
 	if ( rc ) {
+		// TODO: Don't print stuff to stderr or stderr
 		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
 		sqlite3_close(db);
 		return -1;
@@ -191,6 +196,7 @@ int rm_whitelist_entry (int country_code, int area_code, unsigned long long numb
 
 	rc = sqlite3_exec(db, stmt, NULL, 0, &errMsg);
 	if ( SQLITE_OK != rc ) {
+		// TODO: Don't print stuff to stderr or stderr
 	       	fprintf(stderr, "SQL error: %s\n", errMsg);
 		sqlite3_close(db);
 		return -1;
@@ -201,14 +207,14 @@ int rm_whitelist_entry (int country_code, int area_code, unsigned long long numb
 	return 0;
 }
 
-/**
- * XXX: Check function doesn't work. Seams to override the found-flag.
- */
 int check_blacklist_entry(int country_code, int area_code, unsigned long long number, int priority) {
 	sqlite3 *db;
 	char *errMsg = 0;
-	char stmt[STMT_SIZE];
+	char stmt[STMT_SIZE];   // The SQL statement as text string.
+	sqlite3_stmt *pp_stmt;  // The prepared statement
+	const char **p_tail;    // The unused part of stmt
 	int rc;
+	int found_flag = 0;
 
 	struct Entry *p_entry = &entry;
        	p_entry->country_code = country_code;
@@ -219,6 +225,7 @@ int check_blacklist_entry(int country_code, int area_code, unsigned long long nu
 	rc = sqlite3_open(DB_FILE, &db);
 
 	if ( rc ) {
+		// TODO: Don't print stuff to stderr or stderr
 		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
 		sqlite3_close(db);
 		return -1;
@@ -226,27 +233,39 @@ int check_blacklist_entry(int country_code, int area_code, unsigned long long nu
 
 	sprintf(stmt, "SELECT %1$s, %2$s, %3$s, %4$s FROM blacklist ORDER BY %1$s, %2$s, %3$s, %4$s", TB_PRIORITY, TB_COUNTRYCODE, TB_AREACODE, TB_NUMBER);
 
-	rc = sqlite3_exec(db, stmt, check_callback, p_entry, &errMsg );
+	rc = sqlite3_prepare_v2(db, stmt, sizeof(stmt), &pp_stmt, p_tail);
 
 	if ( rc != SQLITE_OK ) {
+		// TODO: Don't print stuff to stderr or stderr
 		fprintf(stderr, "SQL error: %s\n", errMsg);
 		sqlite3_close(db);
 		return -1;
 	}
+
+	while( rc != SQLITE_DONE) {
+		rc = sqlite3_step(pp_stmt);
+		if ( SQLITE_ROW == rc ) {
+			found_flag = evaluate_stmt(pp_stmt, p_entry);
+			if ( found_flag == 1) break;
+		}
+	}
+
 	
+	// Cleaning up
+	sqlite3_finalize(pp_stmt);
 	sqlite3_close(db);
 
-	return 0;
+	return found_flag;
 }
 
-/**
- * XXX: Check function doesn't work. Seams to override the found-flag.
- */
 int check_whitelist_entry(int country_code, int area_code, unsigned long long number, int priority) {
 	sqlite3 *db;
 	char *errMsg = 0;
-	char stmt[STMT_SIZE];
+	char stmt[STMT_SIZE];       // The SQL statement as text string.
+	sqlite3_stmt *pp_stmt = 0;  // The prepared statement
+	const char **p_tail = 0;    // The unused part of stmt
 	int rc;
+	int found_flag = 0;
 
 	struct Entry *p_entry = &entry;
        	p_entry->country_code = country_code;
@@ -257,6 +276,7 @@ int check_whitelist_entry(int country_code, int area_code, unsigned long long nu
 	rc = sqlite3_open(DB_FILE, &db);
 
 	if ( rc ) {
+		// TODO: Don't print stuff to stderr or stderr
 		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
 		sqlite3_close(db);
 		return -1;
@@ -264,14 +284,26 @@ int check_whitelist_entry(int country_code, int area_code, unsigned long long nu
 
 	sprintf(stmt, "SELECT %1$s, %2$s, %3$s, %4$s FROM whitelist ORDER BY %1$s, %2$s, %3$s, %4$s", TB_PRIORITY, TB_COUNTRYCODE, TB_AREACODE, TB_NUMBER);
 
-	rc = sqlite3_exec(db, stmt, check_callback, p_entry, &errMsg );
+	rc = sqlite3_prepare_v2(db, stmt, sizeof(stmt), &pp_stmt, p_tail);
 
 	if ( rc != SQLITE_OK ) {
+		// TODO: Don't print stuff to stderr or stderr
 		fprintf(stderr, "SQL error: %s\n", errMsg);
 		sqlite3_close(db);
 		return -1;
 	}
+
+	while( rc != SQLITE_DONE) {
+		rc = sqlite3_step(pp_stmt);
+		if ( SQLITE_ROW == rc ) {
+			found_flag = evaluate_stmt(pp_stmt, p_entry);
+			if ( found_flag == 1) break;
+		}
+	}
+
 	
+	// Cleaning up
+	sqlite3_finalize(pp_stmt);
 	sqlite3_close(db);
 
 	return found_flag;
