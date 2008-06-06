@@ -117,30 +117,30 @@ void test_check_whitelist_entry(void) {
 }
 
 int main(int argc, char *argv[]) {
-	CU_pSuite pSuite = NULL;
+	CU_pSuite adminSuite = NULL;
+	CU_pSuite daemonSuite = NULL;
 
 	CU_initialize_registry();
 
-   	pSuite = CU_add_suite("Testing Phone Firewall", NULL, NULL); 
-	CU_add_test(pSuite, "test of add_blacklist_entry()", test_add_blacklist_entry);
-	CU_add_test(pSuite, "test of add_whitelist_entry()", test_add_whitelist_entry);
+   	adminSuite = CU_add_suite("Testing Phone Firewall - administration features (add, remove and check)", NULL, NULL); 
+	CU_add_test(adminSuite, "test of add_blacklist_entry()", test_add_blacklist_entry);
+	CU_add_test(adminSuite, "test of add_whitelist_entry()", test_add_whitelist_entry);
 	/* 
 	 * XXX: check_blacklist_entry() before check_whitelist_entry() doesn't
 	 * work.
 	 */
-	CU_add_test(pSuite, "test of check_whitelist_entry()", test_check_whitelist_entry);
-	CU_add_test(pSuite, "test of check_blacklist_entry()", test_check_blacklist_entry);
-	CU_add_test(pSuite, "test of rm_blacklist_entry()", test_rm_blacklist_entry);
-	CU_add_test(pSuite, "test of rm_whitelist_entry()", test_rm_whitelist_entry);
+	CU_add_test(adminSuite, "test of check_whitelist_entry()", test_check_whitelist_entry);
+	CU_add_test(adminSuite, "test of check_blacklist_entry()", test_check_blacklist_entry);
+	CU_add_test(adminSuite, "test of rm_blacklist_entry()", test_rm_blacklist_entry);
+	CU_add_test(adminSuite, "test of rm_whitelist_entry()", test_rm_whitelist_entry);
 	
-   	CU_basic_set_mode(CU_BRM_NORMAL);
+   	daemonSuite = CU_add_suite("Testing Phone Firewall - daemon features", NULL, NULL); 
+
+   	//CU_basic_set_mode(CU_BRM_NORMAL);
    	//CU_basic_set_mode(CU_BRM_SILENT);
-   	//CU_basic_set_mode(CU_BRM_VERBOSE);
+   	CU_basic_set_mode(CU_BRM_VERBOSE);
 
-	// Start basic tests
 	CU_basic_run_tests();
-
-	// Cleaning up (freeing memory and so one)
 	CU_cleanup_registry();
 
 	return 0;

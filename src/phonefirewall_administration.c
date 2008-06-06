@@ -95,7 +95,7 @@ int add_blacklist_entry(int country_code, int area_code, unsigned long long numb
 	rc = sqlite3_exec(db, stmt, NULL, 0, &errMsg);
 	if ( SQLITE_OK != rc ) {
 		// TODO: Don't print stuff to stderr or stderr
-	       	fprintf(stderr, "SQL error: %s\n", errMsg);
+	       	//fprintf(stderr, "SQL error: %s\n", errMsg);
 		sqlite3_close(db);
 		return -1;
 	}
@@ -130,7 +130,7 @@ int add_whitelist_entry(int country_code, int area_code, unsigned long long numb
 	rc = sqlite3_exec(db, stmt, NULL, 0, &errMsg);
 	if ( SQLITE_OK != rc ) {
 		// TODO: Don't print stuff to stderr or stderr
-	       	fprintf(stderr, "SQL error: %s\n", errMsg);
+	       	//fprintf(stderr, "SQL error: %s\n", errMsg);
 		sqlite3_close(db);
 		return -1;
 	}

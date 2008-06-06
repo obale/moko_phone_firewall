@@ -29,10 +29,13 @@ libphonefirewall.so: $(SRCDIR)/phonefirewall_administration.o
 	$(CC) -shared $(SRCDIR)/phonefirewall_administration.o -o $(LIBDIR)/$@
 
 pf_daemon.o: $(SRCDIR)/pf_daemon.c $(SRCDIR)/libphonefirewall.h
-	$(CC) $(CFLAGS) -c $(SRCDIR)/pf_daemon -o $(SRCDIR)/$@
+	$(CC) $(CFLAGS) `pkg-config --cflags --libs dbus-1` -c $(SRCDIR)/pf_daemon -o $(SRCDIR)/$@
 
-pf_daemon: $(SRCDIR)/pf_daemon.o
-	$(CC) $(SRCDIR)/pf_daemon.o -o $(BINDIR)/$@
+#pf_daemon: $(SRCDIR)/pf_daemon.o
+#	$(CC) `pkg-config --cflags --libs dbus-1` $(SRCDIR)/pf_daemon.o -o $(BINDIR)/$@
+
+pf_daemon: $(SRCDIR)/pf_daemon.c
+	$(CC) `pkg-config --cflags --libs dbus-1` $(SRCDIR)/pf_daemon.c -o $(BINDIR)/$@
 
 
 # 

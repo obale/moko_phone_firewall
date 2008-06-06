@@ -1,5 +1,21 @@
 2008-06-06 Alex Oberhauser <oberhauseralex@networld.to>
 
+	* src/pf_daemon.c:
+	Beginning with the dbus implementation in the daemon.
+
+		- Written a function which listen on method calls. (Not tested
+		yet)
+
+	* src_test/testphonefirewall.c:
+	Adding a second suite which tests the daemon.
+
+	* src/phonefirewall_administration.c:
+	Commenting out the stderr messages if something fails. Is better to
+	write this messages in a logfile or ignore them, because the code will
+	be used as a library.
+
+2008-06-06 Alex Oberhauser <oberhauseralex@networld.to>
+
 	* src/phonefirewall_administration.c:
 	Fixing the check_function:
 		- Deleting the check_callback function
