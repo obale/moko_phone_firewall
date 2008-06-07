@@ -1,0 +1,106 @@
+\hypertarget{phonefirewall__search_8c}{
+\section{phonefirewall\_\-search.c File Reference}
+\label{phonefirewall__search_8c}\index{phonefirewall\_\-search.c@{phonefirewall\_\-search.c}}
+}
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include $<$errno.h$>$}\par
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$sqlite3.h$>$}\par
+{\tt \#include \char`\"{}libphonefirewall.h\char`\"{}}\par
+
+
+Include dependency graph for phonefirewall\_\-search.c:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=249pt]{phonefirewall__search_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+struct \hyperlink{structentry}{entry} $\ast$ \hyperlink{phonefirewall__search_8c_04b29323de592cc442250d7c952213de}{get\_\-blacklist\_\-entry\_\-by\_\-name} (char $\ast$name)
+\item 
+struct \hyperlink{structentry}{entry} $\ast$ \hyperlink{phonefirewall__search_8c_80b7f603605d9ea57e83847bed7840f3}{get\_\-blacklist\_\-entry\_\-by\_\-number} (int country\_\-code, int area\_\-code, unsigned long long number)
+\item 
+struct \hyperlink{structentry}{entry} $\ast$ \hyperlink{phonefirewall__search_8c_f7f20dcd932db52fce6beac057995533}{get\_\-whitelist\_\-entry\_\-by\_\-name} (char $\ast$name)
+\item 
+struct \hyperlink{structentry}{entry} $\ast$ \hyperlink{phonefirewall__search_8c_9569cf612525d13ec3443a5df88afe78}{get\_\-whitelist\_\-entry\_\-by\_\-number} (int country\_\-code, int area\_\-code, unsigned long long number)
+\end{CompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{phonefirewall__search_8c_04b29323de592cc442250d7c952213de}{
+\index{phonefirewall\_\-search.c@{phonefirewall\_\-search.c}!get\_\-blacklist\_\-entry\_\-by\_\-name@{get\_\-blacklist\_\-entry\_\-by\_\-name}}
+\index{get\_\-blacklist\_\-entry\_\-by\_\-name@{get\_\-blacklist\_\-entry\_\-by\_\-name}!phonefirewall_search.c@{phonefirewall\_\-search.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}struct {\bf entry}$\ast$ get\_\-blacklist\_\-entry\_\-by\_\-name (char $\ast$ {\em name})\hspace{0.3cm}{\tt  \mbox{[}read\mbox{]}}}}
+\label{phonefirewall__search_8c_04b29323de592cc442250d7c952213de}
+
+
+Search a entrie by name.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em name}]The name of the person which is blocked.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]\hyperlink{structentry}{entry} Returns the found \hyperlink{structentry}{entry}. \end{Desc}
+
+
+Definition at line 27 of file phonefirewall\_\-search.c.\hypertarget{phonefirewall__search_8c_80b7f603605d9ea57e83847bed7840f3}{
+\index{phonefirewall\_\-search.c@{phonefirewall\_\-search.c}!get\_\-blacklist\_\-entry\_\-by\_\-number@{get\_\-blacklist\_\-entry\_\-by\_\-number}}
+\index{get\_\-blacklist\_\-entry\_\-by\_\-number@{get\_\-blacklist\_\-entry\_\-by\_\-number}!phonefirewall_search.c@{phonefirewall\_\-search.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}struct {\bf entry}$\ast$ get\_\-blacklist\_\-entry\_\-by\_\-number (int {\em country\_\-code}, int {\em area\_\-code}, unsigned long long {\em number})\hspace{0.3cm}{\tt  \mbox{[}read\mbox{]}}}}
+\label{phonefirewall__search_8c_80b7f603605d9ea57e83847bed7840f3}
+
+
+Search a entrie by number (country code + area code + number).
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em country\_\-code}]The country code (for example 39 for Italy, 43 for Austria, and so one) \item[{\em area\_\-code}]The area code which indicates your mobile operator. \item[{\em number}]The telephone number of the person (without country and area code.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]\hyperlink{structentry}{entry} Returns the found \hyperlink{structentry}{entry}. \end{Desc}
+
+
+Definition at line 30 of file phonefirewall\_\-search.c.\hypertarget{phonefirewall__search_8c_f7f20dcd932db52fce6beac057995533}{
+\index{phonefirewall\_\-search.c@{phonefirewall\_\-search.c}!get\_\-whitelist\_\-entry\_\-by\_\-name@{get\_\-whitelist\_\-entry\_\-by\_\-name}}
+\index{get\_\-whitelist\_\-entry\_\-by\_\-name@{get\_\-whitelist\_\-entry\_\-by\_\-name}!phonefirewall_search.c@{phonefirewall\_\-search.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}struct {\bf entry}$\ast$ get\_\-whitelist\_\-entry\_\-by\_\-name (char $\ast$ {\em name})\hspace{0.3cm}{\tt  \mbox{[}read\mbox{]}}}}
+\label{phonefirewall__search_8c_f7f20dcd932db52fce6beac057995533}
+
+
+Search a entrie by name.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em name}]The name of the person which is accepted.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]\hyperlink{structentry}{entry} Returns the found \hyperlink{structentry}{entry}. \end{Desc}
+
+
+Definition at line 33 of file phonefirewall\_\-search.c.\hypertarget{phonefirewall__search_8c_9569cf612525d13ec3443a5df88afe78}{
+\index{phonefirewall\_\-search.c@{phonefirewall\_\-search.c}!get\_\-whitelist\_\-entry\_\-by\_\-number@{get\_\-whitelist\_\-entry\_\-by\_\-number}}
+\index{get\_\-whitelist\_\-entry\_\-by\_\-number@{get\_\-whitelist\_\-entry\_\-by\_\-number}!phonefirewall_search.c@{phonefirewall\_\-search.c}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}struct {\bf entry}$\ast$ get\_\-whitelist\_\-entry\_\-by\_\-number (int {\em country\_\-code}, int {\em area\_\-code}, unsigned long long {\em number})\hspace{0.3cm}{\tt  \mbox{[}read\mbox{]}}}}
+\label{phonefirewall__search_8c_9569cf612525d13ec3443a5df88afe78}
+
+
+Search a entrie by number (country code + area code + number).
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em country\_\-code}]The country code (for example 39 for Italy, 43 for Austria, and so one) \item[{\em area\_\-code}]The area code which indicates your mobile operator. \item[{\em number}]The telephone number of the person (without country and area code.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]\hyperlink{structentry}{entry} Returns the found \hyperlink{structentry}{entry}. \end{Desc}
+
+
+Definition at line 36 of file phonefirewall\_\-search.c.

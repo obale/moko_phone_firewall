@@ -1,5 +1,5 @@
 -- *******************************************************************
---  examLog: Script for creating log table 
+--  phonefirewall: Script for creating black- and whitelist.
 --  Usage:
 --        $ sqlite3 db/phone-firewall.db < phonefirewall.sql
 --

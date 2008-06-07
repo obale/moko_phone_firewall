@@ -1,0 +1,118 @@
+.TH "phonefirewall_search.c" 3 "7 Jun 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+phonefirewall_search.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdio.h>\fP
+.br
+\fC#include <stdlib.h>\fP
+.br
+\fC#include <errno.h>\fP
+.br
+\fC#include <string.h>\fP
+.br
+\fC#include <sqlite3.h>\fP
+.br
+\fC#include 'libphonefirewall.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "struct \fBentry\fP * \fBget_blacklist_entry_by_name\fP (char *name)"
+.br
+.ti -1c
+.RI "struct \fBentry\fP * \fBget_blacklist_entry_by_number\fP (int country_code, int area_code, unsigned long long number)"
+.br
+.ti -1c
+.RI "struct \fBentry\fP * \fBget_whitelist_entry_by_name\fP (char *name)"
+.br
+.ti -1c
+.RI "struct \fBentry\fP * \fBget_whitelist_entry_by_number\fP (int country_code, int area_code, unsigned long long number)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "struct \fBentry\fP* get_blacklist_entry_by_name (char * name)\fC [read]\fP"
+.PP
+Search a entrie by name.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the person which is blocked.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBentry\fP Returns the found \fBentry\fP. 
+.RE
+.PP
+
+.PP
+Definition at line 27 of file phonefirewall_search.c.
+.SS "struct \fBentry\fP* get_blacklist_entry_by_number (int country_code, int area_code, unsigned long long number)\fC [read]\fP"
+.PP
+Search a entrie by number (country code + area code + number).
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcountry_code\fP The country code (for example 39 for Italy, 43 for Austria, and so one) 
+.br
+\fIarea_code\fP The area code which indicates your mobile operator. 
+.br
+\fInumber\fP The telephone number of the person (without country and area code.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBentry\fP Returns the found \fBentry\fP. 
+.RE
+.PP
+
+.PP
+Definition at line 30 of file phonefirewall_search.c.
+.SS "struct \fBentry\fP* get_whitelist_entry_by_name (char * name)\fC [read]\fP"
+.PP
+Search a entrie by name.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the person which is accepted.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBentry\fP Returns the found \fBentry\fP. 
+.RE
+.PP
+
+.PP
+Definition at line 33 of file phonefirewall_search.c.
+.SS "struct \fBentry\fP* get_whitelist_entry_by_number (int country_code, int area_code, unsigned long long number)\fC [read]\fP"
+.PP
+Search a entrie by number (country code + area code + number).
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcountry_code\fP The country code (for example 39 for Italy, 43 for Austria, and so one) 
+.br
+\fIarea_code\fP The area code which indicates your mobile operator. 
+.br
+\fInumber\fP The telephone number of the person (without country and area code.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBentry\fP Returns the found \fBentry\fP. 
+.RE
+.PP
+
+.PP
+Definition at line 36 of file phonefirewall_search.c.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Phone Firewall from the source code.

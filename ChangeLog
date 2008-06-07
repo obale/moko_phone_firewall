@@ -1,3 +1,26 @@
+2008-06-07 Alex Oberhauser <oberhauseralex@networld.to>
+	
+	* doc/*:
+	Updating the documentation.
+
+	* src/phonefirewall_search.c:
+	Adding a source file for the implementation of the search functions.
+
+	* src/pf_daemon.c:
+	Moving the function dbus_listen() to the end and adding add the
+	beginning an function prototype.
+
+	* src/libphonefirewall.h:
+	Fixing the comment to the check_*_entry() return statement.
+
+	* README:
+	Adding the command for the compiling process of the daemon.
+	Adding the link to our modified toolchain (with sqlite3)
+
+	* TODO:
+	Marking the remove-task and the check-function-bug as DONE
+	respectively FIXED.
+
 2008-06-06 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* src/pf_daemon.c:

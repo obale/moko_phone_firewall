@@ -98,7 +98,7 @@ int rm_blacklist_entry(int country_code, int area_code, unsigned long long numbe
  * choosen.<br>
  * The value "PRIO_ALL" stands for all priorities.
  *
- * @return If noting is found NULL, otherwise the number.
+ * @return If the number was found 1, otherwise 0.
  */
 int check_blacklist_entry(int country_code, int area_code, unsigned long long number, int priority);
 
@@ -165,7 +165,7 @@ int rm_whitelist_entry(int country_code, int area_code, unsigned long long numbe
  * choosen.<br>
  * The value "PRIO_ALL" stands for all priorities.
  *
- * @return If noting is found NULL, otherwise the number.
+ * @return If the number was found 1, otherwise 0.
  */
 int check_whitelist_entry(int country_code, int area_code, unsigned long long number, int priority);
 

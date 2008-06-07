@@ -1,0 +1,90 @@
+.TH "pf_daemon.c" 3 "7 Jun 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+pf_daemon.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdio.h>\fP
+.br
+\fC#include <stdlib.h>\fP
+.br
+\fC#include <unistd.h>\fP
+.br
+\fC#include <errno.h>\fP
+.br
+\fC#include <stdbool.h>\fP
+.br
+\fC#include <dbus/dbus.h>\fP
+.br
+\fC#include 'libphonefirewall.h'\fP
+.br
+
+.SS "Defines"
+
+.in +1c
+.ti -1c
+.RI "#define \fBLOCKFILE\fP   '.lock'"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBstart_daemon\fP ()"
+.br
+.ti -1c
+.RI "void \fBstop_daemon\fP ()"
+.br
+.ti -1c
+.RI "void \fBdbus_listen\fP ()"
+.br
+.ti -1c
+.RI "int \fBmain\fP (int argc, char **argv)"
+.br
+.in -1c
+.SH "Define Documentation"
+.PP 
+.SS "#define LOCKFILE   '.lock'"
+.PP
+Definition at line 9 of file pf_daemon.c.
+.PP
+Referenced by start_daemon(), and stop_daemon().
+.SH "Function Documentation"
+.PP 
+.SS "void dbus_listen ()"
+.PP
+Function that provides method calls.
+.PP
+Bus name: to.networld.moksec.phonefirewall Object name: to.networld.moksec.phonefirewall.Object interface: to.networld.moksec.phonefirewall.Checking methods: checkblacklist(...) checkwhitelist(...) 
+.PP
+Definition at line 75 of file pf_daemon.c.
+.PP
+Referenced by main().
+.SS "int main (int argc, char ** argv)"
+.PP
+Definition at line 34 of file pf_daemon.c.
+.PP
+References dbus_listen(), start_daemon(), and stop_daemon().
+.SS "void start_daemon ()"
+.PP
+Starts the program as a daemon and creates a lockfile (specified in the LOCKFILE constant). So it's impossible to start the daemon twice. 
+.PP
+Definition at line 45 of file pf_daemon.c.
+.PP
+References LOCKFILE.
+.PP
+Referenced by main().
+.SS "void stop_daemon ()"
+.PP
+Stops the daemon and deletes the lockfile, so a new instance can be started. 
+.PP
+Definition at line 69 of file pf_daemon.c.
+.PP
+References LOCKFILE.
+.PP
+Referenced by main().
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Phone Firewall from the source code.

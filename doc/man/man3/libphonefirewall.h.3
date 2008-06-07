@@ -1,4 +1,4 @@
-.TH "libphonefirewall.h" 3 "19 May 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
+.TH "libphonefirewall.h" 3 "7 Jun 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -10,18 +10,41 @@ libphonefirewall.h \- API of the phone firewall.
 
 .in +1c
 .ti -1c
-.RI "struct \fBentry\fP"
+.RI "struct \fBEntry\fP"
 .br
-.RI "\fIIncludes all informations for an \fBentry\fP. \fP"
 .in -1c
 .SS "Defines"
 
 .in +1c
 .ti -1c
+.RI "#define \fBPRIO_ALL\fP   -999"
+.br
+.ti -1c
+.RI "#define \fBDB_FILE\fP   'db/phone-firewall.db'"
+.br
+.ti -1c
+.RI "#define \fBSTMT_SIZE\fP   1024"
+.br
+.ti -1c
 .RI "#define \fBMAX_LINE_LENGTH\fP   512"
 .br
 .ti -1c
-.RI "#define \fBPRIO_ALL\fP   -999"
+.RI "#define \fBTB_COUNTRYCODE\fP   'countrycode'"
+.br
+.ti -1c
+.RI "#define \fBTB_AREACODE\fP   'areacode'"
+.br
+.ti -1c
+.RI "#define \fBTB_NUMBER\fP   'number'"
+.br
+.ti -1c
+.RI "#define \fBTB_NAME\fP   'name'"
+.br
+.ti -1c
+.RI "#define \fBTB_REASON\fP   'reason'"
+.br
+.ti -1c
+.RI "#define \fBTB_PRIORITY\fP   'priority'"
 .br
 .in -1c
 .SS "Functions"
@@ -31,10 +54,10 @@ libphonefirewall.h \- API of the phone firewall.
 .RI "int \fBadd_blacklist_entry\fP (int country_code, int area_code, unsigned long long number, char *name, char *reason, int priority)"
 .br
 .ti -1c
-.RI "int \fBrm_blacklist_entry\fP (unsigned long long number)"
+.RI "int \fBrm_blacklist_entry\fP (int country_code, int area_code, unsigned long long number)"
 .br
 .ti -1c
-.RI "char * \fBcheck_blacklist_entry\fP (int country_code, int area_code, unsigned long long number, int priority)"
+.RI "int \fBcheck_blacklist_entry\fP (int country_code, int area_code, unsigned long long number, int priority)"
 .br
 .ti -1c
 .RI "int \fBadd_whitelist_entry\fP (int country_code, int area_code, unsigned long long number, char *name, char *reason, int priority)"
@@ -46,16 +69,23 @@ libphonefirewall.h \- API of the phone firewall.
 .RI "struct \fBentry\fP * \fBget_blacklist_entry_by_number\fP (int country_code, int area_code, unsigned long long number)"
 .br
 .ti -1c
-.RI "int \fBrm_whitelist_entry\fP (unsigned long long number)"
+.RI "int \fBrm_whitelist_entry\fP (int country_code, int area_code, unsigned long long number)"
 .br
 .ti -1c
-.RI "char * \fBcheck_whitelist_entry\fP (int country_code, int area_code, unsigned long long number, int priority)"
+.RI "int \fBcheck_whitelist_entry\fP (int country_code, int area_code, unsigned long long number, int priority)"
 .br
 .ti -1c
 .RI "struct \fBentry\fP * \fBget_whitelist_entry_by_name\fP (char *name)"
 .br
 .ti -1c
 .RI "struct \fBentry\fP * \fBget_whitelist_entry_by_number\fP (int country_code, int area_code, unsigned long long number)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "struct \fBEntry\fP \fBentry\fP"
 .br
 .in -1c
 .SH "Detailed Description"
@@ -67,23 +97,59 @@ API of the phone firewall.
 Alex Oberhauser
 .RE
 .PP
-The header file of the Phone Firewall. Blocks or accepts incoming phone calls, so it's possible to prevent disturbing phone calls. Provides a API which can used by other application to build nice programs.
-.PP
-Implemented for the OpenMoko framework. 
+The header file of the Phone Firewall. Blocks or accepts incoming phone calls, so it's possible to prevent disturbing phone calls. Provides a API which can used by other application to build nice programs. 
 .PP
 Definition in file \fBlibphonefirewall.h\fP.
 .SH "Define Documentation"
 .PP 
-.SS "#define MAX_LINE_LENGTH   512"
+.SS "#define DB_FILE   'db/phone-firewall.db'"
 .PP
 Definition at line 33 of file libphonefirewall.h.
 .PP
-Referenced by check_blacklist_entry(), and check_whitelist_entry().
+Referenced by add_blacklist_entry(), add_whitelist_entry(), check_blacklist_entry(), check_whitelist_entry(), rm_blacklist_entry(), and rm_whitelist_entry().
+.SS "#define MAX_LINE_LENGTH   512"
+.PP
+Definition at line 35 of file libphonefirewall.h.
 .SS "#define PRIO_ALL   -999"
+.PP
+Definition at line 32 of file libphonefirewall.h.
+.PP
+Referenced by add_blacklist_entry(), add_whitelist_entry(), and evaluate_stmt().
+.SS "#define STMT_SIZE   1024"
 .PP
 Definition at line 34 of file libphonefirewall.h.
 .PP
-Referenced by add_blacklist_entry(), add_whitelist_entry(), check_blacklist_entry(), and check_whitelist_entry().
+Referenced by add_blacklist_entry(), add_whitelist_entry(), check_blacklist_entry(), check_whitelist_entry(), rm_blacklist_entry(), and rm_whitelist_entry().
+.SS "#define TB_AREACODE   'areacode'"
+.PP
+Definition at line 38 of file libphonefirewall.h.
+.PP
+Referenced by add_blacklist_entry(), add_whitelist_entry(), check_blacklist_entry(), check_whitelist_entry(), evaluate_stmt(), rm_blacklist_entry(), and rm_whitelist_entry().
+.SS "#define TB_COUNTRYCODE   'countrycode'"
+.PP
+Definition at line 37 of file libphonefirewall.h.
+.PP
+Referenced by add_blacklist_entry(), add_whitelist_entry(), check_blacklist_entry(), check_whitelist_entry(), evaluate_stmt(), rm_blacklist_entry(), and rm_whitelist_entry().
+.SS "#define TB_NAME   'name'"
+.PP
+Definition at line 40 of file libphonefirewall.h.
+.PP
+Referenced by add_blacklist_entry(), and add_whitelist_entry().
+.SS "#define TB_NUMBER   'number'"
+.PP
+Definition at line 39 of file libphonefirewall.h.
+.PP
+Referenced by add_blacklist_entry(), add_whitelist_entry(), check_blacklist_entry(), check_whitelist_entry(), evaluate_stmt(), rm_blacklist_entry(), and rm_whitelist_entry().
+.SS "#define TB_PRIORITY   'priority'"
+.PP
+Definition at line 42 of file libphonefirewall.h.
+.PP
+Referenced by add_blacklist_entry(), add_whitelist_entry(), check_blacklist_entry(), check_whitelist_entry(), and evaluate_stmt().
+.SS "#define TB_REASON   'reason'"
+.PP
+Definition at line 41 of file libphonefirewall.h.
+.PP
+Referenced by add_blacklist_entry(), and add_whitelist_entry().
 .SH "Function Documentation"
 .PP 
 .SS "int add_blacklist_entry (int country_code, int area_code, unsigned long long number, char * name, char * reason, int priority)"
@@ -114,9 +180,9 @@ If all goes well 0 (zero) otherwise an errno code.
 .PP
 
 .PP
-Definition at line 40 of file phonefirewall_administration.c.
+Definition at line 73 of file phonefirewall_administration.c.
 .PP
-References BLACKLIST_PREFIX, check_blacklist_entry(), DELIM, filename, PRIO_ALL, and set_filename().
+References DB_FILE, PRIO_ALL, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NAME, TB_NUMBER, TB_PRIORITY, and TB_REASON.
 .SS "int add_whitelist_entry (int country_code, int area_code, unsigned long long number, char * name, char * reason, int priority)"
 .PP
 Add a number to the whitelist. The number will be accepted after that.
@@ -145,10 +211,10 @@ If all goes well 0 (zero) otherwise an errno code.
 .PP
 
 .PP
-Definition at line 57 of file phonefirewall_administration.c.
+Definition at line 108 of file phonefirewall_administration.c.
 .PP
-References check_whitelist_entry(), DELIM, filename, PRIO_ALL, set_filename(), and WHITELIST_PREFIX.
-.SS "char* check_blacklist_entry (int country_code, int area_code, unsigned long long number, int priority)"
+References DB_FILE, PRIO_ALL, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NAME, TB_NUMBER, TB_PRIORITY, and TB_REASON.
+.SS "int check_blacklist_entry (int country_code, int area_code, unsigned long long number, int priority)"
 .PP
 Checks if a number is on the blacklist.
 .PP
@@ -167,17 +233,15 @@ Checks if a number is on the blacklist.
 .PP
 \fBReturns:\fP
 .RS 4
-If noting is found NULL, otherwise the number. 
+If the number was found 1, otherwise 0. 
 .RE
 .PP
 
 .PP
-Definition at line 81 of file phonefirewall_administration.c.
+Definition at line 210 of file phonefirewall_administration.c.
 .PP
-References BLACKLIST_PREFIX, DELIM, filename, MAX_LINE_LENGTH, PRIO_ALL, and set_filename().
-.PP
-Referenced by add_blacklist_entry().
-.SS "char* check_whitelist_entry (int country_code, int area_code, unsigned long long number, int priority)"
+References Entry::area_code, Entry::country_code, DB_FILE, evaluate_stmt(), Entry::number, Entry::priority, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NUMBER, and TB_PRIORITY.
+.SS "int check_whitelist_entry (int country_code, int area_code, unsigned long long number, int priority)"
 .PP
 Checks if a number is on the whitelist.
 .PP
@@ -196,16 +260,14 @@ Checks if a number is on the whitelist.
 .PP
 \fBReturns:\fP
 .RS 4
-If noting is found NULL, otherwise the number. 
+If the number was found 1, otherwise 0. 
 .RE
 .PP
 
 .PP
-Definition at line 121 of file phonefirewall_administration.c.
+Definition at line 261 of file phonefirewall_administration.c.
 .PP
-References DELIM, filename, MAX_LINE_LENGTH, PRIO_ALL, set_filename(), and WHITELIST_PREFIX.
-.PP
-Referenced by add_whitelist_entry().
+References Entry::area_code, Entry::country_code, DB_FILE, evaluate_stmt(), Entry::number, Entry::priority, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NUMBER, and TB_PRIORITY.
 .SS "struct \fBentry\fP* get_blacklist_entry_by_name (char * name)\fC [read]\fP"
 .PP
 Search a entrie by name.
@@ -221,6 +283,8 @@ Search a entrie by name.
 .RE
 .PP
 
+.PP
+Definition at line 27 of file phonefirewall_search.c.
 .SS "struct \fBentry\fP* get_blacklist_entry_by_number (int country_code, int area_code, unsigned long long number)\fC [read]\fP"
 .PP
 Search a entrie by number (country code + area code + number).
@@ -240,6 +304,8 @@ Search a entrie by number (country code + area code + number).
 .RE
 .PP
 
+.PP
+Definition at line 30 of file phonefirewall_search.c.
 .SS "struct \fBentry\fP* get_whitelist_entry_by_name (char * name)\fC [read]\fP"
 .PP
 Search a entrie by name.
@@ -255,6 +321,8 @@ Search a entrie by name.
 .RE
 .PP
 
+.PP
+Definition at line 33 of file phonefirewall_search.c.
 .SS "struct \fBentry\fP* get_whitelist_entry_by_number (int country_code, int area_code, unsigned long long number)\fC [read]\fP"
 .PP
 Search a entrie by number (country code + area code + number).
@@ -274,7 +342,9 @@ Search a entrie by number (country code + area code + number).
 .RE
 .PP
 
-.SS "int rm_blacklist_entry (unsigned long long number)"
+.PP
+Definition at line 36 of file phonefirewall_search.c.
+.SS "int rm_blacklist_entry (int country_code, int area_code, unsigned long long number)"
 .PP
 Removes a blocked number from the blacklist.
 .PP
@@ -290,8 +360,10 @@ If all goes right 0, otherwise an error code.
 .PP
 
 .PP
-Definition at line 73 of file phonefirewall_administration.c.
-.SS "int rm_whitelist_entry (unsigned long long number)"
+Definition at line 143 of file phonefirewall_administration.c.
+.PP
+References DB_FILE, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, and TB_NUMBER.
+.SS "int rm_whitelist_entry (int country_code, int area_code, unsigned long long number)"
 .PP
 Removes a accepted number from the whitelist.
 .PP
@@ -307,7 +379,13 @@ If all goes right 0, otherwise an error code.
 .PP
 
 .PP
-Definition at line 77 of file phonefirewall_administration.c.
+Definition at line 176 of file phonefirewall_administration.c.
+.PP
+References DB_FILE, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, and TB_NUMBER.
+.SH "Variable Documentation"
+.PP 
+.SS "struct \fBEntry\fP  \fBentry\fP"
+.PP
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Phone Firewall from the source code.

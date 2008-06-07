@@ -28,7 +28,7 @@ http://moksec.networld.to
 Quickstart
 ==========
 
-If you want start quickly you can use the "./build.sh" script. If something
+If you want start quickly you can use the "./run.sh" script. If something
 goes wrong you find under log/ the detailed output of the compile process.
 
 
@@ -40,6 +40,8 @@ framework ([1] (i686) and [2] (x86_64)), you need also the CUnit framework for
 the testing (tested with CUnit 2.1). If you have installed the toolchain into the 
 standart path you can execute the script "env-export" with the command and after 
 that compile all: 
+ATTETNTION: To compile the library for the OpenMoko you will need the
+toolchain [5], with sqlite3 libraries included.
 
 	$ . env-export
 	$ make
@@ -55,6 +57,7 @@ If you want compile only special parts use:
 	$ make test                   # Compiles only the test suite.
 	$ make libphonefirewall.so    # Compiles only the library for the ARM
 	                              # architecture.
+	$ make pf_daemon	      # Compiles the daemon.
 
 
 Troubleshouting
@@ -72,3 +75,4 @@ Links
 [2]-http://downloads.openmoko.org/toolchains/openmoko-x86_64-arm-linux-gnueabi-toolchain.tar.bz2
 [3]-http://moksec.networld.to
 [4]-http://moko.networld.to
+[5]-http://moksec.networld.to/sources/toolchain-i686-arm-linux-gnueabi-toolchain-with-sqlite3.tar.gz
