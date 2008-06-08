@@ -1,0 +1,7 @@
+<area shape="rect" href="$logfile_8h.html#f71f5daf2025b4e30a18ccedf7c34863" title="write_logentry" alt="" coords="127,132,241,159">
+<area shape="rect" href="$phonefirewall__administration_8c.html#36847ed3459e2a89038772ece42a017d" title="add_blacklist_entry" alt="" coords="300,6,449,32">
+<area shape="rect" href="$phonefirewall__administration_8c.html#eec16cb88eb546b1a2490e6716d75f8b" title="add_whitelist_entry" alt="" coords="299,56,451,83">
+<area shape="rect" href="$phonefirewall__administration_8c.html#f28c4b8fd3fdfe5e70df391cf40ca9f2" title="check_blacklist_entry" alt="" coords="293,107,456,134">
+<area shape="rect" href="$phonefirewall__administration_8c.html#f144fe0aa2eb227fe646da21048388a5" title="check_whitelist_entry" alt="" coords="292,158,457,184">
+<area shape="rect" href="$phonefirewall__administration_8c.html#4eee00c845ad4a60eaccef8c41151ea4" title="rm_blacklist_entry" alt="" coords="304,208,445,235">
+<area shape="rect" href="$phonefirewall__administration_8c.html#307d220ee8e63926af279460532787ff" title="rm_whitelist_entry" alt="" coords="303,259,447,286">

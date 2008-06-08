@@ -8,13 +8,14 @@
 {\tt \#include $<$string.h$>$}\par
 {\tt \#include $<$sqlite3.h$>$}\par
 {\tt \#include \char`\"{}libphonefirewall.h\char`\"{}}\par
+{\tt \#include \char`\"{}logfile.h\char`\"{}}\par
 
 
 Include dependency graph for phonefirewall\_\-administration.c:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=249pt]{phonefirewall__administration_8c__incl}
+\includegraphics[width=285pt]{phonefirewall__administration_8c__incl}
 \end{center}
 \end{figure}
 \subsection*{Functions}
@@ -56,9 +57,18 @@ Add a number to the blacklist. The number will be blocked after that.
 \item[Returns:]If all goes well 0 (zero) otherwise an errno code. \end{Desc}
 
 
-Definition at line 73 of file phonefirewall\_\-administration.c.
+Definition at line 74 of file phonefirewall\_\-administration.c.
 
-References DB\_\-FILE, PRIO\_\-ALL, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NAME, TB\_\-NUMBER, TB\_\-PRIORITY, and TB\_\-REASON.\hypertarget{phonefirewall__administration_8c_eec16cb88eb546b1a2490e6716d75f8b}{
+References DB\_\-FILE, ERR\_\-FLAG, MAX\_\-LINE\_\-LENGTH, PRIO\_\-ALL, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NAME, TB\_\-NUMBER, TB\_\-PRIORITY, TB\_\-REASON, and write\_\-logentry().
+
+Here is the call graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=185pt]{phonefirewall__administration_8c_36847ed3459e2a89038772ece42a017d_cgraph}
+\end{center}
+\end{figure}
+\hypertarget{phonefirewall__administration_8c_eec16cb88eb546b1a2490e6716d75f8b}{
 \index{phonefirewall\_\-administration.c@{phonefirewall\_\-administration.c}!add\_\-whitelist\_\-entry@{add\_\-whitelist\_\-entry}}
 \index{add\_\-whitelist\_\-entry@{add\_\-whitelist\_\-entry}!phonefirewall_administration.c@{phonefirewall\_\-administration.c}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}int add\_\-whitelist\_\-entry (int {\em country\_\-code}, int {\em area\_\-code}, unsigned long long {\em number}, char $\ast$ {\em name}, char $\ast$ {\em reason}, int {\em priority})}}
@@ -77,9 +87,18 @@ Add a number to the whitelist. The number will be accepted after that.
 \item[Returns:]If all goes well 0 (zero) otherwise an errno code. \end{Desc}
 
 
-Definition at line 108 of file phonefirewall\_\-administration.c.
+Definition at line 110 of file phonefirewall\_\-administration.c.
 
-References DB\_\-FILE, PRIO\_\-ALL, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NAME, TB\_\-NUMBER, TB\_\-PRIORITY, and TB\_\-REASON.\hypertarget{phonefirewall__administration_8c_f28c4b8fd3fdfe5e70df391cf40ca9f2}{
+References DB\_\-FILE, ERR\_\-FLAG, MAX\_\-LINE\_\-LENGTH, PRIO\_\-ALL, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NAME, TB\_\-NUMBER, TB\_\-PRIORITY, TB\_\-REASON, and write\_\-logentry().
+
+Here is the call graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=186pt]{phonefirewall__administration_8c_eec16cb88eb546b1a2490e6716d75f8b_cgraph}
+\end{center}
+\end{figure}
+\hypertarget{phonefirewall__administration_8c_f28c4b8fd3fdfe5e70df391cf40ca9f2}{
 \index{phonefirewall\_\-administration.c@{phonefirewall\_\-administration.c}!check\_\-blacklist\_\-entry@{check\_\-blacklist\_\-entry}}
 \index{check\_\-blacklist\_\-entry@{check\_\-blacklist\_\-entry}!phonefirewall_administration.c@{phonefirewall\_\-administration.c}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}int check\_\-blacklist\_\-entry (int {\em country\_\-code}, int {\em area\_\-code}, unsigned long long {\em number}, int {\em priority})}}
@@ -98,15 +117,15 @@ Checks if a number is on the blacklist.
 \item[Returns:]If the number was found 1, otherwise 0. \end{Desc}
 
 
-Definition at line 210 of file phonefirewall\_\-administration.c.
+Definition at line 215 of file phonefirewall\_\-administration.c.
 
-References Entry::area\_\-code, Entry::country\_\-code, DB\_\-FILE, evaluate\_\-stmt(), Entry::number, Entry::priority, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NUMBER, and TB\_\-PRIORITY.
+References Entry::area\_\-code, Entry::country\_\-code, DB\_\-FILE, ERR\_\-FLAG, evaluate\_\-stmt(), INFO\_\-FLAG, MAX\_\-LINE\_\-LENGTH, Entry::number, Entry::priority, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NUMBER, TB\_\-PRIORITY, and write\_\-logentry().
 
 Here is the call graph for this function:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=146pt]{phonefirewall__administration_8c_f28c4b8fd3fdfe5e70df391cf40ca9f2_cgraph}
+\includegraphics[width=191pt]{phonefirewall__administration_8c_f28c4b8fd3fdfe5e70df391cf40ca9f2_cgraph}
 \end{center}
 \end{figure}
 \hypertarget{phonefirewall__administration_8c_f144fe0aa2eb227fe646da21048388a5}{
@@ -128,15 +147,15 @@ Checks if a number is on the whitelist.
 \item[Returns:]If the number was found 1, otherwise 0. \end{Desc}
 
 
-Definition at line 261 of file phonefirewall\_\-administration.c.
+Definition at line 270 of file phonefirewall\_\-administration.c.
 
-References Entry::area\_\-code, Entry::country\_\-code, DB\_\-FILE, evaluate\_\-stmt(), Entry::number, Entry::priority, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NUMBER, and TB\_\-PRIORITY.
+References Entry::area\_\-code, Entry::country\_\-code, DB\_\-FILE, ERR\_\-FLAG, evaluate\_\-stmt(), INFO\_\-FLAG, MAX\_\-LINE\_\-LENGTH, Entry::number, Entry::priority, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NUMBER, TB\_\-PRIORITY, and write\_\-logentry().
 
 Here is the call graph for this function:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=147pt]{phonefirewall__administration_8c_f144fe0aa2eb227fe646da21048388a5_cgraph}
+\includegraphics[width=192pt]{phonefirewall__administration_8c_f144fe0aa2eb227fe646da21048388a5_cgraph}
 \end{center}
 \end{figure}
 \hypertarget{phonefirewall__administration_8c_f306b60195d745190ef3e30e7d0a107e}{
@@ -148,7 +167,7 @@ Here is the call graph for this function:\nopagebreak
 
 
 
-Definition at line 27 of file phonefirewall\_\-administration.c.
+Definition at line 28 of file phonefirewall\_\-administration.c.
 
 References Entry::area\_\-code, Entry::country\_\-code, Entry::number, PRIO\_\-ALL, Entry::priority, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NUMBER, and TB\_\-PRIORITY.
 
@@ -179,9 +198,18 @@ Removes a blocked number from the blacklist.
 \item[Returns:]If all goes right 0, otherwise an error code. \end{Desc}
 
 
-Definition at line 143 of file phonefirewall\_\-administration.c.
+Definition at line 146 of file phonefirewall\_\-administration.c.
 
-References DB\_\-FILE, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, and TB\_\-NUMBER.\hypertarget{phonefirewall__administration_8c_307d220ee8e63926af279460532787ff}{
+References DB\_\-FILE, ERR\_\-FLAG, MAX\_\-LINE\_\-LENGTH, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NUMBER, and write\_\-logentry().
+
+Here is the call graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=182pt]{phonefirewall__administration_8c_4eee00c845ad4a60eaccef8c41151ea4_cgraph}
+\end{center}
+\end{figure}
+\hypertarget{phonefirewall__administration_8c_307d220ee8e63926af279460532787ff}{
 \index{phonefirewall\_\-administration.c@{phonefirewall\_\-administration.c}!rm\_\-whitelist\_\-entry@{rm\_\-whitelist\_\-entry}}
 \index{rm\_\-whitelist\_\-entry@{rm\_\-whitelist\_\-entry}!phonefirewall_administration.c@{phonefirewall\_\-administration.c}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}int rm\_\-whitelist\_\-entry (int {\em country\_\-code}, int {\em area\_\-code}, unsigned long long {\em number})}}
@@ -199,6 +227,14 @@ Removes a accepted number from the whitelist.
 \item[Returns:]If all goes right 0, otherwise an error code. \end{Desc}
 
 
-Definition at line 176 of file phonefirewall\_\-administration.c.
+Definition at line 180 of file phonefirewall\_\-administration.c.
 
-References DB\_\-FILE, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, and TB\_\-NUMBER.
+References DB\_\-FILE, ERR\_\-FLAG, MAX\_\-LINE\_\-LENGTH, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NUMBER, and write\_\-logentry().
+
+Here is the call graph for this function:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=183pt]{phonefirewall__administration_8c_307d220ee8e63926af279460532787ff_cgraph}
+\end{center}
+\end{figure}

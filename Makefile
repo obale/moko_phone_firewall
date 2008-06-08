@@ -9,9 +9,9 @@ LIBDIR = lib
 SRCTESTDIR = src_test
 BINTESTDIR = bin_test
 
-all: 	test
+test: logfile.o testphonefirewall_administration.o libtestphonefirewall.so testphonefirewall
 
-#all: 	libphonefirewall.so\
+all: 	libphonefirewall.so\
 	test
 
 .PHONY: doc
@@ -28,16 +28,15 @@ libphonefirewall.so: $(SRCDIR)/phonefirewall_administration.o
 	$(CC) -shared $(SRCDIR)/phonefirewall_administration.o -o $(LIBDIR)/$@
 
 pf_daemon.o: $(SRCDIR)/pf_daemon.c $(SRCDIR)/libphonefirewall.h
-	$(CC) $(CFLAGS) `pkg-config --cflags --libs dbus-1` -c $(SRCDIR)/pf_daemon -o $(SRCDIR)/$@
+	$(GCC) $(CFLAGS) `pkg-config --cflags --libs dbus-1` -c $(SRCDIR)/pf_daemon -o $(SRCDIR)/$@
 
 pf_daemon: $(SRCDIR)/pf_daemon.c
-	$(CC) `pkg-config --cflags --libs dbus-1` $(SRCDIR)/pf_daemon.c -o $(BINDIR)/$@
+	$(GCC) `pkg-config --cflags --libs dbus-1` $(SRCDIR)/pf_daemon.c -o $(BINDIR)/$@
 
 
 # 
 # Begining of the testing part.
 #
-test: logfile.o testphonefirewall_administration.o libtestphonefirewall.so testphonefirewall
 
 testphonefirewall: $(SRCTESTDIR)/testphonefirewall.c 
 	$(GCC) $(CLFLAGS) $(SRCTESTDIR)/testphonefirewall.c -L$(LIBDIR) $(TEST_LIB) -o $(BINTESTDIR)/$@

@@ -214,9 +214,9 @@ int rm_whitelist_entry (int country_code, int area_code, unsigned long long numb
 
 int check_blacklist_entry(int country_code, int area_code, unsigned long long number, int priority) {
 	sqlite3 *db;
-	char stmt[STMT_SIZE];   // The SQL statement as text string.
-	sqlite3_stmt *pp_stmt;  // The prepared statement
-	const char **p_tail;    // The unused part of stmt
+	char stmt[STMT_SIZE];       // The SQL statement as text string.
+	sqlite3_stmt *pp_stmt = 0;  // The prepared statement
+	const char **p_tail = 0;    // The unused part of stmt
 	int rc;
 	char logmsg[MAX_LINE_LENGTH];
 	int found_flag = 0;

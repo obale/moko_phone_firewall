@@ -28,8 +28,9 @@ http://moksec.networld.to
 Quickstart
 ==========
 
-If you want start quickly you can use the "./run.sh" script. If something
-goes wrong you find under log/ the detailed output of the compile process.
+Download our modified toolchain from [5], then you can use the "./run.sh"
+script. If something goes wrong you find under log/ the detailed output of the
+compile process.
 
 
 Starting 

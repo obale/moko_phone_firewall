@@ -1,5 +1,28 @@
 2008-06-08 Alex Oberhauser <oberhauseralex@networld.to>
 
+	* src/phonefirewall_administration.c:
+	Fixing the segmentation error: Initiating pp_stmt and p_tail with
+	zero.
+
+	* README:
+	Quickstart section: Adding a notice that our toolchain with sqlite3
+	included is needed.
+
+	* Makefile:
+	Fixing that the keyword "all" compiles all stuff and make without
+	compiles only the testsuite.
+
+	* src_test/testphonefirewall.c:
+	Adding a new suite for the search functions (Now there are 3 suites -
+	admin, search and daemon).
+
+	Removing the XXX comment.
+
+	* doc:
+	Updating the documentation.
+
+2008-06-08 Alex Oberhauser <oberhauseralex@networld.to>
+
 	* src/logfile.h
 	* src/logfile.c:
 	Adding a implementation for the code writting which can be used in all
