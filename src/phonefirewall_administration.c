@@ -23,6 +23,7 @@
 #include <string.h>
 #include <sqlite3.h>
 #include "libphonefirewall.h" 
+#include "logfile.h"
 
 int evaluate_stmt(sqlite3_stmt *pp_stmt, struct Entry *p_entry) {
 	int num_column;
@@ -66,7 +67,7 @@ int evaluate_stmt(sqlite3_stmt *pp_stmt, struct Entry *p_entry) {
 			} 
 		} 
 	}
-	
+
 	return found_flag;
 }
 
@@ -80,12 +81,13 @@ int add_blacklist_entry(int country_code, int area_code, unsigned long long numb
 	char *errMsg = 0;
 	char stmt[STMT_SIZE];
 	int rc;
+	char error[MAX_LINE_LENGTH];
 
 	rc = sqlite3_open(DB_FILE, &db);
 
 	if ( rc ) {
-		// TODO: Don't print stuff to stderr or stderr
-		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+		sprintf(error, "Can't open database: %s", sqlite3_errmsg(db));
+		write_logentry(error, "phonefirewall", ERR_FLAG);
 		sqlite3_close(db);
 		return -1;
 	}
@@ -94,8 +96,8 @@ int add_blacklist_entry(int country_code, int area_code, unsigned long long numb
 
 	rc = sqlite3_exec(db, stmt, NULL, 0, &errMsg);
 	if ( SQLITE_OK != rc ) {
-		// TODO: Don't print stuff to stderr or stderr
-	       	//fprintf(stderr, "SQL error: %s\n", errMsg);
+		sprintf(error, "SQL error: %s", sqlite3_errmsg(db));
+		write_logentry(error, "phonefirewall", ERR_FLAG);
 		sqlite3_close(db);
 		return -1;
 	}
@@ -115,12 +117,13 @@ int add_whitelist_entry(int country_code, int area_code, unsigned long long numb
 	char *errMsg = 0;
 	char stmt[STMT_SIZE];
 	int rc;
+	char error[MAX_LINE_LENGTH];
 
 	rc = sqlite3_open(DB_FILE, &db);
 
 	if ( rc ) {
-		// TODO: Don't print stuff to stderr or stderr
-		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+		sprintf(error, "Can't open database: %s", sqlite3_errmsg(db));
+		write_logentry(error, "phonefirewall", ERR_FLAG);
 		sqlite3_close(db);
 		return -1;
 	}
@@ -129,8 +132,8 @@ int add_whitelist_entry(int country_code, int area_code, unsigned long long numb
 
 	rc = sqlite3_exec(db, stmt, NULL, 0, &errMsg);
 	if ( SQLITE_OK != rc ) {
-		// TODO: Don't print stuff to stderr or stderr
-	       	//fprintf(stderr, "SQL error: %s\n", errMsg);
+		sprintf(error, "SQL error: %s", sqlite3_errmsg(db));
+		write_logentry(error, "phonefirewall", ERR_FLAG);
 		sqlite3_close(db);
 		return -1;
 	}
@@ -149,12 +152,13 @@ int rm_blacklist_entry (int country_code, int area_code, unsigned long long numb
 	char *errMsg = 0;
 	char stmt[STMT_SIZE];
 	int rc;
+	char error[MAX_LINE_LENGTH];
 
 	rc = sqlite3_open(DB_FILE, &db);
 
 	if ( rc ) {
-		// TODO: Don't print stuff to stderr or stderr
-		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+		sprintf(error, "Can't open database: %s", sqlite3_errmsg(db));
+		write_logentry(error, "phonefirewall", ERR_FLAG);
 		sqlite3_close(db);
 		return -1;
 	}
@@ -163,8 +167,8 @@ int rm_blacklist_entry (int country_code, int area_code, unsigned long long numb
 
 	rc = sqlite3_exec(db, stmt, NULL, 0, &errMsg);
 	if ( SQLITE_OK != rc ) {
-		// TODO: Don't print stuff to stderr or stderr
-	       	fprintf(stderr, "SQL error: %s\n", errMsg);
+		sprintf(error, "SQL error: %s", sqlite3_errmsg(db));
+		write_logentry(error, "phonefirewall", ERR_FLAG);
 		sqlite3_close(db);
 		return -1;
 	}
@@ -182,12 +186,13 @@ int rm_whitelist_entry (int country_code, int area_code, unsigned long long numb
 	char *errMsg = 0;
 	char stmt[STMT_SIZE];
 	int rc;
+	char error[MAX_LINE_LENGTH];
 
 	rc = sqlite3_open(DB_FILE, &db);
 
 	if ( rc ) {
-		// TODO: Don't print stuff to stderr or stderr
-		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+		sprintf(error, "Can't open database: %s", sqlite3_errmsg(db));
+		write_logentry(error, "phonefirewall", ERR_FLAG);
 		sqlite3_close(db);
 		return -1;
 	}
@@ -196,8 +201,8 @@ int rm_whitelist_entry (int country_code, int area_code, unsigned long long numb
 
 	rc = sqlite3_exec(db, stmt, NULL, 0, &errMsg);
 	if ( SQLITE_OK != rc ) {
-		// TODO: Don't print stuff to stderr or stderr
-	       	fprintf(stderr, "SQL error: %s\n", errMsg);
+		sprintf(error, "SQL error: %s", sqlite3_errmsg(db));
+		write_logentry(error, "phonefirewall", ERR_FLAG);
 		sqlite3_close(db);
 		return -1;
 	}
@@ -209,11 +214,11 @@ int rm_whitelist_entry (int country_code, int area_code, unsigned long long numb
 
 int check_blacklist_entry(int country_code, int area_code, unsigned long long number, int priority) {
 	sqlite3 *db;
-	char *errMsg = 0;
 	char stmt[STMT_SIZE];   // The SQL statement as text string.
 	sqlite3_stmt *pp_stmt;  // The prepared statement
 	const char **p_tail;    // The unused part of stmt
 	int rc;
+	char logmsg[MAX_LINE_LENGTH];
 	int found_flag = 0;
 
 	struct Entry *p_entry = &entry;
@@ -225,8 +230,8 @@ int check_blacklist_entry(int country_code, int area_code, unsigned long long nu
 	rc = sqlite3_open(DB_FILE, &db);
 
 	if ( rc ) {
-		// TODO: Don't print stuff to stderr or stderr
-		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+		sprintf(logmsg, "Can't open database: %s", sqlite3_errmsg(db));
+		write_logentry(logmsg, "phonefirewall", ERR_FLAG);
 		sqlite3_close(db);
 		return -1;
 	}
@@ -236,8 +241,8 @@ int check_blacklist_entry(int country_code, int area_code, unsigned long long nu
 	rc = sqlite3_prepare_v2(db, stmt, sizeof(stmt), &pp_stmt, p_tail);
 
 	if ( rc != SQLITE_OK ) {
-		// TODO: Don't print stuff to stderr or stderr
-		fprintf(stderr, "SQL error: %s\n", errMsg);
+		sprintf(logmsg, "SQL error: %s", sqlite3_errmsg(db));
+		write_logentry(logmsg, "phonefirewall", ERR_FLAG);
 		sqlite3_close(db);
 		return -1;
 	}
@@ -246,7 +251,11 @@ int check_blacklist_entry(int country_code, int area_code, unsigned long long nu
 		rc = sqlite3_step(pp_stmt);
 		if ( SQLITE_ROW == rc ) {
 			found_flag = evaluate_stmt(pp_stmt, p_entry);
-			if ( found_flag == 1) break;
+			if ( found_flag == 1) {
+				sprintf(logmsg, "Number \"+%d %d %llu\" blocked successfully.", country_code, area_code, number);
+				write_logentry(logmsg, "phonefirewall", INFO_FLAG);
+			       	break;
+			}
 		}
 	}
 
@@ -260,11 +269,11 @@ int check_blacklist_entry(int country_code, int area_code, unsigned long long nu
 
 int check_whitelist_entry(int country_code, int area_code, unsigned long long number, int priority) {
 	sqlite3 *db;
-	char *errMsg = 0;
 	char stmt[STMT_SIZE];       // The SQL statement as text string.
 	sqlite3_stmt *pp_stmt = 0;  // The prepared statement
 	const char **p_tail = 0;    // The unused part of stmt
 	int rc;
+	char logmsg[MAX_LINE_LENGTH];
 	int found_flag = 0;
 
 	struct Entry *p_entry = &entry;
@@ -276,8 +285,8 @@ int check_whitelist_entry(int country_code, int area_code, unsigned long long nu
 	rc = sqlite3_open(DB_FILE, &db);
 
 	if ( rc ) {
-		// TODO: Don't print stuff to stderr or stderr
-		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+		sprintf(logmsg, "Can't open database: %s", sqlite3_errmsg(db));
+		write_logentry(logmsg, "phonefirewall", ERR_FLAG);
 		sqlite3_close(db);
 		return -1;
 	}
@@ -287,8 +296,8 @@ int check_whitelist_entry(int country_code, int area_code, unsigned long long nu
 	rc = sqlite3_prepare_v2(db, stmt, sizeof(stmt), &pp_stmt, p_tail);
 
 	if ( rc != SQLITE_OK ) {
-		// TODO: Don't print stuff to stderr or stderr
-		fprintf(stderr, "SQL error: %s\n", errMsg);
+		sprintf(logmsg, "SQL error: %s", sqlite3_errmsg(db));
+		write_logentry(logmsg, "phonefirewall", ERR_FLAG);
 		sqlite3_close(db);
 		return -1;
 	}
@@ -297,7 +306,11 @@ int check_whitelist_entry(int country_code, int area_code, unsigned long long nu
 		rc = sqlite3_step(pp_stmt);
 		if ( SQLITE_ROW == rc ) {
 			found_flag = evaluate_stmt(pp_stmt, p_entry);
-			if ( found_flag == 1) break;
+			if ( found_flag == 1) {
+				sprintf(logmsg, "Number \"%d %d %llu\" accpeted successfully.", country_code, area_code, number);
+				write_logentry(logmsg, "phonefirewall", INFO_FLAG);
+			       	break;
+			}
 		}
 	}
 

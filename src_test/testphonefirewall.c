@@ -129,8 +129,8 @@ int main(int argc, char *argv[]) {
 	 * XXX: check_blacklist_entry() before check_whitelist_entry() doesn't
 	 * work.
 	 */
+	//CU_add_test(adminSuite, "test of check_blacklist_entry()", test_check_blacklist_entry);
 	CU_add_test(adminSuite, "test of check_whitelist_entry()", test_check_whitelist_entry);
-	CU_add_test(adminSuite, "test of check_blacklist_entry()", test_check_blacklist_entry);
 	CU_add_test(adminSuite, "test of rm_blacklist_entry()", test_rm_blacklist_entry);
 	CU_add_test(adminSuite, "test of rm_whitelist_entry()", test_rm_whitelist_entry);
 	

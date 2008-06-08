@@ -1,3 +1,29 @@
+2008-06-08 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* src/logfile.h
+	* src/logfile.c:
+	Adding a implementation for the code writting which can be used in all
+	components. Logfile path "log/moksec.log"
+
+	* Makefile:
+	Linking the object file logfile.o with the
+	phonefirewall_administration.
+	
+	Cleaning up and deleting unnecessarily comments.
+
+	* src/phonefirewall_administration.c:
+	Substituting the fprintf functions with the write_logentry(...)
+	function. Now every error/information/warning would be written in the
+	logfile "log/moksec.log".
+
+	* TODO:
+	Adding the segmentation fault bug during the CUnit test to the TODO
+	list.
+
+	* src_test/testphonefirewall.c:
+	Commenting the test for check_blacklist_entry(...) out, because
+	otherwise the test stops with an segmentation fault.
+
 2008-06-07 Alex Oberhauser <oberhauseralex@networld.to>
 	
 	* doc/*:

@@ -1,6 +1,6 @@
 GCC = /usr/bin/gcc
 RM = /bin/rm
-CLFLAGS += --std=c99 -Wall #`/usr/local/openmoko/arm/bin/pkg-config --libs --cflags sqlite3`
+CLFLAGS += --std=c99 -Wall 
 TEST_LIB = -lcunit -ltestphonefirewall `pkg-config --libs --cflags sqlite3`
 DOXYGEN = /usr/bin/doxygen
 SRCDIR = src
@@ -9,7 +9,6 @@ LIBDIR = lib
 SRCTESTDIR = src_test
 BINTESTDIR = bin_test
 
-#all: 	libphonefirewall.so	
 all: 	test
 
 #all: 	libphonefirewall.so\
@@ -31,9 +30,6 @@ libphonefirewall.so: $(SRCDIR)/phonefirewall_administration.o
 pf_daemon.o: $(SRCDIR)/pf_daemon.c $(SRCDIR)/libphonefirewall.h
 	$(CC) $(CFLAGS) `pkg-config --cflags --libs dbus-1` -c $(SRCDIR)/pf_daemon -o $(SRCDIR)/$@
 
-#pf_daemon: $(SRCDIR)/pf_daemon.o
-#	$(CC) `pkg-config --cflags --libs dbus-1` $(SRCDIR)/pf_daemon.o -o $(BINDIR)/$@
-
 pf_daemon: $(SRCDIR)/pf_daemon.c
 	$(CC) `pkg-config --cflags --libs dbus-1` $(SRCDIR)/pf_daemon.c -o $(BINDIR)/$@
 
@@ -41,17 +37,19 @@ pf_daemon: $(SRCDIR)/pf_daemon.c
 # 
 # Begining of the testing part.
 #
-test: testphonefirewall_administration.o libtestphonefirewall.so testphonefirewall
+test: logfile.o testphonefirewall_administration.o libtestphonefirewall.so testphonefirewall
 
 testphonefirewall: $(SRCTESTDIR)/testphonefirewall.c 
 	$(GCC) $(CLFLAGS) $(SRCTESTDIR)/testphonefirewall.c -L$(LIBDIR) $(TEST_LIB) -o $(BINTESTDIR)/$@
 
-testphonefirewall_administration.o: $(SRCDIR)/phonefirewall_administration.c $(SRCDIR)/libphonefirewall.h
+testphonefirewall_administration.o: $(SRCDIR)/phonefirewall_administration.c $(SRCDIR)/libphonefirewall.h 
 	$(GCC) $(CLFLAGS) -fPIC -c $(SRCDIR)/phonefirewall_administration.c -o $(SRCTESTDIR)/$@
 
-libtestphonefirewall.so: $(SRCTESTDIR)/testphonefirewall_administration.o
-	$(GCC) $(CLFLAGS) -shared $(SRCTESTDIR)/testphonefirewall_administration.o -o $(LIBDIR)/$@
+libtestphonefirewall.so: $(SRCTESTDIR)/testphonefirewall_administration.o $(SRCDIR)/logfile.o
+	$(GCC) $(CLFLAGS) -shared $(SRCTESTDIR)/testphonefirewall_administration.o $(SRCDIR)/logfile.o -o $(LIBDIR)/$@
 
+logfile.o: $(SRCDIR)/logfile.c $(SRCDIR)/logfile.h
+	$(GCC) -fpic -c $(SRCDIR)/logfile.c -o $(SRCDIR)/$@
 
 .PHONY: clean
 clean: 
@@ -59,7 +57,8 @@ clean:
 	       	 src/*.o\
 		 src_test/*.o\
 		 bin_test/*\
-		 db/* 
+		 db/*\
+		 log/moksec.log
 	sqlite3 db/phone-firewall.db < phonefirewall.sql;
 
 .PHONY: clean-db
