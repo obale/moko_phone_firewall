@@ -3,6 +3,7 @@
 #include <string.h>
 #include <CUnit/Basic.h>
 #include "../src/libphonefirewall.h"
+#include "../src/pf_daemon.h"
 
 
 void test_add_blacklist_entry(void) {
@@ -116,6 +117,12 @@ void test_check_whitelist_entry(void) {
 	CU_ASSERT(check_whitelist_entry(49, 129, 222222222, 3) == 1);
 }
 
+void test_start_daemon(void) {
+}
+
+void test_stop_daemon(void) {
+}
+
 int main(int argc, char *argv[]) {
 	CU_pSuite adminSuite = NULL;
 	CU_pSuite searchSuite = NULL;
@@ -134,6 +141,8 @@ int main(int argc, char *argv[]) {
 	searchSuite = CU_add_suite("Testing Phone Firewall - searching features (by name, by number ...)", NULL, NULL);
 	
    	daemonSuite = CU_add_suite("Testing Phone Firewall - daemon features", NULL, NULL); 
+	CU_add_test(daemonSuite, "test of start_daemon()", test_start_daemon);
+	CU_add_test(daemonSuite, "test of stop_daemon()", test_stop_daemon);
 
    	//CU_basic_set_mode(CU_BRM_NORMAL);
    	//CU_basic_set_mode(CU_BRM_SILENT);

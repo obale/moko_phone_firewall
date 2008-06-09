@@ -34,7 +34,6 @@ int evaluate_stmt(sqlite3_stmt *pp_stmt, struct Entry *p_entry) {
 	int tmp_country_code;
 	int tmp_area_code;
 	unsigned long long tmp_number;
-	int found_flag = 0;
 
 
 	num_column = sqlite3_column_count(pp_stmt);
@@ -53,22 +52,23 @@ int evaluate_stmt(sqlite3_stmt *pp_stmt, struct Entry *p_entry) {
 			tmp_number = atoll(col_value);
 		}
 
-		if ( PRIO_ALL == tmp_priority ) {
-			if ( tmp_country_code == (p_entry->country_code)
-					&& tmp_area_code == (p_entry->area_code)
-					&& tmp_number == (p_entry->number) ) {
-				found_flag = 1;
-			}
-		} else if ( tmp_priority <= (p_entry->priority) ) {
-			if ( tmp_country_code == (p_entry->country_code)
-					&& tmp_area_code == (p_entry->area_code)
-					&& tmp_number == (p_entry->number) ) {
-				found_flag = 1;
-			} 
-		} 
 	}
 
-	return found_flag;
+	if ( PRIO_ALL == tmp_priority ) {
+		if ( tmp_country_code == (p_entry->country_code)
+			&& tmp_area_code == (p_entry->area_code)
+			&& tmp_number == (p_entry->number) ) {
+			return 1;
+		}
+	} else if ( tmp_priority <= (p_entry->priority) ) {
+		if ( tmp_country_code == (p_entry->country_code)
+			&& tmp_area_code == (p_entry->area_code)
+			&& tmp_number == (p_entry->number) ) {
+			return 1;
+		} 
+	} 
+
+	return 0;
 }
 
 int add_blacklist_entry(int country_code, int area_code, unsigned long long number, char *name, char *reason, int priority) {

@@ -19,6 +19,7 @@
  */  
 
 /**
+ * @mainfile
  * @file libphonefirewall.h
  * @author Alex Oberhauser
  * @brief API of the phone firewall.

@@ -1,3 +1,16 @@
+2008-06-09 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* src/phonefirewall_administration.c:
+	evaluate_stmt(...): Moving the check of the number from the for loop
+	to the outside and deleting the found_flag (now returning
+	immediately).
+
+	* src_test/testphonefirewall.c:
+	Adding a testsuite for the search function.
+
+	* src/pf_daemon.h:
+	Creating a header file for the daemon implementation.
+
 2008-06-08 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* src/phonefirewall_administration.c:

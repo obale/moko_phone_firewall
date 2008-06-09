@@ -18,16 +18,11 @@ pf_daemon.c \-
 .br
 \fC#include <dbus/dbus.h>\fP
 .br
+\fC#include 'pf_daemon.h'\fP
+.br
 \fC#include 'libphonefirewall.h'\fP
 .br
 
-.SS "Defines"
-
-.in +1c
-.ti -1c
-.RI "#define \fBLOCKFILE\fP   '.lock'"
-.br
-.in -1c
 .SS "Functions"
 
 .in +1c
@@ -44,43 +39,28 @@ pf_daemon.c \-
 .RI "int \fBmain\fP (int argc, char **argv)"
 .br
 .in -1c
-.SH "Define Documentation"
-.PP 
-.SS "#define LOCKFILE   '.lock'"
-.PP
-Definition at line 9 of file pf_daemon.c.
-.PP
-Referenced by start_daemon(), and stop_daemon().
 .SH "Function Documentation"
 .PP 
 .SS "void dbus_listen ()"
 .PP
-Function that provides method calls.
-.PP
-Bus name: to.networld.moksec.phonefirewall Object name: to.networld.moksec.phonefirewall.Object interface: to.networld.moksec.phonefirewall.Checking methods: checkblacklist(...) checkwhitelist(...) 
-.PP
-Definition at line 75 of file pf_daemon.c.
+Definition at line 57 of file pf_daemon.c.
 .PP
 Referenced by main().
 .SS "int main (int argc, char ** argv)"
 .PP
-Definition at line 34 of file pf_daemon.c.
+Definition at line 16 of file pf_daemon.c.
 .PP
 References dbus_listen(), start_daemon(), and stop_daemon().
 .SS "void start_daemon ()"
 .PP
-Starts the program as a daemon and creates a lockfile (specified in the LOCKFILE constant). So it's impossible to start the daemon twice. 
-.PP
-Definition at line 45 of file pf_daemon.c.
+Definition at line 27 of file pf_daemon.c.
 .PP
 References LOCKFILE.
 .PP
 Referenced by main().
 .SS "void stop_daemon ()"
 .PP
-Stops the daemon and deletes the lockfile, so a new instance can be started. 
-.PP
-Definition at line 69 of file pf_daemon.c.
+Definition at line 51 of file pf_daemon.c.
 .PP
 References LOCKFILE.
 .PP
