@@ -11,7 +11,10 @@ BINTESTDIR = bin_test
 
 test: logfile.o testphonefirewall_administration.o libtestphonefirewall.so testphonefirewall
 
+daemon: pf_daemon.o logfile.o pf_daemon
+
 all: 	libphonefirewall.so\
+	daemon\
 	test
 
 .PHONY: doc
@@ -27,11 +30,11 @@ phonefirewall_administration.o: $(SRCDIR)/phonefirewall_administration.c $(SRCDI
 libphonefirewall.so: $(SRCDIR)/phonefirewall_administration.o 
 	$(CC) -shared $(SRCDIR)/phonefirewall_administration.o -o $(LIBDIR)/$@
 
-pf_daemon.o: $(SRCDIR)/pf_daemon.c $(SRCDIR)/libphonefirewall.h
-	$(GCC) $(CFLAGS) `pkg-config --cflags --libs dbus-1` -c $(SRCDIR)/pf_daemon -o $(SRCDIR)/$@
+pf_daemon.o: $(SRCDIR)/pf_daemon.c $(SRCDIR)/libphonefirewall.h $(SRCDIR)/pf_daemon.h $(SRCDIR)/logfile.h
+	$(GCC) `pkg-config --cflags dbus-1` -c $(SRCDIR)/pf_daemon.c -o $(SRCDIR)/$@
 
-pf_daemon: $(SRCDIR)/pf_daemon.c
-	$(GCC) `pkg-config --cflags --libs dbus-1` $(SRCDIR)/pf_daemon.c -o $(BINDIR)/$@
+pf_daemon: $(SRCDIR)/pf_daemon.o $(SRCDIR)/logfile.o
+	$(GCC) `pkg-config --cflags --libs dbus-1` $(SRCDIR)/pf_daemon.o $(SRCDIR)/logfile.o -o $(BINDIR)/$@
 
 
 # 

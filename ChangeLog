@@ -1,5 +1,36 @@
 2008-06-09 Alex Oberhauser <oberhauseralex@networld.to>
 
+	* Makefile:
+	Adding an meta entry for the pf_daemon ("make daemon"). Adding the
+	linking of the logfile.o to the pf_daemon
+
+	* src/logfile.c:
+	Adding the header with the GPL and copyright informations.
+	
+	Deleting the commented sprintf statement for the composition of the
+	date.
+
+	* src/logfile.h:
+	Adding the header with the GPL and copyright informations.
+
+	* src/pf_daemon.c:
+	Adding the header with the GPL and copyright informations.
+
+	Commenting the dbus_listen() function out until we begin with the
+	intensive testing of it. Adding instead a sleep of 10 seconds.
+
+	Writing at the start and at the shutdown a message in the logfile.
+	Substituting in the dbus_listen() function the output of the error 
+	message to stderr with an logentry.
+
+	* src/pf_daemon.h:
+	Adding the header with the GPL and copyright informations.
+
+	Fixing a missing + before the country code
+	(check_whitelist_entry(...))
+
+2008-06-09 Alex Oberhauser <oberhauseralex@networld.to>
+
 	* src/phonefirewall_administration.c:
 	evaluate_stmt(...): Moving the check of the number from the for loop
 	to the outside and deleting the found_flag (now returning

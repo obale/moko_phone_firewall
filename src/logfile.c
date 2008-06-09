@@ -1,3 +1,23 @@
+/*
+ * logfile.c
+ * 
+ * (C) 2008 by Networld Consulting, Ltd. 
+ * Written by Alex Oberhauser <oberhauseralex@networld.to> 
+ * All Rights Reserved 
+ * 
+ * This program is free software: you can redistribute it and/or modify 
+ * it under the terms of the GNU General Public License as published by 
+ * the Free Software Foundation, version 2 of the License.
+ *  
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *  
+ * You should have received a copy of the GNU General Public License
+ * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+ */  
+ 
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -21,13 +41,6 @@ char *asctime(const struct tm *timeptr) {
     };
 
     static char result[26];
-
-    /*sprintf(result, "%.3s %.3s%3d %.2d:%.2d:%.2d %d",
-        wday_name[timeptr->tm_wday],
-        mon_name[timeptr->tm_mon],
-        timeptr->tm_mday, timeptr->tm_hour,
-        timeptr->tm_min, timeptr->tm_sec,
-        1900 + timeptr->tm_year);*/
 
     sprintf(result, "%.2d/%.3s/%3d:%.2d:%.2d:%.2d",
 	timeptr->tm_mday,

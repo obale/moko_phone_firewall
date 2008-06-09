@@ -51,7 +51,6 @@ int evaluate_stmt(sqlite3_stmt *pp_stmt, struct Entry *p_entry) {
 		} else if ( 0 == strcmp(col_name, TB_NUMBER) ) {
 			tmp_number = atoll(col_value);
 		}
-
 	}
 
 	if ( PRIO_ALL == tmp_priority ) {
@@ -307,7 +306,7 @@ int check_whitelist_entry(int country_code, int area_code, unsigned long long nu
 		if ( SQLITE_ROW == rc ) {
 			found_flag = evaluate_stmt(pp_stmt, p_entry);
 			if ( found_flag == 1) {
-				sprintf(logmsg, "Number \"%d %d %llu\" accpeted successfully.", country_code, area_code, number);
+				sprintf(logmsg, "Number \"+%d %d %llu\" accpeted successfully.", country_code, area_code, number);
 				write_logentry(logmsg, "phonefirewall", INFO_FLAG);
 			       	break;
 			}

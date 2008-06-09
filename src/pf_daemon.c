@@ -1,3 +1,23 @@
+/*
+ * pf_daemon.c
+ * 
+ * (C) 2008 by Networld Consulting, Ltd. 
+ * Written by Alex Oberhauser <oberhauseralex@networld.to> 
+ * All Rights Reserved 
+ * 
+ * This program is free software: you can redistribute it and/or modify 
+ * it under the terms of the GNU General Public License as published by 
+ * the Free Software Foundation, version 2 of the License.
+ *  
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *  
+ * You should have received a copy of the GNU General Public License
+ * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+ */  
+ 
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -6,6 +26,7 @@
 #include <dbus/dbus.h>
 #include "pf_daemon.h"
 #include "libphonefirewall.h"
+#include "logfile.h"
 
 void start_daemon();
 
@@ -19,7 +40,9 @@ int main(int argc, char **argv) {
 	/*
 	 * Daemon runs... 
 	 */
-	dbus_listen();
+	// TODO: Test the implementation and delete the sleep statement.
+	//dbus_listen();
+	sleep(10);
 
 	stop_daemon();
 }
@@ -40,6 +63,7 @@ void start_daemon() {
 
 	if ( 0 < d_pid ) {
 		printf("Daemon started succesfully!\n");
+		write_logentry("Daemon started successfully", "moksec daemon", INFO_FLAG);
 		exit(0);
 	} else {
 		FILE *lockfile = fopen(LOCKFILE, "w");
@@ -50,6 +74,7 @@ void start_daemon() {
 
 void stop_daemon() {
 	printf("Daemon will be closed...\n");
+	write_logentry("Daemon exit successfully", "moksec daemon", INFO_FLAG);
 	remove(LOCKFILE);
 	exit(0);
 }
@@ -62,28 +87,31 @@ void dbus_listen() {
 	DBusError error;
 	int ret;
 	char *param;
+	char *logentry;
 
 	dbus_error_init(&error);
 
 	conn = dbus_bus_get(DBUS_BUS_SESSION, &error);
 	if ( dbus_error_is_set(&error) ) {
-		// TODO: Substitude with a log entry
-		fprintf(stderr, "Connection Error (%s)\n", error.message);
+		sprintf(logentry, "Connection Error (%s)", error.message);
+		write_logentry(logentry, "moksec daemon", ERR_FLAG);
 		dbus_error_free(&error);
 	}
 	if ( NULL == conn ) {
-		fprintf(stderr, "Connection Null\n");
+		sprintf(logentry, "Connection Null");
+		write_logentry(logentry, "moksec daemon", ERR_FLAG);
 		exit(1);
 	}
 
 	ret = dbus_bus_request_name(conn, "to.networld.moksec.phonefirewall", DBUS_NAME_FLAG_REPLACE_EXISTING, &error);
 	if ( dbus_error_is_set(&error) ) {
-		// TODO: Substitude with a log entry
-		fprintf(stderr, "Name Error (%s)\n", error.message);
+		sprintf(logentry, "Name Error (%s)\n", error.message);
+		write_logentry(logentry, "moksec daemon", ERR_FLAG);
 		dbus_error_free(&error);
 	}
 	if ( DBUS_REQUEST_NAME_REPLY_PRIMARY_OWNER != ret ) {
-		fprintf(stderr, "Not Primary Owner (%d)\n", ret);
+		sprintf(logentry, "Not Primary Owner (%d)\n", ret);
+		write_logentry(logentry, "moksec daemon", ERR_FLAG);
 		exit(1);
 	}
 
