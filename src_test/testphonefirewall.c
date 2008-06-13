@@ -123,6 +123,10 @@ void test_start_daemon(void) {
 void test_stop_daemon(void) {
 }
 
+void test_get_blacklist_entry_by_name(void) {
+	CU_ASSERT(get_blacklist_entry_by_name("user") != NULL);
+}
+
 int main(int argc, char *argv[]) {
 	CU_pSuite adminSuite = NULL;
 	CU_pSuite searchSuite = NULL;
@@ -130,7 +134,7 @@ int main(int argc, char *argv[]) {
 
 	CU_initialize_registry();
 
-   	adminSuite = CU_add_suite("Testing Phone Firewall - administration features (add, remove and check)", NULL, NULL); 
+        adminSuite = CU_add_suite("Testing Phone Firewall - administration features (add, remove and check)", NULL, NULL);
 	CU_add_test(adminSuite, "test of add_blacklist_entry()", test_add_blacklist_entry);
 	CU_add_test(adminSuite, "test of add_whitelist_entry()", test_add_whitelist_entry);
 	CU_add_test(adminSuite, "test of check_whitelist_entry()", test_check_whitelist_entry);
@@ -139,14 +143,15 @@ int main(int argc, char *argv[]) {
 	CU_add_test(adminSuite, "test of rm_whitelist_entry()", test_rm_whitelist_entry);
 
 	searchSuite = CU_add_suite("Testing Phone Firewall - searching features (by name, by number ...)", NULL, NULL);
-	
-   	daemonSuite = CU_add_suite("Testing Phone Firewall - daemon features", NULL, NULL); 
+	CU_add_test(searchSuite, "test of get_blacklist_entry_by_name()", test_get_blacklist_entry_by_name);
+
+        daemonSuite = CU_add_suite("Testing Phone Firewall - daemon features", NULL, NULL);
 	CU_add_test(daemonSuite, "test of start_daemon()", test_start_daemon);
 	CU_add_test(daemonSuite, "test of stop_daemon()", test_stop_daemon);
 
-   	//CU_basic_set_mode(CU_BRM_NORMAL);
-   	//CU_basic_set_mode(CU_BRM_SILENT);
-   	CU_basic_set_mode(CU_BRM_VERBOSE);
+        //CU_basic_set_mode(CU_BRM_NORMAL);
+        //CU_basic_set_mode(CU_BRM_SILENT);
+        CU_basic_set_mode(CU_BRM_VERBOSE);
 
 	CU_basic_run_tests();
 	CU_cleanup_registry();

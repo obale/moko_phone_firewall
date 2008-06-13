@@ -22,7 +22,7 @@
 #include <errno.h>
 #include <string.h>
 #include <sqlite3.h>
-#include "libphonefirewall.h" 
+#include "libphonefirewall.h"
 #include "logfile.h"
 
 int evaluate_stmt(sqlite3_stmt *pp_stmt, struct Entry *p_entry) {
@@ -39,7 +39,7 @@ int evaluate_stmt(sqlite3_stmt *pp_stmt, struct Entry *p_entry) {
 	num_column = sqlite3_column_count(pp_stmt);
 	col_name = sqlite3_malloc(2 * num_column * sizeof(const char *) + 1);
 
-	for(count = 0; count < num_column; count++){
+	for ( count = 0; count < num_column; count++ ){
 		col_name = (char *)sqlite3_column_name(pp_stmt, count);
 		col_value = (char *)sqlite3_column_text(pp_stmt, count);
 		if ( 0 == strcmp(col_name, TB_PRIORITY) ) {
@@ -64,16 +64,16 @@ int evaluate_stmt(sqlite3_stmt *pp_stmt, struct Entry *p_entry) {
 			&& tmp_area_code == (p_entry->area_code)
 			&& tmp_number == (p_entry->number) ) {
 			return 1;
-		} 
-	} 
+		}
+	}
 
 	return 0;
 }
 
 int add_blacklist_entry(int country_code, int area_code, unsigned long long number, char *name, char *reason, int priority) {
-	if ( priority < PRIO_ALL 
+	if ( priority < PRIO_ALL
 			|| 0 == country_code
-			|| 0 == area_code 
+			|| 0 == area_code
 			|| 0 == number ) return -1;
 
 	sqlite3 *db;
@@ -101,15 +101,15 @@ int add_blacklist_entry(int country_code, int area_code, unsigned long long numb
 		return -1;
 	}
 
-	sqlite3_close(db);	
+	sqlite3_close(db);
 
-   	return 0;
+        return 0;
 }
 
 int add_whitelist_entry(int country_code, int area_code, unsigned long long number, char *name, char *reason, int priority) {
-	if ( priority < PRIO_ALL 
+	if ( priority < PRIO_ALL
 			|| 0 == country_code
-			|| 0 == area_code 
+			|| 0 == area_code
 			|| 0 == number ) return -1;
 
 	sqlite3 *db;
@@ -137,9 +137,9 @@ int add_whitelist_entry(int country_code, int area_code, unsigned long long numb
 		return -1;
 	}
 
-	sqlite3_close(db);	
+	sqlite3_close(db);
 
-   	return 0;
+        return 0;
 }
 
 int rm_blacklist_entry (int country_code, int area_code, unsigned long long number) {
@@ -221,7 +221,7 @@ int check_blacklist_entry(int country_code, int area_code, unsigned long long nu
 	int found_flag = 0;
 
 	struct Entry *p_entry = &entry;
-       	p_entry->country_code = country_code;
+        p_entry->country_code = country_code;
 	p_entry->area_code = area_code;
 	p_entry->number = number;
 	p_entry->priority = priority;
@@ -246,7 +246,7 @@ int check_blacklist_entry(int country_code, int area_code, unsigned long long nu
 		return -1;
 	}
 
-	while( rc != SQLITE_DONE) {
+	while ( rc != SQLITE_DONE ) {
 		rc = sqlite3_step(pp_stmt);
 		if ( SQLITE_ROW == rc ) {
 			found_flag = evaluate_stmt(pp_stmt, p_entry);

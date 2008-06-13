@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  */  
- 
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -32,7 +32,7 @@ void start_daemon();
 
 void stop_daemon();
 
-void dbus_listen(); 
+void dbus_listen();
 
 int main(int argc, char **argv) {
 	start_daemon();

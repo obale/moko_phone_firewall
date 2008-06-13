@@ -1,3 +1,26 @@
+2008-06-13 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* Makefile:
+	Adding the compile commands for the file administration_search.c,
+	which includes all search commands.
+
+	* src/libphonefirewall.h:
+	Fixing the return type of the search function from "entry" to "Entry".
+
+	* src/phonefirewall_search.c:
+	Implementing the function find_entry_by_name(...) which returns one
+	entry with a specific name.
+
+	Implementing get_blacklist_entry_by_name(...), this function iterates
+	over each row which includes a specific name. Calls the
+	find_entry_by_name(...) to return on every iteration step one row.
+	TODO: Return not only the last found row, but all found entries.
+
+	* src_test/testphonefirewall.c:
+	Adding an trivial test (check if the function returns a value unequal
+	to NULL). 
+	TODO: Writing meaningful tests
+
 2008-06-09 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* Makefile:
@@ -6,7 +29,7 @@
 
 	* src/logfile.c:
 	Adding the header with the GPL and copyright informations.
-	
+
 	Deleting the commented sprintf statement for the composition of the
 	date.
 
@@ -75,7 +98,7 @@
 	* Makefile:
 	Linking the object file logfile.o with the
 	phonefirewall_administration.
-	
+
 	Cleaning up and deleting unnecessarily comments.
 
 	* src/phonefirewall_administration.c:
@@ -92,7 +115,7 @@
 	otherwise the test stops with an segmentation fault.
 
 2008-06-07 Alex Oberhauser <oberhauseralex@networld.to>
-	
+
 	* doc/*:
 	Updating the documentation.
 
@@ -137,7 +160,7 @@
 		- Deleting the check_callback function
 		- Don't use the sqlite3_exec statement. Now each row is
 		  evaluated singly.
-	
+
 	Adding comments "TODO" that the error message shouldn't be written 
 	through stderr. Better write it to a logfile.
 
@@ -256,7 +279,7 @@
 	* Makefile:
 	Using for "all" only the testing suite, because the toolchain don't
 	include the sqlite3 libraries.
-	
+
 	* run.sh:
 	Adding the creation of the SQL database.
 
@@ -273,7 +296,6 @@
 	Adding the entry "clean-db" to remove only the blacklist and whitelist
 	files, otherwise the test failes because it's not possible to add an
 	entry twice.
->>>>>>> testing:ChangeLog
 
 2008-05-22 Alex Oberhauser <oberhauseralex@networld.to>
 
@@ -315,7 +337,7 @@
 	when the program execution fails.
 
 2008-05-17 Alex Oberhauser <oberhauseralex@networld.to>
-	
+
 	* src/phonefirewall_administration.c:
 	After the check with valgrind (valgrind --leak-check=full
 	--show-reachable=yes bin_test/testphonefirewall) I have found an bug
@@ -363,12 +385,12 @@
 
 	* src/phonefirewall_administration.c:
 	Adding a priority system for the checking of the numbers. 
-	
+
 	Testing with a number with priority 2, if priority greater than 2 (3 
 	and more) is used the number was not found. Less and equal 2 the 
 	number was found - this means it would be blocked. Checking also 
 	with an entry with priority -1. The numbers can also be negativ. 
-	
+
 	There ar no limitations of the priority, only that it must be an
 	Integer.
 
@@ -440,10 +462,10 @@
 	* src/phonefirewall_administration.c:
 	Changing the implementation from binary tree to a simple saving to
 	files. The files are named as follows:
-		
+
 		blacklist_$COUNTRYCODE-$AREACODE
 		whitelist_$COUNTRYCODE-$AREACODE
-	
+
 	So it's possible to have a smaller number of numbers, because they are
 	grouped by countrycode and than also by areacode. If a incoming call
 	take place, we need only to parse the one specific file.
@@ -481,7 +503,7 @@
 	Updating the documentation.
 	From now one I will always update the documentation before a
 	commit/push.
-	
+
 	* src_test/:
 	I don't have written the testing part of the code. (I promise the
 	nexts commits will come with the full tests ;) )

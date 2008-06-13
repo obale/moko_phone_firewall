@@ -56,10 +56,10 @@ int write_logentry(char *msg, char *component, int flag) {
 	FILE *fd;
 	char entry_msg[MAX_ENTRY_LENGTH];
 	int choice = flag;
-	
+
 	time_t now = time(NULL);
 	char *current_time = asctime(localtime(&now));
-	
+
 	if ( NULL == (fd = fopen(LOGFILE, "a")) ) {
 		return -1;
 	}
@@ -77,7 +77,7 @@ int write_logentry(char *msg, char *component, int flag) {
 	}
 
 	fprintf(fd, "%s", entry_msg);
-		
+
 	fclose(fd);
 
 }

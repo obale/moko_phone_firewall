@@ -75,7 +75,7 @@ struct Entry {
  *
  * @return If all goes well 0 (zero) otherwise an errno code.
  */
-int add_blacklist_entry(int country_code, int area_code, unsigned long long number, char *name, char *reason, int priority); 
+int add_blacklist_entry(int country_code, int area_code, unsigned long long number, char *name, char *reason, int priority);
 
 /**
  * Removes a blocked number from the blacklist.
@@ -120,7 +120,7 @@ int check_blacklist_entry(int country_code, int area_code, unsigned long long nu
  *
  * @return If all goes well 0 (zero) otherwise an errno code.
  */
-int add_whitelist_entry(int country_code, int area_code, unsigned long long number, char *name, char *reason, int priority); 
+int add_whitelist_entry(int country_code, int area_code, unsigned long long number, char *name, char *reason, int priority);
 
 /**
  * Search a entrie by name.
@@ -129,7 +129,7 @@ int add_whitelist_entry(int country_code, int area_code, unsigned long long numb
  * 
  * @return entry Returns the found entry. 
  */
-struct entry *get_blacklist_entry_by_name(char *name);
+struct Entry *get_blacklist_entry_by_name(char *name);
 
 /**
  * Search a entrie by number (country code + area code + number).
@@ -142,7 +142,7 @@ struct entry *get_blacklist_entry_by_name(char *name);
  * 
  * @return entry Returns the found entry. 
  */
-struct entry *get_blacklist_entry_by_number(int country_code, int area_code, unsigned long long number);
+struct Entry *get_blacklist_entry_by_number(int country_code, int area_code, unsigned long long number);
 
 /**
  * Removes a accepted number from the whitelist.
@@ -177,7 +177,7 @@ int check_whitelist_entry(int country_code, int area_code, unsigned long long nu
  * 
  * @return entry Returns the found entry. 
  */
-struct entry *get_whitelist_entry_by_name(char *name);
+struct Entry *get_whitelist_entry_by_name(char *name);
 
 /**
  * Search a entrie by number (country code + area code + number).
@@ -190,5 +190,5 @@ struct entry *get_whitelist_entry_by_name(char *name);
  * 
  * @return entry Returns the found entry. 
  */
-struct entry *get_whitelist_entry_by_number(int country_code, int area_code, unsigned long long number);
+struct Entry *get_whitelist_entry_by_number(int country_code, int area_code, unsigned long long number);
 

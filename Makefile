@@ -9,7 +9,7 @@ LIBDIR = lib
 SRCTESTDIR = src_test
 BINTESTDIR = bin_test
 
-test: logfile.o testphonefirewall_administration.o libtestphonefirewall.so testphonefirewall
+test: logfile.o testphonefirewall_administration.o testphonefirewall_search.o libtestphonefirewall.so testphonefirewall
 
 daemon: pf_daemon.o logfile.o pf_daemon
 
@@ -27,8 +27,11 @@ doc:
 phonefirewall_administration.o: $(SRCDIR)/phonefirewall_administration.c $(SRCDIR)/libphonefirewall.h
 	$(CC) $(CLFLAGS) -fpic -c $(SRCDIR)/phonefirewall_administration.c -o $(SRCDIR)/$@
 
-libphonefirewall.so: $(SRCDIR)/phonefirewall_administration.o 
-	$(CC) -shared $(SRCDIR)/phonefirewall_administration.o -o $(LIBDIR)/$@
+phonefirewall_search.o: $(SRCDIR)/phonefirewall_search.c $(SRCDIR)/libphonefirewall.h
+	$(CC) $(CLFLAGS) -fpic -c $(SRCDIR)/phonefirewall_search.c -o $(SRCDIR)/$@
+
+libphonefirewall.so: $(SRCDIR)/phonefirewall_administration.o $(SRCDIR)/phonefirewall_search.o
+	$(CC) -shared $(SRCDIR)/phonefirewall_administration.o $(SRCDIR)/phonefirewall_search.o -o $(LIBDIR)/$@
 
 pf_daemon.o: $(SRCDIR)/pf_daemon.c $(SRCDIR)/libphonefirewall.h $(SRCDIR)/pf_daemon.h $(SRCDIR)/logfile.h
 	$(GCC) `pkg-config --cflags dbus-1` -c $(SRCDIR)/pf_daemon.c -o $(SRCDIR)/$@
@@ -47,8 +50,11 @@ testphonefirewall: $(SRCTESTDIR)/testphonefirewall.c
 testphonefirewall_administration.o: $(SRCDIR)/phonefirewall_administration.c $(SRCDIR)/libphonefirewall.h 
 	$(GCC) $(CLFLAGS) -fPIC -c $(SRCDIR)/phonefirewall_administration.c -o $(SRCTESTDIR)/$@
 
-libtestphonefirewall.so: $(SRCTESTDIR)/testphonefirewall_administration.o $(SRCDIR)/logfile.o
-	$(GCC) $(CLFLAGS) -shared $(SRCTESTDIR)/testphonefirewall_administration.o $(SRCDIR)/logfile.o -o $(LIBDIR)/$@
+testphonefirewall_search.o: $(SRCDIR)/phonefirewall_search.c $(SRCDIR)/libphonefirewall.h 
+	$(GCC) $(CLFLAGS) -fPIC -c $(SRCDIR)/phonefirewall_search.c -o $(SRCTESTDIR)/$@
+
+libtestphonefirewall.so: $(SRCTESTDIR)/testphonefirewall_administration.o $(SRCTESTDIR)/testphonefirewall_search.o $(SRCDIR)/logfile.o
+	$(GCC) $(CLFLAGS) -shared $(SRCTESTDIR)/testphonefirewall_administration.o $(SRCTESTDIR)/testphonefirewall_search.o $(SRCDIR)/logfile.o -o $(LIBDIR)/$@
 
 logfile.o: $(SRCDIR)/logfile.c $(SRCDIR)/logfile.h
 	$(GCC) -fpic -c $(SRCDIR)/logfile.c -o $(SRCDIR)/$@
