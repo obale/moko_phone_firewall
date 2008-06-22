@@ -5,6 +5,7 @@ a.out
 *.log
 *.so
 *.vim
+*.orig
 tags
 core
 core.*

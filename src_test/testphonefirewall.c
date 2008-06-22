@@ -124,7 +124,13 @@ void test_stop_daemon(void) {
 }
 
 void test_get_blacklist_entry_by_name(void) {
-	CU_ASSERT(get_blacklist_entry_by_name("user") != NULL);
+        struct Entry *entry_array;
+	CU_ASSERT( (entry_array = get_blacklist_entry_by_name("user")) != NULL );
+
+        printf("\ntest_get_blacklist_entry_by_name(void):\n");
+        int count = 0;
+        for ( count = 0; count < 4; count++)
+                printf("+%d %d %llu -> %s\n", entry_array[count].country_code, entry_array[count].area_code, entry_array[count].number, entry_array[count].name);
 }
 
 int main(int argc, char *argv[]) {
@@ -149,9 +155,9 @@ int main(int argc, char *argv[]) {
 	CU_add_test(daemonSuite, "test of start_daemon()", test_start_daemon);
 	CU_add_test(daemonSuite, "test of stop_daemon()", test_stop_daemon);
 
-        //CU_basic_set_mode(CU_BRM_NORMAL);
+        CU_basic_set_mode(CU_BRM_NORMAL);
         //CU_basic_set_mode(CU_BRM_SILENT);
-        CU_basic_set_mode(CU_BRM_VERBOSE);
+        //CU_basic_set_mode(CU_BRM_VERBOSE);
 
 	CU_basic_run_tests();
 	CU_cleanup_registry();

@@ -1,3 +1,18 @@
+2008-06-22 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* src/*:
+	Changing the coding style with the help of astyle. Using for this
+	purpose the follwoing script:
+
+	#!/bin/sh
+	echo $1 
+	astyle --style=linux --brackets=linux --indent-labels --pad=oper \
+	--one-line=keep-statements --convert-tabs --indent-preprocessor \
+	--mode=c $1 
+
+	A few changes I have made manually because the script seams not to
+	work 100%
+
 2008-06-13 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* Makefile:
