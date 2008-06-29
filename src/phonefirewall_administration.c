@@ -32,10 +32,10 @@ int evaluate_stmt(sqlite3_stmt *pp_stmt,
         int count;
         char *col_name;
         char *col_value;
-        int tmp_priority;
-        int tmp_country_code;
-        int tmp_area_code;
-        unsigned long long tmp_number;
+        int tmp_priority = 0;
+        int tmp_country_code = 0;
+        int tmp_area_code = 0;
+        unsigned long long tmp_number = 0;
 
 
         num_column = sqlite3_column_count(pp_stmt);

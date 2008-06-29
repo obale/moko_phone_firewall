@@ -20,23 +20,25 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include <errno.h>
 #include <stdbool.h>
 #include <dbus/dbus.h>
+#include <signal.h>
 #include "pf_daemon.h"
 #include "libphonefirewall.h"
 #include "logfile.h"
 
 void start_daemon();
-
 void stop_daemon();
-
 void dbus_listen();
+
+void install_sigaction();
+void react_to_signal(int sig);
 
 int main(int argc, char **argv)
 {
         start_daemon();
+        install_sigaction();
 
         /*
          * Daemon runs...
@@ -136,4 +138,29 @@ void dbus_listen()
                 dbus_message_unref(msg);
         }
 
+}
+
+void install_sigaction()
+{
+        struct sigaction sa;
+        sa.sa_handler = react_to_signal;
+        sigemptyset(&sa.sa_mask);
+        sigaddset(&sa.sa_mask, SIGTERM);
+        sigaddset(&sa.sa_mask, SIGUSR1);
+        sigaddset(&sa.sa_mask, SIGUSR2);
+        sa.sa_flags = 0;
+        sigaction(SIGTERM, &sa, NULL);
+        sigaction(SIGUSR1, &sa, NULL);
+        sigaction(SIGUSR2, &sa, NULL);
+}
+
+void react_to_signal(int sig)
+{
+        if ( SIGTERM == sig ) {
+                stop_daemon();
+        }
+        if ( SIGUSR1 == sig ) {
+        }
+        if ( SIGUSR2 == sig ) {
+        }
 }

@@ -1,3 +1,14 @@
+2008-06-29 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* src/pf_daemon.c:
+	Removing the unused include statement for unistd.h.
+
+	Adding a signal handler to react to SIGTERM (shut down the daemon
+	correctly).
+
+	* src/phonefirewall_administration.c:
+	Initiating the tmp values with zero.
+
 2008-06-22 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* src/*:

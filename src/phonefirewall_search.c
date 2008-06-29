@@ -114,8 +114,8 @@ struct Entry *get_blacklist_entry_by_name(char *name)
 }
 
 struct Entry *get_blacklist_entry_by_number(int country_code,
-                                        int area_code,
-                                        unsigned long long number)
+                                            int area_code,
+                                            unsigned long long number)
 {
         return NULL;
 }
