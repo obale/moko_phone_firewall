@@ -54,7 +54,7 @@ testphonefirewall_search.o: $(SRCDIR)/phonefirewall_search.c $(SRCDIR)/libphonef
 	$(GCC) $(CLFLAGS) -fPIC -c $(SRCDIR)/phonefirewall_search.c -o $(SRCTESTDIR)/$@
 
 libtestphonefirewall.so: $(SRCTESTDIR)/testphonefirewall_administration.o $(SRCTESTDIR)/testphonefirewall_search.o $(SRCDIR)/logfile.o
-	$(GCC) $(CLFLAGS) -shared $(SRCTESTDIR)/testphonefirewall_administration.o $(SRCTESTDIR)/testphonefirewall_search.o $(SRCDIR)/logfile.o -o $(LIBDIR)/$@
+	$(GCC) $(CLFLAGS) `pkg-config --libs --cflags sqlite3` -shared $(SRCTESTDIR)/testphonefirewall_administration.o $(SRCTESTDIR)/testphonefirewall_search.o $(SRCDIR)/logfile.o -o $(LIBDIR)/$@
 
 logfile.o: $(SRCDIR)/logfile.c $(SRCDIR)/logfile.h
 	$(GCC) -fpic -c $(SRCDIR)/logfile.c -o $(SRCDIR)/$@

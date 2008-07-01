@@ -1,3 +1,19 @@
+2008-07-01 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* Makefile:
+	Fixing the missing of the `pkg-config --libs --cflags sqlite3` command in the
+	libtestphonefirewall.so statement.
+
+	* pytest/:
+	Adding a directory with python tests. (specially for the D-Bus
+	testings)
+	To run the tests you have to install "python" and the modules "ctypes"
+	and "unittest":
+
+		$ python pytests/pf_admin_test.py
+
+	TODO: Replace the existing tests and fix the test suite.
+
 2008-06-29 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* src/pf_daemon.c:

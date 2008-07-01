@@ -9,7 +9,7 @@
 void test_add_blacklist_entry(void) {
 	/* [OK]    -> Testuser 1:  Number in Italy. */
 	CU_ASSERT(add_blacklist_entry(39, 328, 123456789, "Testuser 1", "I don't like him.", 0) == 0);
-	
+
 	/* [FAILS] -> Testuser -1: The same number as "Testuser 1". */
 	CU_ASSERT(add_blacklist_entry(39, 328, 123456789, "Testuser -1", "I don't like him.", 0) == -1);
 
@@ -51,7 +51,7 @@ void test_rm_blacklist_entry(void) {
 void test_add_whitelist_entry(void) {
 	/* [OK]    -> Testuser 1:  Number in Italy. */
 	CU_ASSERT(add_whitelist_entry(39, 128, 123456789, "Testuser 1", "I don't like him.", 0) == 0);
-	
+
 	/* [FAILS] -> Testuser -1: The same number as "Testuser 1". */
 	CU_ASSERT(add_whitelist_entry(39, 128, 123456789, "Testuser -1", "I don't like him.", 0) == -1);
 
