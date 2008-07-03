@@ -23,5 +23,25 @@ import dbus
 
 # TODO: Implement here the d-bus client for the quick & dirty testing of the
 # daemon d-bus service
-print """MokSec D-Bus Client testing suite."""
 
+def PrintHeader():
+    print """
+    ***********************************************************
+    *           MokSec Daemon - Python Testsuite              *
+    *                                                         *
+    * (C) 2008 by Networld Consulting, Ltd.                   *
+    * Written by Alex Oberhauser <oberhauseralex@networld.to> *
+    * All Rights Reserved - GPLv2                             *
+    ***********************************************************
+    """
+
+class DBusClient:
+    def InitSession(self):
+        session_bus = dbus.SessionBus()
+        pf = bus.get_object('to.networld.moksec.phone-firewall', '/to/networld/moksec/phone-firewall/Checking')
+
+    def SendSignal(self):
+        return ' '
+
+if __name__ == "__main__":
+    PrintHeader()

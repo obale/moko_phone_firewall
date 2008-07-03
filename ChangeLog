@@ -1,3 +1,14 @@
+2008-07-03 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* pytests/daemon_dbus_testsuite.py:
+	Adding a function which prints the header and starting with the
+	implementation of the d-bus test system.
+
+	* pytests/pf_testsuite.py:
+	Adding a new header with the copyright notes and adding a few tests of
+	the search implementation of the phone firewall (tests not implemented
+	now only a skeleton)
+
 2008-07-01 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* Makefile:

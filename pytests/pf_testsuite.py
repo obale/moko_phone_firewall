@@ -32,25 +32,51 @@ class CheckPFAdminFunctions(unittest.TestCase):
     def test_add_whitelist_entry(self):
         # TODO: -1 seams the wrong value here, means that an error occurs
         # during the call of the function.
-        ret = pf.add_whitelist_entry(43, 123, 23232323, "Me", "goog guy", 10)
-        self.assertEquals(ret, -1);
+        ret = pf.add_whitelist_entry(43, 123, 23232323, "Me", "good guy", 10)
+        self.assertEquals(ret, -1)
+
+    def test_check_blacklist_entry(self):
+        ret = pf.check_blacklist_entry(43, 112, 11221212)
+        self.assertEquals(ret, 0)
+
+    def test_check_whitelist_entry(self):
+        ret = pf.check_whitelist_entry(43, 123, 23232323)
+        self.assertEquals(ret, 0)
 
     def test_rm_blacklist_entry(self):
-        ret = pf.rm_blacklist_entry(43, 112, 11221212)
-        self.assertEquals(ret, 0)
+       ret = pf.rm_blacklist_entry(43, 112, 11221212)
+       self.assertEquals(ret, 0)
 
     def test_rm_whitelist_entry(self):
-        ret = pf.rm_whitelist_entry(43, 123, 23232323)
-        self.assertEquals(ret, 0)
+       ret = pf.rm_whitelist_entry(43, 123, 23232323)
+       self.assertEquals(ret, 0)
+
+
+class CheckPFSearchFunctions(unittest.TestCase):
+    def test_get_blacklist_entry_by_name(self):
+        return ""
+
+    def test_get_whitelist_entry_by_name(self):
+        return ""
+
+    def test_get_blacklist_entry_by_number(self):
+        return ""
+
 
 if __name__ == "__main__":
     lib_pf_path = "lib/libtestphonefirewall.so"
-    print """ """
-    print """Loading the libphonefirewall libary"""
-    print """Full library path: """, lib_pf_path
+    print """***********************************************************"""
+    print """*        MokSec Phone Firewall - Python Testsuite         *"""
+    print """*                                                         *"""
+    print """* (C) 2008 by Networld Consulting, Ltd.                   *"""
+    print """* Written by Alex Oberhauser <oberhauseralex@networld.to> *"""
+    print """* All Rights Reserved - GPLv2                             *"""
+    print """***********************************************************"""
     print """ """
     pf = cdll.LoadLibrary(lib_pf_path)
 
     suite_admin = unittest.TestLoader().loadTestsFromTestCase(CheckPFAdminFunctions)
+    suite_search = unittest.TestLoader().loadTestsFromTestCase(CheckPFSearchFunctions)
 
-    unittest.TextTestRunner(verbosity=2).run(suite_admin)
+    unittest.TextTestRunner(verbosity=1).run(suite_admin)
+    unittest.TextTestRunner(verbosity=1).run(suite_search)
