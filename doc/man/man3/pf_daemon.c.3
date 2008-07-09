@@ -1,4 +1,4 @@
-.TH "pf_daemon.c" 3 "8 Jun 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
+.TH "pf_daemon.c" 3 "9 Jul 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -10,17 +10,19 @@ pf_daemon.c \-
 .br
 \fC#include <stdlib.h>\fP
 .br
-\fC#include <unistd.h>\fP
-.br
 \fC#include <errno.h>\fP
 .br
 \fC#include <stdbool.h>\fP
 .br
 \fC#include <dbus/dbus.h>\fP
 .br
+\fC#include <signal.h>\fP
+.br
 \fC#include 'pf_daemon.h'\fP
 .br
 \fC#include 'libphonefirewall.h'\fP
+.br
+\fC#include 'logfile.h'\fP
 .br
 
 .SS "Functions"
@@ -36,6 +38,12 @@ pf_daemon.c \-
 .RI "void \fBdbus_listen\fP ()"
 .br
 .ti -1c
+.RI "void \fBinstall_sigaction\fP ()"
+.br
+.ti -1c
+.RI "void \fBreact_to_signal\fP (int sig)"
+.br
+.ti -1c
 .RI "int \fBmain\fP (int argc, char **argv)"
 .br
 .in -1c
@@ -43,28 +51,44 @@ pf_daemon.c \-
 .PP 
 .SS "void dbus_listen ()"
 .PP
-Definition at line 57 of file pf_daemon.c.
+Definition at line 87 of file pf_daemon.c.
+.PP
+References ERR_FLAG, INFO_FLAG, and write_logentry().
+.PP
+Referenced by main().
+.SS "void install_sigaction ()"
+.PP
+Definition at line 143 of file pf_daemon.c.
+.PP
+References react_to_signal().
 .PP
 Referenced by main().
 .SS "int main (int argc, char ** argv)"
 .PP
-Definition at line 16 of file pf_daemon.c.
+Definition at line 38 of file pf_daemon.c.
 .PP
-References dbus_listen(), start_daemon(), and stop_daemon().
+References dbus_listen(), install_sigaction(), start_daemon(), and stop_daemon().
+.SS "void react_to_signal (int sig)"
+.PP
+Definition at line 157 of file pf_daemon.c.
+.PP
+References stop_daemon().
+.PP
+Referenced by install_sigaction().
 .SS "void start_daemon ()"
 .PP
-Definition at line 27 of file pf_daemon.c.
+Definition at line 53 of file pf_daemon.c.
 .PP
-References LOCKFILE.
+References INFO_FLAG, LOCKFILE, and write_logentry().
 .PP
 Referenced by main().
 .SS "void stop_daemon ()"
 .PP
-Definition at line 51 of file pf_daemon.c.
+Definition at line 79 of file pf_daemon.c.
 .PP
-References LOCKFILE.
+References INFO_FLAG, LOCKFILE, and write_logentry().
 .PP
-Referenced by main().
+Referenced by main(), and react_to_signal().
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Phone Firewall from the source code.

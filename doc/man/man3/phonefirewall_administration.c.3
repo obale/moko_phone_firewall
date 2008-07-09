@@ -1,4 +1,4 @@
-.TH "phonefirewall_administration.c" 3 "8 Jun 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
+.TH "phonefirewall_administration.c" 3 "9 Jul 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -25,7 +25,7 @@ phonefirewall_administration.c \-
 
 .in +1c
 .ti -1c
-.RI "int \fBevaluate_stmt\fP (sqlite3_stmt *pp_stmt, struct \fBEntry\fP *p_entry)"
+.RI "int \fBevaluate_stmt\fP (sqlite3_stmt *pp_stmt, struct \fBEntry\fP *\fBp_entry\fP)"
 .br
 .ti -1c
 .RI "int \fBadd_blacklist_entry\fP (int country_code, int area_code, unsigned long long number, char *name, char *reason, int priority)"
@@ -76,7 +76,7 @@ If all goes well 0 (zero) otherwise an errno code.
 .PP
 
 .PP
-Definition at line 74 of file phonefirewall_administration.c.
+Definition at line 75 of file phonefirewall_administration.c.
 .PP
 References DB_FILE, ERR_FLAG, MAX_LINE_LENGTH, PRIO_ALL, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NAME, TB_NUMBER, TB_PRIORITY, TB_REASON, and write_logentry().
 .SS "int add_whitelist_entry (int country_code, int area_code, unsigned long long number, char * name, char * reason, int priority)"
@@ -107,7 +107,7 @@ If all goes well 0 (zero) otherwise an errno code.
 .PP
 
 .PP
-Definition at line 110 of file phonefirewall_administration.c.
+Definition at line 117 of file phonefirewall_administration.c.
 .PP
 References DB_FILE, ERR_FLAG, MAX_LINE_LENGTH, PRIO_ALL, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NAME, TB_NUMBER, TB_PRIORITY, TB_REASON, and write_logentry().
 .SS "int check_blacklist_entry (int country_code, int area_code, unsigned long long number, int priority)"
@@ -134,9 +134,9 @@ If the number was found 1, otherwise 0.
 .PP
 
 .PP
-Definition at line 215 of file phonefirewall_administration.c.
+Definition at line 234 of file phonefirewall_administration.c.
 .PP
-References Entry::area_code, Entry::country_code, DB_FILE, ERR_FLAG, evaluate_stmt(), INFO_FLAG, MAX_LINE_LENGTH, Entry::number, Entry::priority, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NUMBER, TB_PRIORITY, and write_logentry().
+References Entry::area_code, Entry::country_code, DB_FILE, ERR_FLAG, evaluate_stmt(), INFO_FLAG, MAX_LINE_LENGTH, Entry::number, p_entry, Entry::priority, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NUMBER, TB_PRIORITY, and write_logentry().
 .SS "int check_whitelist_entry (int country_code, int area_code, unsigned long long number, int priority)"
 .PP
 Checks if a number is on the whitelist.
@@ -161,9 +161,9 @@ If the number was found 1, otherwise 0.
 .PP
 
 .PP
-Definition at line 270 of file phonefirewall_administration.c.
+Definition at line 293 of file phonefirewall_administration.c.
 .PP
-References Entry::area_code, Entry::country_code, DB_FILE, ERR_FLAG, evaluate_stmt(), INFO_FLAG, MAX_LINE_LENGTH, Entry::number, Entry::priority, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NUMBER, TB_PRIORITY, and write_logentry().
+References Entry::area_code, Entry::country_code, DB_FILE, ERR_FLAG, evaluate_stmt(), INFO_FLAG, MAX_LINE_LENGTH, Entry::number, p_entry, Entry::priority, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NUMBER, TB_PRIORITY, and write_logentry().
 .SS "int evaluate_stmt (sqlite3_stmt * pp_stmt, struct \fBEntry\fP * p_entry)"
 .PP
 Definition at line 28 of file phonefirewall_administration.c.
@@ -187,7 +187,7 @@ If all goes right 0, otherwise an error code.
 .PP
 
 .PP
-Definition at line 146 of file phonefirewall_administration.c.
+Definition at line 159 of file phonefirewall_administration.c.
 .PP
 References DB_FILE, ERR_FLAG, MAX_LINE_LENGTH, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NUMBER, and write_logentry().
 .SS "int rm_whitelist_entry (int country_code, int area_code, unsigned long long number)"
@@ -206,7 +206,7 @@ If all goes right 0, otherwise an error code.
 .PP
 
 .PP
-Definition at line 180 of file phonefirewall_administration.c.
+Definition at line 196 of file phonefirewall_administration.c.
 .PP
 References DB_FILE, ERR_FLAG, MAX_LINE_LENGTH, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NUMBER, and write_logentry().
 .SH "Author"

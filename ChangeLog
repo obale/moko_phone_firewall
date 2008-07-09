@@ -1,3 +1,26 @@
+2008-07-09 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* run.sh:
+	Adding a selection menu to the run script. Now it's possible to select
+	if you want to use the "normal" CUnit tests, CUnit tests with valgrind
+	- to find memory leaks -, or the python tests, which are at the moment
+	total buggy.
+
+	* pytests/pf_testsuite.py:
+	Adding the tests from CUnit for the function add_blacklist_entry(...)
+	and add add_whitelist_entry(...). They don't work yet. The entries
+	don't are saved in the database. Returnvalue is -1 and must be 0 for
+	all okay.
+
+	* Makefile:
+	Uncommenting the -Werror flag. Now on all warnings the compile process
+	fails.
+
+	* src/phonefirewall_search.c:
+	Making the struct "p_entry" and the struct array "entry_array" global,
+	but this don't fix the bug that the values name and reason have the
+	wrong value.
+
 2008-07-03 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* pytests/daemon_dbus_testsuite.py:

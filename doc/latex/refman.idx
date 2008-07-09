@@ -1,54 +1,133 @@
-\indexentry{Blacklist@{Blacklist}|hyperpage}{5}
-\indexentry{Blacklist@{Blacklist}!name@{name}|hyperpage}{5}
-\indexentry{name@{name}!Blacklist@{Blacklist}|hyperpage}{5}
-\indexentry{Blacklist@{Blacklist}!number@{number}|hyperpage}{5}
-\indexentry{number@{number}!Blacklist@{Blacklist}|hyperpage}{5}
-\indexentry{Blacklist@{Blacklist}!priority@{priority}|hyperpage}{6}
-\indexentry{priority@{priority}!Blacklist@{Blacklist}|hyperpage}{6}
-\indexentry{Blacklist@{Blacklist}!reason@{reason}|hyperpage}{6}
-\indexentry{reason@{reason}!Blacklist@{Blacklist}|hyperpage}{6}
-\indexentry{Blacklist@{Blacklist}!left@{left}|hyperpage}{6}
-\indexentry{left@{left}!Blacklist@{Blacklist}|hyperpage}{6}
-\indexentry{Blacklist@{Blacklist}!right@{right}|hyperpage}{6}
-\indexentry{right@{right}!Blacklist@{Blacklist}|hyperpage}{6}
-\indexentry{Whitelist@{Whitelist}|hyperpage}{7}
-\indexentry{Whitelist@{Whitelist}!name@{name}|hyperpage}{7}
-\indexentry{name@{name}!Whitelist@{Whitelist}|hyperpage}{7}
-\indexentry{Whitelist@{Whitelist}!number@{number}|hyperpage}{7}
-\indexentry{number@{number}!Whitelist@{Whitelist}|hyperpage}{7}
-\indexentry{Whitelist@{Whitelist}!priority@{priority}|hyperpage}{7}
-\indexentry{priority@{priority}!Whitelist@{Whitelist}|hyperpage}{7}
-\indexentry{Whitelist@{Whitelist}!reason@{reason}|hyperpage}{7}
-\indexentry{reason@{reason}!Whitelist@{Whitelist}|hyperpage}{7}
-\indexentry{Whitelist@{Whitelist}!left@{left}|hyperpage}{7}
-\indexentry{left@{left}!Whitelist@{Whitelist}|hyperpage}{7}
-\indexentry{Whitelist@{Whitelist}!right@{right}|hyperpage}{8}
-\indexentry{right@{right}!Whitelist@{Whitelist}|hyperpage}{8}
+\indexentry{Entry@{Entry}|hyperpage}{5}
+\indexentry{Entry@{Entry}!country\_\discretionary {-}{}{}code@{country\_\discretionary {-}{}{}code}|hyperpage}{5}
+\indexentry{country\_\discretionary {-}{}{}code@{country\_\discretionary {-}{}{}code}!Entry@{Entry}|hyperpage}{5}
+\indexentry{Entry@{Entry}!area\_\discretionary {-}{}{}code@{area\_\discretionary {-}{}{}code}|hyperpage}{5}
+\indexentry{area\_\discretionary {-}{}{}code@{area\_\discretionary {-}{}{}code}!Entry@{Entry}|hyperpage}{5}
+\indexentry{Entry@{Entry}!number@{number}|hyperpage}{5}
+\indexentry{number@{number}!Entry@{Entry}|hyperpage}{5}
+\indexentry{Entry@{Entry}!name@{name}|hyperpage}{6}
+\indexentry{name@{name}!Entry@{Entry}|hyperpage}{6}
+\indexentry{Entry@{Entry}!reason@{reason}|hyperpage}{6}
+\indexentry{reason@{reason}!Entry@{Entry}|hyperpage}{6}
+\indexentry{Entry@{Entry}!priority@{priority}|hyperpage}{6}
+\indexentry{priority@{priority}!Entry@{Entry}|hyperpage}{6}
+\indexentry{entry@{entry}|hyperpage}{7}
 \indexentry{libphonefirewall.h@{libphonefirewall.h}|hyperpage}{9}
-\indexentry{libphonefirewall.h@{libphonefirewall.h}!TELNR\_\discretionary {-}{}{}MAXLEN@{TELNR\_\discretionary {-}{}{}MAXLEN}|hyperpage}{10}
-\indexentry{TELNR\_\discretionary {-}{}{}MAXLEN@{TELNR\_\discretionary {-}{}{}MAXLEN}!libphonefirewall.h@{libphonefirewall.h}|hyperpage}{10}
-\indexentry{libphonefirewall.h@{libphonefirewall.h}!add\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry@{add\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}|hyperpage}{10}
-\indexentry{add\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry@{add\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}!libphonefirewall.h@{libphonefirewall.h}|hyperpage}{10}
-\indexentry{libphonefirewall.h@{libphonefirewall.h}!add\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry@{add\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}|hyperpage}{10}
-\indexentry{add\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry@{add\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}!libphonefirewall.h@{libphonefirewall.h}|hyperpage}{10}
-\indexentry{libphonefirewall.h@{libphonefirewall.h}!rm\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry@{rm\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}|hyperpage}{11}
-\indexentry{rm\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry@{rm\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}!libphonefirewall.h@{libphonefirewall.h}|hyperpage}{11}
-\indexentry{libphonefirewall.h@{libphonefirewall.h}!rm\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry@{rm\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}|hyperpage}{11}
-\indexentry{rm\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry@{rm\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}!libphonefirewall.h@{libphonefirewall.h}|hyperpage}{11}
-\indexentry{phonefirewall\_\discretionary {-}{}{}administration.c@{phonefirewall\_\discretionary {-}{}{}administration.c}|hyperpage}{12}
-\indexentry{phonefirewall\_\discretionary {-}{}{}administration.c@{phonefirewall\_\discretionary {-}{}{}administration.c}!blacklist\_\discretionary {-}{}{}t@{blacklist\_\discretionary {-}{}{}t}|hyperpage}{12}
-\indexentry{blacklist\_\discretionary {-}{}{}t@{blacklist\_\discretionary {-}{}{}t}!phonefirewall_administration.c@{phonefirewall\_\discretionary {-}{}{}administration.c}|hyperpage}{12}
-\indexentry{phonefirewall\_\discretionary {-}{}{}administration.c@{phonefirewall\_\discretionary {-}{}{}administration.c}!whitelist\_\discretionary {-}{}{}t@{whitelist\_\discretionary {-}{}{}t}|hyperpage}{12}
-\indexentry{whitelist\_\discretionary {-}{}{}t@{whitelist\_\discretionary {-}{}{}t}!phonefirewall_administration.c@{phonefirewall\_\discretionary {-}{}{}administration.c}|hyperpage}{12}
-\indexentry{phonefirewall\_\discretionary {-}{}{}administration.c@{phonefirewall\_\discretionary {-}{}{}administration.c}!add\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry@{add\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}|hyperpage}{12}
-\indexentry{add\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry@{add\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}!phonefirewall_administration.c@{phonefirewall\_\discretionary {-}{}{}administration.c}|hyperpage}{12}
-\indexentry{phonefirewall\_\discretionary {-}{}{}administration.c@{phonefirewall\_\discretionary {-}{}{}administration.c}!add\_\discretionary {-}{}{}to\_\discretionary {-}{}{}blacklist@{add\_\discretionary {-}{}{}to\_\discretionary {-}{}{}blacklist}|hyperpage}{13}
-\indexentry{add\_\discretionary {-}{}{}to\_\discretionary {-}{}{}blacklist@{add\_\discretionary {-}{}{}to\_\discretionary {-}{}{}blacklist}!phonefirewall_administration.c@{phonefirewall\_\discretionary {-}{}{}administration.c}|hyperpage}{13}
-\indexentry{phonefirewall\_\discretionary {-}{}{}administration.c@{phonefirewall\_\discretionary {-}{}{}administration.c}!add\_\discretionary {-}{}{}to\_\discretionary {-}{}{}whitelist@{add\_\discretionary {-}{}{}to\_\discretionary {-}{}{}whitelist}|hyperpage}{13}
-\indexentry{add\_\discretionary {-}{}{}to\_\discretionary {-}{}{}whitelist@{add\_\discretionary {-}{}{}to\_\discretionary {-}{}{}whitelist}!phonefirewall_administration.c@{phonefirewall\_\discretionary {-}{}{}administration.c}|hyperpage}{13}
-\indexentry{phonefirewall\_\discretionary {-}{}{}administration.c@{phonefirewall\_\discretionary {-}{}{}administration.c}!add\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry@{add\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}|hyperpage}{13}
-\indexentry{add\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry@{add\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}!phonefirewall_administration.c@{phonefirewall\_\discretionary {-}{}{}administration.c}|hyperpage}{13}
-\indexentry{phonefirewall\_\discretionary {-}{}{}administration.c@{phonefirewall\_\discretionary {-}{}{}administration.c}!rm\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry@{rm\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}|hyperpage}{14}
-\indexentry{rm\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry@{rm\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}!phonefirewall_administration.c@{phonefirewall\_\discretionary {-}{}{}administration.c}|hyperpage}{14}
-\indexentry{phonefirewall\_\discretionary {-}{}{}administration.c@{phonefirewall\_\discretionary {-}{}{}administration.c}!rm\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry@{rm\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}|hyperpage}{14}
-\indexentry{rm\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry@{rm\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}!phonefirewall_administration.c@{phonefirewall\_\discretionary {-}{}{}administration.c}|hyperpage}{14}
+\indexentry{libphonefirewall.h@{libphonefirewall.h}!DB\_\discretionary {-}{}{}FILE@{DB\_\discretionary {-}{}{}FILE}|hyperpage}{10}
+\indexentry{DB\_\discretionary {-}{}{}FILE@{DB\_\discretionary {-}{}{}FILE}!libphonefirewall.h@{libphonefirewall.h}|hyperpage}{10}
+\indexentry{libphonefirewall.h@{libphonefirewall.h}!MAX\_\discretionary {-}{}{}LINE\_\discretionary {-}{}{}LENGTH@{MAX\_\discretionary {-}{}{}LINE\_\discretionary {-}{}{}LENGTH}|hyperpage}{10}
+\indexentry{MAX\_\discretionary {-}{}{}LINE\_\discretionary {-}{}{}LENGTH@{MAX\_\discretionary {-}{}{}LINE\_\discretionary {-}{}{}LENGTH}!libphonefirewall.h@{libphonefirewall.h}|hyperpage}{10}
+\indexentry{libphonefirewall.h@{libphonefirewall.h}!PRIO\_\discretionary {-}{}{}ALL@{PRIO\_\discretionary {-}{}{}ALL}|hyperpage}{10}
+\indexentry{PRIO\_\discretionary {-}{}{}ALL@{PRIO\_\discretionary {-}{}{}ALL}!libphonefirewall.h@{libphonefirewall.h}|hyperpage}{10}
+\indexentry{libphonefirewall.h@{libphonefirewall.h}!STMT\_\discretionary {-}{}{}SIZE@{STMT\_\discretionary {-}{}{}SIZE}|hyperpage}{10}
+\indexentry{STMT\_\discretionary {-}{}{}SIZE@{STMT\_\discretionary {-}{}{}SIZE}!libphonefirewall.h@{libphonefirewall.h}|hyperpage}{10}
+\indexentry{libphonefirewall.h@{libphonefirewall.h}!TB\_\discretionary {-}{}{}AREACODE@{TB\_\discretionary {-}{}{}AREACODE}|hyperpage}{11}
+\indexentry{TB\_\discretionary {-}{}{}AREACODE@{TB\_\discretionary {-}{}{}AREACODE}!libphonefirewall.h@{libphonefirewall.h}|hyperpage}{11}
+\indexentry{libphonefirewall.h@{libphonefirewall.h}!TB\_\discretionary {-}{}{}COUNTRYCODE@{TB\_\discretionary {-}{}{}COUNTRYCODE}|hyperpage}{11}
+\indexentry{TB\_\discretionary {-}{}{}COUNTRYCODE@{TB\_\discretionary {-}{}{}COUNTRYCODE}!libphonefirewall.h@{libphonefirewall.h}|hyperpage}{11}
+\indexentry{libphonefirewall.h@{libphonefirewall.h}!TB\_\discretionary {-}{}{}NAME@{TB\_\discretionary {-}{}{}NAME}|hyperpage}{11}
+\indexentry{TB\_\discretionary {-}{}{}NAME@{TB\_\discretionary {-}{}{}NAME}!libphonefirewall.h@{libphonefirewall.h}|hyperpage}{11}
+\indexentry{libphonefirewall.h@{libphonefirewall.h}!TB\_\discretionary {-}{}{}NUMBER@{TB\_\discretionary {-}{}{}NUMBER}|hyperpage}{11}
+\indexentry{TB\_\discretionary {-}{}{}NUMBER@{TB\_\discretionary {-}{}{}NUMBER}!libphonefirewall.h@{libphonefirewall.h}|hyperpage}{11}
+\indexentry{libphonefirewall.h@{libphonefirewall.h}!TB\_\discretionary {-}{}{}PRIORITY@{TB\_\discretionary {-}{}{}PRIORITY}|hyperpage}{11}
+\indexentry{TB\_\discretionary {-}{}{}PRIORITY@{TB\_\discretionary {-}{}{}PRIORITY}!libphonefirewall.h@{libphonefirewall.h}|hyperpage}{11}
+\indexentry{libphonefirewall.h@{libphonefirewall.h}!TB\_\discretionary {-}{}{}REASON@{TB\_\discretionary {-}{}{}REASON}|hyperpage}{11}
+\indexentry{TB\_\discretionary {-}{}{}REASON@{TB\_\discretionary {-}{}{}REASON}!libphonefirewall.h@{libphonefirewall.h}|hyperpage}{11}
+\indexentry{libphonefirewall.h@{libphonefirewall.h}!add\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry@{add\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}|hyperpage}{12}
+\indexentry{add\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry@{add\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}!libphonefirewall.h@{libphonefirewall.h}|hyperpage}{12}
+\indexentry{libphonefirewall.h@{libphonefirewall.h}!add\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry@{add\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}|hyperpage}{12}
+\indexentry{add\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry@{add\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}!libphonefirewall.h@{libphonefirewall.h}|hyperpage}{12}
+\indexentry{libphonefirewall.h@{libphonefirewall.h}!check\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry@{check\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}|hyperpage}{13}
+\indexentry{check\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry@{check\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}!libphonefirewall.h@{libphonefirewall.h}|hyperpage}{13}
+\indexentry{libphonefirewall.h@{libphonefirewall.h}!check\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry@{check\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}|hyperpage}{13}
+\indexentry{check\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry@{check\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}!libphonefirewall.h@{libphonefirewall.h}|hyperpage}{13}
+\indexentry{libphonefirewall.h@{libphonefirewall.h}!get\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}name@{get\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}name}|hyperpage}{14}
+\indexentry{get\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}name@{get\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}name}!libphonefirewall.h@{libphonefirewall.h}|hyperpage}{14}
+\indexentry{libphonefirewall.h@{libphonefirewall.h}!get\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}number@{get\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}number}|hyperpage}{14}
+\indexentry{get\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}number@{get\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}number}!libphonefirewall.h@{libphonefirewall.h}|hyperpage}{14}
+\indexentry{libphonefirewall.h@{libphonefirewall.h}!get\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}name@{get\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}name}|hyperpage}{15}
+\indexentry{get\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}name@{get\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}name}!libphonefirewall.h@{libphonefirewall.h}|hyperpage}{15}
+\indexentry{libphonefirewall.h@{libphonefirewall.h}!get\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}number@{get\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}number}|hyperpage}{15}
+\indexentry{get\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}number@{get\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}number}!libphonefirewall.h@{libphonefirewall.h}|hyperpage}{15}
+\indexentry{libphonefirewall.h@{libphonefirewall.h}!rm\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry@{rm\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}|hyperpage}{15}
+\indexentry{rm\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry@{rm\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}!libphonefirewall.h@{libphonefirewall.h}|hyperpage}{15}
+\indexentry{libphonefirewall.h@{libphonefirewall.h}!rm\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry@{rm\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}|hyperpage}{16}
+\indexentry{rm\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry@{rm\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}!libphonefirewall.h@{libphonefirewall.h}|hyperpage}{16}
+\indexentry{libphonefirewall.h@{libphonefirewall.h}!entry@{entry}|hyperpage}{16}
+\indexentry{entry@{entry}!libphonefirewall.h@{libphonefirewall.h}|hyperpage}{16}
+\indexentry{logfile.c@{logfile.c}|hyperpage}{17}
+\indexentry{logfile.c@{logfile.c}!asctime@{asctime}|hyperpage}{17}
+\indexentry{asctime@{asctime}!logfile.c@{logfile.c}|hyperpage}{17}
+\indexentry{logfile.c@{logfile.c}!write\_\discretionary {-}{}{}logentry@{write\_\discretionary {-}{}{}logentry}|hyperpage}{18}
+\indexentry{write\_\discretionary {-}{}{}logentry@{write\_\discretionary {-}{}{}logentry}!logfile.c@{logfile.c}|hyperpage}{18}
+\indexentry{logfile.h@{logfile.h}|hyperpage}{20}
+\indexentry{logfile.h@{logfile.h}!ERR\_\discretionary {-}{}{}FLAG@{ERR\_\discretionary {-}{}{}FLAG}|hyperpage}{20}
+\indexentry{ERR\_\discretionary {-}{}{}FLAG@{ERR\_\discretionary {-}{}{}FLAG}!logfile.h@{logfile.h}|hyperpage}{20}
+\indexentry{logfile.h@{logfile.h}!INFO\_\discretionary {-}{}{}FLAG@{INFO\_\discretionary {-}{}{}FLAG}|hyperpage}{20}
+\indexentry{INFO\_\discretionary {-}{}{}FLAG@{INFO\_\discretionary {-}{}{}FLAG}!logfile.h@{logfile.h}|hyperpage}{20}
+\indexentry{logfile.h@{logfile.h}!LOGFILE@{LOGFILE}|hyperpage}{20}
+\indexentry{LOGFILE@{LOGFILE}!logfile.h@{logfile.h}|hyperpage}{20}
+\indexentry{logfile.h@{logfile.h}!MAX\_\discretionary {-}{}{}ENTRY\_\discretionary {-}{}{}LENGTH@{MAX\_\discretionary {-}{}{}ENTRY\_\discretionary {-}{}{}LENGTH}|hyperpage}{20}
+\indexentry{MAX\_\discretionary {-}{}{}ENTRY\_\discretionary {-}{}{}LENGTH@{MAX\_\discretionary {-}{}{}ENTRY\_\discretionary {-}{}{}LENGTH}!logfile.h@{logfile.h}|hyperpage}{20}
+\indexentry{logfile.h@{logfile.h}!UNKNOWN@{UNKNOWN}|hyperpage}{20}
+\indexentry{UNKNOWN@{UNKNOWN}!logfile.h@{logfile.h}|hyperpage}{20}
+\indexentry{logfile.h@{logfile.h}!WARN\_\discretionary {-}{}{}FLAG@{WARN\_\discretionary {-}{}{}FLAG}|hyperpage}{21}
+\indexentry{WARN\_\discretionary {-}{}{}FLAG@{WARN\_\discretionary {-}{}{}FLAG}!logfile.h@{logfile.h}|hyperpage}{21}
+\indexentry{logfile.h@{logfile.h}!write\_\discretionary {-}{}{}logentry@{write\_\discretionary {-}{}{}logentry}|hyperpage}{21}
+\indexentry{write\_\discretionary {-}{}{}logentry@{write\_\discretionary {-}{}{}logentry}!logfile.h@{logfile.h}|hyperpage}{21}
+\indexentry{pf\_\discretionary {-}{}{}daemon.c@{pf\_\discretionary {-}{}{}daemon.c}|hyperpage}{23}
+\indexentry{pf\_\discretionary {-}{}{}daemon.c@{pf\_\discretionary {-}{}{}daemon.c}!dbus\_\discretionary {-}{}{}listen@{dbus\_\discretionary {-}{}{}listen}|hyperpage}{23}
+\indexentry{dbus\_\discretionary {-}{}{}listen@{dbus\_\discretionary {-}{}{}listen}!pf_daemon.c@{pf\_\discretionary {-}{}{}daemon.c}|hyperpage}{23}
+\indexentry{pf\_\discretionary {-}{}{}daemon.c@{pf\_\discretionary {-}{}{}daemon.c}!install\_\discretionary {-}{}{}sigaction@{install\_\discretionary {-}{}{}sigaction}|hyperpage}{23}
+\indexentry{install\_\discretionary {-}{}{}sigaction@{install\_\discretionary {-}{}{}sigaction}!pf_daemon.c@{pf\_\discretionary {-}{}{}daemon.c}|hyperpage}{23}
+\indexentry{pf\_\discretionary {-}{}{}daemon.c@{pf\_\discretionary {-}{}{}daemon.c}!main@{main}|hyperpage}{24}
+\indexentry{main@{main}!pf_daemon.c@{pf\_\discretionary {-}{}{}daemon.c}|hyperpage}{24}
+\indexentry{pf\_\discretionary {-}{}{}daemon.c@{pf\_\discretionary {-}{}{}daemon.c}!react\_\discretionary {-}{}{}to\_\discretionary {-}{}{}signal@{react\_\discretionary {-}{}{}to\_\discretionary {-}{}{}signal}|hyperpage}{24}
+\indexentry{react\_\discretionary {-}{}{}to\_\discretionary {-}{}{}signal@{react\_\discretionary {-}{}{}to\_\discretionary {-}{}{}signal}!pf_daemon.c@{pf\_\discretionary {-}{}{}daemon.c}|hyperpage}{24}
+\indexentry{pf\_\discretionary {-}{}{}daemon.c@{pf\_\discretionary {-}{}{}daemon.c}!start\_\discretionary {-}{}{}daemon@{start\_\discretionary {-}{}{}daemon}|hyperpage}{24}
+\indexentry{start\_\discretionary {-}{}{}daemon@{start\_\discretionary {-}{}{}daemon}!pf_daemon.c@{pf\_\discretionary {-}{}{}daemon.c}|hyperpage}{24}
+\indexentry{pf\_\discretionary {-}{}{}daemon.c@{pf\_\discretionary {-}{}{}daemon.c}!stop\_\discretionary {-}{}{}daemon@{stop\_\discretionary {-}{}{}daemon}|hyperpage}{25}
+\indexentry{stop\_\discretionary {-}{}{}daemon@{stop\_\discretionary {-}{}{}daemon}!pf_daemon.c@{pf\_\discretionary {-}{}{}daemon.c}|hyperpage}{25}
+\indexentry{pf\_\discretionary {-}{}{}daemon.h@{pf\_\discretionary {-}{}{}daemon.h}|hyperpage}{26}
+\indexentry{pf\_\discretionary {-}{}{}daemon.h@{pf\_\discretionary {-}{}{}daemon.h}!LOCKFILE@{LOCKFILE}|hyperpage}{26}
+\indexentry{LOCKFILE@{LOCKFILE}!pf_daemon.h@{pf\_\discretionary {-}{}{}daemon.h}|hyperpage}{26}
+\indexentry{pf\_\discretionary {-}{}{}daemon.h@{pf\_\discretionary {-}{}{}daemon.h}!dbus\_\discretionary {-}{}{}listen@{dbus\_\discretionary {-}{}{}listen}|hyperpage}{26}
+\indexentry{dbus\_\discretionary {-}{}{}listen@{dbus\_\discretionary {-}{}{}listen}!pf_daemon.h@{pf\_\discretionary {-}{}{}daemon.h}|hyperpage}{26}
+\indexentry{pf\_\discretionary {-}{}{}daemon.h@{pf\_\discretionary {-}{}{}daemon.h}!start\_\discretionary {-}{}{}daemon@{start\_\discretionary {-}{}{}daemon}|hyperpage}{26}
+\indexentry{start\_\discretionary {-}{}{}daemon@{start\_\discretionary {-}{}{}daemon}!pf_daemon.h@{pf\_\discretionary {-}{}{}daemon.h}|hyperpage}{26}
+\indexentry{pf\_\discretionary {-}{}{}daemon.h@{pf\_\discretionary {-}{}{}daemon.h}!stop\_\discretionary {-}{}{}daemon@{stop\_\discretionary {-}{}{}daemon}|hyperpage}{26}
+\indexentry{stop\_\discretionary {-}{}{}daemon@{stop\_\discretionary {-}{}{}daemon}!pf_daemon.h@{pf\_\discretionary {-}{}{}daemon.h}|hyperpage}{26}
+\indexentry{phonefirewall\_\discretionary {-}{}{}administration.c@{phonefirewall\_\discretionary {-}{}{}administration.c}|hyperpage}{27}
+\indexentry{phonefirewall\_\discretionary {-}{}{}administration.c@{phonefirewall\_\discretionary {-}{}{}administration.c}!add\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry@{add\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}|hyperpage}{27}
+\indexentry{add\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry@{add\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}!phonefirewall_administration.c@{phonefirewall\_\discretionary {-}{}{}administration.c}|hyperpage}{27}
+\indexentry{phonefirewall\_\discretionary {-}{}{}administration.c@{phonefirewall\_\discretionary {-}{}{}administration.c}!add\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry@{add\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}|hyperpage}{28}
+\indexentry{add\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry@{add\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}!phonefirewall_administration.c@{phonefirewall\_\discretionary {-}{}{}administration.c}|hyperpage}{28}
+\indexentry{phonefirewall\_\discretionary {-}{}{}administration.c@{phonefirewall\_\discretionary {-}{}{}administration.c}!check\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry@{check\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}|hyperpage}{28}
+\indexentry{check\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry@{check\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}!phonefirewall_administration.c@{phonefirewall\_\discretionary {-}{}{}administration.c}|hyperpage}{28}
+\indexentry{phonefirewall\_\discretionary {-}{}{}administration.c@{phonefirewall\_\discretionary {-}{}{}administration.c}!check\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry@{check\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}|hyperpage}{29}
+\indexentry{check\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry@{check\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}!phonefirewall_administration.c@{phonefirewall\_\discretionary {-}{}{}administration.c}|hyperpage}{29}
+\indexentry{phonefirewall\_\discretionary {-}{}{}administration.c@{phonefirewall\_\discretionary {-}{}{}administration.c}!evaluate\_\discretionary {-}{}{}stmt@{evaluate\_\discretionary {-}{}{}stmt}|hyperpage}{29}
+\indexentry{evaluate\_\discretionary {-}{}{}stmt@{evaluate\_\discretionary {-}{}{}stmt}!phonefirewall_administration.c@{phonefirewall\_\discretionary {-}{}{}administration.c}|hyperpage}{29}
+\indexentry{phonefirewall\_\discretionary {-}{}{}administration.c@{phonefirewall\_\discretionary {-}{}{}administration.c}!rm\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry@{rm\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}|hyperpage}{30}
+\indexentry{rm\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry@{rm\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}!phonefirewall_administration.c@{phonefirewall\_\discretionary {-}{}{}administration.c}|hyperpage}{30}
+\indexentry{phonefirewall\_\discretionary {-}{}{}administration.c@{phonefirewall\_\discretionary {-}{}{}administration.c}!rm\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry@{rm\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}|hyperpage}{30}
+\indexentry{rm\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry@{rm\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}!phonefirewall_administration.c@{phonefirewall\_\discretionary {-}{}{}administration.c}|hyperpage}{30}
+\indexentry{phonefirewall\_\discretionary {-}{}{}search.c@{phonefirewall\_\discretionary {-}{}{}search.c}|hyperpage}{32}
+\indexentry{phonefirewall\_\discretionary {-}{}{}search.c@{phonefirewall\_\discretionary {-}{}{}search.c}!ASCII\_\discretionary {-}{}{}PERCENT\_\discretionary {-}{}{}CHAR@{ASCII\_\discretionary {-}{}{}PERCENT\_\discretionary {-}{}{}CHAR}|hyperpage}{32}
+\indexentry{ASCII\_\discretionary {-}{}{}PERCENT\_\discretionary {-}{}{}CHAR@{ASCII\_\discretionary {-}{}{}PERCENT\_\discretionary {-}{}{}CHAR}!phonefirewall_search.c@{phonefirewall\_\discretionary {-}{}{}search.c}|hyperpage}{32}
+\indexentry{phonefirewall\_\discretionary {-}{}{}search.c@{phonefirewall\_\discretionary {-}{}{}search.c}!MAX\_\discretionary {-}{}{}ENTRY\_\discretionary {-}{}{}ARRAY@{MAX\_\discretionary {-}{}{}ENTRY\_\discretionary {-}{}{}ARRAY}|hyperpage}{32}
+\indexentry{MAX\_\discretionary {-}{}{}ENTRY\_\discretionary {-}{}{}ARRAY@{MAX\_\discretionary {-}{}{}ENTRY\_\discretionary {-}{}{}ARRAY}!phonefirewall_search.c@{phonefirewall\_\discretionary {-}{}{}search.c}|hyperpage}{32}
+\indexentry{phonefirewall\_\discretionary {-}{}{}search.c@{phonefirewall\_\discretionary {-}{}{}search.c}!find\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}name@{find\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}name}|hyperpage}{33}
+\indexentry{find\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}name@{find\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}name}!phonefirewall_search.c@{phonefirewall\_\discretionary {-}{}{}search.c}|hyperpage}{33}
+\indexentry{phonefirewall\_\discretionary {-}{}{}search.c@{phonefirewall\_\discretionary {-}{}{}search.c}!get\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}name@{get\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}name}|hyperpage}{33}
+\indexentry{get\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}name@{get\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}name}!phonefirewall_search.c@{phonefirewall\_\discretionary {-}{}{}search.c}|hyperpage}{33}
+\indexentry{phonefirewall\_\discretionary {-}{}{}search.c@{phonefirewall\_\discretionary {-}{}{}search.c}!get\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}number@{get\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}number}|hyperpage}{33}
+\indexentry{get\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}number@{get\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}number}!phonefirewall_search.c@{phonefirewall\_\discretionary {-}{}{}search.c}|hyperpage}{33}
+\indexentry{phonefirewall\_\discretionary {-}{}{}search.c@{phonefirewall\_\discretionary {-}{}{}search.c}!get\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}name@{get\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}name}|hyperpage}{34}
+\indexentry{get\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}name@{get\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}name}!phonefirewall_search.c@{phonefirewall\_\discretionary {-}{}{}search.c}|hyperpage}{34}
+\indexentry{phonefirewall\_\discretionary {-}{}{}search.c@{phonefirewall\_\discretionary {-}{}{}search.c}!get\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}number@{get\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}number}|hyperpage}{34}
+\indexentry{get\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}number@{get\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}number}!phonefirewall_search.c@{phonefirewall\_\discretionary {-}{}{}search.c}|hyperpage}{34}
+\indexentry{phonefirewall\_\discretionary {-}{}{}search.c@{phonefirewall\_\discretionary {-}{}{}search.c}!entry\_\discretionary {-}{}{}array@{entry\_\discretionary {-}{}{}array}|hyperpage}{34}
+\indexentry{entry\_\discretionary {-}{}{}array@{entry\_\discretionary {-}{}{}array}!phonefirewall_search.c@{phonefirewall\_\discretionary {-}{}{}search.c}|hyperpage}{34}
+\indexentry{phonefirewall\_\discretionary {-}{}{}search.c@{phonefirewall\_\discretionary {-}{}{}search.c}!p\_\discretionary {-}{}{}entry@{p\_\discretionary {-}{}{}entry}|hyperpage}{34}
+\indexentry{p\_\discretionary {-}{}{}entry@{p\_\discretionary {-}{}{}entry}!phonefirewall_search.c@{phonefirewall\_\discretionary {-}{}{}search.c}|hyperpage}{34}

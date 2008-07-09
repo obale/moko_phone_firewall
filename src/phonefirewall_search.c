@@ -15,7 +15,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+ * along with MokSec.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -28,6 +28,9 @@
 #define ASCII_PERCENT_CHAR 37
 #define MAX_ENTRY_ARRAY 1024
 
+struct Entry *p_entry = &entry;
+struct Entry entry_array[MAX_ENTRY_ARRAY];
+
 struct Entry *find_entry_by_name(sqlite3_stmt *pp_stmt,
                                  char *name)
 {
@@ -35,7 +38,6 @@ struct Entry *find_entry_by_name(sqlite3_stmt *pp_stmt,
         int count;
         char *col_name;
         char *col_value;
-        struct Entry *p_entry = &entry;
 
         num_column = sqlite3_column_count(pp_stmt);
         col_name = sqlite3_malloc(2 * num_column * sizeof(const char *) + 1);
@@ -69,9 +71,6 @@ struct Entry *get_blacklist_entry_by_name(char *name)
         const char **p_tail = 0;
         int rc;
         char logmsg[MAX_LINE_LENGTH];
-
-        struct Entry *p_entry = &entry;
-        struct Entry entry_array[MAX_ENTRY_ARRAY];
 
         rc = sqlite3_open(DB_FILE, &db);
 

@@ -1,113 +1,272 @@
 \begin{theindex}
 
   \item {add\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}
-    \subitem {libphonefirewall.h}, \hyperpage{10}
+    \subitem {libphonefirewall.h}, \hyperpage{12}
     \subitem {phonefirewall\_\discretionary {-}{}{}administration.c}, 
-		\hyperpage{12}
-  \item {add\_\discretionary {-}{}{}to\_\discretionary {-}{}{}blacklist}
-    \subitem {phonefirewall\_\discretionary {-}{}{}administration.c}, 
-		\hyperpage{13}
-  \item {add\_\discretionary {-}{}{}to\_\discretionary {-}{}{}whitelist}
-    \subitem {phonefirewall\_\discretionary {-}{}{}administration.c}, 
-		\hyperpage{13}
+		\hyperpage{27}
   \item {add\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}
-    \subitem {libphonefirewall.h}, \hyperpage{10}
+    \subitem {libphonefirewall.h}, \hyperpage{12}
     \subitem {phonefirewall\_\discretionary {-}{}{}administration.c}, 
-		\hyperpage{13}
+		\hyperpage{28}
+  \item {area\_\discretionary {-}{}{}code}
+    \subitem {Entry}, \hyperpage{5}
+  \item {ASCII\_\discretionary {-}{}{}PERCENT\_\discretionary {-}{}{}CHAR}
+    \subitem {phonefirewall\_\discretionary {-}{}{}search.c}, 
+		\hyperpage{32}
+  \item {asctime}
+    \subitem {logfile.c}, \hyperpage{17}
 
   \indexspace
 
-  \item {Blacklist}, \hyperpage{5}
-    \subitem {left}, \hyperpage{6}
-    \subitem {name}, \hyperpage{5}
+  \item {check\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}
+    \subitem {libphonefirewall.h}, \hyperpage{13}
+    \subitem {phonefirewall\_\discretionary {-}{}{}administration.c}, 
+		\hyperpage{28}
+  \item {check\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}
+    \subitem {libphonefirewall.h}, \hyperpage{13}
+    \subitem {phonefirewall\_\discretionary {-}{}{}administration.c}, 
+		\hyperpage{29}
+  \item {country\_\discretionary {-}{}{}code}
+    \subitem {Entry}, \hyperpage{5}
+
+  \indexspace
+
+  \item {DB\_\discretionary {-}{}{}FILE}
+    \subitem {libphonefirewall.h}, \hyperpage{10}
+  \item {dbus\_\discretionary {-}{}{}listen}
+    \subitem {pf\_\discretionary {-}{}{}daemon.c}, \hyperpage{23}
+    \subitem {pf\_\discretionary {-}{}{}daemon.h}, \hyperpage{26}
+
+  \indexspace
+
+  \item {Entry}, \hyperpage{5}
+    \subitem {area\_\discretionary {-}{}{}code}, \hyperpage{5}
+    \subitem {country\_\discretionary {-}{}{}code}, \hyperpage{5}
+    \subitem {name}, \hyperpage{6}
     \subitem {number}, \hyperpage{5}
     \subitem {priority}, \hyperpage{6}
     \subitem {reason}, \hyperpage{6}
-    \subitem {right}, \hyperpage{6}
-  \item {blacklist\_\discretionary {-}{}{}t}
+  \item {entry}, \hyperpage{7}
+    \subitem {libphonefirewall.h}, \hyperpage{16}
+  \item {entry\_\discretionary {-}{}{}array}
+    \subitem {phonefirewall\_\discretionary {-}{}{}search.c}, 
+		\hyperpage{34}
+  \item {ERR\_\discretionary {-}{}{}FLAG}
+    \subitem {logfile.h}, \hyperpage{20}
+  \item {evaluate\_\discretionary {-}{}{}stmt}
     \subitem {phonefirewall\_\discretionary {-}{}{}administration.c}, 
-		\hyperpage{12}
+		\hyperpage{29}
 
   \indexspace
 
-  \item {left}
-    \subitem {Blacklist}, \hyperpage{6}
-    \subitem {Whitelist}, \hyperpage{7}
+  \item {find\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}name}
+    \subitem {phonefirewall\_\discretionary {-}{}{}search.c}, 
+		\hyperpage{33}
+
+  \indexspace
+
+  \item {get\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}name}
+    \subitem {libphonefirewall.h}, \hyperpage{14}
+    \subitem {phonefirewall\_\discretionary {-}{}{}search.c}, 
+		\hyperpage{33}
+  \item {get\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}number}
+    \subitem {libphonefirewall.h}, \hyperpage{14}
+    \subitem {phonefirewall\_\discretionary {-}{}{}search.c}, 
+		\hyperpage{33}
+  \item {get\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}name}
+    \subitem {libphonefirewall.h}, \hyperpage{15}
+    \subitem {phonefirewall\_\discretionary {-}{}{}search.c}, 
+		\hyperpage{34}
+  \item {get\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}number}
+    \subitem {libphonefirewall.h}, \hyperpage{15}
+    \subitem {phonefirewall\_\discretionary {-}{}{}search.c}, 
+		\hyperpage{34}
+
+  \indexspace
+
+  \item {INFO\_\discretionary {-}{}{}FLAG}
+    \subitem {logfile.h}, \hyperpage{20}
+  \item {install\_\discretionary {-}{}{}sigaction}
+    \subitem {pf\_\discretionary {-}{}{}daemon.c}, \hyperpage{23}
+
+  \indexspace
+
   \item {libphonefirewall.h}, \hyperpage{9}
     \subitem {add\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}, 
-		\hyperpage{10}
+		\hyperpage{12}
     \subitem {add\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}, 
+		\hyperpage{12}
+    \subitem {check\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}, 
+		\hyperpage{13}
+    \subitem {check\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}, 
+		\hyperpage{13}
+    \subitem {DB\_\discretionary {-}{}{}FILE}, \hyperpage{10}
+    \subitem {entry}, \hyperpage{16}
+    \subitem {get\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}name}, 
+		\hyperpage{14}
+    \subitem {get\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}number}, 
+		\hyperpage{14}
+    \subitem {get\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}name}, 
+		\hyperpage{15}
+    \subitem {get\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}number}, 
+		\hyperpage{15}
+    \subitem {MAX\_\discretionary {-}{}{}LINE\_\discretionary {-}{}{}LENGTH}, 
 		\hyperpage{10}
+    \subitem {PRIO\_\discretionary {-}{}{}ALL}, \hyperpage{10}
     \subitem {rm\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}, 
-		\hyperpage{11}
+		\hyperpage{15}
     \subitem {rm\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}, 
-		\hyperpage{11}
-    \subitem {TELNR\_\discretionary {-}{}{}MAXLEN}, \hyperpage{10}
+		\hyperpage{16}
+    \subitem {STMT\_\discretionary {-}{}{}SIZE}, \hyperpage{10}
+    \subitem {TB\_\discretionary {-}{}{}AREACODE}, \hyperpage{11}
+    \subitem {TB\_\discretionary {-}{}{}COUNTRYCODE}, \hyperpage{11}
+    \subitem {TB\_\discretionary {-}{}{}NAME}, \hyperpage{11}
+    \subitem {TB\_\discretionary {-}{}{}NUMBER}, \hyperpage{11}
+    \subitem {TB\_\discretionary {-}{}{}PRIORITY}, \hyperpage{11}
+    \subitem {TB\_\discretionary {-}{}{}REASON}, \hyperpage{11}
+  \item {LOCKFILE}
+    \subitem {pf\_\discretionary {-}{}{}daemon.h}, \hyperpage{26}
+  \item {LOGFILE}
+    \subitem {logfile.h}, \hyperpage{20}
+  \item {logfile.c}, \hyperpage{17}
+    \subitem {asctime}, \hyperpage{17}
+    \subitem {write\_\discretionary {-}{}{}logentry}, \hyperpage{18}
+  \item {logfile.h}, \hyperpage{20}
+    \subitem {ERR\_\discretionary {-}{}{}FLAG}, \hyperpage{20}
+    \subitem {INFO\_\discretionary {-}{}{}FLAG}, \hyperpage{20}
+    \subitem {LOGFILE}, \hyperpage{20}
+    \subitem {MAX\_\discretionary {-}{}{}ENTRY\_\discretionary {-}{}{}LENGTH}, 
+		\hyperpage{20}
+    \subitem {UNKNOWN}, \hyperpage{20}
+    \subitem {WARN\_\discretionary {-}{}{}FLAG}, \hyperpage{21}
+    \subitem {write\_\discretionary {-}{}{}logentry}, \hyperpage{21}
+
+  \indexspace
+
+  \item {main}
+    \subitem {pf\_\discretionary {-}{}{}daemon.c}, \hyperpage{24}
+  \item {MAX\_\discretionary {-}{}{}ENTRY\_\discretionary {-}{}{}ARRAY}
+    \subitem {phonefirewall\_\discretionary {-}{}{}search.c}, 
+		\hyperpage{32}
+  \item {MAX\_\discretionary {-}{}{}ENTRY\_\discretionary {-}{}{}LENGTH}
+    \subitem {logfile.h}, \hyperpage{20}
+  \item {MAX\_\discretionary {-}{}{}LINE\_\discretionary {-}{}{}LENGTH}
+    \subitem {libphonefirewall.h}, \hyperpage{10}
 
   \indexspace
 
   \item {name}
-    \subitem {Blacklist}, \hyperpage{5}
-    \subitem {Whitelist}, \hyperpage{7}
+    \subitem {Entry}, \hyperpage{6}
   \item {number}
-    \subitem {Blacklist}, \hyperpage{5}
-    \subitem {Whitelist}, \hyperpage{7}
+    \subitem {Entry}, \hyperpage{5}
 
   \indexspace
 
+  \item {p\_\discretionary {-}{}{}entry}
+    \subitem {phonefirewall\_\discretionary {-}{}{}search.c}, 
+		\hyperpage{34}
+  \item {pf\_\discretionary {-}{}{}daemon.c}, \hyperpage{23}
+    \subitem {dbus\_\discretionary {-}{}{}listen}, \hyperpage{23}
+    \subitem {install\_\discretionary {-}{}{}sigaction}, \hyperpage{23}
+    \subitem {main}, \hyperpage{24}
+    \subitem {react\_\discretionary {-}{}{}to\_\discretionary {-}{}{}signal}, 
+		\hyperpage{24}
+    \subitem {start\_\discretionary {-}{}{}daemon}, \hyperpage{24}
+    \subitem {stop\_\discretionary {-}{}{}daemon}, \hyperpage{25}
+  \item {pf\_\discretionary {-}{}{}daemon.h}, \hyperpage{26}
+    \subitem {dbus\_\discretionary {-}{}{}listen}, \hyperpage{26}
+    \subitem {LOCKFILE}, \hyperpage{26}
+    \subitem {start\_\discretionary {-}{}{}daemon}, \hyperpage{26}
+    \subitem {stop\_\discretionary {-}{}{}daemon}, \hyperpage{26}
   \item {phonefirewall\_\discretionary {-}{}{}administration.c}, 
-		\hyperpage{12}
+		\hyperpage{27}
     \subitem {add\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}, 
-		\hyperpage{12}
-    \subitem {add\_\discretionary {-}{}{}to\_\discretionary {-}{}{}blacklist}, 
-		\hyperpage{13}
-    \subitem {add\_\discretionary {-}{}{}to\_\discretionary {-}{}{}whitelist}, 
-		\hyperpage{13}
+		\hyperpage{27}
     \subitem {add\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}, 
-		\hyperpage{13}
-    \subitem {blacklist\_\discretionary {-}{}{}t}, \hyperpage{12}
+		\hyperpage{28}
+    \subitem {check\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}, 
+		\hyperpage{28}
+    \subitem {check\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}, 
+		\hyperpage{29}
+    \subitem {evaluate\_\discretionary {-}{}{}stmt}, \hyperpage{29}
     \subitem {rm\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}, 
-		\hyperpage{14}
+		\hyperpage{30}
     \subitem {rm\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}, 
-		\hyperpage{14}
-    \subitem {whitelist\_\discretionary {-}{}{}t}, \hyperpage{12}
-  \item {priority}
-    \subitem {Blacklist}, \hyperpage{6}
-    \subitem {Whitelist}, \hyperpage{7}
-
-  \indexspace
-
-  \item {reason}
-    \subitem {Blacklist}, \hyperpage{6}
-    \subitem {Whitelist}, \hyperpage{7}
-  \item {right}
-    \subitem {Blacklist}, \hyperpage{6}
-    \subitem {Whitelist}, \hyperpage{8}
-  \item {rm\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}
-    \subitem {libphonefirewall.h}, \hyperpage{11}
-    \subitem {phonefirewall\_\discretionary {-}{}{}administration.c}, 
-		\hyperpage{14}
-  \item {rm\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}
-    \subitem {libphonefirewall.h}, \hyperpage{11}
-    \subitem {phonefirewall\_\discretionary {-}{}{}administration.c}, 
-		\hyperpage{14}
-
-  \indexspace
-
-  \item {TELNR\_\discretionary {-}{}{}MAXLEN}
+		\hyperpage{30}
+  \item {phonefirewall\_\discretionary {-}{}{}search.c}, \hyperpage{32}
+    \subitem {ASCII\_\discretionary {-}{}{}PERCENT\_\discretionary {-}{}{}CHAR}, 
+		\hyperpage{32}
+    \subitem {entry\_\discretionary {-}{}{}array}, \hyperpage{34}
+    \subitem {find\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}name}, 
+		\hyperpage{33}
+    \subitem {get\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}name}, 
+		\hyperpage{33}
+    \subitem {get\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}number}, 
+		\hyperpage{33}
+    \subitem {get\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}name}, 
+		\hyperpage{34}
+    \subitem {get\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry\_\discretionary {-}{}{}by\_\discretionary {-}{}{}number}, 
+		\hyperpage{34}
+    \subitem {MAX\_\discretionary {-}{}{}ENTRY\_\discretionary {-}{}{}ARRAY}, 
+		\hyperpage{32}
+    \subitem {p\_\discretionary {-}{}{}entry}, \hyperpage{34}
+  \item {PRIO\_\discretionary {-}{}{}ALL}
     \subitem {libphonefirewall.h}, \hyperpage{10}
+  \item {priority}
+    \subitem {Entry}, \hyperpage{6}
 
   \indexspace
 
-  \item {Whitelist}, \hyperpage{7}
-    \subitem {left}, \hyperpage{7}
-    \subitem {name}, \hyperpage{7}
-    \subitem {number}, \hyperpage{7}
-    \subitem {priority}, \hyperpage{7}
-    \subitem {reason}, \hyperpage{7}
-    \subitem {right}, \hyperpage{8}
-  \item {whitelist\_\discretionary {-}{}{}t}
+  \item {react\_\discretionary {-}{}{}to\_\discretionary {-}{}{}signal}
+    \subitem {pf\_\discretionary {-}{}{}daemon.c}, \hyperpage{24}
+  \item {reason}
+    \subitem {Entry}, \hyperpage{6}
+  \item {rm\_\discretionary {-}{}{}blacklist\_\discretionary {-}{}{}entry}
+    \subitem {libphonefirewall.h}, \hyperpage{15}
     \subitem {phonefirewall\_\discretionary {-}{}{}administration.c}, 
-		\hyperpage{12}
+		\hyperpage{30}
+  \item {rm\_\discretionary {-}{}{}whitelist\_\discretionary {-}{}{}entry}
+    \subitem {libphonefirewall.h}, \hyperpage{16}
+    \subitem {phonefirewall\_\discretionary {-}{}{}administration.c}, 
+		\hyperpage{30}
+
+  \indexspace
+
+  \item {start\_\discretionary {-}{}{}daemon}
+    \subitem {pf\_\discretionary {-}{}{}daemon.c}, \hyperpage{24}
+    \subitem {pf\_\discretionary {-}{}{}daemon.h}, \hyperpage{26}
+  \item {STMT\_\discretionary {-}{}{}SIZE}
+    \subitem {libphonefirewall.h}, \hyperpage{10}
+  \item {stop\_\discretionary {-}{}{}daemon}
+    \subitem {pf\_\discretionary {-}{}{}daemon.c}, \hyperpage{25}
+    \subitem {pf\_\discretionary {-}{}{}daemon.h}, \hyperpage{26}
+
+  \indexspace
+
+  \item {TB\_\discretionary {-}{}{}AREACODE}
+    \subitem {libphonefirewall.h}, \hyperpage{11}
+  \item {TB\_\discretionary {-}{}{}COUNTRYCODE}
+    \subitem {libphonefirewall.h}, \hyperpage{11}
+  \item {TB\_\discretionary {-}{}{}NAME}
+    \subitem {libphonefirewall.h}, \hyperpage{11}
+  \item {TB\_\discretionary {-}{}{}NUMBER}
+    \subitem {libphonefirewall.h}, \hyperpage{11}
+  \item {TB\_\discretionary {-}{}{}PRIORITY}
+    \subitem {libphonefirewall.h}, \hyperpage{11}
+  \item {TB\_\discretionary {-}{}{}REASON}
+    \subitem {libphonefirewall.h}, \hyperpage{11}
+
+  \indexspace
+
+  \item {UNKNOWN}
+    \subitem {logfile.h}, \hyperpage{20}
+
+  \indexspace
+
+  \item {WARN\_\discretionary {-}{}{}FLAG}
+    \subitem {logfile.h}, \hyperpage{21}
+  \item {write\_\discretionary {-}{}{}logentry}
+    \subitem {logfile.c}, \hyperpage{18}
+    \subitem {logfile.h}, \hyperpage{21}
 
 \end{theindex}

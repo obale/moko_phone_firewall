@@ -1,4 +1,4 @@
-.TH "phonefirewall_search.c" 3 "8 Jun 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
+.TH "phonefirewall_search.c" 3 "9 Jul 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -18,26 +18,68 @@ phonefirewall_search.c \-
 .br
 \fC#include 'libphonefirewall.h'\fP
 .br
+\fC#include 'logfile.h'\fP
+.br
 
+.SS "Defines"
+
+.in +1c
+.ti -1c
+.RI "#define \fBASCII_PERCENT_CHAR\fP   37"
+.br
+.ti -1c
+.RI "#define \fBMAX_ENTRY_ARRAY\fP   1024"
+.br
+.in -1c
 .SS "Functions"
 
 .in +1c
 .ti -1c
-.RI "struct \fBentry\fP * \fBget_blacklist_entry_by_name\fP (char *name)"
+.RI "struct \fBEntry\fP * \fBfind_entry_by_name\fP (sqlite3_stmt *pp_stmt, char *name)"
 .br
 .ti -1c
-.RI "struct \fBentry\fP * \fBget_blacklist_entry_by_number\fP (int country_code, int area_code, unsigned long long number)"
+.RI "struct \fBEntry\fP * \fBget_blacklist_entry_by_name\fP (char *name)"
 .br
 .ti -1c
-.RI "struct \fBentry\fP * \fBget_whitelist_entry_by_name\fP (char *name)"
+.RI "struct \fBEntry\fP * \fBget_blacklist_entry_by_number\fP (int country_code, int area_code, unsigned long long number)"
 .br
 .ti -1c
-.RI "struct \fBentry\fP * \fBget_whitelist_entry_by_number\fP (int country_code, int area_code, unsigned long long number)"
+.RI "struct \fBEntry\fP * \fBget_whitelist_entry_by_name\fP (char *name)"
+.br
+.ti -1c
+.RI "struct \fBEntry\fP * \fBget_whitelist_entry_by_number\fP (int country_code, int area_code, unsigned long long number)"
 .br
 .in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "struct \fBEntry\fP * \fBp_entry\fP = &\fBentry\fP"
+.br
+.ti -1c
+.RI "struct \fBEntry\fP \fBentry_array\fP [MAX_ENTRY_ARRAY]"
+.br
+.in -1c
+.SH "Define Documentation"
+.PP 
+.SS "#define ASCII_PERCENT_CHAR   37"
+.PP
+Definition at line 28 of file phonefirewall_search.c.
+.PP
+Referenced by get_blacklist_entry_by_name().
+.SS "#define MAX_ENTRY_ARRAY   1024"
+.PP
+Definition at line 29 of file phonefirewall_search.c.
 .SH "Function Documentation"
 .PP 
-.SS "struct \fBentry\fP* get_blacklist_entry_by_name (char * name)\fC [read]\fP"
+.SS "struct \fBEntry\fP* find_entry_by_name (sqlite3_stmt * pp_stmt, char * name)\fC [read]\fP"
+.PP
+Definition at line 34 of file phonefirewall_search.c.
+.PP
+References Entry::area_code, Entry::country_code, Entry::name, Entry::number, Entry::priority, Entry::reason, TB_AREACODE, TB_COUNTRYCODE, TB_NAME, TB_NUMBER, TB_PRIORITY, and TB_REASON.
+.PP
+Referenced by get_blacklist_entry_by_name().
+.SS "struct \fBEntry\fP* get_blacklist_entry_by_name (char * name)\fC [read]\fP"
 .PP
 Search a entrie by name.
 .PP
@@ -53,8 +95,10 @@ Search a entrie by name.
 .PP
 
 .PP
-Definition at line 27 of file phonefirewall_search.c.
-.SS "struct \fBentry\fP* get_blacklist_entry_by_number (int country_code, int area_code, unsigned long long number)\fC [read]\fP"
+Definition at line 66 of file phonefirewall_search.c.
+.PP
+References Entry::area_code, ASCII_PERCENT_CHAR, Entry::country_code, DB_FILE, entry_array, ERR_FLAG, find_entry_by_name(), MAX_LINE_LENGTH, Entry::number, Entry::reason, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NAME, TB_NUMBER, TB_PRIORITY, TB_REASON, and write_logentry().
+.SS "struct \fBEntry\fP* get_blacklist_entry_by_number (int country_code, int area_code, unsigned long long number)\fC [read]\fP"
 .PP
 Search a entrie by number (country code + area code + number).
 .PP
@@ -74,8 +118,8 @@ Search a entrie by number (country code + area code + number).
 .PP
 
 .PP
-Definition at line 30 of file phonefirewall_search.c.
-.SS "struct \fBentry\fP* get_whitelist_entry_by_name (char * name)\fC [read]\fP"
+Definition at line 115 of file phonefirewall_search.c.
+.SS "struct \fBEntry\fP* get_whitelist_entry_by_name (char * name)\fC [read]\fP"
 .PP
 Search a entrie by name.
 .PP
@@ -91,8 +135,8 @@ Search a entrie by name.
 .PP
 
 .PP
-Definition at line 33 of file phonefirewall_search.c.
-.SS "struct \fBentry\fP* get_whitelist_entry_by_number (int country_code, int area_code, unsigned long long number)\fC [read]\fP"
+Definition at line 122 of file phonefirewall_search.c.
+.SS "struct \fBEntry\fP* get_whitelist_entry_by_number (int country_code, int area_code, unsigned long long number)\fC [read]\fP"
 .PP
 Search a entrie by number (country code + area code + number).
 .PP
@@ -112,7 +156,19 @@ Search a entrie by number (country code + area code + number).
 .PP
 
 .PP
-Definition at line 36 of file phonefirewall_search.c.
+Definition at line 127 of file phonefirewall_search.c.
+.SH "Variable Documentation"
+.PP 
+.SS "struct \fBEntry\fP \fBentry_array\fP[MAX_ENTRY_ARRAY]"
+.PP
+Definition at line 32 of file phonefirewall_search.c.
+.PP
+Referenced by get_blacklist_entry_by_name().
+.SS "struct \fBEntry\fP* \fBp_entry\fP = &\fBentry\fP"
+.PP
+Definition at line 31 of file phonefirewall_search.c.
+.PP
+Referenced by check_blacklist_entry(), and check_whitelist_entry().
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Phone Firewall from the source code.

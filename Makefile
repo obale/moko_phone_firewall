@@ -1,6 +1,6 @@
 GCC = /usr/bin/gcc
 RM = /bin/rm
-CLFLAGS += --std=c99 -Wall #-Werror
+CLFLAGS += --std=c99 -Wall -Werror
 TEST_LIB = -lcunit -ltestphonefirewall `pkg-config --libs --cflags sqlite3`
 DOXYGEN = /usr/bin/doxygen
 SRCDIR = src

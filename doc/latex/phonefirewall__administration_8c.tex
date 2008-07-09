@@ -21,7 +21,7 @@ Include dependency graph for phonefirewall\_\-administration.c:\nopagebreak
 \subsection*{Functions}
 \begin{CompactItemize}
 \item 
-int \hyperlink{phonefirewall__administration_8c_f306b60195d745190ef3e30e7d0a107e}{evaluate\_\-stmt} (sqlite3\_\-stmt $\ast$pp\_\-stmt, struct \hyperlink{structEntry}{Entry} $\ast$p\_\-entry)
+int \hyperlink{phonefirewall__administration_8c_f306b60195d745190ef3e30e7d0a107e}{evaluate\_\-stmt} (sqlite3\_\-stmt $\ast$pp\_\-stmt, struct \hyperlink{structEntry}{Entry} $\ast$\hyperlink{phonefirewall__search_8c_6065da0f6097ff02236ecc4b7d04c912}{p\_\-entry})
 \item 
 int \hyperlink{phonefirewall__administration_8c_36847ed3459e2a89038772ece42a017d}{add\_\-blacklist\_\-entry} (int country\_\-code, int area\_\-code, unsigned long long number, char $\ast$name, char $\ast$reason, int priority)
 \item 
@@ -57,7 +57,7 @@ Add a number to the blacklist. The number will be blocked after that.
 \item[Returns:]If all goes well 0 (zero) otherwise an errno code. \end{Desc}
 
 
-Definition at line 74 of file phonefirewall\_\-administration.c.
+Definition at line 75 of file phonefirewall\_\-administration.c.
 
 References DB\_\-FILE, ERR\_\-FLAG, MAX\_\-LINE\_\-LENGTH, PRIO\_\-ALL, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NAME, TB\_\-NUMBER, TB\_\-PRIORITY, TB\_\-REASON, and write\_\-logentry().
 
@@ -87,7 +87,7 @@ Add a number to the whitelist. The number will be accepted after that.
 \item[Returns:]If all goes well 0 (zero) otherwise an errno code. \end{Desc}
 
 
-Definition at line 110 of file phonefirewall\_\-administration.c.
+Definition at line 117 of file phonefirewall\_\-administration.c.
 
 References DB\_\-FILE, ERR\_\-FLAG, MAX\_\-LINE\_\-LENGTH, PRIO\_\-ALL, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NAME, TB\_\-NUMBER, TB\_\-PRIORITY, TB\_\-REASON, and write\_\-logentry().
 
@@ -117,9 +117,9 @@ Checks if a number is on the blacklist.
 \item[Returns:]If the number was found 1, otherwise 0. \end{Desc}
 
 
-Definition at line 215 of file phonefirewall\_\-administration.c.
+Definition at line 234 of file phonefirewall\_\-administration.c.
 
-References Entry::area\_\-code, Entry::country\_\-code, DB\_\-FILE, ERR\_\-FLAG, evaluate\_\-stmt(), INFO\_\-FLAG, MAX\_\-LINE\_\-LENGTH, Entry::number, Entry::priority, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NUMBER, TB\_\-PRIORITY, and write\_\-logentry().
+References Entry::area\_\-code, Entry::country\_\-code, DB\_\-FILE, ERR\_\-FLAG, evaluate\_\-stmt(), INFO\_\-FLAG, MAX\_\-LINE\_\-LENGTH, Entry::number, p\_\-entry, Entry::priority, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NUMBER, TB\_\-PRIORITY, and write\_\-logentry().
 
 Here is the call graph for this function:\nopagebreak
 \begin{figure}[H]
@@ -147,9 +147,9 @@ Checks if a number is on the whitelist.
 \item[Returns:]If the number was found 1, otherwise 0. \end{Desc}
 
 
-Definition at line 270 of file phonefirewall\_\-administration.c.
+Definition at line 293 of file phonefirewall\_\-administration.c.
 
-References Entry::area\_\-code, Entry::country\_\-code, DB\_\-FILE, ERR\_\-FLAG, evaluate\_\-stmt(), INFO\_\-FLAG, MAX\_\-LINE\_\-LENGTH, Entry::number, Entry::priority, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NUMBER, TB\_\-PRIORITY, and write\_\-logentry().
+References Entry::area\_\-code, Entry::country\_\-code, DB\_\-FILE, ERR\_\-FLAG, evaluate\_\-stmt(), INFO\_\-FLAG, MAX\_\-LINE\_\-LENGTH, Entry::number, p\_\-entry, Entry::priority, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NUMBER, TB\_\-PRIORITY, and write\_\-logentry().
 
 Here is the call graph for this function:\nopagebreak
 \begin{figure}[H]
@@ -198,7 +198,7 @@ Removes a blocked number from the blacklist.
 \item[Returns:]If all goes right 0, otherwise an error code. \end{Desc}
 
 
-Definition at line 146 of file phonefirewall\_\-administration.c.
+Definition at line 159 of file phonefirewall\_\-administration.c.
 
 References DB\_\-FILE, ERR\_\-FLAG, MAX\_\-LINE\_\-LENGTH, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NUMBER, and write\_\-logentry().
 
@@ -227,7 +227,7 @@ Removes a accepted number from the whitelist.
 \item[Returns:]If all goes right 0, otherwise an error code. \end{Desc}
 
 
-Definition at line 180 of file phonefirewall\_\-administration.c.
+Definition at line 196 of file phonefirewall\_\-administration.c.
 
 References DB\_\-FILE, ERR\_\-FLAG, MAX\_\-LINE\_\-LENGTH, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NUMBER, and write\_\-logentry().
 

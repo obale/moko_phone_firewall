@@ -1,4 +1,4 @@
-.TH "logfile.c" 3 "8 Jun 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
+.TH "logfile.c" 3 "9 Jul 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -43,7 +43,7 @@ The date and time as a string.
 .PP
 
 .PP
-Definition at line 13 of file logfile.c.
+Definition at line 33 of file logfile.c.
 .PP
 Referenced by write_logentry().
 .SS "int write_logentry (char * msg, char * component, int flag)"
@@ -66,11 +66,11 @@ Writes a logfile enty.
 .PP
 
 .PP
-Definition at line 42 of file logfile.c.
+Definition at line 56 of file logfile.c.
 .PP
 References asctime(), ERR_FLAG, INFO_FLAG, LOGFILE, MAX_ENTRY_LENGTH, UNKNOWN, and WARN_FLAG.
 .PP
-Referenced by add_blacklist_entry(), add_whitelist_entry(), check_blacklist_entry(), check_whitelist_entry(), rm_blacklist_entry(), and rm_whitelist_entry().
+Referenced by add_blacklist_entry(), add_whitelist_entry(), check_blacklist_entry(), check_whitelist_entry(), dbus_listen(), get_blacklist_entry_by_name(), rm_blacklist_entry(), rm_whitelist_entry(), start_daemon(), and stop_daemon().
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Phone Firewall from the source code.

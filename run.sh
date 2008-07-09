@@ -7,5 +7,22 @@ make &> log/make.log\
 || ( echo -e '[\E[31mFAILED\033[0m]'; echo "For the output of the compile \
 process look at log/make.log and log/make_clean.log" );
 sqlite3 db/phone-firewall.db < phonefirewall.sql;
-#valgrind -v --leak-check=full ./bin_test/testphonefirewall
-./bin_test/testphonefirewall
+
+echo ""
+
+select CHOICE in CUnit CUnit+Valgrind PythonUnit
+do
+        case "$CHOICE" in
+                "CUnit")
+                ./bin_test/testphonefirewall;
+                exit
+                ;;
+                "CUnit+Valgrind")
+                valgrind -v --leak-check=full ./bin_test/testphonefirewall
+                exit
+                ;;
+                "PythonUnit")
+                python pytests/pf_testsuite.py 
+                exit
+        esac
+done
