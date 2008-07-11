@@ -20,10 +20,18 @@ Maintainer
 Please add your name here when you are also a developer which works on the
 project. Please add you in an alphabetical order (by firstname).
 
-Alex Oberhauser
-<oberhauseralex@networld.to>
-http://moksec.networld.to
+N: Your Name
+E: <Your E-Mail>
+S: Your status in the project
+W: Your website
 
+N: Alex Oberhauser
+E: <oberhauseralex@networld.to>
+S: Project Leader & Core Maintainer
+
+N: Andreas Villscheider
+E: <villscheiderandreas@networld.to>
+S: Quality Manager
 
 Quickstart
 ==========

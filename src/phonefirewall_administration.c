@@ -15,7 +15,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+ * along with MokSec.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -24,6 +24,7 @@
 #include <sqlite3.h>
 #include "libphonefirewall.h"
 #include "logfile.h"
+/*TODO: May check list with a parameter and merge black and white list*/
 
 int evaluate_stmt(sqlite3_stmt *pp_stmt,
                   struct Entry *p_entry)

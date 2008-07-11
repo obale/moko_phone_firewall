@@ -1,3 +1,18 @@
+2008-07-11 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* README:
+	Adding the developers.
+
+	* run.sh:
+	Adding a statement to exit from the select part.
+
+	* src/phonefirwall_administration.c:
+	Substituting Foobar with MokSec in the license part.
+	Adding the TODO statement:
+
+	TODO: May check list with a parameter and merge black and
+	white list.
+
 2008-07-09 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* run.sh:
