@@ -1,4 +1,4 @@
-.TH "libphonefirewall.h" 3 "9 Jul 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
+.TH "libphonefirewall.h" 3 "13 Jul 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -6,6 +6,11 @@ libphonefirewall.h \- API of the phone firewall.
 .SH SYNOPSIS
 .br
 .PP
+\fC#include 'pf_search.h'\fP
+.br
+\fC#include 'pf_administration.h'\fP
+.br
+
 .SS "Data Structures"
 
 .in +1c
@@ -46,39 +51,11 @@ libphonefirewall.h \- API of the phone firewall.
 .ti -1c
 .RI "#define \fBTB_PRIORITY\fP   'priority'"
 .br
-.in -1c
-.SS "Functions"
-
-.in +1c
 .ti -1c
-.RI "int \fBadd_blacklist_entry\fP (int country_code, int area_code, unsigned long long number, char *name, char *reason, int priority)"
+.RI "#define \fBFL_BLACKLIST\fP   0x01"
 .br
 .ti -1c
-.RI "int \fBrm_blacklist_entry\fP (int country_code, int area_code, unsigned long long number)"
-.br
-.ti -1c
-.RI "int \fBcheck_blacklist_entry\fP (int country_code, int area_code, unsigned long long number, int priority)"
-.br
-.ti -1c
-.RI "int \fBadd_whitelist_entry\fP (int country_code, int area_code, unsigned long long number, char *name, char *reason, int priority)"
-.br
-.ti -1c
-.RI "struct \fBEntry\fP * \fBget_blacklist_entry_by_name\fP (char *name)"
-.br
-.ti -1c
-.RI "struct \fBEntry\fP * \fBget_blacklist_entry_by_number\fP (int country_code, int area_code, unsigned long long number)"
-.br
-.ti -1c
-.RI "int \fBrm_whitelist_entry\fP (int country_code, int area_code, unsigned long long number)"
-.br
-.ti -1c
-.RI "int \fBcheck_whitelist_entry\fP (int country_code, int area_code, unsigned long long number, int priority)"
-.br
-.ti -1c
-.RI "struct \fBEntry\fP * \fBget_whitelist_entry_by_name\fP (char *name)"
-.br
-.ti -1c
-.RI "struct \fBEntry\fP * \fBget_whitelist_entry_by_number\fP (int country_code, int area_code, unsigned long long number)"
+.RI "#define \fBFL_WHITELIST\fP   0x02"
 .br
 .in -1c
 .SS "Variables"
@@ -104,288 +81,64 @@ Definition in file \fBlibphonefirewall.h\fP.
 .PP 
 .SS "#define DB_FILE   'db/phone-firewall.db'"
 .PP
-Definition at line 34 of file libphonefirewall.h.
+Definition at line 37 of file libphonefirewall.h.
 .PP
-Referenced by add_blacklist_entry(), add_whitelist_entry(), check_blacklist_entry(), check_whitelist_entry(), get_blacklist_entry_by_name(), rm_blacklist_entry(), and rm_whitelist_entry().
+Referenced by add_entry(), check_entry(), get_blacklist_entry_by_name(), and rm_entry().
+.SS "#define FL_BLACKLIST   0x01"
+.PP
+Definition at line 48 of file libphonefirewall.h.
+.PP
+Referenced by add_entry(), check_entry(), and rm_entry().
+.SS "#define FL_WHITELIST   0x02"
+.PP
+Definition at line 49 of file libphonefirewall.h.
+.PP
+Referenced by add_entry(), check_entry(), and rm_entry().
 .SS "#define MAX_LINE_LENGTH   512"
-.PP
-Definition at line 36 of file libphonefirewall.h.
-.PP
-Referenced by add_blacklist_entry(), add_whitelist_entry(), check_blacklist_entry(), check_whitelist_entry(), get_blacklist_entry_by_name(), rm_blacklist_entry(), and rm_whitelist_entry().
-.SS "#define PRIO_ALL   -999"
-.PP
-Definition at line 33 of file libphonefirewall.h.
-.PP
-Referenced by add_blacklist_entry(), add_whitelist_entry(), and evaluate_stmt().
-.SS "#define STMT_SIZE   1024"
-.PP
-Definition at line 35 of file libphonefirewall.h.
-.PP
-Referenced by add_blacklist_entry(), add_whitelist_entry(), check_blacklist_entry(), check_whitelist_entry(), get_blacklist_entry_by_name(), rm_blacklist_entry(), and rm_whitelist_entry().
-.SS "#define TB_AREACODE   'areacode'"
 .PP
 Definition at line 39 of file libphonefirewall.h.
 .PP
-Referenced by add_blacklist_entry(), add_whitelist_entry(), check_blacklist_entry(), check_whitelist_entry(), evaluate_stmt(), find_entry_by_name(), get_blacklist_entry_by_name(), rm_blacklist_entry(), and rm_whitelist_entry().
-.SS "#define TB_COUNTRYCODE   'countrycode'"
+Referenced by add_entry(), check_entry(), get_blacklist_entry_by_name(), and rm_entry().
+.SS "#define PRIO_ALL   -999"
+.PP
+Definition at line 36 of file libphonefirewall.h.
+.PP
+Referenced by add_entry(), and evaluate_stmt().
+.SS "#define STMT_SIZE   1024"
 .PP
 Definition at line 38 of file libphonefirewall.h.
 .PP
-Referenced by add_blacklist_entry(), add_whitelist_entry(), check_blacklist_entry(), check_whitelist_entry(), evaluate_stmt(), find_entry_by_name(), get_blacklist_entry_by_name(), rm_blacklist_entry(), and rm_whitelist_entry().
-.SS "#define TB_NAME   'name'"
-.PP
-Definition at line 41 of file libphonefirewall.h.
-.PP
-Referenced by add_blacklist_entry(), add_whitelist_entry(), find_entry_by_name(), and get_blacklist_entry_by_name().
-.SS "#define TB_NUMBER   'number'"
-.PP
-Definition at line 40 of file libphonefirewall.h.
-.PP
-Referenced by add_blacklist_entry(), add_whitelist_entry(), check_blacklist_entry(), check_whitelist_entry(), evaluate_stmt(), find_entry_by_name(), get_blacklist_entry_by_name(), rm_blacklist_entry(), and rm_whitelist_entry().
-.SS "#define TB_PRIORITY   'priority'"
-.PP
-Definition at line 43 of file libphonefirewall.h.
-.PP
-Referenced by add_blacklist_entry(), add_whitelist_entry(), check_blacklist_entry(), check_whitelist_entry(), evaluate_stmt(), find_entry_by_name(), and get_blacklist_entry_by_name().
-.SS "#define TB_REASON   'reason'"
+Referenced by add_entry(), check_entry(), get_blacklist_entry_by_name(), and rm_entry().
+.SS "#define TB_AREACODE   'areacode'"
 .PP
 Definition at line 42 of file libphonefirewall.h.
 .PP
-Referenced by add_blacklist_entry(), add_whitelist_entry(), find_entry_by_name(), and get_blacklist_entry_by_name().
-.SH "Function Documentation"
-.PP 
-.SS "int add_blacklist_entry (int country_code, int area_code, unsigned long long number, char * name, char * reason, int priority)"
+Referenced by add_entry(), check_entry(), evaluate_stmt(), find_entry_by_name(), get_blacklist_entry_by_name(), and rm_entry().
+.SS "#define TB_COUNTRYCODE   'countrycode'"
 .PP
-Add a number to the blacklist. The number will be blocked after that.
+Definition at line 41 of file libphonefirewall.h.
 .PP
-\fBParameters:\fP
-.RS 4
-\fIcountry_code\fP The country code (for example 39 for Italy, 43 for Austria, and so one) 
-.br
-\fIarea_code\fP The area code which indicates your mobile operator. 
-.br
-\fInumber\fP The telephone number of the person (without country and area code. 
-.br
-\fIname\fP The name of the person. 
-.br
-\fIreason\fP Why you have blocked this person. 
-.br
-\fIpriority\fP Gives the \fBentry\fP a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen. 
-.br
- The value 'PRIO_ALL' stands for all priorities.
-.RE
+Referenced by add_entry(), check_entry(), evaluate_stmt(), find_entry_by_name(), get_blacklist_entry_by_name(), and rm_entry().
+.SS "#define TB_NAME   'name'"
 .PP
-\fBReturns:\fP
-.RS 4
-If all goes well 0 (zero) otherwise an errno code. 
-.RE
+Definition at line 44 of file libphonefirewall.h.
 .PP
-
+Referenced by add_entry(), find_entry_by_name(), and get_blacklist_entry_by_name().
+.SS "#define TB_NUMBER   'number'"
 .PP
-Definition at line 75 of file phonefirewall_administration.c.
+Definition at line 43 of file libphonefirewall.h.
 .PP
-References DB_FILE, ERR_FLAG, MAX_LINE_LENGTH, PRIO_ALL, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NAME, TB_NUMBER, TB_PRIORITY, TB_REASON, and write_logentry().
-.SS "int add_whitelist_entry (int country_code, int area_code, unsigned long long number, char * name, char * reason, int priority)"
+Referenced by add_entry(), check_entry(), evaluate_stmt(), find_entry_by_name(), get_blacklist_entry_by_name(), and rm_entry().
+.SS "#define TB_PRIORITY   'priority'"
 .PP
-Add a number to the whitelist. The number will be accepted after that.
+Definition at line 46 of file libphonefirewall.h.
 .PP
-\fBParameters:\fP
-.RS 4
-\fIcountry_code\fP The country code (for example 39 for Italy, 43 for Austria, and so one) 
-.br
-\fIarea_code\fP The area code which indicates your mobile operator. 
-.br
-\fInumber\fP The telephone number of the person (without country and area code. 
-.br
-\fIname\fP The name of the person. 
-.br
-\fIreason\fP Why you have blocked this person. 
-.br
-\fIpriority\fP Gives the \fBentry\fP a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.
-.br
- The value 'PRIO_ALL' stands for all priorities.
-.RE
+Referenced by add_entry(), check_entry(), evaluate_stmt(), find_entry_by_name(), and get_blacklist_entry_by_name().
+.SS "#define TB_REASON   'reason'"
 .PP
-\fBReturns:\fP
-.RS 4
-If all goes well 0 (zero) otherwise an errno code. 
-.RE
+Definition at line 45 of file libphonefirewall.h.
 .PP
-
-.PP
-Definition at line 117 of file phonefirewall_administration.c.
-.PP
-References DB_FILE, ERR_FLAG, MAX_LINE_LENGTH, PRIO_ALL, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NAME, TB_NUMBER, TB_PRIORITY, TB_REASON, and write_logentry().
-.SS "int check_blacklist_entry (int country_code, int area_code, unsigned long long number, int priority)"
-.PP
-Checks if a number is on the blacklist.
-.PP
-\fBParameters:\fP
-.RS 4
-\fIcountry_code\fP The country code (for example 39 for Italy, 43 for Austria, and so one) 
-.br
-\fIarea_code\fP The area code which indicates your mobile operator. 
-.br
-\fInumber\fP The telephone number of the person (without country and area code. 
-.br
-\fIpriority\fP Gives the \fBentry\fP a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.
-.br
- The value 'PRIO_ALL' stands for all priorities.
-.RE
-.PP
-\fBReturns:\fP
-.RS 4
-If the number was found 1, otherwise 0. 
-.RE
-.PP
-
-.PP
-Definition at line 234 of file phonefirewall_administration.c.
-.PP
-References Entry::area_code, Entry::country_code, DB_FILE, ERR_FLAG, evaluate_stmt(), INFO_FLAG, MAX_LINE_LENGTH, Entry::number, p_entry, Entry::priority, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NUMBER, TB_PRIORITY, and write_logentry().
-.SS "int check_whitelist_entry (int country_code, int area_code, unsigned long long number, int priority)"
-.PP
-Checks if a number is on the whitelist.
-.PP
-\fBParameters:\fP
-.RS 4
-\fIcountry_code\fP The country code (for example 39 for Italy, 43 for Austria, and so one) 
-.br
-\fIarea_code\fP The area code which indicates your mobile operator. 
-.br
-\fInumber\fP The telephone number of the person (without country and area code. 
-.br
-\fIpriority\fP Gives the \fBentry\fP a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen.
-.br
- The value 'PRIO_ALL' stands for all priorities.
-.RE
-.PP
-\fBReturns:\fP
-.RS 4
-If the number was found 1, otherwise 0. 
-.RE
-.PP
-
-.PP
-Definition at line 293 of file phonefirewall_administration.c.
-.PP
-References Entry::area_code, Entry::country_code, DB_FILE, ERR_FLAG, evaluate_stmt(), INFO_FLAG, MAX_LINE_LENGTH, Entry::number, p_entry, Entry::priority, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NUMBER, TB_PRIORITY, and write_logentry().
-.SS "struct \fBEntry\fP* get_blacklist_entry_by_name (char * name)\fC [read]\fP"
-.PP
-Search a entrie by name.
-.PP
-\fBParameters:\fP
-.RS 4
-\fIname\fP The name of the person which is blocked.
-.RE
-.PP
-\fBReturns:\fP
-.RS 4
-\fBentry\fP Returns the found \fBentry\fP. 
-.RE
-.PP
-
-.PP
-Definition at line 66 of file phonefirewall_search.c.
-.PP
-References Entry::area_code, ASCII_PERCENT_CHAR, Entry::country_code, DB_FILE, entry_array, ERR_FLAG, find_entry_by_name(), MAX_LINE_LENGTH, Entry::number, Entry::reason, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NAME, TB_NUMBER, TB_PRIORITY, TB_REASON, and write_logentry().
-.SS "struct \fBEntry\fP* get_blacklist_entry_by_number (int country_code, int area_code, unsigned long long number)\fC [read]\fP"
-.PP
-Search a entrie by number (country code + area code + number).
-.PP
-\fBParameters:\fP
-.RS 4
-\fIcountry_code\fP The country code (for example 39 for Italy, 43 for Austria, and so one) 
-.br
-\fIarea_code\fP The area code which indicates your mobile operator. 
-.br
-\fInumber\fP The telephone number of the person (without country and area code.
-.RE
-.PP
-\fBReturns:\fP
-.RS 4
-\fBentry\fP Returns the found \fBentry\fP. 
-.RE
-.PP
-
-.PP
-Definition at line 115 of file phonefirewall_search.c.
-.SS "struct \fBEntry\fP* get_whitelist_entry_by_name (char * name)\fC [read]\fP"
-.PP
-Search a entrie by name.
-.PP
-\fBParameters:\fP
-.RS 4
-\fIname\fP The name of the person which is accepted.
-.RE
-.PP
-\fBReturns:\fP
-.RS 4
-\fBentry\fP Returns the found \fBentry\fP. 
-.RE
-.PP
-
-.PP
-Definition at line 122 of file phonefirewall_search.c.
-.SS "struct \fBEntry\fP* get_whitelist_entry_by_number (int country_code, int area_code, unsigned long long number)\fC [read]\fP"
-.PP
-Search a entrie by number (country code + area code + number).
-.PP
-\fBParameters:\fP
-.RS 4
-\fIcountry_code\fP The country code (for example 39 for Italy, 43 for Austria, and so one) 
-.br
-\fIarea_code\fP The area code which indicates your mobile operator. 
-.br
-\fInumber\fP The telephone number of the person (without country and area code.
-.RE
-.PP
-\fBReturns:\fP
-.RS 4
-\fBentry\fP Returns the found \fBentry\fP. 
-.RE
-.PP
-
-.PP
-Definition at line 127 of file phonefirewall_search.c.
-.SS "int rm_blacklist_entry (int country_code, int area_code, unsigned long long number)"
-.PP
-Removes a blocked number from the blacklist.
-.PP
-\fBParameters:\fP
-.RS 4
-\fInumber\fP The number which will be deleted.
-.RE
-.PP
-\fBReturns:\fP
-.RS 4
-If all goes right 0, otherwise an error code. 
-.RE
-.PP
-
-.PP
-Definition at line 159 of file phonefirewall_administration.c.
-.PP
-References DB_FILE, ERR_FLAG, MAX_LINE_LENGTH, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NUMBER, and write_logentry().
-.SS "int rm_whitelist_entry (int country_code, int area_code, unsigned long long number)"
-.PP
-Removes a accepted number from the whitelist.
-.PP
-\fBParameters:\fP
-.RS 4
-\fInumber\fP The number which will be deleted.
-.RE
-.PP
-\fBReturns:\fP
-.RS 4
-If all goes right 0, otherwise an error code. 
-.RE
-.PP
-
-.PP
-Definition at line 196 of file phonefirewall_administration.c.
-.PP
-References DB_FILE, ERR_FLAG, MAX_LINE_LENGTH, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NUMBER, and write_logentry().
+Referenced by add_entry(), find_entry_by_name(), and get_blacklist_entry_by_name().
 .SH "Variable Documentation"
 .PP 
 .SS "struct \fBEntry\fP  \fBentry\fP"

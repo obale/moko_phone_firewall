@@ -55,7 +55,6 @@ struct Entry *find_entry_by_name(sqlite3_stmt *pp_stmt,
                         p_entry->number = atoll(col_value);
                 } else if ( 0 == strcmp(col_name, TB_NAME) ) {
                         p_entry->name = col_value;
-                        printf("\ncol_value: %s\n", p_entry->name);
                 } else if ( 0 == strcmp(col_name, TB_REASON) ) {
                         p_entry->reason = col_value;
                 }

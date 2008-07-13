@@ -24,7 +24,6 @@
 #include <sqlite3.h>
 #include "libphonefirewall.h"
 #include "logfile.h"
-/*TODO: May check list with a parameter and merge black and white list*/
 
 int evaluate_stmt(sqlite3_stmt *pp_stmt,
                   struct Entry *p_entry)
@@ -73,59 +72,29 @@ int evaluate_stmt(sqlite3_stmt *pp_stmt,
         return 0;
 }
 
-int add_blacklist_entry(int country_code,
-                        int area_code,
-                        unsigned long long number,
-                        char *name,
-                        char *reason,
-                        int priority)
+int add_entry(int country_code,
+              int area_code,
+              unsigned long long number,
+              char *name,
+              char *reason,
+              int priority,
+              int listflag)
 {
         if ( priority < PRIO_ALL
                         || 0 == country_code
                         || 0 == area_code
                         || 0 == number ) return -1;
 
-        sqlite3 *db;
-        char *errMsg = 0;
-        char stmt[STMT_SIZE];
-        int rc;
-        char error[MAX_LINE_LENGTH];
-
-        rc = sqlite3_open(DB_FILE, &db);
-
-        if ( rc ) {
-                sprintf(error, "Can't open database: %s", sqlite3_errmsg(db));
-                write_logentry(error, "phonefirewall", ERR_FLAG);
-                sqlite3_close(db);
-                return -1;
+        char *listname;
+        switch (listflag) {
+                case FL_WHITELIST:
+                        listname = "whitelist";
+                        break;
+                case FL_BLACKLIST:
+                        listname = "blacklist";
+                        break;
+                default: return -1;
         }
-
-        sprintf(stmt, "INSERT INTO blacklist (%s, %s, %s, %s, %s, %s) VALUES(%d, %d, %d, %lld, \"%s\", \"%s\")", TB_PRIORITY, TB_COUNTRYCODE, TB_AREACODE, TB_NUMBER, TB_NAME, TB_REASON, priority, country_code, area_code, number, name, reason);
-
-        rc = sqlite3_exec(db, stmt, NULL, 0, &errMsg);
-        if ( SQLITE_OK != rc ) {
-                sprintf(error, "SQL error: %s", sqlite3_errmsg(db));
-                write_logentry(error, "phonefirewall", ERR_FLAG);
-                sqlite3_close(db);
-                return -1;
-        }
-
-        sqlite3_close(db);
-
-        return 0;
-}
-
-int add_whitelist_entry(int country_code,
-                        int area_code,
-                        unsigned long long number,
-                        char *name,
-                        char *reason,
-                        int priority)
-{
-        if ( priority < PRIO_ALL
-                        || 0 == country_code
-                        || 0 == area_code
-                        || 0 == number ) return -1;
 
         sqlite3 *db;
         char *errMsg = 0;
@@ -142,7 +111,7 @@ int add_whitelist_entry(int country_code,
                 return -1;
         }
 
-        sprintf(stmt, "INSERT INTO whitelist (%s, %s, %s, %s, %s, %s) VALUES(%d, %d, %d, %lld, \"%s\", \"%s\")", TB_PRIORITY, TB_COUNTRYCODE, TB_AREACODE, TB_NUMBER, TB_NAME, TB_REASON, priority, country_code, area_code, number, name, reason);
+        sprintf(stmt, "INSERT INTO %s (%s, %s, %s, %s, %s, %s) VALUES(%d, %d, %d, %lld, \"%s\", \"%s\")",listname, TB_PRIORITY, TB_COUNTRYCODE, TB_AREACODE, TB_NUMBER, TB_NAME, TB_REASON, priority, country_code, area_code, number, name, reason);
 
         rc = sqlite3_exec(db, stmt, NULL, 0, &errMsg);
         if ( SQLITE_OK != rc ) {
@@ -157,50 +126,25 @@ int add_whitelist_entry(int country_code,
         return 0;
 }
 
-int rm_blacklist_entry (int country_code,
-                        int area_code,
-                        unsigned long long number)
+int rm_entry (int country_code,
+              int area_code,
+              unsigned long long number,
+              int listflag)
 {
         if ( 0 == country_code
                         || 0 == area_code
                         || 0 == number ) return -1;
 
-        sqlite3 *db;
-        char *errMsg = 0;
-        char stmt[STMT_SIZE];
-        int rc;
-        char error[MAX_LINE_LENGTH];
-
-        rc = sqlite3_open(DB_FILE, &db);
-
-        if ( rc ) {
-                sprintf(error, "Can't open database: %s", sqlite3_errmsg(db));
-                write_logentry(error, "phonefirewall", ERR_FLAG);
-                sqlite3_close(db);
-                return -1;
+        char *listname;
+        switch (listflag) {
+                case FL_WHITELIST:
+                        listname = "whitelist";
+                        break;
+                case FL_BLACKLIST:
+                        listname = "blacklist";
+                        break;
+                default: return -1;
         }
-
-        sprintf(stmt, "DELETE FROM blacklist WHERE %s = %d AND %s = %d AND %s = %lld", TB_COUNTRYCODE, country_code, TB_AREACODE, area_code, TB_NUMBER, number);
-
-        rc = sqlite3_exec(db, stmt, NULL, 0, &errMsg);
-        if ( SQLITE_OK != rc ) {
-                sprintf(error, "SQL error: %s", sqlite3_errmsg(db));
-                write_logentry(error, "phonefirewall", ERR_FLAG);
-                sqlite3_close(db);
-                return -1;
-        }
-
-        sqlite3_close(db);
-        return 0;
-}
-
-int rm_whitelist_entry (int country_code,
-                        int area_code,
-                        unsigned long long number)
-{
-        if ( 0 == country_code
-                        || 0 == area_code
-                        || 0 == number ) return -1;
 
         sqlite3 *db;
         char *errMsg = 0;
@@ -217,7 +161,7 @@ int rm_whitelist_entry (int country_code,
                 return -1;
         }
 
-        sprintf(stmt, "DELETE FROM whitelist WHERE %s = %d AND %s = %d AND %s = %lld", TB_COUNTRYCODE, country_code, TB_AREACODE, area_code, TB_NUMBER, number);
+        sprintf(stmt, "DELETE FROM %s WHERE %s = %d AND %s = %d AND %s = %lld", listname, TB_COUNTRYCODE, country_code, TB_AREACODE, area_code, TB_NUMBER, number);
 
         rc = sqlite3_exec(db, stmt, NULL, 0, &errMsg);
         if ( SQLITE_OK != rc ) {
@@ -228,15 +172,26 @@ int rm_whitelist_entry (int country_code,
         }
 
         sqlite3_close(db);
-
         return 0;
 }
 
-int check_blacklist_entry(int country_code,
-                          int area_code,
-                          unsigned long long number,
-                          int priority)
+int check_entry(int country_code,
+                int area_code,
+                unsigned long long number,
+                int priority,
+                int listflag)
 {
+        char *listname;
+        switch (listflag) {
+                case FL_WHITELIST:
+                        listname = "whitelist";
+                        break;
+                case FL_BLACKLIST:
+                        listname = "blacklist";
+                        break;
+                default: return -1;
+        }
+
         sqlite3 *db;
         char stmt[STMT_SIZE];       // The SQL statement as text string.
         sqlite3_stmt *pp_stmt = 0;  // The prepared statement
@@ -260,7 +215,7 @@ int check_blacklist_entry(int country_code,
                 return -1;
         }
 
-        sprintf(stmt, "SELECT %1$s, %2$s, %3$s, %4$s FROM blacklist ORDER BY %1$s, %2$s, %3$s, %4$s", TB_PRIORITY, TB_COUNTRYCODE, TB_AREACODE, TB_NUMBER);
+        sprintf(stmt, "SELECT %1$s, %2$s, %3$s, %4$s FROM %5$s ORDER BY %1$s, %2$s, %3$s, %4$s", TB_PRIORITY, TB_COUNTRYCODE, TB_AREACODE, TB_NUMBER, listname);
 
         rc = sqlite3_prepare_v2(db, stmt, sizeof(stmt), &pp_stmt, p_tail);
 
@@ -276,66 +231,16 @@ int check_blacklist_entry(int country_code,
                 if ( SQLITE_ROW == rc ) {
                         found_flag = evaluate_stmt(pp_stmt, p_entry);
                         if ( found_flag == 1) {
-                                sprintf(logmsg, "Number \"+%d %d %llu\" blocked successfully.", country_code, area_code, number);
-                                write_logentry(logmsg, "phonefirewall", INFO_FLAG);
-                                break;
-                        }
-                }
-        }
-
-
-        // Cleaning up
-        sqlite3_finalize(pp_stmt);
-        sqlite3_close(db);
-
-        return found_flag;
-}
-
-int check_whitelist_entry(int country_code,
-                          int area_code,
-                          unsigned long long number,
-                          int priority)
-{
-        sqlite3 *db;
-        char stmt[STMT_SIZE];       // The SQL statement as text string.
-        sqlite3_stmt *pp_stmt = 0;  // The prepared statement
-        const char **p_tail = 0;    // The unused part of stmt
-        int rc;
-        char logmsg[MAX_LINE_LENGTH];
-        int found_flag = 0;
-
-        struct Entry *p_entry = &entry;
-        p_entry->country_code = country_code;
-        p_entry->area_code = area_code;
-        p_entry->number = number;
-        p_entry->priority = priority;
-
-        rc = sqlite3_open(DB_FILE, &db);
-
-        if ( rc ) {
-                sprintf(logmsg, "Can't open database: %s", sqlite3_errmsg(db));
-                write_logentry(logmsg, "phonefirewall", ERR_FLAG);
-                sqlite3_close(db);
-                return -1;
-        }
-
-        sprintf(stmt, "SELECT %1$s, %2$s, %3$s, %4$s FROM whitelist ORDER BY %1$s, %2$s, %3$s, %4$s", TB_PRIORITY, TB_COUNTRYCODE, TB_AREACODE, TB_NUMBER);
-
-        rc = sqlite3_prepare_v2(db, stmt, sizeof(stmt), &pp_stmt, p_tail);
-
-        if ( rc != SQLITE_OK ) {
-                sprintf(logmsg, "SQL error: %s", sqlite3_errmsg(db));
-                write_logentry(logmsg, "phonefirewall", ERR_FLAG);
-                sqlite3_close(db);
-                return -1;
-        }
-
-        while ( rc != SQLITE_DONE) {
-                rc = sqlite3_step(pp_stmt);
-                if ( SQLITE_ROW == rc ) {
-                        found_flag = evaluate_stmt(pp_stmt, p_entry);
-                        if ( found_flag == 1) {
-                                sprintf(logmsg, "Number \"+%d %d %llu\" accpeted successfully.", country_code, area_code, number);
+                                switch (listflag) {
+                                        case FL_WHITELIST:
+                                                sprintf(logmsg, "Number \"+%d %d %llu\" accepted successfully.", country_code, area_code, number);
+                                                break;
+                                        case FL_BLACKLIST:
+                                                sprintf(logmsg, "Number \"+%d %d %llu\" blocked successfully.", country_code, area_code, number);
+                                                break;
+                                        default:
+                                                sprintf(logmsg, "Something goes wrong...");
+                                }
                                 write_logentry(logmsg, "phonefirewall", INFO_FLAG);
                                 break;
                         }

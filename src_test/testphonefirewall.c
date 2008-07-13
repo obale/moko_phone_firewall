@@ -8,113 +8,113 @@
 
 void test_add_blacklist_entry(void) {
 	/* [OK]    -> Testuser 1:  Number in Italy. */
-	CU_ASSERT(add_blacklist_entry(39, 328, 123456789, "Testuser 1", "I don't like him.", 0) == 0);
+	CU_ASSERT(add_entry(39, 328, 123456789, "Testuser 1", "I don't like him.", 0, FL_BLACKLIST) == 0);
 
 	/* [FAILS] -> Testuser -1: The same number as "Testuser 1". */
-	CU_ASSERT(add_blacklist_entry(39, 328, 123456789, "Testuser -1", "I don't like him.", 0) == -1);
+	CU_ASSERT(add_entry(39, 328, 123456789, "Testuser -1", "I don't like him.", 0, FL_BLACKLIST) == -1);
 
 	/* [FAILS] -> Testuser -1: The country code is NULL. */
-	CU_ASSERT(add_blacklist_entry(0, 328, 123456782, "Testuser -1", "I don't like him.", 0) == -1);
+	CU_ASSERT(add_entry(0, 328, 123456782, "Testuser -1", "I don't like him.", 0, FL_BLACKLIST) == -1);
 
 	/* [FAILS] -> Testuser -1: The area code is NULL. */
-	CU_ASSERT(add_blacklist_entry(39, 0, 123456782, "Testuser -1", "I don't like him.", 0) == -1);
+	CU_ASSERT(add_entry(39, 0, 123456782, "Testuser -1", "I don't like him.", 0, FL_BLACKLIST) == -1);
 
 	/* [FAILS] -> Testuser -1: The area code is NULL. */
-	CU_ASSERT(add_blacklist_entry(39, 328, 0, "Testuser -1", "I don't like him.", 0) == -1);
+	CU_ASSERT(add_entry(39, 328, 0, "Testuser -1", "I don't like him.", 0, FL_BLACKLIST) == -1);
 
 	/* [OK]    -> Testuser 2:  The same area code and number as "Testuser
 	 * 1" but a different country code. */
-	CU_ASSERT(add_blacklist_entry(49, 328, 123456789, "Testuser 2", "I don't like him.", 0) == 0);
+	CU_ASSERT(add_entry(49, 328, 123456789, "Testuser 2", "I don't like him.", 0, FL_BLACKLIST) == 0);
 
 	/* [OK]    -> Testuser 3:  The same country code and number as "Testuser
 	 * 1" but a different area code. */
-	CU_ASSERT(add_blacklist_entry(49, 329, 123456789, "Testuser 3", "I don't like him.", 0) == 0);
+	CU_ASSERT(add_entry(49, 329, 123456789, "Testuser 3", "I don't like him.", 0, FL_BLACKLIST) == 0);
 
 	/* [OK]    -> NULL      :  Username is empty. */
-	CU_ASSERT(add_blacklist_entry(49, 329, 123456780, NULL, "I don't like him.", 0) == 0);
+	CU_ASSERT(add_entry(49, 329, 123456780, NULL, "I don't like him.", 0, FL_BLACKLIST) == 0);
 
 	/* [OK]    -> Testuser 4:  Reason is empty. */
-	CU_ASSERT(add_blacklist_entry(49, 329, 123456781, "Testuser 4", NULL, 0) == 0);
+	CU_ASSERT(add_entry(49, 329, 123456781, "Testuser 4", NULL, 0, FL_BLACKLIST) == 0);
 
 	/* [OK]    -> Testuser 5:  Priority is 2, which is higher than normal (0) . */
-	CU_ASSERT(add_blacklist_entry(49, 329, 222222222, "Testuser 5", NULL, 2) == 0);
+	CU_ASSERT(add_entry(49, 329, 222222222, "Testuser 5", NULL, 2, FL_BLACKLIST) == 0);
 
 	/* [OK]    -> Testuser 6:  Priority is 2, which is higher than normal (0) . */
-	CU_ASSERT(add_blacklist_entry(49, 329, 999999999, "Testuser 6", NULL, PRIO_ALL) == 0);
+	CU_ASSERT(add_entry(49, 329, 999999999, "Testuser 6", NULL, PRIO_ALL, FL_BLACKLIST) == 0);
 }
 
 void test_rm_blacklist_entry(void) {
-	CU_ASSERT(rm_blacklist_entry(49, 329, 999999999) == 0);
-	CU_ASSERT(rm_blacklist_entry(39, 328, 123456789) == 0);
+	CU_ASSERT(rm_entry(49, 329, 999999999, FL_BLACKLIST) == 0);
+	CU_ASSERT(rm_entry(39, 328, 123456789, FL_BLACKLIST) == 0);
 }
 
 void test_add_whitelist_entry(void) {
 	/* [OK]    -> Testuser 1:  Number in Italy. */
-	CU_ASSERT(add_whitelist_entry(39, 128, 123456789, "Testuser 1", "I don't like him.", 0) == 0);
+	CU_ASSERT(add_entry(39, 128, 123456789, "Testuser 1", "I don't like him.", 0, FL_WHITELIST) == 0);
 
 	/* [FAILS] -> Testuser -1: The same number as "Testuser 1". */
-	CU_ASSERT(add_whitelist_entry(39, 128, 123456789, "Testuser -1", "I don't like him.", 0) == -1);
+	CU_ASSERT(add_entry(39, 128, 123456789, "Testuser -1", "I don't like him.", 0, FL_WHITELIST) == -1);
 
 	/* [FAILS] -> Testuser -1: The country code is NULL. */
-	CU_ASSERT(add_whitelist_entry(0, 128, 123456782, "Testuser -1", "I don't like him.", 0) == -1);
+	CU_ASSERT(add_entry(0, 128, 123456782, "Testuser -1", "I don't like him.", 0, FL_WHITELIST) == -1);
 
 	/* [FAILS] -> Testuser -1: The area code is NULL. */
-	CU_ASSERT(add_whitelist_entry(39, 0, 123456782, "Testuser -1", "I don't like him.", 0) == -1);
+	CU_ASSERT(add_entry(39, 0, 123456782, "Testuser -1", "I don't like him.", 0, FL_WHITELIST) == -1);
 
 	/* [FAILS] -> Testuser -1: The area code is NULL. */
-	CU_ASSERT(add_whitelist_entry(39, 128, 0, "Testuser -1", "I don't like him.", 0) == -1);
+	CU_ASSERT(add_entry(39, 128, 0, "Testuser -1", "I don't like him.", 0, FL_WHITELIST) == -1);
 
 	/* [OK]    -> Testuser 2:  The same area code and number as "Testuser
 	 * 1" but a different country code. */
-	CU_ASSERT(add_whitelist_entry(49, 128, 123456789, "Testuser 2", "I don't like him.", 0) == 0);
+	CU_ASSERT(add_entry(49, 128, 123456789, "Testuser 2", "I don't like him.", 0, FL_WHITELIST) == 0);
 
 	/* [OK]    -> Testuser 3:  The same country code and number as "Testuser
 	 * 1" but a different area code. */
-	CU_ASSERT(add_whitelist_entry(49, 129, 123456789, "Testuser 3", "I don't like him.", 0) == 0);
+	CU_ASSERT(add_entry(49, 129, 123456789, "Testuser 3", "I don't like him.", 0, FL_WHITELIST) == 0);
 
 	/* [OK]    -> NULL      :  Username is empty. */
-	CU_ASSERT(add_whitelist_entry(49, 129, 123456780, NULL, "I don't like him.", 0) == 0);
+	CU_ASSERT(add_entry(49, 129, 123456780, NULL, "I don't like him.", 0, FL_WHITELIST) == 0);
 
 	/* [OK]    -> Testuser 4:  Reason is empty. */
-	CU_ASSERT(add_whitelist_entry(49, 129, 123456781, "Testuser 4", NULL, 0) == 0);
+	CU_ASSERT(add_entry(49, 129, 123456781, "Testuser 4", NULL, 0, FL_WHITELIST) == 0);
 
 	/* [OK]    -> Testuser 5:  Priority is 2, which is higher than normal (0) . */
-	CU_ASSERT(add_whitelist_entry(49, 129, 222222222, "Testuser 5", NULL, 2) == 0);
+	CU_ASSERT(add_entry(49, 129, 222222222, "Testuser 5", NULL, 2, FL_WHITELIST) == 0);
 
 	/* [OK]    -> Testuser 6:  Priority is 2, which is higher than normal (0) . */
-	CU_ASSERT(add_whitelist_entry(49, 129, 999999999, "Testuser 6", NULL, PRIO_ALL) == 0);
+	CU_ASSERT(add_entry(49, 129, 999999999, "Testuser 6", NULL, PRIO_ALL, FL_WHITELIST) == 0);
 
 	/* [OK]    -> Testuser 7:  Number in Italy. */
-	CU_ASSERT(add_whitelist_entry(39, 128, 123456783, "Testuser 7", "I don't like him.", 2) == 0);
+	CU_ASSERT(add_entry(39, 128, 123456783, "Testuser 7", "I don't like him.", 2, FL_WHITELIST) == 0);
 
 	/* [OK]    -> Testuser 8:  Number in Italy. */
-	CU_ASSERT(add_whitelist_entry(39, 128, 123456784, "Testuser 8", "I don't like him.", 5) == 0);
+	CU_ASSERT(add_entry(39, 128, 123456784, "Testuser 8", "I don't like him.", 5, FL_WHITELIST) == 0);
 
 	/* [OK]    -> Testuser 9:  Number in Italy. */
-	CU_ASSERT(add_whitelist_entry(39, 128, 123456785, "Testuser 9", "I don't like him.", 10) == 0);
+	CU_ASSERT(add_entry(39, 128, 123456785, "Testuser 9", "I don't like him.", 10, FL_WHITELIST) == 0);
 }
 
 void test_rm_whitelist_entry(void) {
-	CU_ASSERT(rm_blacklist_entry(49, 129, 999999999) == 0);
-	CU_ASSERT(rm_blacklist_entry(39, 128, 123456789) == 0);
+	CU_ASSERT(rm_entry(49, 129, 999999999, FL_WHITELIST) == 0);
+	CU_ASSERT(rm_entry(39, 128, 123456789, FL_WHITELIST) == 0);
 }
 
 void test_check_blacklist_entry(void) {
-	//CU_ASSERT(check_blacklist_entry(39, 328, 123456789, 0) == 1);
-	CU_ASSERT(check_blacklist_entry(39, 328, 103456785, 0) == 0);
-	//CU_ASSERT(check_blacklist_entry(49, 329, 999999999, 0) == 1);
-	CU_ASSERT(check_blacklist_entry(49, 329, 222222222, 0) == 0);
-	CU_ASSERT(check_blacklist_entry(49, 329, 222222222, 2) == 1);
-	CU_ASSERT(check_blacklist_entry(49, 329, 222222222, 3) == 1);
+	CU_ASSERT(check_entry(39, 328, 123456789, 0, FL_BLACKLIST) == 1);
+	CU_ASSERT(check_entry(39, 328, 103456785, 0, FL_BLACKLIST) == 0);
+	CU_ASSERT(check_entry(49, 329, 999999999, 0, FL_BLACKLIST) == 1);
+	CU_ASSERT(check_entry(49, 329, 222222222, 0, FL_BLACKLIST) == 0);
+	CU_ASSERT(check_entry(49, 329, 222222222, 2, FL_BLACKLIST) == 1);
+	CU_ASSERT(check_entry(49, 329, 222222222, 3, FL_BLACKLIST) == 1);
 }
 
 void test_check_whitelist_entry(void) {
-	CU_ASSERT(check_whitelist_entry(39, 128, 123456789, 0) == 1);
-	CU_ASSERT(check_whitelist_entry(39, 128, 103456785, 0) == 0);
-	CU_ASSERT(check_whitelist_entry(49, 129, 999999999, 0) == 1);
-	CU_ASSERT(check_whitelist_entry(49, 129, 222222222, 0) == 0);
-	CU_ASSERT(check_whitelist_entry(49, 129, 222222222, 2) == 1);
-	CU_ASSERT(check_whitelist_entry(49, 129, 222222222, 3) == 1);
+	CU_ASSERT(check_entry(39, 128, 123456789, 0, FL_WHITELIST) == 1);
+	CU_ASSERT(check_entry(39, 128, 103456785, 0, FL_WHITELIST) == 0);
+	CU_ASSERT(check_entry(49, 129, 999999999, 0, FL_WHITELIST) == 1);
+	CU_ASSERT(check_entry(49, 129, 222222222, 0, FL_WHITELIST) == 0);
+	CU_ASSERT(check_entry(49, 129, 222222222, 2, FL_WHITELIST) == 1);
+	CU_ASSERT(check_entry(49, 129, 222222222, 3, FL_WHITELIST) == 1);
 }
 
 void test_start_daemon(void) {

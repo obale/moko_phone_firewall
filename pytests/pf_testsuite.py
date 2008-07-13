@@ -160,5 +160,5 @@ if __name__ == "__main__":
     suite_admin = unittest.TestLoader().loadTestsFromTestCase(CheckPFAdminFunctions)
     suite_search = unittest.TestLoader().loadTestsFromTestCase(CheckPFSearchFunctions)
 
-    unittest.TextTestRunner(verbosity=2).run(suite_admin)
-    unittest.TextTestRunner(verbosity=2).run(suite_search)
+    unittest.TextTestRunner(verbosity=1).run(suite_admin)
+    unittest.TextTestRunner(verbosity=1).run(suite_search)

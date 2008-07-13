@@ -10,9 +10,12 @@ sqlite3 db/phone-firewall.db < phonefirewall.sql;
 
 echo ""
 
-select CHOICE in CUnit CUnit+Valgrind PythonUnit exit
+select CHOICE in CLOSE CUnit CUnit+Valgrind PythonUnit
 do
         case "$CHOICE" in
+                "CLOSE")
+                exit
+                ;;
                 "CUnit")
                 ./bin_test/testphonefirewall;
                 exit
@@ -23,9 +26,6 @@ do
                 ;;
                 "PythonUnit")
                 python pytests/pf_testsuite.py 
-                exit
-                ;;
-                "exit")
                 exit
         esac
 done

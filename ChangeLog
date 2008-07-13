@@ -1,3 +1,30 @@
+2008-07-13 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* src/libphonefirewall.h
+	* src/pf_search.h
+	* src/pf_administration.h:
+	Splitting the libphonefirewall Header into 3 pieces:
+		- libphonefirewall.h: All global stuff
+		- pf_search.h: Searching function prototypes
+		- pf_administration.h: Administration function prototypes
+
+	Adding the two flags FL_BLACKLIST and FL_WHITELIST to identify the
+	purpose of the function call.
+
+	* Makefile:
+	Renaming the files in the Makefile. 
+
+	* src/pf_administration.c:
+	Merging the black- and whitelist function. Now we have one function
+	and a parameter (see the two flags above) to identify what the
+	function has to use the black- or the whitelist.
+
+	* src_test/testphonefirewall.c:
+	Fixing the tests. Changing the function names.
+
+	* doc/*:
+	Updating the documentation.
+
 2008-07-11 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* README:

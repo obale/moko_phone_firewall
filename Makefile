@@ -24,14 +24,14 @@ doc:
 	 && ( echo -e '[\E[32mDONE\033[0m]'; tput sgr0 )\
 	 || ( echo -e '[\E[31mFAILED\033[0m]'; tput sgr0 )
 
-phonefirewall_administration.o: $(SRCDIR)/phonefirewall_administration.c $(SRCDIR)/libphonefirewall.h
-	$(CC) $(CLFLAGS) -fpic -c $(SRCDIR)/phonefirewall_administration.c -o $(SRCDIR)/$@
+pf_administration.o: $(SRCDIR)/pf_administration.c $(SRCDIR)/libphonefirewall.h
+	$(CC) $(CLFLAGS) -fpic -c $(SRCDIR)/pf_administration.c -o $(SRCDIR)/$@
 
-phonefirewall_search.o: $(SRCDIR)/phonefirewall_search.c $(SRCDIR)/libphonefirewall.h
-	$(CC) $(CLFLAGS) -fpic -c $(SRCDIR)/phonefirewall_search.c -o $(SRCDIR)/$@
+pf_search.o: $(SRCDIR)/pf_search.c $(SRCDIR)/libphonefirewall.h
+	$(CC) $(CLFLAGS) -fpic -c $(SRCDIR)/pf_search.c -o $(SRCDIR)/$@
 
-libphonefirewall.so: $(SRCDIR)/phonefirewall_administration.o $(SRCDIR)/phonefirewall_search.o
-	$(CC) -shared $(SRCDIR)/phonefirewall_administration.o $(SRCDIR)/phonefirewall_search.o -o $(LIBDIR)/$@
+libphonefirewall.so: $(SRCDIR)/pf_administration.o $(SRCDIR)/pfl_search.o
+	$(CC) -shared $(SRCDIR)/pf_administration.o $(SRCDIR)/pf_search.o -o $(LIBDIR)/$@
 
 pf_daemon.o: $(SRCDIR)/pf_daemon.c $(SRCDIR)/libphonefirewall.h $(SRCDIR)/pf_daemon.h $(SRCDIR)/logfile.h
 	$(GCC) `pkg-config --cflags dbus-1` -c $(SRCDIR)/pf_daemon.c -o $(SRCDIR)/$@
@@ -47,11 +47,11 @@ pf_daemon: $(SRCDIR)/pf_daemon.o $(SRCDIR)/logfile.o
 testphonefirewall: $(SRCTESTDIR)/testphonefirewall.c 
 	$(GCC) $(CLFLAGS) $(SRCTESTDIR)/testphonefirewall.c -L$(LIBDIR) $(TEST_LIB) -o $(BINTESTDIR)/$@
 
-testphonefirewall_administration.o: $(SRCDIR)/phonefirewall_administration.c $(SRCDIR)/libphonefirewall.h 
-	$(GCC) $(CLFLAGS) -fPIC -c $(SRCDIR)/phonefirewall_administration.c -o $(SRCTESTDIR)/$@
+testphonefirewall_administration.o: $(SRCDIR)/pf_administration.c $(SRCDIR)/libphonefirewall.h 
+	$(GCC) $(CLFLAGS) -fPIC -c $(SRCDIR)/pf_administration.c -o $(SRCTESTDIR)/$@
 
-testphonefirewall_search.o: $(SRCDIR)/phonefirewall_search.c $(SRCDIR)/libphonefirewall.h 
-	$(GCC) $(CLFLAGS) -fPIC -c $(SRCDIR)/phonefirewall_search.c -o $(SRCTESTDIR)/$@
+testphonefirewall_search.o: $(SRCDIR)/pf_search.c $(SRCDIR)/libphonefirewall.h 
+	$(GCC) $(CLFLAGS) -fPIC -c $(SRCDIR)/pf_search.c -o $(SRCTESTDIR)/$@
 
 libtestphonefirewall.so: $(SRCTESTDIR)/testphonefirewall_administration.o $(SRCTESTDIR)/testphonefirewall_search.o $(SRCDIR)/logfile.o
 	$(GCC) $(CLFLAGS) `pkg-config --libs --cflags sqlite3` -shared $(SRCTESTDIR)/testphonefirewall_administration.o $(SRCTESTDIR)/testphonefirewall_search.o $(SRCDIR)/logfile.o -o $(LIBDIR)/$@
