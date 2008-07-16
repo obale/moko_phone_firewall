@@ -87,10 +87,10 @@ int add_entry(int country_code,
 
         char *listname;
         switch (listflag) {
-                case FL_WHITELIST:
+                case WHITELIST_FLAG:
                         listname = "whitelist";
                         break;
-                case FL_BLACKLIST:
+                case BLACKLIST_FLAG:
                         listname = "blacklist";
                         break;
                 default: return -1;
@@ -137,10 +137,10 @@ int rm_entry (int country_code,
 
         char *listname;
         switch (listflag) {
-                case FL_WHITELIST:
+                case WHITELIST_FLAG:
                         listname = "whitelist";
                         break;
-                case FL_BLACKLIST:
+                case BLACKLIST_FLAG:
                         listname = "blacklist";
                         break;
                 default: return -1;
@@ -183,10 +183,10 @@ int check_entry(int country_code,
 {
         char *listname;
         switch (listflag) {
-                case FL_WHITELIST:
+                case WHITELIST_FLAG:
                         listname = "whitelist";
                         break;
-                case FL_BLACKLIST:
+                case BLACKLIST_FLAG:
                         listname = "blacklist";
                         break;
                 default: return -1;
@@ -200,7 +200,7 @@ int check_entry(int country_code,
         char logmsg[MAX_LINE_LENGTH];
         int found_flag = 0;
 
-        struct Entry *p_entry = &entry;
+        struct Entry *p_entry = (struct Entry *) malloc(sizeof(struct Entry));
         p_entry->country_code = country_code;
         p_entry->area_code = area_code;
         p_entry->number = number;
@@ -232,10 +232,10 @@ int check_entry(int country_code,
                         found_flag = evaluate_stmt(pp_stmt, p_entry);
                         if ( found_flag == 1) {
                                 switch (listflag) {
-                                        case FL_WHITELIST:
+                                        case WHITELIST_FLAG:
                                                 sprintf(logmsg, "Number \"+%d %d %llu\" accepted successfully.", country_code, area_code, number);
                                                 break;
-                                        case FL_BLACKLIST:
+                                        case BLACKLIST_FLAG:
                                                 sprintf(logmsg, "Number \"+%d %d %llu\" blocked successfully.", country_code, area_code, number);
                                                 break;
                                         default:

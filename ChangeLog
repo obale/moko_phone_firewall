@@ -1,3 +1,21 @@
+2008-07-14 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* src_test/testphonefirewal.c:
+	FIXME: Segmentation fault during the output of the list (first
+	elements works, second outputs only junk and at the third the fault
+	occurs).
+
+	* src/pf_search.c:
+	-> Adding a linked list for the search result.
+	-> Mering the black- and whitelist function. Identifying the type of
+	   the functions with a flag.
+
+
+	* src/libphonefirewall.h:
+	Changing the flags for the black- and whitelist from FL_BLACKLIST and
+	FL_WHITELIST to BLACKLIST_FLAG and WHITELIST_FLAG. Affected are every
+	file which uses this flags.
+
 2008-07-13 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* src/libphonefirewall.h

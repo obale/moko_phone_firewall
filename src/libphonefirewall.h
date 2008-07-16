@@ -45,8 +45,8 @@
 #define TB_REASON "reason"
 #define TB_PRIORITY "priority"
 
-#define FL_BLACKLIST 0x01
-#define FL_WHITELIST 0x02
+#define BLACKLIST_FLAG 0x01
+#define WHITELIST_FLAG 0x02
 
 /**
  * The struct which includes all information about entries (black- and
@@ -63,5 +63,5 @@ struct Entry {
     char *reason;
     int priority;
     struct Entry *next;
-} entry;
+};
 

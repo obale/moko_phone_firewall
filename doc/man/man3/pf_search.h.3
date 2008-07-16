@@ -1,0 +1,92 @@
+.TH "pf_search.h" 3 "14 Jul 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+pf_search.h \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "struct \fBEntry\fP * \fBget_entry_by_name\fP (char *name, int listflag)"
+.br
+.ti -1c
+.RI "struct \fBEntry\fP * \fBget_entry_by_number\fP (int country_code, int area_code, unsigned long long number, int listflag)"
+.br
+.ti -1c
+.RI "struct \fBEntry\fP * \fBget_entry_by_reason\fP (char *reason, int listflag)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "struct \fBEntry\fP* get_entry_by_name (char * name, int listflag)\fC [read]\fP"
+.PP
+Search a \fBentry\fP by name.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the person which is blocked. 
+.br
+\fIlistflag\fP A flag, which indicates if you would use the blacklist (BLACKLIST_FLAG) or the whitelist (WHITELIST_FLAG).
+.br
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBentry\fP Returns the entries which are found in a linked list. 
+.RE
+.PP
+
+.PP
+Definition at line 67 of file pf_search.c.
+.PP
+References Entry::area_code, ASCII_PERCENT_CHAR, BLACKLIST_FLAG, Entry::country_code, DB_FILE, entry_array, ERR_FLAG, find_entry_by_name(), MAX_LINE_LENGTH, Entry::number, Entry::reason, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NAME, TB_NUMBER, TB_PRIORITY, TB_REASON, WHITELIST_FLAG, and write_logentry().
+.SS "struct \fBEntry\fP* get_entry_by_number (int country_code, int area_code, unsigned long long number, int listflag)\fC [read]\fP"
+.PP
+Search a entries by number (country code + area code + number).
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcountry_code\fP The country code (for example 39 for Italy, 43 for Austria, and so one) 
+.br
+\fIarea_code\fP The area code which indicates your mobile operator. 
+.br
+\fInumber\fP The telephone number of the person (without country and area code. 
+.br
+\fIlistflag\fP A flag, which indicates if you would use the blacklist (BLACKLIST_FLAG) or the whitelist (WHITELIST_FLAG).
+.br
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBentry\fP Returns the entries which are found in a linked list. 
+.RE
+.PP
+
+.PP
+Definition at line 128 of file pf_search.c.
+.SS "struct \fBEntry\fP* get_entry_by_reason (char * reason, int listflag)\fC [read]\fP"
+.PP
+Search a entries by reason.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreason\fP The reason why a person is blocked/accpeted. 
+.br
+\fIlistflag\fP A flag, which indicates if you would use the blacklist (BLACKLIST_FLAG) or the whitelist (WHITELIST_FLAG).
+.br
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBentry\fP Returns the entries which are found in a linked list. 
+.RE
+.PP
+
+.PP
+Definition at line 136 of file pf_search.c.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Phone Firewall from the source code.

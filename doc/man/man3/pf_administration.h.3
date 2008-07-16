@@ -1,0 +1,116 @@
+.TH "pf_administration.h" 3 "14 Jul 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+pf_administration.h \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBadd_entry\fP (int country_code, int area_code, unsigned long long number, char *name, char *reason, int priority, int listflag)"
+.br
+.ti -1c
+.RI "int \fBrm_entry\fP (int country_code, int area_code, unsigned long long number, int listlfag)"
+.br
+.ti -1c
+.RI "int \fBcheck_entry\fP (int country_code, int area_code, unsigned long long number, int priority, int listflag)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "int add_entry (int country_code, int area_code, unsigned long long number, char * name, char * reason, int priority, int listflag)"
+.PP
+Add a number to the blacklist/whitelist. The number will be blocked after that.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcountry_code\fP The country code (for example 39 for Italy, 43 for Austria, and so one) 
+.br
+\fIarea_code\fP The area code which indicates your mobile operator. 
+.br
+\fInumber\fP The telephone number of the person (without country and area code. 
+.br
+\fIname\fP The name of the person. 
+.br
+\fIreason\fP Why you have blocked this person. 
+.br
+\fIpriority\fP Gives the \fBentry\fP a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen. 
+.br
+\fIlistflag\fP A flag, which indicates if you would use the blacklist (BLACKLIST_FLAG) or the whitelist (WHITELIST_FLAG).
+.br
+.RE
+.PP
+The value 'PRIO_ALL' stands for all priorities.
+.PP
+\fBReturns:\fP
+.RS 4
+If all goes well 0 (zero) otherwise -1 and the errno variable will be set.. 
+.RE
+.PP
+
+.PP
+Definition at line 75 of file pf_administration.c.
+.PP
+References BLACKLIST_FLAG, DB_FILE, ERR_FLAG, MAX_LINE_LENGTH, PRIO_ALL, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NAME, TB_NUMBER, TB_PRIORITY, TB_REASON, WHITELIST_FLAG, and write_logentry().
+.SS "int check_entry (int country_code, int area_code, unsigned long long number, int priority, int listflag)"
+.PP
+Checks if a number is on the blacklist/whitelist.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcountry_code\fP The country code (for example 39 for Italy, 43 for Austria, and so one) 
+.br
+\fIarea_code\fP The area code which indicates your mobile operator. 
+.br
+\fInumber\fP The telephone number of the person (without country and area code. 
+.br
+\fIpriority\fP Gives the \fBentry\fP a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen. 
+.br
+\fIlistflag\fP A flag, which indicates if you would use the blacklist (BLACKLIST_FLAG) or the whitelist (WHITELIST_FLAG).
+.br
+.RE
+.PP
+The value 'PRIO_ALL' stands for all priorities.
+.PP
+\fBReturns:\fP
+.RS 4
+If the number was found 1, otherwise 0. 
+.RE
+.PP
+
+.PP
+Definition at line 178 of file pf_administration.c.
+.PP
+References Entry::area_code, BLACKLIST_FLAG, Entry::country_code, DB_FILE, ERR_FLAG, evaluate_stmt(), INFO_FLAG, MAX_LINE_LENGTH, Entry::number, p_entry, Entry::priority, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NUMBER, TB_PRIORITY, WHITELIST_FLAG, and write_logentry().
+.SS "int rm_entry (int country_code, int area_code, unsigned long long number, int listlfag)"
+.PP
+Removes a number from the blacklist/whitelist.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcountry_code\fP The country code (for example 39 for Italy, 43 for Austria, and so one) 
+.br
+\fIarea_code\fP The area code which indicates your mobile operator. 
+.br
+\fInumber\fP The number which will be deleted. 
+.br
+\fIlistflag\fP A flag, which indicates if you would use the blacklist (BLACKLIST_FLAG) or the whitelist (WHITELIST_FLAG).
+.br
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+If all goes right 0, otherwise an error code. 
+.RE
+.PP
+
+.PP
+Definition at line 129 of file pf_administration.c.
+.PP
+References BLACKLIST_FLAG, DB_FILE, ERR_FLAG, MAX_LINE_LENGTH, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NUMBER, WHITELIST_FLAG, and write_logentry().
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Phone Firewall from the source code.

@@ -19,7 +19,7 @@
  */
 
 /**
- * Add a number to the blacklist. The number will be blocked after that.
+ * Add a number to the blacklist/whitelist. The number will be blocked after that.
  *
  * @param country_code The country code (for example 39 for Italy, 43 for
  * Austria, and so one)
@@ -32,11 +32,12 @@
  * is higher the value will be also blocked/accepted if a higher priority is
  * choosen. 
  * @param listflag A flag, which indicates if you would use the blacklist
- * (FL_BLACKLIST) or the whitelist (FL_WHITELIST).<br>
+ * (BLACKLIST_FLAG) or the whitelist (WHITELIST_FLAG).<br>
  *
  * The value "PRIO_ALL" stands for all priorities.
  *
- * @return If all goes well 0 (zero) otherwise an errno code.
+ * @return If all goes well 0 (zero) otherwise -1 and the errno variable will
+ * be set..
  */
 int add_entry(int country_code,
               int area_code,
@@ -47,14 +48,14 @@ int add_entry(int country_code,
               int listflag);
 
 /**
- * Removes a blocked number from the blacklist.
+ * Removes a number from the blacklist/whitelist.
  *
  * @param country_code The country code (for example 39 for Italy, 43 for
  * Austria, and so one)
  * @param area_code The area code which indicates your mobile operator.
  * @param number The number which will be deleted.
  * @param listflag A flag, which indicates if you would use the blacklist
- * (FL_BLACKLIST) or the whitelist (FL_WHITELIST).<br>
+ * (BLACKLIST_FLAG) or the whitelist (WHITELIST_FLAG).<br>
  *
  * @return If all goes right 0, otherwise an error code.
  */
@@ -64,7 +65,7 @@ int rm_entry(int country_code,
              int listlfag);
 
 /**
- * Checks if a number is on the blacklist.
+ * Checks if a number is on the blacklist/whitelist.
  *
  * @param country_code The country code (for example 39 for Italy, 43 for
  * Austria, and so one)
@@ -75,7 +76,7 @@ int rm_entry(int country_code,
  * is higher the value will be also blocked/accepted if a higher priority is
  * choosen.
  * @param listflag A flag, which indicates if you would use the blacklist
- * (FL_BLACKLIST) or the whitelist (FL_WHITELIST).<br>
+ * (BLACKLIST_FLAG) or the whitelist (WHITELIST_FLAG).<br>
  *
  * The value "PRIO_ALL" stands for all priorities.
  *

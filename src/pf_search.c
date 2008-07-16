@@ -26,10 +26,44 @@
 #include "logfile.h"
 
 #define ASCII_PERCENT_CHAR 37
-#define MAX_ENTRY_ARRAY 1024
 
-struct Entry *p_entry = &entry;
-struct Entry entry_array[MAX_ENTRY_ARRAY];
+struct Entry *p_root = NULL;
+
+int insert_into_list(struct Entry *p_entry)
+{
+        struct Entry *tmp_entry;
+        if ( NULL == p_root ) {
+                if ( NULL == (p_root = (struct Entry *) malloc(sizeof(struct Entry)) ) )
+                        return -1;
+                p_root = p_entry;
+                #if DEBUG
+                printf("\n[DEBUG]: +%d %d %llu - %s - %s\n", p_root->country_code,
+                                                             p_root->area_code,
+                                                             p_root->number,
+                                                             p_root->name,
+                                                             p_root->reason);
+                #endif
+                p_root->next = NULL;
+        } else {
+                tmp_entry = p_root;
+                while ( tmp_entry->next != NULL )
+                        tmp_entry = tmp_entry->next;
+                if ( NULL == (tmp_entry->next = (struct Entry *) malloc(sizeof(struct Entry)) ) )
+                        return -1;
+                tmp_entry = tmp_entry->next;
+                tmp_entry = p_entry;
+                tmp_entry->next = NULL;
+                #if DEBUG
+                printf("[DEBUG]: +%d %d %llu - %s - %s\n", tmp_entry->country_code,
+                                                           tmp_entry->area_code,
+                                                           tmp_entry->number,
+                                                           tmp_entry->name,
+                                                           tmp_entry->reason);
+                #endif
+        }
+
+        return 0;
+}
 
 struct Entry *find_entry_by_name(sqlite3_stmt *pp_stmt,
                                  char *name)
@@ -38,6 +72,7 @@ struct Entry *find_entry_by_name(sqlite3_stmt *pp_stmt,
         int count;
         char *col_name;
         char *col_value;
+        struct Entry *p_entry = (struct Entry *) malloc(sizeof(struct Entry));
 
         num_column = sqlite3_column_count(pp_stmt);
         col_name = sqlite3_malloc(2 * num_column * sizeof(const char *) + 1);
@@ -54,22 +89,37 @@ struct Entry *find_entry_by_name(sqlite3_stmt *pp_stmt,
                 } else if ( 0 == strcmp(col_name, TB_NUMBER) ) {
                         p_entry->number = atoll(col_value);
                 } else if ( 0 == strcmp(col_name, TB_NAME) ) {
-                        p_entry->name = col_value;
+                        p_entry->name = malloc(sizeof(col_value));
+                        strcpy(p_entry->name, col_value);
                 } else if ( 0 == strcmp(col_name, TB_REASON) ) {
-                        p_entry->reason = col_value;
+                        p_entry->reason = malloc(sizeof(col_value));
+                        strcpy(p_entry->reason, col_value);
                 }
         }
         return p_entry;
 }
 
-struct Entry *get_blacklist_entry_by_name(char *name)
+struct Entry *get_entry_by_name(char *name,
+                                int listflag)
 {
+        char *listname;
+        switch (listflag) {
+                case WHITELIST_FLAG:
+                        listname = "whitelist";
+                        break;
+                case BLACKLIST_FLAG:
+                        listname = "blacklist";
+                        break;
+                default: return NULL;
+        }
+
         sqlite3 *db;
         char stmt[STMT_SIZE];
         sqlite3_stmt *pp_stmt = 0;
         const char **p_tail = 0;
         int rc;
         char logmsg[MAX_LINE_LENGTH];
+        struct Entry *p_entry = NULL;
 
         rc = sqlite3_open(DB_FILE, &db);
 
@@ -80,7 +130,7 @@ struct Entry *get_blacklist_entry_by_name(char *name)
                 return NULL;
         }
 
-        sprintf(stmt, "SELECT %1$s, %2$s, %3$s, %4$s, %5$s, %6$s FROM blacklist WHERE %5$s like \'%8$c%7$s%8$c\'", TB_PRIORITY, TB_COUNTRYCODE, TB_AREACODE, TB_NUMBER, TB_NAME, TB_REASON, name, ASCII_PERCENT_CHAR);
+        sprintf(stmt, "SELECT %1$s, %2$s, %3$s, %4$s, %5$s, %6$s FROM %9$s WHERE %5$s like \'%8$c%7$s%8$c\'", TB_PRIORITY, TB_COUNTRYCODE, TB_AREACODE, TB_NUMBER, TB_NAME, TB_REASON, name, ASCII_PERCENT_CHAR, listname);
 
         rc = sqlite3_prepare_v2(db, stmt, sizeof(stmt), &pp_stmt, p_tail);
 
@@ -91,42 +141,27 @@ struct Entry *get_blacklist_entry_by_name(char *name)
                 return NULL;
         }
 
-        int count = 0;
-        printf("\nafter the find_entry_by_name(...) in get_blacklist_entry_by_name(char *name):\n");
         while ( rc != SQLITE_DONE ) {
                 rc = sqlite3_step(pp_stmt);
                 if ( SQLITE_ROW == rc ) {
                         p_entry = find_entry_by_name(pp_stmt, name);
-                        entry_array[count] = *p_entry;
-                        printf("+%d %d %llu -> %s :: %s\n", entry_array[count].country_code, entry_array[count].area_code, entry_array[count].number, entry_array[count].name, entry_array[count].reason);
-                        count++;
+                        if ( NULL == p_entry ) break;
+                        if ( -1 == insert_into_list(p_entry) ) return NULL;
                 }
         }
-
-        printf("\nbefore the return statement in get_blacklist_entry_by_name(char *name):\n");
-        count = 0;
-        for ( count = 0; count < 4; count++ )
-                printf("+%d %d %llu -> %s :: %s\n", entry_array[count].country_code, entry_array[count].area_code, entry_array[count].number, entry_array[count].name, entry_array[count].reason);
-
-        return entry_array;
+        return p_root;
 }
 
-struct Entry *get_blacklist_entry_by_number(int country_code,
-                                            int area_code,
-                                            unsigned long long number)
+struct Entry *get_entry_by_number(int country_code,
+                                  int area_code,
+                                  unsigned long long number,
+                                  int listflag)
 {
         return NULL;
 }
 
-struct Entry *get_whitelist_entry_by_name(char *name)
+struct Entry *get_entry_by_reason(char *reason,
+                                  int listflag)
 {
         return NULL;
 }
-
-struct Entry *get_whitelist_entry_by_number(int country_code,
-                                            int area_code,
-                                            unsigned long long number)
-{
-        return NULL;
-}
-

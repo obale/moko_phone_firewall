@@ -62,9 +62,9 @@ This graph shows which files directly or indirectly include this file:</div>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="libphonefirewall_8h.html#22e4a39534c1dcde6556befda55b4607">TB_PRIORITY</a>&nbsp;&nbsp;&nbsp;&quot;priority&quot;</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="libphonefirewall_8h.html#90f876eb68adfa2e189e723d9620220f">FL_BLACKLIST</a>&nbsp;&nbsp;&nbsp;0x01</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="libphonefirewall_8h.html#7d40a20123339f0c24fdd3710aa9bdd8">BLACKLIST_FLAG</a>&nbsp;&nbsp;&nbsp;0x01</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="libphonefirewall_8h.html#319c18b8bda4179c00355b44ae959db3">FL_WHITELIST</a>&nbsp;&nbsp;&nbsp;0x02</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="libphonefirewall_8h.html#b6552093172807955c9453c948f0cac9">WHITELIST_FLAG</a>&nbsp;&nbsp;&nbsp;0x02</td></tr>
 
 <tr><td colspan="2"><br><h2>Variables</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">struct <a class="el" href="structEntry.html">Entry</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="libphonefirewall_8h.html#794ea73ef2f5143bbbb66ebd4c113340">entry</a></td></tr>
@@ -77,6 +77,25 @@ API of the phone firewall.
 The header file of the Phone Firewall. Blocks or accepts incoming phone calls, so it's possible to prevent disturbing phone calls. Provides a API which can used by other application to build nice programs. 
 <p>Definition in file <a class="el" href="libphonefirewall_8h-source.html">libphonefirewall.h</a>.</p>
 <hr><h2>Define Documentation</h2>
+<a class="anchor" name="7d40a20123339f0c24fdd3710aa9bdd8"></a><!-- doxytag: member="libphonefirewall.h::BLACKLIST_FLAG" ref="7d40a20123339f0c24fdd3710aa9bdd8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BLACKLIST_FLAG&nbsp;&nbsp;&nbsp;0x01          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="libphonefirewall_8h-source.html#l00048">48</a> of file <a class="el" href="libphonefirewall_8h-source.html">libphonefirewall.h</a>.</p>
+
+<p>Referenced by <a class="el" href="pf__administration_8c-source.html#l00075">add_entry()</a>, <a class="el" href="pf__administration_8c-source.html#l00178">check_entry()</a>, <a class="el" href="pf__search_8c-source.html#l00067">get_entry_by_name()</a>, and <a class="el" href="pf__administration_8c-source.html#l00129">rm_entry()</a>.</p>
+
+</div>
+</div><p>
 <a class="anchor" name="ee925031172607ff8d5cf8b68374bd7f"></a><!-- doxytag: member="libphonefirewall.h::DB_FILE" ref="ee925031172607ff8d5cf8b68374bd7f" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -92,45 +111,7 @@ The header file of the Phone Firewall. Blocks or accepts incoming phone calls, s
 
 <p>Definition at line <a class="el" href="libphonefirewall_8h-source.html#l00037">37</a> of file <a class="el" href="libphonefirewall_8h-source.html">libphonefirewall.h</a>.</p>
 
-<p>Referenced by <a class="el" href="pf__administration_8c-source.html#l00075">add_entry()</a>, <a class="el" href="pf__administration_8c-source.html#l00178">check_entry()</a>, <a class="el" href="pf__search_8c-source.html#l00065">get_blacklist_entry_by_name()</a>, and <a class="el" href="pf__administration_8c-source.html#l00129">rm_entry()</a>.</p>
-
-</div>
-</div><p>
-<a class="anchor" name="90f876eb68adfa2e189e723d9620220f"></a><!-- doxytag: member="libphonefirewall.h::FL_BLACKLIST" ref="90f876eb68adfa2e189e723d9620220f" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define FL_BLACKLIST&nbsp;&nbsp;&nbsp;0x01          </td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-
-<p>Definition at line <a class="el" href="libphonefirewall_8h-source.html#l00048">48</a> of file <a class="el" href="libphonefirewall_8h-source.html">libphonefirewall.h</a>.</p>
-
-<p>Referenced by <a class="el" href="pf__administration_8c-source.html#l00075">add_entry()</a>, <a class="el" href="pf__administration_8c-source.html#l00178">check_entry()</a>, and <a class="el" href="pf__administration_8c-source.html#l00129">rm_entry()</a>.</p>
-
-</div>
-</div><p>
-<a class="anchor" name="319c18b8bda4179c00355b44ae959db3"></a><!-- doxytag: member="libphonefirewall.h::FL_WHITELIST" ref="319c18b8bda4179c00355b44ae959db3" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define FL_WHITELIST&nbsp;&nbsp;&nbsp;0x02          </td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-
-<p>Definition at line <a class="el" href="libphonefirewall_8h-source.html#l00049">49</a> of file <a class="el" href="libphonefirewall_8h-source.html">libphonefirewall.h</a>.</p>
-
-<p>Referenced by <a class="el" href="pf__administration_8c-source.html#l00075">add_entry()</a>, <a class="el" href="pf__administration_8c-source.html#l00178">check_entry()</a>, and <a class="el" href="pf__administration_8c-source.html#l00129">rm_entry()</a>.</p>
+<p>Referenced by <a class="el" href="pf__administration_8c-source.html#l00075">add_entry()</a>, <a class="el" href="pf__administration_8c-source.html#l00178">check_entry()</a>, <a class="el" href="pf__search_8c-source.html#l00067">get_entry_by_name()</a>, and <a class="el" href="pf__administration_8c-source.html#l00129">rm_entry()</a>.</p>
 
 </div>
 </div><p>
@@ -149,7 +130,7 @@ The header file of the Phone Firewall. Blocks or accepts incoming phone calls, s
 
 <p>Definition at line <a class="el" href="libphonefirewall_8h-source.html#l00039">39</a> of file <a class="el" href="libphonefirewall_8h-source.html">libphonefirewall.h</a>.</p>
 
-<p>Referenced by <a class="el" href="pf__administration_8c-source.html#l00075">add_entry()</a>, <a class="el" href="pf__administration_8c-source.html#l00178">check_entry()</a>, <a class="el" href="pf__search_8c-source.html#l00065">get_blacklist_entry_by_name()</a>, and <a class="el" href="pf__administration_8c-source.html#l00129">rm_entry()</a>.</p>
+<p>Referenced by <a class="el" href="pf__administration_8c-source.html#l00075">add_entry()</a>, <a class="el" href="pf__administration_8c-source.html#l00178">check_entry()</a>, <a class="el" href="pf__search_8c-source.html#l00067">get_entry_by_name()</a>, and <a class="el" href="pf__administration_8c-source.html#l00129">rm_entry()</a>.</p>
 
 </div>
 </div><p>
@@ -187,7 +168,7 @@ The header file of the Phone Firewall. Blocks or accepts incoming phone calls, s
 
 <p>Definition at line <a class="el" href="libphonefirewall_8h-source.html#l00038">38</a> of file <a class="el" href="libphonefirewall_8h-source.html">libphonefirewall.h</a>.</p>
 
-<p>Referenced by <a class="el" href="pf__administration_8c-source.html#l00075">add_entry()</a>, <a class="el" href="pf__administration_8c-source.html#l00178">check_entry()</a>, <a class="el" href="pf__search_8c-source.html#l00065">get_blacklist_entry_by_name()</a>, and <a class="el" href="pf__administration_8c-source.html#l00129">rm_entry()</a>.</p>
+<p>Referenced by <a class="el" href="pf__administration_8c-source.html#l00075">add_entry()</a>, <a class="el" href="pf__administration_8c-source.html#l00178">check_entry()</a>, <a class="el" href="pf__search_8c-source.html#l00067">get_entry_by_name()</a>, and <a class="el" href="pf__administration_8c-source.html#l00129">rm_entry()</a>.</p>
 
 </div>
 </div><p>
@@ -206,7 +187,7 @@ The header file of the Phone Firewall. Blocks or accepts incoming phone calls, s
 
 <p>Definition at line <a class="el" href="libphonefirewall_8h-source.html#l00042">42</a> of file <a class="el" href="libphonefirewall_8h-source.html">libphonefirewall.h</a>.</p>
 
-<p>Referenced by <a class="el" href="pf__administration_8c-source.html#l00075">add_entry()</a>, <a class="el" href="pf__administration_8c-source.html#l00178">check_entry()</a>, <a class="el" href="pf__administration_8c-source.html#l00028">evaluate_stmt()</a>, <a class="el" href="pf__search_8c-source.html#l00034">find_entry_by_name()</a>, <a class="el" href="pf__search_8c-source.html#l00065">get_blacklist_entry_by_name()</a>, and <a class="el" href="pf__administration_8c-source.html#l00129">rm_entry()</a>.</p>
+<p>Referenced by <a class="el" href="pf__administration_8c-source.html#l00075">add_entry()</a>, <a class="el" href="pf__administration_8c-source.html#l00178">check_entry()</a>, <a class="el" href="pf__administration_8c-source.html#l00028">evaluate_stmt()</a>, <a class="el" href="pf__search_8c-source.html#l00036">find_entry_by_name()</a>, <a class="el" href="pf__search_8c-source.html#l00067">get_entry_by_name()</a>, and <a class="el" href="pf__administration_8c-source.html#l00129">rm_entry()</a>.</p>
 
 </div>
 </div><p>
@@ -225,7 +206,7 @@ The header file of the Phone Firewall. Blocks or accepts incoming phone calls, s
 
 <p>Definition at line <a class="el" href="libphonefirewall_8h-source.html#l00041">41</a> of file <a class="el" href="libphonefirewall_8h-source.html">libphonefirewall.h</a>.</p>
 
-<p>Referenced by <a class="el" href="pf__administration_8c-source.html#l00075">add_entry()</a>, <a class="el" href="pf__administration_8c-source.html#l00178">check_entry()</a>, <a class="el" href="pf__administration_8c-source.html#l00028">evaluate_stmt()</a>, <a class="el" href="pf__search_8c-source.html#l00034">find_entry_by_name()</a>, <a class="el" href="pf__search_8c-source.html#l00065">get_blacklist_entry_by_name()</a>, and <a class="el" href="pf__administration_8c-source.html#l00129">rm_entry()</a>.</p>
+<p>Referenced by <a class="el" href="pf__administration_8c-source.html#l00075">add_entry()</a>, <a class="el" href="pf__administration_8c-source.html#l00178">check_entry()</a>, <a class="el" href="pf__administration_8c-source.html#l00028">evaluate_stmt()</a>, <a class="el" href="pf__search_8c-source.html#l00036">find_entry_by_name()</a>, <a class="el" href="pf__search_8c-source.html#l00067">get_entry_by_name()</a>, and <a class="el" href="pf__administration_8c-source.html#l00129">rm_entry()</a>.</p>
 
 </div>
 </div><p>
@@ -244,7 +225,7 @@ The header file of the Phone Firewall. Blocks or accepts incoming phone calls, s
 
 <p>Definition at line <a class="el" href="libphonefirewall_8h-source.html#l00044">44</a> of file <a class="el" href="libphonefirewall_8h-source.html">libphonefirewall.h</a>.</p>
 
-<p>Referenced by <a class="el" href="pf__administration_8c-source.html#l00075">add_entry()</a>, <a class="el" href="pf__search_8c-source.html#l00034">find_entry_by_name()</a>, and <a class="el" href="pf__search_8c-source.html#l00065">get_blacklist_entry_by_name()</a>.</p>
+<p>Referenced by <a class="el" href="pf__administration_8c-source.html#l00075">add_entry()</a>, <a class="el" href="pf__search_8c-source.html#l00036">find_entry_by_name()</a>, and <a class="el" href="pf__search_8c-source.html#l00067">get_entry_by_name()</a>.</p>
 
 </div>
 </div><p>
@@ -263,7 +244,7 @@ The header file of the Phone Firewall. Blocks or accepts incoming phone calls, s
 
 <p>Definition at line <a class="el" href="libphonefirewall_8h-source.html#l00043">43</a> of file <a class="el" href="libphonefirewall_8h-source.html">libphonefirewall.h</a>.</p>
 
-<p>Referenced by <a class="el" href="pf__administration_8c-source.html#l00075">add_entry()</a>, <a class="el" href="pf__administration_8c-source.html#l00178">check_entry()</a>, <a class="el" href="pf__administration_8c-source.html#l00028">evaluate_stmt()</a>, <a class="el" href="pf__search_8c-source.html#l00034">find_entry_by_name()</a>, <a class="el" href="pf__search_8c-source.html#l00065">get_blacklist_entry_by_name()</a>, and <a class="el" href="pf__administration_8c-source.html#l00129">rm_entry()</a>.</p>
+<p>Referenced by <a class="el" href="pf__administration_8c-source.html#l00075">add_entry()</a>, <a class="el" href="pf__administration_8c-source.html#l00178">check_entry()</a>, <a class="el" href="pf__administration_8c-source.html#l00028">evaluate_stmt()</a>, <a class="el" href="pf__search_8c-source.html#l00036">find_entry_by_name()</a>, <a class="el" href="pf__search_8c-source.html#l00067">get_entry_by_name()</a>, and <a class="el" href="pf__administration_8c-source.html#l00129">rm_entry()</a>.</p>
 
 </div>
 </div><p>
@@ -282,7 +263,7 @@ The header file of the Phone Firewall. Blocks or accepts incoming phone calls, s
 
 <p>Definition at line <a class="el" href="libphonefirewall_8h-source.html#l00046">46</a> of file <a class="el" href="libphonefirewall_8h-source.html">libphonefirewall.h</a>.</p>
 
-<p>Referenced by <a class="el" href="pf__administration_8c-source.html#l00075">add_entry()</a>, <a class="el" href="pf__administration_8c-source.html#l00178">check_entry()</a>, <a class="el" href="pf__administration_8c-source.html#l00028">evaluate_stmt()</a>, <a class="el" href="pf__search_8c-source.html#l00034">find_entry_by_name()</a>, and <a class="el" href="pf__search_8c-source.html#l00065">get_blacklist_entry_by_name()</a>.</p>
+<p>Referenced by <a class="el" href="pf__administration_8c-source.html#l00075">add_entry()</a>, <a class="el" href="pf__administration_8c-source.html#l00178">check_entry()</a>, <a class="el" href="pf__administration_8c-source.html#l00028">evaluate_stmt()</a>, <a class="el" href="pf__search_8c-source.html#l00036">find_entry_by_name()</a>, and <a class="el" href="pf__search_8c-source.html#l00067">get_entry_by_name()</a>.</p>
 
 </div>
 </div><p>
@@ -301,7 +282,26 @@ The header file of the Phone Firewall. Blocks or accepts incoming phone calls, s
 
 <p>Definition at line <a class="el" href="libphonefirewall_8h-source.html#l00045">45</a> of file <a class="el" href="libphonefirewall_8h-source.html">libphonefirewall.h</a>.</p>
 
-<p>Referenced by <a class="el" href="pf__administration_8c-source.html#l00075">add_entry()</a>, <a class="el" href="pf__search_8c-source.html#l00034">find_entry_by_name()</a>, and <a class="el" href="pf__search_8c-source.html#l00065">get_blacklist_entry_by_name()</a>.</p>
+<p>Referenced by <a class="el" href="pf__administration_8c-source.html#l00075">add_entry()</a>, <a class="el" href="pf__search_8c-source.html#l00036">find_entry_by_name()</a>, and <a class="el" href="pf__search_8c-source.html#l00067">get_entry_by_name()</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b6552093172807955c9453c948f0cac9"></a><!-- doxytag: member="libphonefirewall.h::WHITELIST_FLAG" ref="b6552093172807955c9453c948f0cac9" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WHITELIST_FLAG&nbsp;&nbsp;&nbsp;0x02          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="libphonefirewall_8h-source.html#l00049">49</a> of file <a class="el" href="libphonefirewall_8h-source.html">libphonefirewall.h</a>.</p>
+
+<p>Referenced by <a class="el" href="pf__administration_8c-source.html#l00075">add_entry()</a>, <a class="el" href="pf__administration_8c-source.html#l00178">check_entry()</a>, <a class="el" href="pf__search_8c-source.html#l00067">get_entry_by_name()</a>, and <a class="el" href="pf__administration_8c-source.html#l00129">rm_entry()</a>.</p>
 
 </div>
 </div><p>
@@ -321,7 +321,7 @@ The header file of the Phone Firewall. Blocks or accepts incoming phone calls, s
 
 </div>
 </div><p>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sun Jul 13 11:54:23 2008 for Phone Firewall by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Mon Jul 14 19:55:29 2008 for Phone Firewall by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

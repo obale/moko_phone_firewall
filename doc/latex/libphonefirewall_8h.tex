@@ -52,9 +52,9 @@ struct \hyperlink{structEntry}{Entry}
 \item 
 \#define \hyperlink{libphonefirewall_8h_22e4a39534c1dcde6556befda55b4607}{TB\_\-PRIORITY}~\char`\"{}priority\char`\"{}
 \item 
-\#define \hyperlink{libphonefirewall_8h_90f876eb68adfa2e189e723d9620220f}{FL\_\-BLACKLIST}~0x01
+\#define \hyperlink{libphonefirewall_8h_7d40a20123339f0c24fdd3710aa9bdd8}{BLACKLIST\_\-FLAG}~0x01
 \item 
-\#define \hyperlink{libphonefirewall_8h_319c18b8bda4179c00355b44ae959db3}{FL\_\-WHITELIST}~0x02
+\#define \hyperlink{libphonefirewall_8h_b6552093172807955c9453c948f0cac9}{WHITELIST\_\-FLAG}~0x02
 \end{CompactItemize}
 \subsection*{Variables}
 \begin{CompactItemize}
@@ -73,7 +73,18 @@ The header file of the Phone Firewall. Blocks or accepts incoming phone calls, s
 Definition in file \hyperlink{libphonefirewall_8h-source}{libphonefirewall.h}.
 
 \subsection{Define Documentation}
-\hypertarget{libphonefirewall_8h_ee925031172607ff8d5cf8b68374bd7f}{
+\hypertarget{libphonefirewall_8h_7d40a20123339f0c24fdd3710aa9bdd8}{
+\index{libphonefirewall.h@{libphonefirewall.h}!BLACKLIST\_\-FLAG@{BLACKLIST\_\-FLAG}}
+\index{BLACKLIST\_\-FLAG@{BLACKLIST\_\-FLAG}!libphonefirewall.h@{libphonefirewall.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define BLACKLIST\_\-FLAG~0x01}}
+\label{libphonefirewall_8h_7d40a20123339f0c24fdd3710aa9bdd8}
+
+
+
+
+Definition at line 48 of file libphonefirewall.h.
+
+Referenced by add\_\-entry(), check\_\-entry(), get\_\-entry\_\-by\_\-name(), and rm\_\-entry().\hypertarget{libphonefirewall_8h_ee925031172607ff8d5cf8b68374bd7f}{
 \index{libphonefirewall.h@{libphonefirewall.h}!DB\_\-FILE@{DB\_\-FILE}}
 \index{DB\_\-FILE@{DB\_\-FILE}!libphonefirewall.h@{libphonefirewall.h}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define DB\_\-FILE~\char`\"{}db/phone-firewall.db\char`\"{}}}
@@ -84,29 +95,7 @@ Definition in file \hyperlink{libphonefirewall_8h-source}{libphonefirewall.h}.
 
 Definition at line 37 of file libphonefirewall.h.
 
-Referenced by add\_\-entry(), check\_\-entry(), get\_\-blacklist\_\-entry\_\-by\_\-name(), and rm\_\-entry().\hypertarget{libphonefirewall_8h_90f876eb68adfa2e189e723d9620220f}{
-\index{libphonefirewall.h@{libphonefirewall.h}!FL\_\-BLACKLIST@{FL\_\-BLACKLIST}}
-\index{FL\_\-BLACKLIST@{FL\_\-BLACKLIST}!libphonefirewall.h@{libphonefirewall.h}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define FL\_\-BLACKLIST~0x01}}
-\label{libphonefirewall_8h_90f876eb68adfa2e189e723d9620220f}
-
-
-
-
-Definition at line 48 of file libphonefirewall.h.
-
-Referenced by add\_\-entry(), check\_\-entry(), and rm\_\-entry().\hypertarget{libphonefirewall_8h_319c18b8bda4179c00355b44ae959db3}{
-\index{libphonefirewall.h@{libphonefirewall.h}!FL\_\-WHITELIST@{FL\_\-WHITELIST}}
-\index{FL\_\-WHITELIST@{FL\_\-WHITELIST}!libphonefirewall.h@{libphonefirewall.h}}
-\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define FL\_\-WHITELIST~0x02}}
-\label{libphonefirewall_8h_319c18b8bda4179c00355b44ae959db3}
-
-
-
-
-Definition at line 49 of file libphonefirewall.h.
-
-Referenced by add\_\-entry(), check\_\-entry(), and rm\_\-entry().\hypertarget{libphonefirewall_8h_f0f2173e3b202ddf5756531b4471dcb2}{
+Referenced by add\_\-entry(), check\_\-entry(), get\_\-entry\_\-by\_\-name(), and rm\_\-entry().\hypertarget{libphonefirewall_8h_f0f2173e3b202ddf5756531b4471dcb2}{
 \index{libphonefirewall.h@{libphonefirewall.h}!MAX\_\-LINE\_\-LENGTH@{MAX\_\-LINE\_\-LENGTH}}
 \index{MAX\_\-LINE\_\-LENGTH@{MAX\_\-LINE\_\-LENGTH}!libphonefirewall.h@{libphonefirewall.h}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define MAX\_\-LINE\_\-LENGTH~512}}
@@ -117,7 +106,7 @@ Referenced by add\_\-entry(), check\_\-entry(), and rm\_\-entry().\hypertarget{l
 
 Definition at line 39 of file libphonefirewall.h.
 
-Referenced by add\_\-entry(), check\_\-entry(), get\_\-blacklist\_\-entry\_\-by\_\-name(), and rm\_\-entry().\hypertarget{libphonefirewall_8h_6265f3115ead4b41b74ad4b8fe53a801}{
+Referenced by add\_\-entry(), check\_\-entry(), get\_\-entry\_\-by\_\-name(), and rm\_\-entry().\hypertarget{libphonefirewall_8h_6265f3115ead4b41b74ad4b8fe53a801}{
 \index{libphonefirewall.h@{libphonefirewall.h}!PRIO\_\-ALL@{PRIO\_\-ALL}}
 \index{PRIO\_\-ALL@{PRIO\_\-ALL}!libphonefirewall.h@{libphonefirewall.h}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define PRIO\_\-ALL~-999}}
@@ -139,7 +128,7 @@ Referenced by add\_\-entry(), and evaluate\_\-stmt().\hypertarget{libphonefirewa
 
 Definition at line 38 of file libphonefirewall.h.
 
-Referenced by add\_\-entry(), check\_\-entry(), get\_\-blacklist\_\-entry\_\-by\_\-name(), and rm\_\-entry().\hypertarget{libphonefirewall_8h_c1694ee0c53e113107b2c0de64fc29a0}{
+Referenced by add\_\-entry(), check\_\-entry(), get\_\-entry\_\-by\_\-name(), and rm\_\-entry().\hypertarget{libphonefirewall_8h_c1694ee0c53e113107b2c0de64fc29a0}{
 \index{libphonefirewall.h@{libphonefirewall.h}!TB\_\-AREACODE@{TB\_\-AREACODE}}
 \index{TB\_\-AREACODE@{TB\_\-AREACODE}!libphonefirewall.h@{libphonefirewall.h}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define TB\_\-AREACODE~\char`\"{}areacode\char`\"{}}}
@@ -150,7 +139,7 @@ Referenced by add\_\-entry(), check\_\-entry(), get\_\-blacklist\_\-entry\_\-by\
 
 Definition at line 42 of file libphonefirewall.h.
 
-Referenced by add\_\-entry(), check\_\-entry(), evaluate\_\-stmt(), find\_\-entry\_\-by\_\-name(), get\_\-blacklist\_\-entry\_\-by\_\-name(), and rm\_\-entry().\hypertarget{libphonefirewall_8h_bfd305db409c094deb83b4714fb4fa09}{
+Referenced by add\_\-entry(), check\_\-entry(), evaluate\_\-stmt(), find\_\-entry\_\-by\_\-name(), get\_\-entry\_\-by\_\-name(), and rm\_\-entry().\hypertarget{libphonefirewall_8h_bfd305db409c094deb83b4714fb4fa09}{
 \index{libphonefirewall.h@{libphonefirewall.h}!TB\_\-COUNTRYCODE@{TB\_\-COUNTRYCODE}}
 \index{TB\_\-COUNTRYCODE@{TB\_\-COUNTRYCODE}!libphonefirewall.h@{libphonefirewall.h}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define TB\_\-COUNTRYCODE~\char`\"{}countrycode\char`\"{}}}
@@ -161,7 +150,7 @@ Referenced by add\_\-entry(), check\_\-entry(), evaluate\_\-stmt(), find\_\-entr
 
 Definition at line 41 of file libphonefirewall.h.
 
-Referenced by add\_\-entry(), check\_\-entry(), evaluate\_\-stmt(), find\_\-entry\_\-by\_\-name(), get\_\-blacklist\_\-entry\_\-by\_\-name(), and rm\_\-entry().\hypertarget{libphonefirewall_8h_4f0324ecc491c659c1d250247ed4bb11}{
+Referenced by add\_\-entry(), check\_\-entry(), evaluate\_\-stmt(), find\_\-entry\_\-by\_\-name(), get\_\-entry\_\-by\_\-name(), and rm\_\-entry().\hypertarget{libphonefirewall_8h_4f0324ecc491c659c1d250247ed4bb11}{
 \index{libphonefirewall.h@{libphonefirewall.h}!TB\_\-NAME@{TB\_\-NAME}}
 \index{TB\_\-NAME@{TB\_\-NAME}!libphonefirewall.h@{libphonefirewall.h}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define TB\_\-NAME~\char`\"{}name\char`\"{}}}
@@ -172,7 +161,7 @@ Referenced by add\_\-entry(), check\_\-entry(), evaluate\_\-stmt(), find\_\-entr
 
 Definition at line 44 of file libphonefirewall.h.
 
-Referenced by add\_\-entry(), find\_\-entry\_\-by\_\-name(), and get\_\-blacklist\_\-entry\_\-by\_\-name().\hypertarget{libphonefirewall_8h_01eced94590c7d08bd01ad7162bb47ad}{
+Referenced by add\_\-entry(), find\_\-entry\_\-by\_\-name(), and get\_\-entry\_\-by\_\-name().\hypertarget{libphonefirewall_8h_01eced94590c7d08bd01ad7162bb47ad}{
 \index{libphonefirewall.h@{libphonefirewall.h}!TB\_\-NUMBER@{TB\_\-NUMBER}}
 \index{TB\_\-NUMBER@{TB\_\-NUMBER}!libphonefirewall.h@{libphonefirewall.h}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define TB\_\-NUMBER~\char`\"{}number\char`\"{}}}
@@ -183,7 +172,7 @@ Referenced by add\_\-entry(), find\_\-entry\_\-by\_\-name(), and get\_\-blacklis
 
 Definition at line 43 of file libphonefirewall.h.
 
-Referenced by add\_\-entry(), check\_\-entry(), evaluate\_\-stmt(), find\_\-entry\_\-by\_\-name(), get\_\-blacklist\_\-entry\_\-by\_\-name(), and rm\_\-entry().\hypertarget{libphonefirewall_8h_22e4a39534c1dcde6556befda55b4607}{
+Referenced by add\_\-entry(), check\_\-entry(), evaluate\_\-stmt(), find\_\-entry\_\-by\_\-name(), get\_\-entry\_\-by\_\-name(), and rm\_\-entry().\hypertarget{libphonefirewall_8h_22e4a39534c1dcde6556befda55b4607}{
 \index{libphonefirewall.h@{libphonefirewall.h}!TB\_\-PRIORITY@{TB\_\-PRIORITY}}
 \index{TB\_\-PRIORITY@{TB\_\-PRIORITY}!libphonefirewall.h@{libphonefirewall.h}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define TB\_\-PRIORITY~\char`\"{}priority\char`\"{}}}
@@ -194,7 +183,7 @@ Referenced by add\_\-entry(), check\_\-entry(), evaluate\_\-stmt(), find\_\-entr
 
 Definition at line 46 of file libphonefirewall.h.
 
-Referenced by add\_\-entry(), check\_\-entry(), evaluate\_\-stmt(), find\_\-entry\_\-by\_\-name(), and get\_\-blacklist\_\-entry\_\-by\_\-name().\hypertarget{libphonefirewall_8h_769f1e2c007617c185b5a3c09229ee67}{
+Referenced by add\_\-entry(), check\_\-entry(), evaluate\_\-stmt(), find\_\-entry\_\-by\_\-name(), and get\_\-entry\_\-by\_\-name().\hypertarget{libphonefirewall_8h_769f1e2c007617c185b5a3c09229ee67}{
 \index{libphonefirewall.h@{libphonefirewall.h}!TB\_\-REASON@{TB\_\-REASON}}
 \index{TB\_\-REASON@{TB\_\-REASON}!libphonefirewall.h@{libphonefirewall.h}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define TB\_\-REASON~\char`\"{}reason\char`\"{}}}
@@ -205,7 +194,18 @@ Referenced by add\_\-entry(), check\_\-entry(), evaluate\_\-stmt(), find\_\-entr
 
 Definition at line 45 of file libphonefirewall.h.
 
-Referenced by add\_\-entry(), find\_\-entry\_\-by\_\-name(), and get\_\-blacklist\_\-entry\_\-by\_\-name().
+Referenced by add\_\-entry(), find\_\-entry\_\-by\_\-name(), and get\_\-entry\_\-by\_\-name().\hypertarget{libphonefirewall_8h_b6552093172807955c9453c948f0cac9}{
+\index{libphonefirewall.h@{libphonefirewall.h}!WHITELIST\_\-FLAG@{WHITELIST\_\-FLAG}}
+\index{WHITELIST\_\-FLAG@{WHITELIST\_\-FLAG}!libphonefirewall.h@{libphonefirewall.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define WHITELIST\_\-FLAG~0x02}}
+\label{libphonefirewall_8h_b6552093172807955c9453c948f0cac9}
+
+
+
+
+Definition at line 49 of file libphonefirewall.h.
+
+Referenced by add\_\-entry(), check\_\-entry(), get\_\-entry\_\-by\_\-name(), and rm\_\-entry().
 
 \subsection{Variable Documentation}
 \hypertarget{libphonefirewall_8h_794ea73ef2f5143bbbb66ebd4c113340}{
