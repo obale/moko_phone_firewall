@@ -1,3 +1,11 @@
+2008-07-15 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* src_test/testphonefirewal.c:
+	Fixed the segmentation fault.
+
+	* src/pf_search.c:
+	Deleting the global root struct and declaring it locally.
+
 2008-07-14 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* src_test/testphonefirewal.c:

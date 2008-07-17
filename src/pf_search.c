@@ -27,14 +27,13 @@
 
 #define ASCII_PERCENT_CHAR 37
 
-struct Entry *p_root = NULL;
-
-int insert_into_list(struct Entry *p_entry)
+struct Entry *insert_into_list(struct Entry *p_root,
+                               struct Entry *p_entry)
 {
         struct Entry *tmp_entry;
         if ( NULL == p_root ) {
                 if ( NULL == (p_root = (struct Entry *) malloc(sizeof(struct Entry)) ) )
-                        return -1;
+                        return NULL;
                 p_root = p_entry;
                 #if DEBUG
                 printf("\n[DEBUG]: +%d %d %llu - %s - %s\n", p_root->country_code,
@@ -49,9 +48,13 @@ int insert_into_list(struct Entry *p_entry)
                 while ( tmp_entry->next != NULL )
                         tmp_entry = tmp_entry->next;
                 if ( NULL == (tmp_entry->next = (struct Entry *) malloc(sizeof(struct Entry)) ) )
-                        return -1;
+                        return NULL;
                 tmp_entry = tmp_entry->next;
-                tmp_entry = p_entry;
+                tmp_entry->country_code = p_entry->country_code;
+                tmp_entry->area_code = p_entry->area_code;
+                tmp_entry->number = p_entry->number;
+                tmp_entry->name = p_entry->name;
+                tmp_entry->reason = p_entry->reason;
                 tmp_entry->next = NULL;
                 #if DEBUG
                 printf("[DEBUG]: +%d %d %llu - %s - %s\n", tmp_entry->country_code,
@@ -62,7 +65,7 @@ int insert_into_list(struct Entry *p_entry)
                 #endif
         }
 
-        return 0;
+        return p_root;
 }
 
 struct Entry *find_entry_by_name(sqlite3_stmt *pp_stmt,
@@ -119,6 +122,7 @@ struct Entry *get_entry_by_name(char *name,
         const char **p_tail = 0;
         int rc;
         char logmsg[MAX_LINE_LENGTH];
+        struct Entry *p_root = NULL;
         struct Entry *p_entry = NULL;
 
         rc = sqlite3_open(DB_FILE, &db);
@@ -144,9 +148,8 @@ struct Entry *get_entry_by_name(char *name,
         while ( rc != SQLITE_DONE ) {
                 rc = sqlite3_step(pp_stmt);
                 if ( SQLITE_ROW == rc ) {
-                        p_entry = find_entry_by_name(pp_stmt, name);
-                        if ( NULL == p_entry ) break;
-                        if ( -1 == insert_into_list(p_entry) ) return NULL;
+                        if ( NULL == (p_entry = find_entry_by_name(pp_stmt, name)) ) break;
+                        if ( NULL == (p_root = insert_into_list(p_root, p_entry)) ) return NULL;
                 }
         }
         return p_root;
