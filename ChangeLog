@@ -1,3 +1,32 @@
+2008-07-19 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* src/pf_search.c
+	* src/pf_administration.h:
+	Substituting the write function to the logfile with a macro which is
+	easier to remember.
+
+	* src/logfile.h:
+	Adding macros for the writing into the logfile.
+
+	* Makefile:
+	Deleting the daemon specific parts. The daemon has now a own
+	repository.
+
+	* src/pf_daemon.c
+	* src/pf_daemon.h:
+	Deleting the phone firewall. Now we have a security daemon which
+	manages all components.
+
+	* src_test/testphonefirewall.c:
+	Deleting the daemon tests.
+
+	* src_test/testphonefirewall.c:
+	Bug below not fixed now.
+
+	FIXME: Segmentation fault during the output of the list (first
+	elements works, second outputs only junk and at the third the fault
+	occurs).
+
 2008-07-15 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* src_test/testphonefirewal.c:
@@ -8,7 +37,7 @@
 
 2008-07-14 Alex Oberhauser <oberhauseralex@networld.to>
 
-	* src_test/testphonefirewal.c:
+	* src_test/testphonefirewall.c:
 	FIXME: Segmentation fault during the output of the list (first
 	elements works, second outputs only junk and at the third the fault
 	occurs).

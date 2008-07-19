@@ -155,6 +155,8 @@ if __name__ == "__main__":
     print """* All Rights Reserved - GPLv2                             *"""
     print """***********************************************************"""
     print """ """
+    print """ATTENTION: Doesn't work at the moment. Please use the CUnit"""
+    print """tests. """
     pf = cdll.LoadLibrary(lib_pf_path)
 
     suite_admin = unittest.TestLoader().loadTestsFromTestCase(CheckPFAdminFunctions)

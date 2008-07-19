@@ -23,7 +23,6 @@
 #include <string.h>
 #include <sqlite3.h>
 #include "libphonefirewall.h"
-#include "logfile.h"
 
 #define ASCII_PERCENT_CHAR 37
 
@@ -34,15 +33,19 @@ struct Entry *insert_into_list(struct Entry *p_root,
         if ( NULL == p_root ) {
                 if ( NULL == (p_root = (struct Entry *) malloc(sizeof(struct Entry)) ) )
                         return NULL;
-                p_root = p_entry;
-                #if DEBUG
-                printf("\n[DEBUG]: +%d %d %llu - %s - %s\n", p_root->country_code,
-                                                             p_root->area_code,
-                                                             p_root->number,
-                                                             p_root->name,
-                                                             p_root->reason);
-                #endif
+                p_root->country_code = p_entry->country_code;
+                p_root->area_code = p_entry->area_code;
+                p_root->number = p_entry->number;
+                p_root->name = p_entry->name;
+                p_root->reason = p_entry->reason;
                 p_root->next = NULL;
+                #if DEBUG
+                printf("\n\n[DEBUG]: +%d %d %llu - %s - %s\n", p_root->country_code,
+                                                               p_root->area_code,
+                                                               p_root->number,
+                                                               p_root->name,
+                                                               p_root->reason);
+                #endif
         } else {
                 tmp_entry = p_root;
                 while ( tmp_entry->next != NULL )
@@ -64,12 +67,12 @@ struct Entry *insert_into_list(struct Entry *p_root,
                                                            tmp_entry->reason);
                 #endif
         }
+        free(p_entry);
 
         return p_root;
 }
 
-struct Entry *find_entry_by_name(sqlite3_stmt *pp_stmt,
-                                 char *name)
+struct Entry *find_entry(sqlite3_stmt *pp_stmt)
 {
         int num_column;
         int count;
@@ -129,18 +132,18 @@ struct Entry *get_entry_by_name(char *name,
 
         if ( rc ) {
                 sprintf(logmsg, "Can't open database: %s", sqlite3_errmsg(db));
-                write_logentry(logmsg, "phonefirewall", ERR_FLAG);
+                ERR_LOG(logmsg);
                 sqlite3_close(db);
                 return NULL;
         }
 
-        sprintf(stmt, "SELECT %1$s, %2$s, %3$s, %4$s, %5$s, %6$s FROM %9$s WHERE %5$s like \'%8$c%7$s%8$c\'", TB_PRIORITY, TB_COUNTRYCODE, TB_AREACODE, TB_NUMBER, TB_NAME, TB_REASON, name, ASCII_PERCENT_CHAR, listname);
+        sprintf(stmt, "SELECT %1$s, %2$s, %3$s, %4$s, %5$s, %6$s FROM %8$s WHERE %5$s like \'%7$c%9$s%7$c\'", TB_PRIORITY, TB_COUNTRYCODE, TB_AREACODE, TB_NUMBER, TB_NAME, TB_REASON, ASCII_PERCENT_CHAR, listname, name);
 
         rc = sqlite3_prepare_v2(db, stmt, sizeof(stmt), &pp_stmt, p_tail);
 
         if ( rc != SQLITE_OK ) {
                 sprintf(logmsg, "SQL error: %s", sqlite3_errmsg(db));
-                write_logentry(logmsg, "phonefirewall", ERR_FLAG);
+                ERR_LOG(logmsg);
                 sqlite3_close(db);
                 return NULL;
         }
@@ -148,10 +151,11 @@ struct Entry *get_entry_by_name(char *name,
         while ( rc != SQLITE_DONE ) {
                 rc = sqlite3_step(pp_stmt);
                 if ( SQLITE_ROW == rc ) {
-                        if ( NULL == (p_entry = find_entry_by_name(pp_stmt, name)) ) break;
+                        if ( NULL == (p_entry = find_entry(pp_stmt)) ) break;
                         if ( NULL == (p_root = insert_into_list(p_root, p_entry)) ) return NULL;
                 }
         }
+        sqlite3_close(db);
         return p_root;
 }
 
@@ -160,11 +164,106 @@ struct Entry *get_entry_by_number(int country_code,
                                   unsigned long long number,
                                   int listflag)
 {
-        return NULL;
+        char *listname;
+        switch (listflag) {
+                case WHITELIST_FLAG:
+                        listname = "whitelist";
+                        break;
+                case BLACKLIST_FLAG:
+                        listname = "blacklist";
+                        break;
+                default: return NULL;
+        }
+
+        sqlite3 *db;
+        char stmt[STMT_SIZE];
+        sqlite3_stmt *pp_stmt = 0;
+        const char **p_tail = 0;
+        int rc;
+        char logmsg[MAX_LINE_LENGTH];
+        struct Entry *p_root = NULL;
+        struct Entry *p_entry = NULL;
+
+        rc = sqlite3_open(DB_FILE, &db);
+
+        if ( rc ) {
+                sprintf(logmsg, "Can't open database: %s", sqlite3_errmsg(db));
+                ERR_LOG(logmsg);
+                sqlite3_close(db);
+                return NULL;
+        }
+
+        sprintf(stmt, "SELECT %1$s, %2$s, %3$s, %4$s, %5$s, %6$s FROM %8$s WHERE %2$s like \'%7$c%9$d%7$c\' AND %3$s like \'%7$c%10$d%7$c\' AND %4$s like \'%7$c%11$llu%7$c\'", TB_PRIORITY, TB_COUNTRYCODE, TB_AREACODE, TB_NUMBER, TB_NAME, TB_REASON, ASCII_PERCENT_CHAR, listname, country_code, area_code, number);
+
+        rc = sqlite3_prepare_v2(db, stmt, sizeof(stmt), &pp_stmt, p_tail);
+
+        if ( rc != SQLITE_OK ) {
+                sprintf(logmsg, "SQL error: %s", sqlite3_errmsg(db));
+                ERR_LOG(logmsg);
+                sqlite3_close(db);
+                return NULL;
+        }
+
+        while ( rc != SQLITE_DONE ) {
+                rc = sqlite3_step(pp_stmt);
+                if ( SQLITE_ROW == rc ) {
+                        if ( NULL == (p_entry = find_entry(pp_stmt)) ) break;
+                        if ( NULL == (p_root = insert_into_list(p_root, p_entry)) ) return NULL;
+                }
+        }
+        sqlite3_close(db);
+        return p_root;
 }
 
 struct Entry *get_entry_by_reason(char *reason,
                                   int listflag)
 {
-        return NULL;
+        char *listname;
+        switch (listflag) {
+                case WHITELIST_FLAG:
+                        listname = "whitelist";
+                        break;
+                case BLACKLIST_FLAG:
+                        listname = "blacklist";
+                        break;
+                default: return NULL;
+        }
+
+        sqlite3 *db;
+        char stmt[STMT_SIZE];
+        sqlite3_stmt *pp_stmt = 0;
+        const char **p_tail = 0;
+        int rc;
+        char logmsg[MAX_LINE_LENGTH];
+        struct Entry *p_root = NULL;
+        struct Entry *p_entry = NULL;
+
+        rc = sqlite3_open(DB_FILE, &db);
+
+        if ( rc ) {
+                sprintf(logmsg, "Can't open database: %s", sqlite3_errmsg(db));
+                ERR_LOG(logmsg);
+                sqlite3_close(db);
+                return NULL;
+        }
+
+        sprintf(stmt, "SELECT %1$s, %2$s, %3$s, %4$s, %5$s, %6$s FROM %8$s WHERE %6$s like \'%7$c%9$s%7$c\'", TB_PRIORITY, TB_COUNTRYCODE, TB_AREACODE, TB_NUMBER, TB_NAME, TB_REASON, ASCII_PERCENT_CHAR, listname, reason);
+
+        rc = sqlite3_prepare_v2(db, stmt, sizeof(stmt), &pp_stmt, p_tail);
+
+        if ( rc != SQLITE_OK ) {
+                sprintf(logmsg, "SQL error: %s", sqlite3_errmsg(db));
+                sqlite3_close(db);
+                return NULL;
+        }
+
+        while ( rc != SQLITE_DONE ) {
+                rc = sqlite3_step(pp_stmt);
+                if ( SQLITE_ROW == rc ) {
+                        if ( NULL == (p_entry = find_entry(pp_stmt)) ) break;
+                        if ( NULL == (p_root = insert_into_list(p_root, p_entry)) ) return NULL;
+                }
+        }
+        sqlite3_close(db);
+        return p_root;
 }

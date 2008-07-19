@@ -26,6 +26,11 @@
 #define WARN_FLAG   2 /** If a warning message should be written     */
 #define INFO_FLAG   3 /** If a information message should be written */
 
+#define UNKNOWN_LOG(m) write_logentry(m, COMPONENT_NAME, UNKNOWN_FLAG)
+#define ERR_LOG(m) write_logentry(m, COMPONENT_NAME, ERR_FLAG)
+#define WARN_LOG(m) write_logentry(m, COMPONENT_NAME, WARN_FLAG)
+#define INFO_LOG(m) write_logentry(m, COMPONENT_NAME, INFO_FLAG)
+
 /**
  * Writes a logfile enty.
  *

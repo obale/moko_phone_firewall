@@ -1,6 +1,6 @@
 GCC = /usr/bin/gcc
 RM = /bin/rm
-CLFLAGS += --std=c99 -Wall -Werror -DDEBUG
+CLFLAGS += --std=c99 -Wall -Werror -DDEBUG -g -O0
 TEST_LIB = -lcunit -ltestphonefirewall `pkg-config --libs --cflags sqlite3`
 DOXYGEN = /usr/bin/doxygen
 SRCDIR = src
@@ -11,10 +11,7 @@ BINTESTDIR = bin_test
 
 test: logfile.o testphonefirewall_administration.o testphonefirewall_search.o libtestphonefirewall.so testphonefirewall
 
-daemon: pf_daemon.o logfile.o pf_daemon
-
 all: 	libphonefirewall.so\
-	daemon\
 	test
 
 .PHONY: doc
@@ -30,15 +27,8 @@ pf_administration.o: $(SRCDIR)/pf_administration.c $(SRCDIR)/libphonefirewall.h
 pf_search.o: $(SRCDIR)/pf_search.c $(SRCDIR)/libphonefirewall.h
 	$(CC) $(CLFLAGS) -fpic -c $(SRCDIR)/pf_search.c -o $(SRCDIR)/$@
 
-libphonefirewall.so: $(SRCDIR)/pf_administration.o $(SRCDIR)/pfl_search.o
+libphonefirewall.so: $(SRCDIR)/pf_administration.o $(SRCDIR)/pf_search.o
 	$(CC) -shared $(SRCDIR)/pf_administration.o $(SRCDIR)/pf_search.o -o $(LIBDIR)/$@
-
-pf_daemon.o: $(SRCDIR)/pf_daemon.c $(SRCDIR)/libphonefirewall.h $(SRCDIR)/pf_daemon.h $(SRCDIR)/logfile.h
-	$(GCC) `pkg-config --cflags dbus-1` -c $(SRCDIR)/pf_daemon.c -o $(SRCDIR)/$@
-
-pf_daemon: $(SRCDIR)/pf_daemon.o $(SRCDIR)/logfile.o
-	$(GCC) `pkg-config --cflags --libs dbus-1` $(SRCDIR)/pf_daemon.o $(SRCDIR)/logfile.o -o $(BINDIR)/$@
-
 
 # 
 # Begining of the testing part.

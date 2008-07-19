@@ -19,11 +19,11 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <errno.h>
 #include <string.h>
 #include <CUnit/Basic.h>
 #include "../src/libphonefirewall.h"
-#include "../src/pf_daemon.h"
 
 
 void test_add_blacklist_entry(void)
@@ -143,36 +143,48 @@ void test_check_whitelist_entry(void)
 	CU_ASSERT(check_entry(49, 129, 222222222, 3, WHITELIST_FLAG) == 1);
 }
 
-void test_start_daemon(void)
-{
-}
-
-void test_stop_daemon(void)
-{
-}
-
 void test_get_blacklist_entry_by_name(void)
 {
         struct Entry *tmp_entry = NULL;
-	CU_ASSERT( (tmp_entry = get_entry_by_name("user", BLACKLIST_FLAG)) != NULL );
+	tmp_entry = get_entry_by_name("user", BLACKLIST_FLAG);
         int count = 0;
+        printf("\n");
         while ( tmp_entry != NULL ) {
-                printf("result #%d: +%d %d %llu - %s - %s\n", count,
-                                                              tmp_entry->country_code,
-                                                              tmp_entry->area_code,
-                                                              tmp_entry->number,
-                                                              tmp_entry->name,
-                                                              tmp_entry->reason);
+                printf("[CUNIT] result #%d: +%d %d %llu - %s - %s\n", count,
+                                                                      tmp_entry->country_code,
+                                                                      tmp_entry->area_code,
+                                                                      tmp_entry->number,
+                                                                      tmp_entry->name,
+                                                                      tmp_entry->reason);
                 tmp_entry = tmp_entry->next;
                 count++;
         }
+        printf("\n");
+}
+
+void test_get_whitelist_entry_by_name(void)
+{
+        struct Entry *tmp_entry = NULL;
+	tmp_entry = get_entry_by_name("Test", WHITELIST_FLAG);
+        int count = 0;
+        printf("\n");
+        while ( tmp_entry != NULL ) {
+                printf("[CUNIT] result #%d: +%d %d %llu - %s - %s\n", count,
+                                                                      tmp_entry->country_code,
+                                                                      tmp_entry->area_code,
+                                                                      tmp_entry->number,
+                                                                      tmp_entry->name,
+                                                                      tmp_entry->reason);
+                tmp_entry = tmp_entry->next;
+                count++;
+        }
+        printf("\n");
 }
 
 int main(int argc, char *argv[])
 {
 	CU_pSuite adminSuite = NULL;
 	CU_pSuite searchSuite = NULL;
-	CU_pSuite daemonSuite = NULL;
 
 	CU_initialize_registry();
 
@@ -186,14 +198,11 @@ int main(int argc, char *argv[])
 
 	searchSuite = CU_add_suite("Testing Phone Firewall - searching features (by name, by number ...)", NULL, NULL);
 	CU_add_test(searchSuite, "test of get_blacklist_entry_by_name()", test_get_blacklist_entry_by_name);
+	CU_add_test(searchSuite, "test of get_whitelist_entry_by_name()", test_get_whitelist_entry_by_name);
 
-        daemonSuite = CU_add_suite("Testing Phone Firewall - daemon features", NULL, NULL);
-	CU_add_test(daemonSuite, "test of start_daemon()", test_start_daemon);
-	CU_add_test(daemonSuite, "test of stop_daemon()", test_stop_daemon);
-
-        //CU_basic_set_mode(CU_BRM_NORMAL);
+        CU_basic_set_mode(CU_BRM_NORMAL);
         //CU_basic_set_mode(CU_BRM_SILENT);
-        CU_basic_set_mode(CU_BRM_VERBOSE);
+        //CU_basic_set_mode(CU_BRM_VERBOSE);
 
 	CU_basic_run_tests();
 	CU_cleanup_registry();

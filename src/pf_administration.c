@@ -106,7 +106,7 @@ int add_entry(int country_code,
 
         if ( rc ) {
                 sprintf(error, "Can't open database: %s", sqlite3_errmsg(db));
-                write_logentry(error, "phonefirewall", ERR_FLAG);
+                ERR_LOG(error);
                 sqlite3_close(db);
                 return -1;
         }
@@ -116,7 +116,7 @@ int add_entry(int country_code,
         rc = sqlite3_exec(db, stmt, NULL, 0, &errMsg);
         if ( SQLITE_OK != rc ) {
                 sprintf(error, "SQL error: %s", sqlite3_errmsg(db));
-                write_logentry(error, "phonefirewall", ERR_FLAG);
+                ERR_LOG(error);
                 sqlite3_close(db);
                 return -1;
         }
@@ -156,7 +156,7 @@ int rm_entry (int country_code,
 
         if ( rc ) {
                 sprintf(error, "Can't open database: %s", sqlite3_errmsg(db));
-                write_logentry(error, "phonefirewall", ERR_FLAG);
+                ERR_LOG(error);
                 sqlite3_close(db);
                 return -1;
         }
@@ -166,7 +166,7 @@ int rm_entry (int country_code,
         rc = sqlite3_exec(db, stmt, NULL, 0, &errMsg);
         if ( SQLITE_OK != rc ) {
                 sprintf(error, "SQL error: %s", sqlite3_errmsg(db));
-                write_logentry(error, "phonefirewall", ERR_FLAG);
+                ERR_LOG(error);
                 sqlite3_close(db);
                 return -1;
         }
@@ -210,7 +210,7 @@ int check_entry(int country_code,
 
         if ( rc ) {
                 sprintf(logmsg, "Can't open database: %s", sqlite3_errmsg(db));
-                write_logentry(logmsg, "phonefirewall", ERR_FLAG);
+                ERR_LOG(logmsg);
                 sqlite3_close(db);
                 return -1;
         }
@@ -221,7 +221,7 @@ int check_entry(int country_code,
 
         if ( rc != SQLITE_OK ) {
                 sprintf(logmsg, "SQL error: %s", sqlite3_errmsg(db));
-                write_logentry(logmsg, "phonefirewall", ERR_FLAG);
+                ERR_LOG(logmsg);
                 sqlite3_close(db);
                 return -1;
         }
@@ -241,7 +241,7 @@ int check_entry(int country_code,
                                         default:
                                                 sprintf(logmsg, "Something goes wrong...");
                                 }
-                                write_logentry(logmsg, "phonefirewall", INFO_FLAG);
+                                INFO_LOG(logmsg);
                                 break;
                         }
                 }

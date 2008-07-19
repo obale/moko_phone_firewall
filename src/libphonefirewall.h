@@ -32,6 +32,7 @@
 
 #include "pf_search.h"
 #include "pf_administration.h"
+#include "logfile.h"
 
 #define PRIO_ALL -999
 #define DB_FILE "db/phone-firewall.db"
@@ -47,6 +48,8 @@
 
 #define BLACKLIST_FLAG 0x01
 #define WHITELIST_FLAG 0x02
+
+#define COMPONENT_NAME "phone firewall"
 
 /**
  * The struct which includes all information about entries (black- and
