@@ -1,3 +1,26 @@
+2008-07-28 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* pytests:
+	Deleting the python tests.
+
+	* run.sh:
+	Deleting the call of the python tests.
+
+	* src/pf_administration.c:
+	Deleting the include of the logfile header. This header will be
+	included in the phone firewall header.
+	Deleting the free(p_entry) statement which cause a wrong output.
+
+	* src_test/testphonefirewall.c:
+	Adding a preprocessor statement which can used to uncomment the
+	source code.
+
+	FIXME: Memory corruption during searching of a name:
+
+	lib/libtestphonefirewall.so(insert_into_list+0x101)[0xa7f6d71d]
+	lib/libtestphonefirewall.so(get_entry_by_name+0x238)[0xa7f6dca8]
+
+
 2008-07-19 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* src/pf_search.c

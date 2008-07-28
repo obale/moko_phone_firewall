@@ -67,7 +67,6 @@ struct Entry *insert_into_list(struct Entry *p_root,
                                                            tmp_entry->reason);
                 #endif
         }
-        free(p_entry);
 
         return p_root;
 }

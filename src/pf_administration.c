@@ -23,7 +23,6 @@
 #include <string.h>
 #include <sqlite3.h>
 #include "libphonefirewall.h"
-#include "logfile.h"
 
 int evaluate_stmt(sqlite3_stmt *pp_stmt,
                   struct Entry *p_entry)

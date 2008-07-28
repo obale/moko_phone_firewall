@@ -10,7 +10,7 @@ sqlite3 db/phone-firewall.db < phonefirewall.sql;
 
 echo ""
 
-select CHOICE in CLOSE CUnit CUnit+Valgrind PythonUnit
+select CHOICE in CLOSE CUnit CUnit+Valgrind
 do
         case "$CHOICE" in
                 "CLOSE")
@@ -24,8 +24,5 @@ do
                 valgrind -v --leak-check=full ./bin_test/testphonefirewall
                 exit
                 ;;
-                "PythonUnit")
-                python pytests/pf_testsuite.py 
-                exit
         esac
 done
