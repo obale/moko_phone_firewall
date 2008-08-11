@@ -1,3 +1,19 @@
+2008-08-11 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* Makefile:
+	Adding the flag "-o" for the debugging with gdb.
+	Deleting the unused library inclusion.
+	Adding a temporary entry to test the memory corruption manually.
+
+	* run.sh:
+	Deleting the database creation statement. It's created during "make
+	clean".
+
+	* src_test/testphonefirewall.c:
+	Adding another user to the blacklist.
+	Enclose the black- and whitelist search code with the preprocessor
+	code "#if x".
+
 2008-07-28 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* pytests:

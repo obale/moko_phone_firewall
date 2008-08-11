@@ -31,6 +31,9 @@ void test_add_blacklist_entry(void)
 	/* [OK]    -> Testuser 1:  Number in Italy. */
 	CU_ASSERT(add_entry(39, 328, 123456789, "Testuser 1", "I don't like him.", 0, BLACKLIST_FLAG) == 0);
 
+        /* [OK]    -> Temporary User */
+	CU_ASSERT(add_entry(39, 328, 100056789, "Testuser X", "I don't like him.", 0, BLACKLIST_FLAG) == 0);
+
 	/* [FAILS] -> Testuser -1: The same number as "Testuser 1". */
 	CU_ASSERT(add_entry(39, 328, 123456789, "Testuser -1", "I don't like him.", 0, BLACKLIST_FLAG) == -1);
 
@@ -166,6 +169,7 @@ void test_get_blacklist_entry_by_name(void)
 
 void test_get_whitelist_entry_by_name(void)
 {
+#if 0
         struct Entry *tmp_entry = NULL;
 	tmp_entry = get_entry_by_name("Test", WHITELIST_FLAG);
         int count = 0;
@@ -181,6 +185,7 @@ void test_get_whitelist_entry_by_name(void)
                 count++;
         }
         printf("\n");
+#endif
 }
 
 int main(int argc, char *argv[])

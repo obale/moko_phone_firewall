@@ -1,6 +1,6 @@
 GCC = /usr/bin/gcc
 RM = /bin/rm
-CLFLAGS += --std=c99 -Wall -Werror -DDEBUG -g -O0
+CLFLAGS += --std=c99 -Wall -Werror -DDEBUG -g -o -O0
 TEST_LIB = -lcunit -ltestphonefirewall `pkg-config --libs --cflags sqlite3`
 DOXYGEN = /usr/bin/doxygen
 SRCDIR = src
@@ -44,10 +44,14 @@ testphonefirewall_search.o: $(SRCDIR)/pf_search.c $(SRCDIR)/libphonefirewall.h
 	$(GCC) $(CLFLAGS) -fPIC -c $(SRCDIR)/pf_search.c -o $(SRCTESTDIR)/$@
 
 libtestphonefirewall.so: $(SRCTESTDIR)/testphonefirewall_administration.o $(SRCTESTDIR)/testphonefirewall_search.o $(SRCDIR)/logfile.o
-	$(GCC) $(CLFLAGS) `pkg-config --libs --cflags sqlite3` -shared $(SRCTESTDIR)/testphonefirewall_administration.o $(SRCTESTDIR)/testphonefirewall_search.o $(SRCDIR)/logfile.o -o $(LIBDIR)/$@
+	$(GCC) $(CLFLAGS) -shared $(SRCTESTDIR)/testphonefirewall_administration.o $(SRCTESTDIR)/testphonefirewall_search.o $(SRCDIR)/logfile.o -o $(LIBDIR)/$@
 
 logfile.o: $(SRCDIR)/logfile.c $(SRCDIR)/logfile.h
 	$(GCC) -fpic -c $(SRCDIR)/logfile.c -o $(SRCDIR)/$@
+
+# XXX: Only a quick hack to find the memory corruption error.
+main_test: $(SRCTESTDIR)/main_test.c $(SRCTESTDIR)/testphonefirewall_administration.o $(SRCTESTDIR)/testphonefirewall_search.o
+	$(GCC) $(CLFLAGS) -L$(LIBDIR) $(TEST_LIB) $(SRCTESTDIR)/testphonefirewall_administration.o $(SRCTESTDIR)/testphonefirewall_search.o $(SRCTESTDIR)/main_test.c -o $(BINTESTDIR)/$@
 
 .PHONY: clean
 clean: 
