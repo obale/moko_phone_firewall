@@ -1,3 +1,8 @@
+2008-08-15 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* NEWS:
+	Adding a description about the news format and a first news block.
+
 2008-08-11 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* Makefile:

@@ -12,4 +12,5 @@ core.*
 vgcore*
 blacklist*
 whitelist*
-bin_test/testphonefirewall
+bin_test/*
+bin/*

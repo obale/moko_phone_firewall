@@ -1,1 +1,27 @@
-Nothing new at the moment. The software is still under heavy development.
+DESCRIPTION
+===========
+
+Here you find the project related news. When you want to include a new news
+block write it above the other news, so the newest blocks are always at the
+beginning.
+
+The news have the following format:
+
+DATE:        DD-MM-YYYY
+TAG:         [PERSONAL] *
+SUMMARY:     Short description about the news
+DESCRIPTION: The full news text
+
+* Please write here a suitable tag, for example [BUG], [PERSONAL], [RELEASE],
+  [BUGFIX], ...
+
+
+NEWS
+====
+
+DATE:        15-08-2008
+TAG:         [BUG]
+SUMMARY:     Major bug in search a name function
+DESCRIPTION: During the search of a name the program terminates with a "Memory
+             Corruption" or with "double free or corruption" exception. The
+             error occurs only in the whitelist.

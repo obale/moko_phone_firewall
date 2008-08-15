@@ -148,7 +148,7 @@ void test_check_whitelist_entry(void)
 
 void test_get_blacklist_entry_by_name(void)
 {
-#if 1
+#if 0
         struct Entry *tmp_entry = NULL;
 	tmp_entry = get_entry_by_name("user", BLACKLIST_FLAG);
         int count = 0;
@@ -169,7 +169,7 @@ void test_get_blacklist_entry_by_name(void)
 
 void test_get_whitelist_entry_by_name(void)
 {
-#if 0
+#if 1
         struct Entry *tmp_entry = NULL;
 	tmp_entry = get_entry_by_name("Test", WHITELIST_FLAG);
         int count = 0;
