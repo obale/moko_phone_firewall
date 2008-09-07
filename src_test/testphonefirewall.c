@@ -69,8 +69,10 @@ void test_add_blacklist_entry(void)
 
 void test_rm_blacklist_entry(void)
 {
+#if 1
 	CU_ASSERT(rm_entry(49, 329, 999999999, BLACKLIST_FLAG) == 0);
 	CU_ASSERT(rm_entry(39, 328, 123456789, BLACKLIST_FLAG) == 0);
+#endif
 }
 
 void test_add_whitelist_entry(void)
@@ -122,33 +124,40 @@ void test_add_whitelist_entry(void)
 
 void test_rm_whitelist_entry(void)
 {
+#if 1
 	CU_ASSERT(rm_entry(49, 129, 999999999, WHITELIST_FLAG) == 0);
 	CU_ASSERT(rm_entry(39, 128, 123456789, WHITELIST_FLAG) == 0);
+#endif
 }
+
 
 void test_check_blacklist_entry(void)
 {
+#if 1
 	CU_ASSERT(check_entry(39, 328, 123456789, 0, BLACKLIST_FLAG) == 1);
 	CU_ASSERT(check_entry(39, 328, 103456785, 0, BLACKLIST_FLAG) == 0);
 	CU_ASSERT(check_entry(49, 329, 999999999, 0, BLACKLIST_FLAG) == 1);
 	CU_ASSERT(check_entry(49, 329, 222222222, 0, BLACKLIST_FLAG) == 0);
 	CU_ASSERT(check_entry(49, 329, 222222222, 2, BLACKLIST_FLAG) == 1);
 	CU_ASSERT(check_entry(49, 329, 222222222, 3, BLACKLIST_FLAG) == 1);
+#endif
 }
 
 void test_check_whitelist_entry(void)
 {
+#if 1
 	CU_ASSERT(check_entry(39, 128, 123456789, 0, WHITELIST_FLAG) == 1);
 	CU_ASSERT(check_entry(39, 128, 103456785, 0, WHITELIST_FLAG) == 0);
 	CU_ASSERT(check_entry(49, 129, 999999999, 0, WHITELIST_FLAG) == 1);
 	CU_ASSERT(check_entry(49, 129, 222222222, 0, WHITELIST_FLAG) == 0);
 	CU_ASSERT(check_entry(49, 129, 222222222, 2, WHITELIST_FLAG) == 1);
 	CU_ASSERT(check_entry(49, 129, 222222222, 3, WHITELIST_FLAG) == 1);
+#endif
 }
 
 void test_get_blacklist_entry_by_name(void)
 {
-#if 0
+#if 1
         struct Entry *tmp_entry = NULL;
 	tmp_entry = get_entry_by_name("user", BLACKLIST_FLAG);
         int count = 0;
@@ -207,9 +216,9 @@ int main(int argc, char *argv[])
 	CU_add_test(searchSuite, "test of get_blacklist_entry_by_name()", test_get_blacklist_entry_by_name);
 	CU_add_test(searchSuite, "test of get_whitelist_entry_by_name()", test_get_whitelist_entry_by_name);
 
-        CU_basic_set_mode(CU_BRM_NORMAL);
+        //CU_basic_set_mode(CU_BRM_NORMAL);
         //CU_basic_set_mode(CU_BRM_SILENT);
-        //CU_basic_set_mode(CU_BRM_VERBOSE);
+        CU_basic_set_mode(CU_BRM_VERBOSE);
 
 	CU_basic_run_tests();
 	CU_cleanup_registry();

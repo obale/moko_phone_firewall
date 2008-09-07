@@ -110,7 +110,7 @@ int add_entry(int country_code,
                 return -1;
         }
 
-        sprintf(stmt, "INSERT INTO %s (%s, %s, %s, %s, %s, %s) VALUES(%d, %d, %d, %lld, \"%s\", \"%s\")",listname, TB_PRIORITY, TB_COUNTRYCODE, TB_AREACODE, TB_NUMBER, TB_NAME, TB_REASON, priority, country_code, area_code, number, name, reason);
+        sprintf(stmt, "INSERT INTO %s (%s, %s, %s, %s, %s, %s) VALUES(%d, %d, %d, %lld, \"%s\", \"%s\")", listname, TB_PRIORITY, TB_COUNTRYCODE, TB_AREACODE, TB_NUMBER, TB_NAME, TB_REASON, priority, country_code, area_code, number, name, reason);
 
         rc = sqlite3_exec(db, stmt, NULL, 0, &errMsg);
         if ( SQLITE_OK != rc ) {
@@ -130,9 +130,6 @@ int rm_entry (int country_code,
               unsigned long long number,
               int listflag)
 {
-        if ( 0 == country_code
-                        || 0 == area_code
-                        || 0 == number ) return -1;
 
         char *listname;
         switch (listflag) {

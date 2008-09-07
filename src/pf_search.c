@@ -94,11 +94,14 @@ struct Entry *find_entry(sqlite3_stmt *pp_stmt)
                 } else if ( 0 == strcmp(col_name, TB_NUMBER) ) {
                         p_entry->number = atoll(col_value);
                 } else if ( 0 == strcmp(col_name, TB_NAME) ) {
-                        p_entry->name = malloc(sizeof(col_value));
-                        strcpy(p_entry->name, col_value);
+                        p_entry->name = calloc(0, strlen(col_value));
+                        strncpy(p_entry->name, col_value, strlen(col_value));
                 } else if ( 0 == strcmp(col_name, TB_REASON) ) {
-                        p_entry->reason = malloc(sizeof(col_value));
-                        strcpy(p_entry->reason, col_value);
+                        p_entry->reason = calloc(0, strlen(col_value));
+                        /* XXX: String copy seams not to work. */
+                        //strncpy(p_entry->reason, col_value, strlen(col_value));
+                        /* TODO: Implement this part or fix the part above. */
+                        p_entry->reason = NULL;
                 }
         }
         return p_entry;
