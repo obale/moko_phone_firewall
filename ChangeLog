@@ -1,3 +1,8 @@
+2008-09-11 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* src/pf_search.c:
+	Substituting the copying of the string with strncpy.
+
 2008-09-07 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* src/pf_search.c:
