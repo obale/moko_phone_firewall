@@ -9,7 +9,7 @@ process look at log/make.log and log/make_clean.log" );
 
 echo ""
 
-select CHOICE in CLOSE CUnit CUnit+Valgrind
+select CHOICE in CLOSE CUnit CUnit+Valgrind+verbose CUnit+Valgrind
 do
         case "$CHOICE" in
                 "CLOSE")
@@ -19,8 +19,12 @@ do
                 ./bin_test/testphonefirewall;
                 exit
                 ;;
-                "CUnit+Valgrind")
+                "CUnit+Valgrind+verbose")
                 valgrind -v --leak-check=full ./bin_test/testphonefirewall
+                exit
+                ;;
+                "CUnit+Valgrind")
+                valgrind ./bin_test/testphonefirewall
                 exit
                 ;;
         esac

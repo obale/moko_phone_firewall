@@ -159,6 +159,7 @@ struct Entry *get_entry_by_name(char *name,
                         if ( NULL == (p_root = insert_into_list(p_root, p_entry)) ) return NULL;
                 }
         }
+        free(p_entry);
         sqlite3_close(db);
         return p_root;
 }
@@ -215,6 +216,7 @@ struct Entry *get_entry_by_number(int country_code,
                         if ( NULL == (p_root = insert_into_list(p_root, p_entry)) ) return NULL;
                 }
         }
+        free(p_entry);
         sqlite3_close(db);
         return p_root;
 }
@@ -268,6 +270,7 @@ struct Entry *get_entry_by_reason(char *reason,
                         if ( NULL == (p_root = insert_into_list(p_root, p_entry)) ) return NULL;
                 }
         }
+        free(p_entry);
         sqlite3_close(db);
         return p_root;
 }

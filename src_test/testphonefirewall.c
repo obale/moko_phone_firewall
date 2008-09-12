@@ -173,6 +173,7 @@ void test_get_blacklist_entry_by_name(void)
                 count++;
         }
         printf("\n");
+        free(tmp_entry);
 #endif
 }
 
@@ -194,6 +195,7 @@ void test_get_whitelist_entry_by_name(void)
                 count++;
         }
         printf("\n");
+        free(tmp_entry);
 #endif
 }
 

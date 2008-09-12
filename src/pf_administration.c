@@ -247,6 +247,7 @@ int check_entry(int country_code,
         // Cleaning up
         sqlite3_finalize(pp_stmt);
         sqlite3_close(db);
+        free(p_entry);
 
         return found_flag;
 }

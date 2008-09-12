@@ -1,3 +1,20 @@
+2008-09-12 Alex Oberhauser <oberhauseralex@networld.to>
+
+	TODO: Look for non released memory and free it.
+
+	* run.sh:
+	Adding a verbose and non-verbose mode to the cunit+valgrind call.
+
+	* src/pf_administration.c:
+	Freeing the struct p_entry after the use.
+
+	* src/pf_search.c:
+	Freeing the struct p_entry after the use.
+
+	* src_test/testphonefirewall.c:
+	Freeing the struct tmp_entry after the use.
+
+
 2008-09-11 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* src/pf_search.c:
