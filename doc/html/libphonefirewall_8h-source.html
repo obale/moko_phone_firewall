@@ -34,33 +34,36 @@
 <a name="l00020"></a>00020 
 <a name="l00033"></a>00033 <span class="preprocessor">#include "<a class="code" href="pf__search_8h.html">pf_search.h</a>"</span>
 <a name="l00034"></a>00034 <span class="preprocessor">#include "<a class="code" href="pf__administration_8h.html">pf_administration.h</a>"</span>
-<a name="l00035"></a>00035 
-<a name="l00036"></a><a class="code" href="libphonefirewall_8h.html#6265f3115ead4b41b74ad4b8fe53a801">00036</a> <span class="preprocessor">#define PRIO_ALL -999</span>
-<a name="l00037"></a><a class="code" href="libphonefirewall_8h.html#ee925031172607ff8d5cf8b68374bd7f">00037</a> <span class="preprocessor"></span><span class="preprocessor">#define DB_FILE "db/phone-firewall.db"</span>
-<a name="l00038"></a><a class="code" href="libphonefirewall_8h.html#8d8e3d24a53ab9fb36efc6e592076751">00038</a> <span class="preprocessor"></span><span class="preprocessor">#define STMT_SIZE 1024</span>
-<a name="l00039"></a><a class="code" href="libphonefirewall_8h.html#f0f2173e3b202ddf5756531b4471dcb2">00039</a> <span class="preprocessor"></span><span class="preprocessor">#define MAX_LINE_LENGTH 512</span>
-<a name="l00040"></a>00040 <span class="preprocessor"></span>
-<a name="l00041"></a><a class="code" href="libphonefirewall_8h.html#bfd305db409c094deb83b4714fb4fa09">00041</a> <span class="preprocessor">#define TB_COUNTRYCODE  "countrycode"</span>
-<a name="l00042"></a><a class="code" href="libphonefirewall_8h.html#c1694ee0c53e113107b2c0de64fc29a0">00042</a> <span class="preprocessor"></span><span class="preprocessor">#define TB_AREACODE  "areacode"</span>
-<a name="l00043"></a><a class="code" href="libphonefirewall_8h.html#01eced94590c7d08bd01ad7162bb47ad">00043</a> <span class="preprocessor"></span><span class="preprocessor">#define TB_NUMBER "number"</span>
-<a name="l00044"></a><a class="code" href="libphonefirewall_8h.html#4f0324ecc491c659c1d250247ed4bb11">00044</a> <span class="preprocessor"></span><span class="preprocessor">#define TB_NAME  "name"</span>
-<a name="l00045"></a><a class="code" href="libphonefirewall_8h.html#769f1e2c007617c185b5a3c09229ee67">00045</a> <span class="preprocessor"></span><span class="preprocessor">#define TB_REASON "reason"</span>
-<a name="l00046"></a><a class="code" href="libphonefirewall_8h.html#22e4a39534c1dcde6556befda55b4607">00046</a> <span class="preprocessor"></span><span class="preprocessor">#define TB_PRIORITY "priority"</span>
-<a name="l00047"></a>00047 <span class="preprocessor"></span>
-<a name="l00048"></a><a class="code" href="libphonefirewall_8h.html#7d40a20123339f0c24fdd3710aa9bdd8">00048</a> <span class="preprocessor">#define BLACKLIST_FLAG 0x01</span>
-<a name="l00049"></a><a class="code" href="libphonefirewall_8h.html#b6552093172807955c9453c948f0cac9">00049</a> <span class="preprocessor"></span><span class="preprocessor">#define WHITELIST_FLAG 0x02</span>
-<a name="l00050"></a>00050 <span class="preprocessor"></span>
-<a name="l00058"></a><a class="code" href="structEntry.html">00058</a> <span class="keyword">struct </span><a class="code" href="structEntry.html">Entry</a> {
-<a name="l00059"></a><a class="code" href="structEntry.html#138b4e79687ff5ff6de4554db0f061fd">00059</a>     <span class="keywordtype">int</span> <a class="code" href="structEntry.html#138b4e79687ff5ff6de4554db0f061fd">country_code</a>;
-<a name="l00060"></a><a class="code" href="structEntry.html#9de7b96e5b65796bd35e9dc730dcd8b3">00060</a>     <span class="keywordtype">int</span> <a class="code" href="structEntry.html#9de7b96e5b65796bd35e9dc730dcd8b3">area_code</a>;
-<a name="l00061"></a><a class="code" href="structEntry.html#1f2177afed89936f82c130ae13fb107c">00061</a>     <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="structEntry.html#1f2177afed89936f82c130ae13fb107c">number</a>;
-<a name="l00062"></a><a class="code" href="structEntry.html#272e382d3efed5f970c7939742ec9603">00062</a>     <span class="keywordtype">char</span> *<a class="code" href="structEntry.html#272e382d3efed5f970c7939742ec9603">name</a>;
-<a name="l00063"></a><a class="code" href="structEntry.html#2082cdbb815dfa8b81309cd395d32986">00063</a>     <span class="keywordtype">char</span> *<a class="code" href="structEntry.html#2082cdbb815dfa8b81309cd395d32986">reason</a>;
-<a name="l00064"></a><a class="code" href="structEntry.html#85af261b3171c257892b54a7200da061">00064</a>     <span class="keywordtype">int</span> <a class="code" href="structEntry.html#85af261b3171c257892b54a7200da061">priority</a>;
-<a name="l00065"></a><a class="code" href="structEntry.html#08cba741f383cd7da0f3ab9aee6e3cd5">00065</a>     <span class="keyword">struct </span><a class="code" href="structEntry.html">Entry</a> *<a class="code" href="structEntry.html#08cba741f383cd7da0f3ab9aee6e3cd5">next</a>;
-<a name="l00066"></a>00066 } <a class="code" href="structentry.html" title="Includes all informations for an entry.">entry</a>;
-<a name="l00067"></a>00067 
-</pre></div><hr size="1"><address style="text-align: right;"><small>Generated on Mon Jul 14 19:55:29 2008 for Phone Firewall by&nbsp;
+<a name="l00035"></a>00035 <span class="preprocessor">#include "<a class="code" href="logfile_8h.html">logfile.h</a>"</span>
+<a name="l00036"></a>00036 
+<a name="l00037"></a><a class="code" href="libphonefirewall_8h.html#6265f3115ead4b41b74ad4b8fe53a801">00037</a> <span class="preprocessor">#define PRIO_ALL -999</span>
+<a name="l00038"></a><a class="code" href="libphonefirewall_8h.html#ee925031172607ff8d5cf8b68374bd7f">00038</a> <span class="preprocessor"></span><span class="preprocessor">#define DB_FILE "db/phone-firewall.db"</span>
+<a name="l00039"></a><a class="code" href="libphonefirewall_8h.html#8d8e3d24a53ab9fb36efc6e592076751">00039</a> <span class="preprocessor"></span><span class="preprocessor">#define STMT_SIZE 1024</span>
+<a name="l00040"></a><a class="code" href="libphonefirewall_8h.html#f0f2173e3b202ddf5756531b4471dcb2">00040</a> <span class="preprocessor"></span><span class="preprocessor">#define MAX_LINE_LENGTH 512</span>
+<a name="l00041"></a>00041 <span class="preprocessor"></span>
+<a name="l00042"></a><a class="code" href="libphonefirewall_8h.html#bfd305db409c094deb83b4714fb4fa09">00042</a> <span class="preprocessor">#define TB_COUNTRYCODE  "countrycode"</span>
+<a name="l00043"></a><a class="code" href="libphonefirewall_8h.html#c1694ee0c53e113107b2c0de64fc29a0">00043</a> <span class="preprocessor"></span><span class="preprocessor">#define TB_AREACODE  "areacode"</span>
+<a name="l00044"></a><a class="code" href="libphonefirewall_8h.html#01eced94590c7d08bd01ad7162bb47ad">00044</a> <span class="preprocessor"></span><span class="preprocessor">#define TB_NUMBER "number"</span>
+<a name="l00045"></a><a class="code" href="libphonefirewall_8h.html#4f0324ecc491c659c1d250247ed4bb11">00045</a> <span class="preprocessor"></span><span class="preprocessor">#define TB_NAME  "name"</span>
+<a name="l00046"></a><a class="code" href="libphonefirewall_8h.html#769f1e2c007617c185b5a3c09229ee67">00046</a> <span class="preprocessor"></span><span class="preprocessor">#define TB_REASON "reason"</span>
+<a name="l00047"></a><a class="code" href="libphonefirewall_8h.html#22e4a39534c1dcde6556befda55b4607">00047</a> <span class="preprocessor"></span><span class="preprocessor">#define TB_PRIORITY "priority"</span>
+<a name="l00048"></a>00048 <span class="preprocessor"></span>
+<a name="l00049"></a><a class="code" href="libphonefirewall_8h.html#7d40a20123339f0c24fdd3710aa9bdd8">00049</a> <span class="preprocessor">#define BLACKLIST_FLAG 0x01</span>
+<a name="l00050"></a><a class="code" href="libphonefirewall_8h.html#b6552093172807955c9453c948f0cac9">00050</a> <span class="preprocessor"></span><span class="preprocessor">#define WHITELIST_FLAG 0x02</span>
+<a name="l00051"></a>00051 <span class="preprocessor"></span>
+<a name="l00052"></a><a class="code" href="libphonefirewall_8h.html#9146ade7ce24e3db226a973a59063892">00052</a> <span class="preprocessor">#define COMPONENT_NAME "phone firewall"</span>
+<a name="l00053"></a>00053 <span class="preprocessor"></span>
+<a name="l00061"></a><a class="code" href="structEntry.html">00061</a> <span class="keyword">struct </span><a class="code" href="structEntry.html">Entry</a> {
+<a name="l00062"></a><a class="code" href="structEntry.html#138b4e79687ff5ff6de4554db0f061fd">00062</a>     <span class="keywordtype">int</span> <a class="code" href="structEntry.html#138b4e79687ff5ff6de4554db0f061fd">country_code</a>;
+<a name="l00063"></a><a class="code" href="structEntry.html#9de7b96e5b65796bd35e9dc730dcd8b3">00063</a>     <span class="keywordtype">int</span> <a class="code" href="structEntry.html#9de7b96e5b65796bd35e9dc730dcd8b3">area_code</a>;
+<a name="l00064"></a><a class="code" href="structEntry.html#1f2177afed89936f82c130ae13fb107c">00064</a>     <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="structEntry.html#1f2177afed89936f82c130ae13fb107c">number</a>;
+<a name="l00065"></a><a class="code" href="structEntry.html#272e382d3efed5f970c7939742ec9603">00065</a>     <span class="keywordtype">char</span> *<a class="code" href="structEntry.html#272e382d3efed5f970c7939742ec9603">name</a>;
+<a name="l00066"></a><a class="code" href="structEntry.html#2082cdbb815dfa8b81309cd395d32986">00066</a>     <span class="keywordtype">char</span> *<a class="code" href="structEntry.html#2082cdbb815dfa8b81309cd395d32986">reason</a>;
+<a name="l00067"></a><a class="code" href="structEntry.html#85af261b3171c257892b54a7200da061">00067</a>     <span class="keywordtype">int</span> <a class="code" href="structEntry.html#85af261b3171c257892b54a7200da061">priority</a>;
+<a name="l00068"></a><a class="code" href="structEntry.html#08cba741f383cd7da0f3ab9aee6e3cd5">00068</a>     <span class="keyword">struct </span><a class="code" href="structEntry.html">Entry</a> *<a class="code" href="structEntry.html#08cba741f383cd7da0f3ab9aee6e3cd5">next</a>;
+<a name="l00069"></a>00069 };
+<a name="l00070"></a>00070 
+</pre></div><hr size="1"><address style="text-align: right;"><small>Generated on Thu Oct 2 18:29:55 2008 for Phone Firewall by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

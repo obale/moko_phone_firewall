@@ -1,4 +1,4 @@
-.TH "logfile.h" 3 "14 Jul 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
+.TH "logfile.h" 3 "2 Oct 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -27,6 +27,18 @@ logfile.h \-
 .ti -1c
 .RI "#define \fBINFO_FLAG\fP   3"
 .br
+.ti -1c
+.RI "#define \fBUNKNOWN_LOG\fP(m)   write_logentry(m, COMPONENT_NAME, UNKNOWN_FLAG)"
+.br
+.ti -1c
+.RI "#define \fBERR_LOG\fP(m)   write_logentry(m, COMPONENT_NAME, ERR_FLAG)"
+.br
+.ti -1c
+.RI "#define \fBWARN_LOG\fP(m)   write_logentry(m, COMPONENT_NAME, WARN_FLAG)"
+.br
+.ti -1c
+.RI "#define \fBINFO_LOG\fP(m)   write_logentry(m, COMPONENT_NAME, INFO_FLAG)"
+.br
 .in -1c
 .SS "Functions"
 
@@ -41,12 +53,22 @@ logfile.h \-
 .PP
 Definition at line 25 of file logfile.h.
 .PP
-Referenced by add_entry(), check_entry(), dbus_listen(), get_entry_by_name(), rm_entry(), and write_logentry().
+Referenced by write_logentry().
+.SS "#define ERR_LOG(m)   write_logentry(m, COMPONENT_NAME, ERR_FLAG)"
+.PP
+Definition at line 30 of file logfile.h.
+.PP
+Referenced by add_entry(), check_entry(), get_entry_by_name(), get_entry_by_number(), get_entry_by_reason(), and rm_entry().
 .SS "#define INFO_FLAG   3"
 .PP
 Definition at line 27 of file logfile.h.
 .PP
-Referenced by check_entry(), dbus_listen(), start_daemon(), stop_daemon(), and write_logentry().
+Referenced by write_logentry().
+.SS "#define INFO_LOG(m)   write_logentry(m, COMPONENT_NAME, INFO_FLAG)"
+.PP
+Definition at line 32 of file logfile.h.
+.PP
+Referenced by check_entry().
 .SS "#define LOGFILE   'log/moksec.log'"
 .PP
 Definition at line 21 of file logfile.h.
@@ -62,11 +84,17 @@ Referenced by write_logentry().
 Definition at line 24 of file logfile.h.
 .PP
 Referenced by write_logentry().
+.SS "#define UNKNOWN_LOG(m)   write_logentry(m, COMPONENT_NAME, UNKNOWN_FLAG)"
+.PP
+Definition at line 29 of file logfile.h.
 .SS "#define WARN_FLAG   2"
 .PP
 Definition at line 26 of file logfile.h.
 .PP
 Referenced by write_logentry().
+.SS "#define WARN_LOG(m)   write_logentry(m, COMPONENT_NAME, WARN_FLAG)"
+.PP
+Definition at line 31 of file logfile.h.
 .SH "Function Documentation"
 .PP 
 .SS "int write_logentry (char * msg, char * component, int flag)"
@@ -92,8 +120,6 @@ Writes a logfile enty.
 Definition at line 56 of file logfile.c.
 .PP
 References asctime(), ERR_FLAG, INFO_FLAG, LOGFILE, MAX_ENTRY_LENGTH, UNKNOWN, and WARN_FLAG.
-.PP
-Referenced by add_entry(), check_entry(), dbus_listen(), get_entry_by_name(), rm_entry(), start_daemon(), and stop_daemon().
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Phone Firewall from the source code.

@@ -1,4 +1,4 @@
-.TH "pf_administration.h" 3 "14 Jul 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
+.TH "pf_administration.h" 3 "2 Oct 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -52,9 +52,9 @@ If all goes well 0 (zero) otherwise -1 and the errno variable will be set..
 .PP
 
 .PP
-Definition at line 75 of file pf_administration.c.
+Definition at line 74 of file pf_administration.c.
 .PP
-References BLACKLIST_FLAG, DB_FILE, ERR_FLAG, MAX_LINE_LENGTH, PRIO_ALL, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NAME, TB_NUMBER, TB_PRIORITY, TB_REASON, WHITELIST_FLAG, and write_logentry().
+References BLACKLIST_FLAG, DB_FILE, ERR_LOG, MAX_LINE_LENGTH, PRIO_ALL, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NAME, TB_NUMBER, TB_PRIORITY, TB_REASON, and WHITELIST_FLAG.
 .SS "int check_entry (int country_code, int area_code, unsigned long long number, int priority, int listflag)"
 .PP
 Checks if a number is on the blacklist/whitelist.
@@ -82,9 +82,9 @@ If the number was found 1, otherwise 0.
 .PP
 
 .PP
-Definition at line 178 of file pf_administration.c.
+Definition at line 174 of file pf_administration.c.
 .PP
-References Entry::area_code, BLACKLIST_FLAG, Entry::country_code, DB_FILE, ERR_FLAG, evaluate_stmt(), INFO_FLAG, MAX_LINE_LENGTH, Entry::number, p_entry, Entry::priority, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NUMBER, TB_PRIORITY, WHITELIST_FLAG, and write_logentry().
+References Entry::area_code, BLACKLIST_FLAG, Entry::country_code, DB_FILE, ERR_LOG, evaluate_stmt(), INFO_LOG, MAX_LINE_LENGTH, Entry::number, Entry::priority, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NUMBER, TB_PRIORITY, and WHITELIST_FLAG.
 .SS "int rm_entry (int country_code, int area_code, unsigned long long number, int listlfag)"
 .PP
 Removes a number from the blacklist/whitelist.
@@ -108,9 +108,9 @@ If all goes right 0, otherwise an error code.
 .PP
 
 .PP
-Definition at line 129 of file pf_administration.c.
+Definition at line 128 of file pf_administration.c.
 .PP
-References BLACKLIST_FLAG, DB_FILE, ERR_FLAG, MAX_LINE_LENGTH, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NUMBER, WHITELIST_FLAG, and write_logentry().
+References BLACKLIST_FLAG, DB_FILE, ERR_LOG, MAX_LINE_LENGTH, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NUMBER, and WHITELIST_FLAG.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Phone Firewall from the source code.

@@ -18,7 +18,6 @@
 <code>#include &lt;string.h&gt;</code><br>
 <code>#include &lt;sqlite3.h&gt;</code><br>
 <code>#include &quot;<a class="el" href="libphonefirewall_8h-source.html">libphonefirewall.h</a>&quot;</code><br>
-<code>#include &quot;<a class="el" href="logfile_8h-source.html">logfile.h</a>&quot;</code><br>
 
 <p>
 <div class="dynheader">
@@ -26,7 +25,7 @@ Include dependency graph for pf_search.c:</div>
 <div class="dynsection">
 <p><center><img src="pf__search_8c__incl.png" border="0" usemap="#pf_search.c_map" alt=""></center>
 <map name="pf_search.c_map">
-<area shape="rect" href="libphonefirewall_8h.html" title="API of the phone firewall." alt="" coords="467,84,597,111"><area shape="rect" href="logfile_8h.html" title="logfile.h" alt="" coords="621,84,691,111"><area shape="rect" href="pf__search_8h.html" title="pf_search.h" alt="" coords="412,162,508,188"><area shape="rect" href="pf__administration_8h.html" title="pf_administration.h" alt="" coords="532,162,676,188"></map>
+<area shape="rect" href="libphonefirewall_8h.html" title="API of the phone firewall." alt="" coords="467,84,597,111"><area shape="rect" href="pf__search_8h.html" title="pf_search.h" alt="" coords="340,161,436,188"><area shape="rect" href="pf__administration_8h.html" title="pf_administration.h" alt="" coords="460,161,604,188"><area shape="rect" href="logfile_8h.html" title="logfile.h" alt="" coords="628,161,697,188"></map>
 </div>
 
 <p>
@@ -35,21 +34,16 @@ Include dependency graph for pf_search.c:</div>
 <tr><td colspan="2"><br><h2>Defines</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="pf__search_8c.html#08df828ef9e922fa3a749f9bc0e4a42b">ASCII_PERCENT_CHAR</a>&nbsp;&nbsp;&nbsp;37</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="pf__search_8c.html#3b5bf1ced2c3343708fd193a487c2e26">MAX_ENTRY_ARRAY</a>&nbsp;&nbsp;&nbsp;1024</td></tr>
-
 <tr><td colspan="2"><br><h2>Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">struct <a class="el" href="structEntry.html">Entry</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="pf__search_8c.html#bc4a987c792bc712e4f1804a6f8be6b2">find_entry_by_name</a> (sqlite3_stmt *pp_stmt, char *name)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct <a class="el" href="structEntry.html">Entry</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="pf__search_8c.html#76cce925419916be63b6a3da5e1fa263">insert_into_list</a> (struct <a class="el" href="structEntry.html">Entry</a> *p_root, struct <a class="el" href="structEntry.html">Entry</a> *p_entry)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct <a class="el" href="structEntry.html">Entry</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="pf__search_8c.html#f6dce6f2b431c6fd1101e6f9e949c127">find_entry</a> (sqlite3_stmt *pp_stmt)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">struct <a class="el" href="structEntry.html">Entry</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="pf__search_8c.html#3947a1543660e9f6e666242efee44f89">get_entry_by_name</a> (char *name, int listflag)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">struct <a class="el" href="structEntry.html">Entry</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="pf__search_8c.html#678d356be18c20e298d74a62bc6e8782">get_entry_by_number</a> (int country_code, int area_code, unsigned long long number, int listflag)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">struct <a class="el" href="structEntry.html">Entry</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="pf__search_8c.html#b4e0af5dc1b0cf0bdd5812c973dcd353">get_entry_by_reason</a> (char *reason, int listflag)</td></tr>
-
-<tr><td colspan="2"><br><h2>Variables</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">struct <a class="el" href="structEntry.html">Entry</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="pf__search_8c.html#6065da0f6097ff02236ecc4b7d04c912">p_entry</a> = &amp;<a class="el" href="structentry.html">entry</a></td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">struct <a class="el" href="structEntry.html">Entry</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="pf__search_8c.html#4ac6231c71a3f59eeb4ae2462fb4dd54">entry_array</a> [MAX_ENTRY_ARRAY]</td></tr>
 
 </table>
 <hr><h2>Define Documentation</h2>
@@ -66,50 +60,24 @@ Include dependency graph for pf_search.c:</div>
 
 <p>
 
-<p>Definition at line <a class="el" href="pf__search_8c-source.html#l00030">30</a> of file <a class="el" href="pf__search_8c-source.html">pf_search.c</a>.</p>
+<p>Definition at line <a class="el" href="pf__search_8c-source.html#l00027">27</a> of file <a class="el" href="pf__search_8c-source.html">pf_search.c</a>.</p>
 
-<p>Referenced by <a class="el" href="pf__search_8c-source.html#l00067">get_entry_by_name()</a>.</p>
-
-</div>
-</div><p>
-<a class="anchor" name="3b5bf1ced2c3343708fd193a487c2e26"></a><!-- doxytag: member="pf_search.c::MAX_ENTRY_ARRAY" ref="3b5bf1ced2c3343708fd193a487c2e26" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MAX_ENTRY_ARRAY&nbsp;&nbsp;&nbsp;1024          </td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-
-<p>Definition at line <a class="el" href="pf__search_8c-source.html#l00031">31</a> of file <a class="el" href="pf__search_8c-source.html">pf_search.c</a>.</p>
+<p>Referenced by <a class="el" href="pf__search_8c-source.html#l00112">get_entry_by_name()</a>, <a class="el" href="pf__search_8c-source.html#l00167">get_entry_by_number()</a>, and <a class="el" href="pf__search_8c-source.html#l00224">get_entry_by_reason()</a>.</p>
 
 </div>
 </div><p>
 <hr><h2>Function Documentation</h2>
-<a class="anchor" name="bc4a987c792bc712e4f1804a6f8be6b2"></a><!-- doxytag: member="pf_search.c::find_entry_by_name" ref="bc4a987c792bc712e4f1804a6f8be6b2" args="(sqlite3_stmt *pp_stmt, char *name)" -->
+<a class="anchor" name="f6dce6f2b431c6fd1101e6f9e949c127"></a><!-- doxytag: member="pf_search.c::find_entry" ref="f6dce6f2b431c6fd1101e6f9e949c127" args="(sqlite3_stmt *pp_stmt)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct <a class="el" href="structEntry.html">Entry</a>* find_entry_by_name           </td>
+          <td class="memname">struct <a class="el" href="structEntry.html">Entry</a>* find_entry           </td>
           <td>(</td>
           <td class="paramtype">sqlite3_stmt *&nbsp;</td>
-          <td class="paramname"> <em>pp_stmt</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&nbsp;</td>
-          <td class="paramname"> <em>name</em></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td><td width="100%"><code> [read]</code></td>
+          <td class="paramname"> <em>pp_stmt</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"><code> [read]</code></td>
         </tr>
       </table>
 </div>
@@ -117,19 +85,19 @@ Include dependency graph for pf_search.c:</div>
 
 <p>
 
-<p>Definition at line <a class="el" href="pf__search_8c-source.html#l00036">36</a> of file <a class="el" href="pf__search_8c-source.html">pf_search.c</a>.</p>
+<p>Definition at line <a class="el" href="pf__search_8c-source.html#l00076">76</a> of file <a class="el" href="pf__search_8c-source.html">pf_search.c</a>.</p>
 
-<p>References <a class="el" href="libphonefirewall_8h-source.html#l00060">Entry::area_code</a>, <a class="el" href="libphonefirewall_8h-source.html#l00059">Entry::country_code</a>, <a class="el" href="libphonefirewall_8h-source.html#l00062">Entry::name</a>, <a class="el" href="libphonefirewall_8h-source.html#l00061">Entry::number</a>, <a class="el" href="libphonefirewall_8h-source.html#l00064">Entry::priority</a>, <a class="el" href="libphonefirewall_8h-source.html#l00063">Entry::reason</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00041">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00044">TB_NAME</a>, <a class="el" href="libphonefirewall_8h-source.html#l00043">TB_NUMBER</a>, <a class="el" href="libphonefirewall_8h-source.html#l00046">TB_PRIORITY</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00045">TB_REASON</a>.</p>
+<p>References <a class="el" href="libphonefirewall_8h-source.html#l00063">Entry::area_code</a>, <a class="el" href="libphonefirewall_8h-source.html#l00062">Entry::country_code</a>, <a class="el" href="libphonefirewall_8h-source.html#l00065">Entry::name</a>, <a class="el" href="libphonefirewall_8h-source.html#l00064">Entry::number</a>, <a class="el" href="libphonefirewall_8h-source.html#l00067">Entry::priority</a>, <a class="el" href="libphonefirewall_8h-source.html#l00066">Entry::reason</a>, <a class="el" href="libphonefirewall_8h-source.html#l00043">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00045">TB_NAME</a>, <a class="el" href="libphonefirewall_8h-source.html#l00044">TB_NUMBER</a>, <a class="el" href="libphonefirewall_8h-source.html#l00047">TB_PRIORITY</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00046">TB_REASON</a>.</p>
 
-<p>Referenced by <a class="el" href="pf__search_8c-source.html#l00067">get_entry_by_name()</a>.</p>
+<p>Referenced by <a class="el" href="pf__search_8c-source.html#l00112">get_entry_by_name()</a>, <a class="el" href="pf__search_8c-source.html#l00167">get_entry_by_number()</a>, and <a class="el" href="pf__search_8c-source.html#l00224">get_entry_by_reason()</a>.</p>
 
 <p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dynsection">
-<p><center><img src="pf__search_8c_bc4a987c792bc712e4f1804a6f8be6b2_icgraph.png" border="0" usemap="#pf__search_8c_bc4a987c792bc712e4f1804a6f8be6b2_icgraph_map" alt=""></center>
-<map name="pf__search_8c_bc4a987c792bc712e4f1804a6f8be6b2_icgraph_map">
-<area shape="rect" href="pf__search_8h.html#3947a1543660e9f6e666242efee44f89" title="get_entry_by_name" alt="" coords="207,5,353,32"></map>
+<p><center><img src="pf__search_8c_f6dce6f2b431c6fd1101e6f9e949c127_icgraph.png" border="0" usemap="#pf__search_8c_f6dce6f2b431c6fd1101e6f9e949c127_icgraph_map" alt=""></center>
+<map name="pf__search_8c_f6dce6f2b431c6fd1101e6f9e949c127_icgraph_map">
+<area shape="rect" href="pf__search_8h.html#3947a1543660e9f6e666242efee44f89" title="get_entry_by_name" alt="" coords="147,5,293,32"><area shape="rect" href="pf__search_8h.html#678d356be18c20e298d74a62bc6e8782" title="get_entry_by_number" alt="" coords="140,56,300,83"><area shape="rect" href="pf__search_8h.html#b4e0af5dc1b0cf0bdd5812c973dcd353" title="get_entry_by_reason" alt="" coords="143,107,297,133"></map>
 </div>
 
 </div>
@@ -170,9 +138,9 @@ Search a <a class="el" href="structentry.html" title="Includes all informations 
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd><a class="el" href="structentry.html" title="Includes all informations for an entry.">entry</a> Returns the entries which are found in a linked list. </dd></dl>
 
-<p>Definition at line <a class="el" href="pf__search_8c-source.html#l00067">67</a> of file <a class="el" href="pf__search_8c-source.html">pf_search.c</a>.</p>
+<p>Definition at line <a class="el" href="pf__search_8c-source.html#l00112">112</a> of file <a class="el" href="pf__search_8c-source.html">pf_search.c</a>.</p>
 
-<p>References <a class="el" href="libphonefirewall_8h-source.html#l00060">Entry::area_code</a>, <a class="el" href="pf__search_8c-source.html#l00030">ASCII_PERCENT_CHAR</a>, <a class="el" href="libphonefirewall_8h-source.html#l00048">BLACKLIST_FLAG</a>, <a class="el" href="libphonefirewall_8h-source.html#l00059">Entry::country_code</a>, <a class="el" href="libphonefirewall_8h-source.html#l00037">DB_FILE</a>, <a class="el" href="pf__search_8c-source.html#l00034">entry_array</a>, <a class="el" href="logfile_8h-source.html#l00025">ERR_FLAG</a>, <a class="el" href="pf__search_8c-source.html#l00036">find_entry_by_name()</a>, <a class="el" href="libphonefirewall_8h-source.html#l00039">MAX_LINE_LENGTH</a>, <a class="el" href="libphonefirewall_8h-source.html#l00061">Entry::number</a>, <a class="el" href="libphonefirewall_8h-source.html#l00063">Entry::reason</a>, <a class="el" href="libphonefirewall_8h-source.html#l00038">STMT_SIZE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00041">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00044">TB_NAME</a>, <a class="el" href="libphonefirewall_8h-source.html#l00043">TB_NUMBER</a>, <a class="el" href="libphonefirewall_8h-source.html#l00046">TB_PRIORITY</a>, <a class="el" href="libphonefirewall_8h-source.html#l00045">TB_REASON</a>, <a class="el" href="libphonefirewall_8h-source.html#l00049">WHITELIST_FLAG</a>, and <a class="el" href="logfile_8c-source.html#l00056">write_logentry()</a>.</p>
+<p>References <a class="el" href="pf__search_8c-source.html#l00027">ASCII_PERCENT_CHAR</a>, <a class="el" href="libphonefirewall_8h-source.html#l00049">BLACKLIST_FLAG</a>, <a class="el" href="libphonefirewall_8h-source.html#l00038">DB_FILE</a>, <a class="el" href="logfile_8h-source.html#l00030">ERR_LOG</a>, <a class="el" href="pf__search_8c-source.html#l00076">find_entry()</a>, <a class="el" href="pf__search_8c-source.html#l00029">insert_into_list()</a>, <a class="el" href="libphonefirewall_8h-source.html#l00040">MAX_LINE_LENGTH</a>, <a class="el" href="libphonefirewall_8h-source.html#l00039">STMT_SIZE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00043">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00045">TB_NAME</a>, <a class="el" href="libphonefirewall_8h-source.html#l00044">TB_NUMBER</a>, <a class="el" href="libphonefirewall_8h-source.html#l00047">TB_PRIORITY</a>, <a class="el" href="libphonefirewall_8h-source.html#l00046">TB_REASON</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00050">WHITELIST_FLAG</a>.</p>
 
 <p>
 <div class="dynheader">
@@ -180,7 +148,7 @@ Here is the call graph for this function:</div>
 <div class="dynsection">
 <p><center><img src="pf__search_8c_3947a1543660e9f6e666242efee44f89_cgraph.png" border="0" usemap="#pf__search_8c_3947a1543660e9f6e666242efee44f89_cgraph_map" alt=""></center>
 <map name="pf__search_8c_3947a1543660e9f6e666242efee44f89_cgraph_map">
-<area shape="rect" href="pf__search_8c.html#bc4a987c792bc712e4f1804a6f8be6b2" title="find_entry_by_name" alt="" coords="204,5,353,32"><area shape="rect" href="logfile_8c.html#f71f5daf2025b4e30a18ccedf7c34863" title="write_logentry" alt="" coords="224,56,333,83"><area shape="rect" href="logfile_8c.html#68a0e9d22417dfcf9c0be64261352e64" title="asctime" alt="" coords="403,56,475,83"></map>
+<area shape="rect" href="pf__search_8c.html#f6dce6f2b431c6fd1101e6f9e949c127" title="find_entry" alt="" coords="219,5,301,32"><area shape="rect" href="pf__search_8c.html#76cce925419916be63b6a3da5e1fa263" title="insert_into_list" alt="" coords="204,56,316,83"></map>
 </div>
 
 </div>
@@ -235,7 +203,18 @@ Search a entries by number (country code + area code + number).<p>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd><a class="el" href="structentry.html" title="Includes all informations for an entry.">entry</a> Returns the entries which are found in a linked list. </dd></dl>
 
-<p>Definition at line <a class="el" href="pf__search_8c-source.html#l00128">128</a> of file <a class="el" href="pf__search_8c-source.html">pf_search.c</a>.</p>
+<p>Definition at line <a class="el" href="pf__search_8c-source.html#l00167">167</a> of file <a class="el" href="pf__search_8c-source.html">pf_search.c</a>.</p>
+
+<p>References <a class="el" href="pf__search_8c-source.html#l00027">ASCII_PERCENT_CHAR</a>, <a class="el" href="libphonefirewall_8h-source.html#l00049">BLACKLIST_FLAG</a>, <a class="el" href="libphonefirewall_8h-source.html#l00038">DB_FILE</a>, <a class="el" href="logfile_8h-source.html#l00030">ERR_LOG</a>, <a class="el" href="pf__search_8c-source.html#l00076">find_entry()</a>, <a class="el" href="pf__search_8c-source.html#l00029">insert_into_list()</a>, <a class="el" href="libphonefirewall_8h-source.html#l00040">MAX_LINE_LENGTH</a>, <a class="el" href="libphonefirewall_8h-source.html#l00039">STMT_SIZE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00043">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00045">TB_NAME</a>, <a class="el" href="libphonefirewall_8h-source.html#l00044">TB_NUMBER</a>, <a class="el" href="libphonefirewall_8h-source.html#l00047">TB_PRIORITY</a>, <a class="el" href="libphonefirewall_8h-source.html#l00046">TB_REASON</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00050">WHITELIST_FLAG</a>.</p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="pf__search_8c_678d356be18c20e298d74a62bc6e8782_cgraph.png" border="0" usemap="#pf__search_8c_678d356be18c20e298d74a62bc6e8782_cgraph_map" alt=""></center>
+<map name="pf__search_8c_678d356be18c20e298d74a62bc6e8782_cgraph_map">
+<area shape="rect" href="pf__search_8c.html#f6dce6f2b431c6fd1101e6f9e949c127" title="find_entry" alt="" coords="232,5,315,32"><area shape="rect" href="pf__search_8c.html#76cce925419916be63b6a3da5e1fa263" title="insert_into_list" alt="" coords="217,56,329,83"></map>
+</div>
 
 </div>
 </div><p>
@@ -275,17 +254,41 @@ Search a entries by reason.<p>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd><a class="el" href="structentry.html" title="Includes all informations for an entry.">entry</a> Returns the entries which are found in a linked list. </dd></dl>
 
-<p>Definition at line <a class="el" href="pf__search_8c-source.html#l00136">136</a> of file <a class="el" href="pf__search_8c-source.html">pf_search.c</a>.</p>
+<p>Definition at line <a class="el" href="pf__search_8c-source.html#l00224">224</a> of file <a class="el" href="pf__search_8c-source.html">pf_search.c</a>.</p>
+
+<p>References <a class="el" href="pf__search_8c-source.html#l00027">ASCII_PERCENT_CHAR</a>, <a class="el" href="libphonefirewall_8h-source.html#l00049">BLACKLIST_FLAG</a>, <a class="el" href="libphonefirewall_8h-source.html#l00038">DB_FILE</a>, <a class="el" href="logfile_8h-source.html#l00030">ERR_LOG</a>, <a class="el" href="pf__search_8c-source.html#l00076">find_entry()</a>, <a class="el" href="pf__search_8c-source.html#l00029">insert_into_list()</a>, <a class="el" href="libphonefirewall_8h-source.html#l00040">MAX_LINE_LENGTH</a>, <a class="el" href="libphonefirewall_8h-source.html#l00039">STMT_SIZE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00043">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00045">TB_NAME</a>, <a class="el" href="libphonefirewall_8h-source.html#l00044">TB_NUMBER</a>, <a class="el" href="libphonefirewall_8h-source.html#l00047">TB_PRIORITY</a>, <a class="el" href="libphonefirewall_8h-source.html#l00046">TB_REASON</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00050">WHITELIST_FLAG</a>.</p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="pf__search_8c_b4e0af5dc1b0cf0bdd5812c973dcd353_cgraph.png" border="0" usemap="#pf__search_8c_b4e0af5dc1b0cf0bdd5812c973dcd353_cgraph_map" alt=""></center>
+<map name="pf__search_8c_b4e0af5dc1b0cf0bdd5812c973dcd353_cgraph_map">
+<area shape="rect" href="pf__search_8c.html#f6dce6f2b431c6fd1101e6f9e949c127" title="find_entry" alt="" coords="227,5,309,32"><area shape="rect" href="pf__search_8c.html#76cce925419916be63b6a3da5e1fa263" title="insert_into_list" alt="" coords="212,56,324,83"></map>
+</div>
 
 </div>
 </div><p>
-<hr><h2>Variable Documentation</h2>
-<a class="anchor" name="4ac6231c71a3f59eeb4ae2462fb4dd54"></a><!-- doxytag: member="pf_search.c::entry_array" ref="4ac6231c71a3f59eeb4ae2462fb4dd54" args="[MAX_ENTRY_ARRAY]" -->
+<a class="anchor" name="76cce925419916be63b6a3da5e1fa263"></a><!-- doxytag: member="pf_search.c::insert_into_list" ref="76cce925419916be63b6a3da5e1fa263" args="(struct Entry *p_root, struct Entry *p_entry)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct <a class="el" href="structEntry.html">Entry</a> <a class="el" href="pf__search_8c.html#4ac6231c71a3f59eeb4ae2462fb4dd54">entry_array</a>[MAX_ENTRY_ARRAY]          </td>
+          <td class="memname">struct <a class="el" href="structEntry.html">Entry</a>* insert_into_list           </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structEntry.html">Entry</a> *&nbsp;</td>
+          <td class="paramname"> <em>p_root</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structEntry.html">Entry</a> *&nbsp;</td>
+          <td class="paramname"> <em>p_entry</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"><code> [read]</code></td>
         </tr>
       </table>
 </div>
@@ -293,32 +296,24 @@ Search a entries by reason.<p>
 
 <p>
 
-<p>Definition at line <a class="el" href="pf__search_8c-source.html#l00034">34</a> of file <a class="el" href="pf__search_8c-source.html">pf_search.c</a>.</p>
+<p>Definition at line <a class="el" href="pf__search_8c-source.html#l00029">29</a> of file <a class="el" href="pf__search_8c-source.html">pf_search.c</a>.</p>
 
-<p>Referenced by <a class="el" href="pf__search_8c-source.html#l00067">get_entry_by_name()</a>.</p>
+<p>References <a class="el" href="libphonefirewall_8h-source.html#l00063">Entry::area_code</a>, <a class="el" href="libphonefirewall_8h-source.html#l00062">Entry::country_code</a>, <a class="el" href="libphonefirewall_8h-source.html#l00065">Entry::name</a>, <a class="el" href="libphonefirewall_8h-source.html#l00068">Entry::next</a>, <a class="el" href="libphonefirewall_8h-source.html#l00064">Entry::number</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00066">Entry::reason</a>.</p>
 
-</div>
-</div><p>
-<a class="anchor" name="6065da0f6097ff02236ecc4b7d04c912"></a><!-- doxytag: member="pf_search.c::p_entry" ref="6065da0f6097ff02236ecc4b7d04c912" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct <a class="el" href="structEntry.html">Entry</a>* <a class="el" href="pf__search_8c.html#6065da0f6097ff02236ecc4b7d04c912">p_entry</a> = &amp;<a class="el" href="structentry.html">entry</a>          </td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
+<p>Referenced by <a class="el" href="pf__search_8c-source.html#l00112">get_entry_by_name()</a>, <a class="el" href="pf__search_8c-source.html#l00167">get_entry_by_number()</a>, and <a class="el" href="pf__search_8c-source.html#l00224">get_entry_by_reason()</a>.</p>
 
 <p>
-
-<p>Definition at line <a class="el" href="pf__search_8c-source.html#l00033">33</a> of file <a class="el" href="pf__search_8c-source.html">pf_search.c</a>.</p>
-
-<p>Referenced by <a class="el" href="pf__administration_8c-source.html#l00178">check_entry()</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="pf__search_8c_76cce925419916be63b6a3da5e1fa263_icgraph.png" border="0" usemap="#pf__search_8c_76cce925419916be63b6a3da5e1fa263_icgraph_map" alt=""></center>
+<map name="pf__search_8c_76cce925419916be63b6a3da5e1fa263_icgraph_map">
+<area shape="rect" href="pf__search_8h.html#3947a1543660e9f6e666242efee44f89" title="get_entry_by_name" alt="" coords="176,5,323,32"><area shape="rect" href="pf__search_8h.html#678d356be18c20e298d74a62bc6e8782" title="get_entry_by_number" alt="" coords="169,56,329,83"><area shape="rect" href="pf__search_8h.html#b4e0af5dc1b0cf0bdd5812c973dcd353" title="get_entry_by_reason" alt="" coords="172,107,327,133"></map>
+</div>
 
 </div>
 </div><p>
-<hr size="1"><address style="text-align: right;"><small>Generated on Mon Jul 14 19:55:36 2008 for Phone Firewall by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Thu Oct 2 18:30:05 2008 for Phone Firewall by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

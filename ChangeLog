@@ -1,3 +1,11 @@
+2008-10-02 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* doc:
+	Updating the documentation.
+
+	* run.sh:
+	Adding the GPL licence and a header.
+
 2008-09-12 Alex Oberhauser <oberhauseralex@networld.to>
 
 	TODO: Look for non released memory and free it.

@@ -8,7 +8,7 @@ This graph shows which files directly or indirectly include this file:\nopagebre
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=203pt]{logfile_8h__dep__incl}
+\includegraphics[width=135pt]{logfile_8h__dep__incl}
 \end{center}
 \end{figure}
 \subsection*{Defines}
@@ -25,6 +25,14 @@ This graph shows which files directly or indirectly include this file:\nopagebre
 \#define \hyperlink{logfile_8h_d683e726fb2cb177c24b8cb84e80ea7d}{WARN\_\-FLAG}~2
 \item 
 \#define \hyperlink{logfile_8h_655cb5e43527221af659a76352b141ae}{INFO\_\-FLAG}~3
+\item 
+\#define \hyperlink{logfile_8h_33f75163eff20214d9f9a009d0d98096}{UNKNOWN\_\-LOG}(m)~write\_\-logentry(m, COMPONENT\_\-NAME, UNKNOWN\_\-FLAG)
+\item 
+\#define \hyperlink{logfile_8h_41569958738d77fee8d8ee52645a581b}{ERR\_\-LOG}(m)~write\_\-logentry(m, COMPONENT\_\-NAME, ERR\_\-FLAG)
+\item 
+\#define \hyperlink{logfile_8h_cf6e906d16742b29defc431585917af0}{WARN\_\-LOG}(m)~write\_\-logentry(m, COMPONENT\_\-NAME, WARN\_\-FLAG)
+\item 
+\#define \hyperlink{logfile_8h_5f7fc5ef70b11517748aa589e4128f61}{INFO\_\-LOG}(m)~write\_\-logentry(m, COMPONENT\_\-NAME, INFO\_\-FLAG)
 \end{CompactItemize}
 \subsection*{Functions}
 \begin{CompactItemize}
@@ -45,7 +53,18 @@ int \hyperlink{logfile_8h_f71f5daf2025b4e30a18ccedf7c34863}{write\_\-logentry} (
 
 Definition at line 25 of file logfile.h.
 
-Referenced by add\_\-entry(), check\_\-entry(), dbus\_\-listen(), get\_\-entry\_\-by\_\-name(), rm\_\-entry(), and write\_\-logentry().\hypertarget{logfile_8h_655cb5e43527221af659a76352b141ae}{
+Referenced by write\_\-logentry().\hypertarget{logfile_8h_41569958738d77fee8d8ee52645a581b}{
+\index{logfile.h@{logfile.h}!ERR\_\-LOG@{ERR\_\-LOG}}
+\index{ERR\_\-LOG@{ERR\_\-LOG}!logfile.h@{logfile.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define ERR\_\-LOG(m)~write\_\-logentry(m, COMPONENT\_\-NAME, ERR\_\-FLAG)}}
+\label{logfile_8h_41569958738d77fee8d8ee52645a581b}
+
+
+
+
+Definition at line 30 of file logfile.h.
+
+Referenced by add\_\-entry(), check\_\-entry(), get\_\-entry\_\-by\_\-name(), get\_\-entry\_\-by\_\-number(), get\_\-entry\_\-by\_\-reason(), and rm\_\-entry().\hypertarget{logfile_8h_655cb5e43527221af659a76352b141ae}{
 \index{logfile.h@{logfile.h}!INFO\_\-FLAG@{INFO\_\-FLAG}}
 \index{INFO\_\-FLAG@{INFO\_\-FLAG}!logfile.h@{logfile.h}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define INFO\_\-FLAG~3}}
@@ -56,7 +75,18 @@ Referenced by add\_\-entry(), check\_\-entry(), dbus\_\-listen(), get\_\-entry\_
 
 Definition at line 27 of file logfile.h.
 
-Referenced by check\_\-entry(), dbus\_\-listen(), start\_\-daemon(), stop\_\-daemon(), and write\_\-logentry().\hypertarget{logfile_8h_6d3fef197146b932f5ad01fce683a66b}{
+Referenced by write\_\-logentry().\hypertarget{logfile_8h_5f7fc5ef70b11517748aa589e4128f61}{
+\index{logfile.h@{logfile.h}!INFO\_\-LOG@{INFO\_\-LOG}}
+\index{INFO\_\-LOG@{INFO\_\-LOG}!logfile.h@{logfile.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define INFO\_\-LOG(m)~write\_\-logentry(m, COMPONENT\_\-NAME, INFO\_\-FLAG)}}
+\label{logfile_8h_5f7fc5ef70b11517748aa589e4128f61}
+
+
+
+
+Definition at line 32 of file logfile.h.
+
+Referenced by check\_\-entry().\hypertarget{logfile_8h_6d3fef197146b932f5ad01fce683a66b}{
 \index{logfile.h@{logfile.h}!LOGFILE@{LOGFILE}}
 \index{LOGFILE@{LOGFILE}!logfile.h@{logfile.h}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define LOGFILE~\char`\"{}log/moksec.log\char`\"{}}}
@@ -89,7 +119,16 @@ Referenced by write\_\-logentry().\hypertarget{logfile_8h_c1ae4add974b9cfc6b5aaf
 
 Definition at line 24 of file logfile.h.
 
-Referenced by write\_\-logentry().\hypertarget{logfile_8h_d683e726fb2cb177c24b8cb84e80ea7d}{
+Referenced by write\_\-logentry().\hypertarget{logfile_8h_33f75163eff20214d9f9a009d0d98096}{
+\index{logfile.h@{logfile.h}!UNKNOWN\_\-LOG@{UNKNOWN\_\-LOG}}
+\index{UNKNOWN\_\-LOG@{UNKNOWN\_\-LOG}!logfile.h@{logfile.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define UNKNOWN\_\-LOG(m)~write\_\-logentry(m, COMPONENT\_\-NAME, UNKNOWN\_\-FLAG)}}
+\label{logfile_8h_33f75163eff20214d9f9a009d0d98096}
+
+
+
+
+Definition at line 29 of file logfile.h.\hypertarget{logfile_8h_d683e726fb2cb177c24b8cb84e80ea7d}{
 \index{logfile.h@{logfile.h}!WARN\_\-FLAG@{WARN\_\-FLAG}}
 \index{WARN\_\-FLAG@{WARN\_\-FLAG}!logfile.h@{logfile.h}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define WARN\_\-FLAG~2}}
@@ -100,7 +139,16 @@ Referenced by write\_\-logentry().\hypertarget{logfile_8h_d683e726fb2cb177c24b8c
 
 Definition at line 26 of file logfile.h.
 
-Referenced by write\_\-logentry().
+Referenced by write\_\-logentry().\hypertarget{logfile_8h_cf6e906d16742b29defc431585917af0}{
+\index{logfile.h@{logfile.h}!WARN\_\-LOG@{WARN\_\-LOG}}
+\index{WARN\_\-LOG@{WARN\_\-LOG}!logfile.h@{logfile.h}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}\#define WARN\_\-LOG(m)~write\_\-logentry(m, COMPONENT\_\-NAME, WARN\_\-FLAG)}}
+\label{logfile_8h_cf6e906d16742b29defc431585917af0}
+
+
+
+
+Definition at line 31 of file logfile.h.
 
 \subsection{Function Documentation}
 \hypertarget{logfile_8h_f71f5daf2025b4e30a18ccedf7c34863}{
@@ -125,21 +173,10 @@ Definition at line 56 of file logfile.c.
 
 References asctime(), ERR\_\-FLAG, INFO\_\-FLAG, LOGFILE, MAX\_\-ENTRY\_\-LENGTH, UNKNOWN, and WARN\_\-FLAG.
 
-Referenced by add\_\-entry(), check\_\-entry(), dbus\_\-listen(), get\_\-entry\_\-by\_\-name(), rm\_\-entry(), start\_\-daemon(), and stop\_\-daemon().
-
 Here is the call graph for this function:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=111pt]{logfile_8h_f71f5daf2025b4e30a18ccedf7c34863_cgraph}
-\end{center}
-\end{figure}
-
-
-Here is the caller graph for this function:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=303pt]{logfile_8h_f71f5daf2025b4e30a18ccedf7c34863_icgraph}
 \end{center}
 \end{figure}

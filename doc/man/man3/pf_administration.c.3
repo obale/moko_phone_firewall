@@ -1,4 +1,4 @@
-.TH "pf_administration.c" 3 "14 Jul 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
+.TH "pf_administration.c" 3 "2 Oct 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -18,14 +18,12 @@ pf_administration.c \-
 .br
 \fC#include 'libphonefirewall.h'\fP
 .br
-\fC#include 'logfile.h'\fP
-.br
 
 .SS "Functions"
 
 .in +1c
 .ti -1c
-.RI "int \fBevaluate_stmt\fP (sqlite3_stmt *pp_stmt, struct \fBEntry\fP *\fBp_entry\fP)"
+.RI "int \fBevaluate_stmt\fP (sqlite3_stmt *pp_stmt, struct \fBEntry\fP *p_entry)"
 .br
 .ti -1c
 .RI "int \fBadd_entry\fP (int country_code, int area_code, unsigned long long number, char *name, char *reason, int priority, int listflag)"
@@ -70,9 +68,9 @@ If all goes well 0 (zero) otherwise -1 and the errno variable will be set..
 .PP
 
 .PP
-Definition at line 75 of file pf_administration.c.
+Definition at line 74 of file pf_administration.c.
 .PP
-References BLACKLIST_FLAG, DB_FILE, ERR_FLAG, MAX_LINE_LENGTH, PRIO_ALL, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NAME, TB_NUMBER, TB_PRIORITY, TB_REASON, WHITELIST_FLAG, and write_logentry().
+References BLACKLIST_FLAG, DB_FILE, ERR_LOG, MAX_LINE_LENGTH, PRIO_ALL, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NAME, TB_NUMBER, TB_PRIORITY, TB_REASON, and WHITELIST_FLAG.
 .SS "int check_entry (int country_code, int area_code, unsigned long long number, int priority, int listflag)"
 .PP
 Checks if a number is on the blacklist/whitelist.
@@ -100,12 +98,12 @@ If the number was found 1, otherwise 0.
 .PP
 
 .PP
-Definition at line 178 of file pf_administration.c.
+Definition at line 174 of file pf_administration.c.
 .PP
-References Entry::area_code, BLACKLIST_FLAG, Entry::country_code, DB_FILE, ERR_FLAG, evaluate_stmt(), INFO_FLAG, MAX_LINE_LENGTH, Entry::number, p_entry, Entry::priority, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NUMBER, TB_PRIORITY, WHITELIST_FLAG, and write_logentry().
+References Entry::area_code, BLACKLIST_FLAG, Entry::country_code, DB_FILE, ERR_LOG, evaluate_stmt(), INFO_LOG, MAX_LINE_LENGTH, Entry::number, Entry::priority, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NUMBER, TB_PRIORITY, and WHITELIST_FLAG.
 .SS "int evaluate_stmt (sqlite3_stmt * pp_stmt, struct \fBEntry\fP * p_entry)"
 .PP
-Definition at line 28 of file pf_administration.c.
+Definition at line 27 of file pf_administration.c.
 .PP
 References Entry::area_code, Entry::country_code, Entry::number, PRIO_ALL, Entry::priority, TB_AREACODE, TB_COUNTRYCODE, TB_NUMBER, and TB_PRIORITY.
 .PP
@@ -133,9 +131,9 @@ If all goes right 0, otherwise an error code.
 .PP
 
 .PP
-Definition at line 129 of file pf_administration.c.
+Definition at line 128 of file pf_administration.c.
 .PP
-References BLACKLIST_FLAG, DB_FILE, ERR_FLAG, MAX_LINE_LENGTH, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NUMBER, WHITELIST_FLAG, and write_logentry().
+References BLACKLIST_FLAG, DB_FILE, ERR_LOG, MAX_LINE_LENGTH, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NUMBER, and WHITELIST_FLAG.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Phone Firewall from the source code.

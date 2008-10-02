@@ -1,4 +1,4 @@
-.TH "libphonefirewall.h" 3 "14 Jul 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
+.TH "libphonefirewall.h" 3 "2 Oct 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -9,6 +9,8 @@ libphonefirewall.h \- API of the phone firewall.
 \fC#include 'pf_search.h'\fP
 .br
 \fC#include 'pf_administration.h'\fP
+.br
+\fC#include 'logfile.h'\fP
 .br
 
 .SS "Data Structures"
@@ -57,12 +59,8 @@ libphonefirewall.h \- API of the phone firewall.
 .ti -1c
 .RI "#define \fBWHITELIST_FLAG\fP   0x02"
 .br
-.in -1c
-.SS "Variables"
-
-.in +1c
 .ti -1c
-.RI "struct \fBEntry\fP \fBentry\fP"
+.RI "#define \fBCOMPONENT_NAME\fP   'phone firewall'"
 .br
 .in -1c
 .SH "Detailed Description"
@@ -81,68 +79,67 @@ Definition in file \fBlibphonefirewall.h\fP.
 .PP 
 .SS "#define BLACKLIST_FLAG   0x01"
 .PP
-Definition at line 48 of file libphonefirewall.h.
+Definition at line 49 of file libphonefirewall.h.
 .PP
-Referenced by add_entry(), check_entry(), get_entry_by_name(), and rm_entry().
+Referenced by add_entry(), check_entry(), get_entry_by_name(), get_entry_by_number(), get_entry_by_reason(), and rm_entry().
+.SS "#define COMPONENT_NAME   'phone firewall'"
+.PP
+Definition at line 52 of file libphonefirewall.h.
 .SS "#define DB_FILE   'db/phone-firewall.db'"
 .PP
-Definition at line 37 of file libphonefirewall.h.
+Definition at line 38 of file libphonefirewall.h.
 .PP
-Referenced by add_entry(), check_entry(), get_entry_by_name(), and rm_entry().
+Referenced by add_entry(), check_entry(), get_entry_by_name(), get_entry_by_number(), get_entry_by_reason(), and rm_entry().
 .SS "#define MAX_LINE_LENGTH   512"
 .PP
-Definition at line 39 of file libphonefirewall.h.
+Definition at line 40 of file libphonefirewall.h.
 .PP
-Referenced by add_entry(), check_entry(), get_entry_by_name(), and rm_entry().
+Referenced by add_entry(), check_entry(), get_entry_by_name(), get_entry_by_number(), get_entry_by_reason(), and rm_entry().
 .SS "#define PRIO_ALL   -999"
 .PP
-Definition at line 36 of file libphonefirewall.h.
+Definition at line 37 of file libphonefirewall.h.
 .PP
 Referenced by add_entry(), and evaluate_stmt().
 .SS "#define STMT_SIZE   1024"
 .PP
-Definition at line 38 of file libphonefirewall.h.
+Definition at line 39 of file libphonefirewall.h.
 .PP
-Referenced by add_entry(), check_entry(), get_entry_by_name(), and rm_entry().
+Referenced by add_entry(), check_entry(), get_entry_by_name(), get_entry_by_number(), get_entry_by_reason(), and rm_entry().
 .SS "#define TB_AREACODE   'areacode'"
-.PP
-Definition at line 42 of file libphonefirewall.h.
-.PP
-Referenced by add_entry(), check_entry(), evaluate_stmt(), find_entry_by_name(), get_entry_by_name(), and rm_entry().
-.SS "#define TB_COUNTRYCODE   'countrycode'"
-.PP
-Definition at line 41 of file libphonefirewall.h.
-.PP
-Referenced by add_entry(), check_entry(), evaluate_stmt(), find_entry_by_name(), get_entry_by_name(), and rm_entry().
-.SS "#define TB_NAME   'name'"
-.PP
-Definition at line 44 of file libphonefirewall.h.
-.PP
-Referenced by add_entry(), find_entry_by_name(), and get_entry_by_name().
-.SS "#define TB_NUMBER   'number'"
 .PP
 Definition at line 43 of file libphonefirewall.h.
 .PP
-Referenced by add_entry(), check_entry(), evaluate_stmt(), find_entry_by_name(), get_entry_by_name(), and rm_entry().
-.SS "#define TB_PRIORITY   'priority'"
+Referenced by add_entry(), check_entry(), evaluate_stmt(), find_entry(), get_entry_by_name(), get_entry_by_number(), get_entry_by_reason(), and rm_entry().
+.SS "#define TB_COUNTRYCODE   'countrycode'"
 .PP
-Definition at line 46 of file libphonefirewall.h.
+Definition at line 42 of file libphonefirewall.h.
 .PP
-Referenced by add_entry(), check_entry(), evaluate_stmt(), find_entry_by_name(), and get_entry_by_name().
-.SS "#define TB_REASON   'reason'"
+Referenced by add_entry(), check_entry(), evaluate_stmt(), find_entry(), get_entry_by_name(), get_entry_by_number(), get_entry_by_reason(), and rm_entry().
+.SS "#define TB_NAME   'name'"
 .PP
 Definition at line 45 of file libphonefirewall.h.
 .PP
-Referenced by add_entry(), find_entry_by_name(), and get_entry_by_name().
+Referenced by add_entry(), find_entry(), get_entry_by_name(), get_entry_by_number(), and get_entry_by_reason().
+.SS "#define TB_NUMBER   'number'"
+.PP
+Definition at line 44 of file libphonefirewall.h.
+.PP
+Referenced by add_entry(), check_entry(), evaluate_stmt(), find_entry(), get_entry_by_name(), get_entry_by_number(), get_entry_by_reason(), and rm_entry().
+.SS "#define TB_PRIORITY   'priority'"
+.PP
+Definition at line 47 of file libphonefirewall.h.
+.PP
+Referenced by add_entry(), check_entry(), evaluate_stmt(), find_entry(), get_entry_by_name(), get_entry_by_number(), and get_entry_by_reason().
+.SS "#define TB_REASON   'reason'"
+.PP
+Definition at line 46 of file libphonefirewall.h.
+.PP
+Referenced by add_entry(), find_entry(), get_entry_by_name(), get_entry_by_number(), and get_entry_by_reason().
 .SS "#define WHITELIST_FLAG   0x02"
 .PP
-Definition at line 49 of file libphonefirewall.h.
+Definition at line 50 of file libphonefirewall.h.
 .PP
-Referenced by add_entry(), check_entry(), get_entry_by_name(), and rm_entry().
-.SH "Variable Documentation"
-.PP 
-.SS "struct \fBEntry\fP  \fBentry\fP"
-.PP
+Referenced by add_entry(), check_entry(), get_entry_by_name(), get_entry_by_number(), get_entry_by_reason(), and rm_entry().
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Phone Firewall from the source code.

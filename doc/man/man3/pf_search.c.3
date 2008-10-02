@@ -1,4 +1,4 @@
-.TH "pf_search.c" 3 "14 Jul 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
+.TH "pf_search.c" 3 "2 Oct 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -18,8 +18,6 @@ pf_search.c \-
 .br
 \fC#include 'libphonefirewall.h'\fP
 .br
-\fC#include 'logfile.h'\fP
-.br
 
 .SS "Defines"
 
@@ -27,15 +25,15 @@ pf_search.c \-
 .ti -1c
 .RI "#define \fBASCII_PERCENT_CHAR\fP   37"
 .br
-.ti -1c
-.RI "#define \fBMAX_ENTRY_ARRAY\fP   1024"
-.br
 .in -1c
 .SS "Functions"
 
 .in +1c
 .ti -1c
-.RI "struct \fBEntry\fP * \fBfind_entry_by_name\fP (sqlite3_stmt *pp_stmt, char *name)"
+.RI "struct \fBEntry\fP * \fBinsert_into_list\fP (struct \fBEntry\fP *p_root, struct \fBEntry\fP *p_entry)"
+.br
+.ti -1c
+.RI "struct \fBEntry\fP * \fBfind_entry\fP (sqlite3_stmt *pp_stmt)"
 .br
 .ti -1c
 .RI "struct \fBEntry\fP * \fBget_entry_by_name\fP (char *name, int listflag)"
@@ -47,35 +45,22 @@ pf_search.c \-
 .RI "struct \fBEntry\fP * \fBget_entry_by_reason\fP (char *reason, int listflag)"
 .br
 .in -1c
-.SS "Variables"
-
-.in +1c
-.ti -1c
-.RI "struct \fBEntry\fP * \fBp_entry\fP = &\fBentry\fP"
-.br
-.ti -1c
-.RI "struct \fBEntry\fP \fBentry_array\fP [MAX_ENTRY_ARRAY]"
-.br
-.in -1c
 .SH "Define Documentation"
 .PP 
 .SS "#define ASCII_PERCENT_CHAR   37"
 .PP
-Definition at line 30 of file pf_search.c.
+Definition at line 27 of file pf_search.c.
 .PP
-Referenced by get_entry_by_name().
-.SS "#define MAX_ENTRY_ARRAY   1024"
-.PP
-Definition at line 31 of file pf_search.c.
+Referenced by get_entry_by_name(), get_entry_by_number(), and get_entry_by_reason().
 .SH "Function Documentation"
 .PP 
-.SS "struct \fBEntry\fP* find_entry_by_name (sqlite3_stmt * pp_stmt, char * name)\fC [read]\fP"
+.SS "struct \fBEntry\fP* find_entry (sqlite3_stmt * pp_stmt)\fC [read]\fP"
 .PP
-Definition at line 36 of file pf_search.c.
+Definition at line 76 of file pf_search.c.
 .PP
 References Entry::area_code, Entry::country_code, Entry::name, Entry::number, Entry::priority, Entry::reason, TB_AREACODE, TB_COUNTRYCODE, TB_NAME, TB_NUMBER, TB_PRIORITY, and TB_REASON.
 .PP
-Referenced by get_entry_by_name().
+Referenced by get_entry_by_name(), get_entry_by_number(), and get_entry_by_reason().
 .SS "struct \fBEntry\fP* get_entry_by_name (char * name, int listflag)\fC [read]\fP"
 .PP
 Search a \fBentry\fP by name.
@@ -95,9 +80,9 @@ Search a \fBentry\fP by name.
 .PP
 
 .PP
-Definition at line 67 of file pf_search.c.
+Definition at line 112 of file pf_search.c.
 .PP
-References Entry::area_code, ASCII_PERCENT_CHAR, BLACKLIST_FLAG, Entry::country_code, DB_FILE, entry_array, ERR_FLAG, find_entry_by_name(), MAX_LINE_LENGTH, Entry::number, Entry::reason, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NAME, TB_NUMBER, TB_PRIORITY, TB_REASON, WHITELIST_FLAG, and write_logentry().
+References ASCII_PERCENT_CHAR, BLACKLIST_FLAG, DB_FILE, ERR_LOG, find_entry(), insert_into_list(), MAX_LINE_LENGTH, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NAME, TB_NUMBER, TB_PRIORITY, TB_REASON, and WHITELIST_FLAG.
 .SS "struct \fBEntry\fP* get_entry_by_number (int country_code, int area_code, unsigned long long number, int listflag)\fC [read]\fP"
 .PP
 Search a entries by number (country code + area code + number).
@@ -121,7 +106,9 @@ Search a entries by number (country code + area code + number).
 .PP
 
 .PP
-Definition at line 128 of file pf_search.c.
+Definition at line 167 of file pf_search.c.
+.PP
+References ASCII_PERCENT_CHAR, BLACKLIST_FLAG, DB_FILE, ERR_LOG, find_entry(), insert_into_list(), MAX_LINE_LENGTH, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NAME, TB_NUMBER, TB_PRIORITY, TB_REASON, and WHITELIST_FLAG.
 .SS "struct \fBEntry\fP* get_entry_by_reason (char * reason, int listflag)\fC [read]\fP"
 .PP
 Search a entries by reason.
@@ -141,19 +128,16 @@ Search a entries by reason.
 .PP
 
 .PP
-Definition at line 136 of file pf_search.c.
-.SH "Variable Documentation"
-.PP 
-.SS "struct \fBEntry\fP \fBentry_array\fP[MAX_ENTRY_ARRAY]"
+Definition at line 224 of file pf_search.c.
 .PP
-Definition at line 34 of file pf_search.c.
+References ASCII_PERCENT_CHAR, BLACKLIST_FLAG, DB_FILE, ERR_LOG, find_entry(), insert_into_list(), MAX_LINE_LENGTH, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NAME, TB_NUMBER, TB_PRIORITY, TB_REASON, and WHITELIST_FLAG.
+.SS "struct \fBEntry\fP* insert_into_list (struct \fBEntry\fP * p_root, struct \fBEntry\fP * p_entry)\fC [read]\fP"
 .PP
-Referenced by get_entry_by_name().
-.SS "struct \fBEntry\fP* \fBp_entry\fP = &\fBentry\fP"
+Definition at line 29 of file pf_search.c.
 .PP
-Definition at line 33 of file pf_search.c.
+References Entry::area_code, Entry::country_code, Entry::name, Entry::next, Entry::number, and Entry::reason.
 .PP
-Referenced by check_entry().
+Referenced by get_entry_by_name(), get_entry_by_number(), and get_entry_by_reason().
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Phone Firewall from the source code.

@@ -39,10 +39,15 @@
 <a name="l00025"></a><a class="code" href="logfile_8h.html#cd48c0293626a8577ef1c28ad58ca0d6">00025</a> <span class="preprocessor">#define ERR_FLAG    1 </span>
 <a name="l00026"></a><a class="code" href="logfile_8h.html#d683e726fb2cb177c24b8cb84e80ea7d">00026</a> <span class="preprocessor">#define WARN_FLAG   2 </span>
 <a name="l00027"></a><a class="code" href="logfile_8h.html#655cb5e43527221af659a76352b141ae">00027</a> <span class="preprocessor">#define INFO_FLAG   3 </span>
-<a name="l00039"></a>00039 <span class="preprocessor">int write_logentry(char *msg,</span>
-<a name="l00040"></a>00040 <span class="preprocessor"></span>                   <span class="keywordtype">char</span> *component,
-<a name="l00041"></a>00041                    <span class="keywordtype">int</span> flag);
-</pre></div><hr size="1"><address style="text-align: right;"><small>Generated on Mon Jul 14 19:55:29 2008 for Phone Firewall by&nbsp;
+<a name="l00029"></a><a class="code" href="logfile_8h.html#33f75163eff20214d9f9a009d0d98096">00029</a> <span class="preprocessor">#define UNKNOWN_LOG(m) write_logentry(m, COMPONENT_NAME, UNKNOWN_FLAG)</span>
+<a name="l00030"></a><a class="code" href="logfile_8h.html#41569958738d77fee8d8ee52645a581b">00030</a> <span class="preprocessor"></span><span class="preprocessor">#define ERR_LOG(m) write_logentry(m, COMPONENT_NAME, ERR_FLAG)</span>
+<a name="l00031"></a><a class="code" href="logfile_8h.html#cf6e906d16742b29defc431585917af0">00031</a> <span class="preprocessor"></span><span class="preprocessor">#define WARN_LOG(m) write_logentry(m, COMPONENT_NAME, WARN_FLAG)</span>
+<a name="l00032"></a><a class="code" href="logfile_8h.html#5f7fc5ef70b11517748aa589e4128f61">00032</a> <span class="preprocessor"></span><span class="preprocessor">#define INFO_LOG(m) write_logentry(m, COMPONENT_NAME, INFO_FLAG)</span>
+<a name="l00033"></a>00033 <span class="preprocessor"></span>
+<a name="l00044"></a>00044 <span class="keywordtype">int</span> <a class="code" href="logfile_8c.html#f71f5daf2025b4e30a18ccedf7c34863">write_logentry</a>(<span class="keywordtype">char</span> *msg,
+<a name="l00045"></a>00045                    <span class="keywordtype">char</span> *component,
+<a name="l00046"></a>00046                    <span class="keywordtype">int</span> flag);
+</pre></div><hr size="1"><address style="text-align: right;"><small>Generated on Thu Oct 2 18:29:55 2008 for Phone Firewall by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

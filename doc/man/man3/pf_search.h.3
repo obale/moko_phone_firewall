@@ -1,4 +1,4 @@
-.TH "pf_search.h" 3 "14 Jul 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
+.TH "pf_search.h" 3 "2 Oct 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -40,9 +40,9 @@ Search a \fBentry\fP by name.
 .PP
 
 .PP
-Definition at line 67 of file pf_search.c.
+Definition at line 112 of file pf_search.c.
 .PP
-References Entry::area_code, ASCII_PERCENT_CHAR, BLACKLIST_FLAG, Entry::country_code, DB_FILE, entry_array, ERR_FLAG, find_entry_by_name(), MAX_LINE_LENGTH, Entry::number, Entry::reason, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NAME, TB_NUMBER, TB_PRIORITY, TB_REASON, WHITELIST_FLAG, and write_logentry().
+References ASCII_PERCENT_CHAR, BLACKLIST_FLAG, DB_FILE, ERR_LOG, find_entry(), insert_into_list(), MAX_LINE_LENGTH, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NAME, TB_NUMBER, TB_PRIORITY, TB_REASON, and WHITELIST_FLAG.
 .SS "struct \fBEntry\fP* get_entry_by_number (int country_code, int area_code, unsigned long long number, int listflag)\fC [read]\fP"
 .PP
 Search a entries by number (country code + area code + number).
@@ -66,7 +66,9 @@ Search a entries by number (country code + area code + number).
 .PP
 
 .PP
-Definition at line 128 of file pf_search.c.
+Definition at line 167 of file pf_search.c.
+.PP
+References ASCII_PERCENT_CHAR, BLACKLIST_FLAG, DB_FILE, ERR_LOG, find_entry(), insert_into_list(), MAX_LINE_LENGTH, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NAME, TB_NUMBER, TB_PRIORITY, TB_REASON, and WHITELIST_FLAG.
 .SS "struct \fBEntry\fP* get_entry_by_reason (char * reason, int listflag)\fC [read]\fP"
 .PP
 Search a entries by reason.
@@ -86,7 +88,9 @@ Search a entries by reason.
 .PP
 
 .PP
-Definition at line 136 of file pf_search.c.
+Definition at line 224 of file pf_search.c.
+.PP
+References ASCII_PERCENT_CHAR, BLACKLIST_FLAG, DB_FILE, ERR_LOG, find_entry(), insert_into_list(), MAX_LINE_LENGTH, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NAME, TB_NUMBER, TB_PRIORITY, TB_REASON, and WHITELIST_FLAG.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Phone Firewall from the source code.

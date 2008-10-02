@@ -8,7 +8,7 @@ This graph shows which files directly or indirectly include this file:\nopagebre
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=168pt]{pf__administration_8h__dep__incl}
+\includegraphics[width=120pt]{pf__administration_8h__dep__incl}
 \end{center}
 \end{figure}
 \subsection*{Functions}
@@ -44,18 +44,9 @@ The value \char`\"{}PRIO\_\-ALL\char`\"{} stands for all priorities.
 \item[Returns:]If all goes well 0 (zero) otherwise -1 and the errno variable will be set.. \end{Desc}
 
 
-Definition at line 75 of file pf\_\-administration.c.
+Definition at line 74 of file pf\_\-administration.c.
 
-References BLACKLIST\_\-FLAG, DB\_\-FILE, ERR\_\-FLAG, MAX\_\-LINE\_\-LENGTH, PRIO\_\-ALL, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NAME, TB\_\-NUMBER, TB\_\-PRIORITY, TB\_\-REASON, WHITELIST\_\-FLAG, and write\_\-logentry().
-
-Here is the call graph for this function:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=159pt]{pf__administration_8h_6c03680796f887d3851428fb2b9ecbc5_cgraph}
-\end{center}
-\end{figure}
-\hypertarget{pf__administration_8h_754e9a8891128a285fc17132b5480a07}{
+References BLACKLIST\_\-FLAG, DB\_\-FILE, ERR\_\-LOG, MAX\_\-LINE\_\-LENGTH, PRIO\_\-ALL, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NAME, TB\_\-NUMBER, TB\_\-PRIORITY, TB\_\-REASON, and WHITELIST\_\-FLAG.\hypertarget{pf__administration_8h_754e9a8891128a285fc17132b5480a07}{
 \index{pf\_\-administration.h@{pf\_\-administration.h}!check\_\-entry@{check\_\-entry}}
 \index{check\_\-entry@{check\_\-entry}!pf_administration.h@{pf\_\-administration.h}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}int check\_\-entry (int {\em country\_\-code}, int {\em area\_\-code}, unsigned long long {\em number}, int {\em priority}, int {\em listflag})}}
@@ -76,15 +67,15 @@ The value \char`\"{}PRIO\_\-ALL\char`\"{} stands for all priorities.
 \item[Returns:]If the number was found 1, otherwise 0. \end{Desc}
 
 
-Definition at line 178 of file pf\_\-administration.c.
+Definition at line 174 of file pf\_\-administration.c.
 
-References Entry::area\_\-code, BLACKLIST\_\-FLAG, Entry::country\_\-code, DB\_\-FILE, ERR\_\-FLAG, evaluate\_\-stmt(), INFO\_\-FLAG, MAX\_\-LINE\_\-LENGTH, Entry::number, p\_\-entry, Entry::priority, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NUMBER, TB\_\-PRIORITY, WHITELIST\_\-FLAG, and write\_\-logentry().
+References Entry::area\_\-code, BLACKLIST\_\-FLAG, Entry::country\_\-code, DB\_\-FILE, ERR\_\-LOG, evaluate\_\-stmt(), INFO\_\-LOG, MAX\_\-LINE\_\-LENGTH, Entry::number, Entry::priority, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NUMBER, TB\_\-PRIORITY, and WHITELIST\_\-FLAG.
 
 Here is the call graph for this function:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=165pt]{pf__administration_8h_754e9a8891128a285fc17132b5480a07_cgraph}
+\includegraphics[width=120pt]{pf__administration_8h_754e9a8891128a285fc17132b5480a07_cgraph}
 \end{center}
 \end{figure}
 \hypertarget{pf__administration_8h_b6c4b54e76914072e8c0d06f9e450d33}{
@@ -106,14 +97,6 @@ Removes a number from the blacklist/whitelist.
 \item[Returns:]If all goes right 0, otherwise an error code. \end{Desc}
 
 
-Definition at line 129 of file pf\_\-administration.c.
+Definition at line 128 of file pf\_\-administration.c.
 
-References BLACKLIST\_\-FLAG, DB\_\-FILE, ERR\_\-FLAG, MAX\_\-LINE\_\-LENGTH, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NUMBER, WHITELIST\_\-FLAG, and write\_\-logentry().
-
-Here is the call graph for this function:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=157pt]{pf__administration_8h_b6c4b54e76914072e8c0d06f9e450d33_cgraph}
-\end{center}
-\end{figure}
+References BLACKLIST\_\-FLAG, DB\_\-FILE, ERR\_\-LOG, MAX\_\-LINE\_\-LENGTH, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NUMBER, and WHITELIST\_\-FLAG.
