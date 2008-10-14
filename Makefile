@@ -9,7 +9,7 @@ LIBDIR = lib
 SRCTESTDIR = src_test
 BINTESTDIR = bin_test
 
-test: logfile.o testphonefirewall_administration.o testphonefirewall_search.o libtestphonefirewall.so testphonefirewall
+test: testlogfile.o testphonefirewall_administration.o testphonefirewall_search.o libtestphonefirewall.so testphonefirewall
 
 all: 	libphonefirewall.so\
 	test
@@ -27,7 +27,10 @@ pf_administration.o: $(SRCDIR)/pf_administration.c $(SRCDIR)/libphonefirewall.h
 pf_search.o: $(SRCDIR)/pf_search.c $(SRCDIR)/libphonefirewall.h
 	$(CC) $(CLFLAGS) -fpic -c $(SRCDIR)/pf_search.c -o $(SRCDIR)/$@
 
-libphonefirewall.so: $(SRCDIR)/pf_administration.o $(SRCDIR)/pf_search.o
+logfile.o: $(SRCDIR)/logfile.c $(SRCDIR)/logfile.h
+	$(CC) -fpic -c $(SRCDIR)/logfile.c -o $(SRCDIR)/$@
+
+libphonefirewall.so: $(SRCDIR)/pf_administration.o $(SRCDIR)/pf_search.o $(SRCDIR)/logfile.o
 	$(CC) -shared $(SRCDIR)/pf_administration.o $(SRCDIR)/pf_search.o -o $(LIBDIR)/$@
 
 # 
@@ -43,10 +46,10 @@ testphonefirewall_administration.o: $(SRCDIR)/pf_administration.c $(SRCDIR)/libp
 testphonefirewall_search.o: $(SRCDIR)/pf_search.c $(SRCDIR)/libphonefirewall.h 
 	$(GCC) $(CLFLAGS) -fPIC -c $(SRCDIR)/pf_search.c -o $(SRCTESTDIR)/$@
 
-libtestphonefirewall.so: $(SRCTESTDIR)/testphonefirewall_administration.o $(SRCTESTDIR)/testphonefirewall_search.o $(SRCDIR)/logfile.o
-	$(GCC) $(CLFLAGS) -shared $(SRCTESTDIR)/testphonefirewall_administration.o $(SRCTESTDIR)/testphonefirewall_search.o $(SRCDIR)/logfile.o -o $(LIBDIR)/$@
+libtestphonefirewall.so: $(SRCTESTDIR)/testphonefirewall_administration.o $(SRCTESTDIR)/testphonefirewall_search.o $(SRCDIR)/testlogfile.o
+	$(GCC) $(CLFLAGS) -shared $(SRCTESTDIR)/testphonefirewall_administration.o $(SRCTESTDIR)/testphonefirewall_search.o $(SRCDIR)/testlogfile.o -o $(LIBDIR)/$@
 
-logfile.o: $(SRCDIR)/logfile.c $(SRCDIR)/logfile.h
+testlogfile.o: $(SRCDIR)/logfile.c $(SRCDIR)/logfile.h
 	$(GCC) -fpic -c $(SRCDIR)/logfile.c -o $(SRCDIR)/$@
 
 # XXX: Only a quick hack to find the memory corruption error.

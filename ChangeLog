@@ -1,5 +1,17 @@
 2008-10-14 Alex Oberhauser <oberhauseralex@networld.to>
 
+	* Makefile:
+	Linking the logfile.o to the libphonefirewall.so and other minor
+	changes.
+
+	* opkg/:
+	Creating a new directory for the opkg package.
+
+	* phonefirewall-dev_0.01_arm4t.ipk:
+	Opkg package for the install over
+
+2008-10-14 Alex Oberhauser <oberhauseralex@networld.to>
+
 	* src/libphonefirewall.h:
 	Deleting a void line.
 
