@@ -8,7 +8,10 @@
 	Creating a new directory for the opkg package.
 
 	* phonefirewall-dev_0.01_arm4t.ipk:
-	Opkg package for the install over
+	Deleting this ipkg-package. The architecture was wrong.
+
+	* phonefirewall-dev_0.01_armv4t.ipk:
+	Adding this package with the right architecture.
 
 2008-10-14 Alex Oberhauser <oberhauseralex@networld.to>
 
