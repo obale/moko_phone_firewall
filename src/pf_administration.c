@@ -252,3 +252,81 @@ int check_entry(int country_code,
         return found_flag;
 }
 
+int change_name(int country_code,
+                int area_code,
+                unsigned long long number,
+                char *new_name,
+                int listflag)
+{
+        char *listname;
+        switch (listflag) { case WHITELIST_FLAG:
+                        listname = "whitelist";
+                        break;
+                case BLACKLIST_FLAG:
+                        listname = "blacklist";
+                        break;
+                default: return -1;
+        }
+
+        sqlite3 *db;
+        char stmt[STMT_SIZE];       // The SQL statement as text string.
+        char *errMsg = 0;
+        char error[MAX_LINE_LENGTH];
+        int rc;
+        char logmsg[MAX_LINE_LENGTH];
+
+        rc = sqlite3_open(DB_FILE, &db);
+
+        if ( rc ) {
+                sprintf(logmsg, "Can't open database: %s", sqlite3_errmsg(db));
+                ERR_LOG(logmsg);
+                sqlite3_close(db);
+                return 0;
+        }
+
+        sprintf(stmt, "UPDATE %s SET %s = %s WHERE %s = %d AND %s = %d AND %s = %lld", listname, TB_NAME, new_name, TB_COUNTRYCODE, country_code, TB_AREACODE, area_code, TB_NUMBER, number);
+
+        rc = sqlite3_exec(db, stmt, NULL, 0, &errMsg);
+        if ( SQLITE_OK != rc ) {
+                sprintf(error, "SQL error: %s", sqlite3_errmsg(db));
+                ERR_LOG(error);
+                sqlite3_close(db);
+                return 0;
+        }
+
+        sqlite3_close(db);
+
+        return 1;
+}
+
+int change_number(int country_code,
+                  int area_code,
+                  unsigned long long number,
+                  int new_country_code,
+                  int new_area_code,
+                  unsigned long long new_number,
+                  int listflag)
+{
+        /* 1 if entry was changed. */
+        return 0;
+}
+
+int change_reason(int country_code,
+                  int area_code,
+                  unsigned long long number,
+                  char *new_reason,
+                  int listflag)
+{
+        /* 1 if entry was changed. */
+        return 0;
+}
+
+int change_priority(int country_code,
+                    int area_code,
+                    unsigned long long number,
+                    int new_priority,
+                    int listflag)
+{
+        /* 1 if entry was changed. */
+        return 0;
+}

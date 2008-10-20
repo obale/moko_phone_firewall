@@ -32,9 +32,11 @@
  */
 char *asctime(const struct tm *timeptr)
 {
+        /*
         static char wday_name[7][3] = {
                 "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"
         };
+        */
 
         static char mon_name[12][3] = {
                 "Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -84,5 +86,6 @@ int write_logentry(char *msg,
 
         fclose(fd);
 
-}
+        return 0;
 
+}
