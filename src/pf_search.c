@@ -112,16 +112,7 @@ struct Entry *find_entry(sqlite3_stmt *pp_stmt)
 struct Entry *get_entry_by_name(char *name,
                                 int listflag)
 {
-        char *listname;
-        switch (listflag) {
-                case WHITELIST_FLAG:
-                        listname = "whitelist";
-                        break;
-                case BLACKLIST_FLAG:
-                        listname = "blacklist";
-                        break;
-                default: return NULL;
-        }
+        char *listname = (WHITELIST_FLAG == listflag) ? "whitelist" : "blacklist";
 
         sqlite3 *db;
         char stmt[STMT_SIZE];
@@ -169,16 +160,7 @@ struct Entry *get_entry_by_number(int country_code,
                                   unsigned long long number,
                                   int listflag)
 {
-        char *listname;
-        switch (listflag) {
-                case WHITELIST_FLAG:
-                        listname = "whitelist";
-                        break;
-                case BLACKLIST_FLAG:
-                        listname = "blacklist";
-                        break;
-                default: return NULL;
-        }
+        char *listname = (WHITELIST_FLAG == listflag) ? "whitelist" : "blacklist";
 
         sqlite3 *db;
         char stmt[STMT_SIZE];
@@ -224,16 +206,7 @@ struct Entry *get_entry_by_number(int country_code,
 struct Entry *get_entry_by_reason(char *reason,
                                   int listflag)
 {
-        char *listname;
-        switch (listflag) {
-                case WHITELIST_FLAG:
-                        listname = "whitelist";
-                        break;
-                case BLACKLIST_FLAG:
-                        listname = "blacklist";
-                        break;
-                default: return NULL;
-        }
+        char *listname = (WHITELIST_FLAG == listflag) ? "whitelist" : "blacklist";
 
         sqlite3 *db;
         char stmt[STMT_SIZE];

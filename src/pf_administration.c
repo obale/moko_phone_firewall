@@ -84,16 +84,7 @@ int add_entry(int country_code,
                         || 0 == area_code
                         || 0 == number ) return -1;
 
-        char *listname;
-        switch (listflag) {
-                case WHITELIST_FLAG:
-                        listname = "whitelist";
-                        break;
-                case BLACKLIST_FLAG:
-                        listname = "blacklist";
-                        break;
-                default: return -1;
-        }
+        char *listname = (WHITELIST_FLAG == listflag) ? "whitelist" : "blacklist";
 
         sqlite3 *db;
         char *errMsg = 0;
@@ -130,17 +121,7 @@ int rm_entry (int country_code,
               unsigned long long number,
               int listflag)
 {
-
-        char *listname;
-        switch (listflag) {
-                case WHITELIST_FLAG:
-                        listname = "whitelist";
-                        break;
-                case BLACKLIST_FLAG:
-                        listname = "blacklist";
-                        break;
-                default: return -1;
-        }
+        char *listname = (WHITELIST_FLAG == listflag) ? "whitelist" : "blacklist";
 
         sqlite3 *db;
         char *errMsg = 0;
@@ -177,16 +158,7 @@ int check_entry(int country_code,
                 int priority,
                 int listflag)
 {
-        char *listname;
-        switch (listflag) {
-                case WHITELIST_FLAG:
-                        listname = "whitelist";
-                        break;
-                case BLACKLIST_FLAG:
-                        listname = "blacklist";
-                        break;
-                default: return -1;
-        }
+        char *listname = (WHITELIST_FLAG == listflag) ? "whitelist" : "blacklist";
 
         sqlite3 *db;
         char stmt[STMT_SIZE];       // The SQL statement as text string.
@@ -258,15 +230,7 @@ int change_name(int country_code,
                 char *new_name,
                 int listflag)
 {
-        char *listname;
-        switch (listflag) { case WHITELIST_FLAG:
-                        listname = "whitelist";
-                        break;
-                case BLACKLIST_FLAG:
-                        listname = "blacklist";
-                        break;
-                default: return -1;
-        }
+        char *listname = (WHITELIST_FLAG == listflag) ? "whitelist" : "blacklist";
 
         sqlite3 *db;
         char stmt[STMT_SIZE];       // The SQL statement as text string.
@@ -284,7 +248,7 @@ int change_name(int country_code,
                 return 0;
         }
 
-        sprintf(stmt, "UPDATE %s SET %s = %s WHERE %s = %d AND %s = %d AND %s = %lld", listname, TB_NAME, new_name, TB_COUNTRYCODE, country_code, TB_AREACODE, area_code, TB_NUMBER, number);
+        sprintf(stmt, "UPDATE %s SET %s = \"%s\" WHERE %s = %d AND %s = %d AND %s = %lld", listname, TB_NAME, new_name, TB_COUNTRYCODE, country_code, TB_AREACODE, area_code, TB_NUMBER, number);
 
         rc = sqlite3_exec(db, stmt, NULL, 0, &errMsg);
         if ( SQLITE_OK != rc ) {
@@ -307,8 +271,37 @@ int change_number(int country_code,
                   unsigned long long new_number,
                   int listflag)
 {
-        /* 1 if entry was changed. */
-        return 0;
+        char *listname = (WHITELIST_FLAG == listflag) ? "whitelist" : "blacklist";
+
+        sqlite3 *db;
+        char stmt[STMT_SIZE];       // The SQL statement as text string.
+        char *errMsg = 0;
+        char error[MAX_LINE_LENGTH];
+        int rc;
+        char logmsg[MAX_LINE_LENGTH];
+
+        rc = sqlite3_open(DB_FILE, &db);
+
+        if ( rc ) {
+                sprintf(logmsg, "Can't open database: %s", sqlite3_errmsg(db));
+                ERR_LOG(logmsg);
+                sqlite3_close(db);
+                return 0;
+        }
+
+        sprintf(stmt, "UPDATE %s SET %s = %d AND %s = %d AND %s = %lld WHERE %s = %d AND %s = %d AND %s = %lld", listname, TB_COUNTRYCODE, new_country_code, TB_AREACODE, new_area_code, TB_NUMBER, new_number, TB_COUNTRYCODE, country_code, TB_AREACODE, area_code, TB_NUMBER, number);
+
+        rc = sqlite3_exec(db, stmt, NULL, 0, &errMsg);
+        if ( SQLITE_OK != rc ) {
+                sprintf(error, "SQL error: %s", sqlite3_errmsg(db));
+                ERR_LOG(error);
+                sqlite3_close(db);
+                return 0;
+        }
+
+        sqlite3_close(db);
+
+        return 1;
 }
 
 int change_reason(int country_code,
@@ -317,8 +310,37 @@ int change_reason(int country_code,
                   char *new_reason,
                   int listflag)
 {
-        /* 1 if entry was changed. */
-        return 0;
+        char *listname = (WHITELIST_FLAG == listflag) ? "whitelist" : "blacklist";
+
+        sqlite3 *db;
+        char stmt[STMT_SIZE];       // The SQL statement as text string.
+        char *errMsg = 0;
+        char error[MAX_LINE_LENGTH];
+        int rc;
+        char logmsg[MAX_LINE_LENGTH];
+
+        rc = sqlite3_open(DB_FILE, &db);
+
+        if ( rc ) {
+                sprintf(logmsg, "Can't open database: %s", sqlite3_errmsg(db));
+                ERR_LOG(logmsg);
+                sqlite3_close(db);
+                return 0;
+        }
+
+        sprintf(stmt, "UPDATE %s SET %s = %s WHERE %s = %d AND %s = %d AND %s = %lld", listname, TB_REASON, new_reason, TB_COUNTRYCODE, country_code, TB_AREACODE, area_code, TB_NUMBER, number);
+
+        rc = sqlite3_exec(db, stmt, NULL, 0, &errMsg);
+        if ( SQLITE_OK != rc ) {
+                sprintf(error, "SQL error: %s", sqlite3_errmsg(db));
+                ERR_LOG(error);
+                sqlite3_close(db);
+                return 0;
+        }
+
+        sqlite3_close(db);
+
+        return 1;
 }
 
 int change_priority(int country_code,
@@ -327,6 +349,35 @@ int change_priority(int country_code,
                     int new_priority,
                     int listflag)
 {
-        /* 1 if entry was changed. */
-        return 0;
+        char *listname = (WHITELIST_FLAG == listflag) ? "whitelist" : "blacklist";
+
+        sqlite3 *db;
+        char stmt[STMT_SIZE];       // The SQL statement as text string.
+        char *errMsg = 0;
+        char error[MAX_LINE_LENGTH];
+        int rc;
+        char logmsg[MAX_LINE_LENGTH];
+
+        rc = sqlite3_open(DB_FILE, &db);
+
+        if ( rc ) {
+                sprintf(logmsg, "Can't open database: %s", sqlite3_errmsg(db));
+                ERR_LOG(logmsg);
+                sqlite3_close(db);
+                return 0;
+        }
+
+        sprintf(stmt, "UPDATE %s SET %s = %d WHERE %s = %d AND %s = %d AND %s = %lld", listname, TB_PRIORITY, new_priority, TB_COUNTRYCODE, country_code, TB_AREACODE, area_code, TB_NUMBER, number);
+
+        rc = sqlite3_exec(db, stmt, NULL, 0, &errMsg);
+        if ( SQLITE_OK != rc ) {
+                sprintf(error, "SQL error: %s", sqlite3_errmsg(db));
+                ERR_LOG(error);
+                sqlite3_close(db);
+                return 0;
+        }
+
+        sqlite3_close(db);
+
+        return 1;
 }
