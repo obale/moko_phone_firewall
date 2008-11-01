@@ -87,3 +87,94 @@ int check_entry(int country_code,
                 unsigned long long number,
                 int priority,
                 int listflag);
+
+/**
+ * Changes the name of the entry. For the unique identification you need to
+ * enter the country code, area code and the number because this tripple
+ * identifies the entry.
+ *
+ * @param country_code The country code (for example 39 for Italy, 43 for
+ * Austria, and so one)
+ * @param area_code The area code which indicates your mobile operator.
+ * @param number The telephone number of the person (without country and area
+ * code.
+ * @param new_name The new name
+ * @param listflag A flag, which indicates if you would use the blacklist
+ * (BLACKLIST_FLAG) or the whitelist (WHITELIST_FLAG).<br>
+ *
+ * @return If the number was changed 1, otherwise 0.
+ */
+int change_name(int country_code,
+                int area_code,
+                unsigned long long number,
+                char *new_name,
+                int listflag);
+
+/**
+ * Changes the number of the entry. You need to enter the country code, 
+ * area code and the number because this tripple identifies the entry.
+ *
+ * @param country_code The country code (for example 39 for Italy, 43 for
+ * Austria, and so one)
+ * @param area_code The area code which indicates your mobile operator.
+ * @param number The telephone number of the person (without country and area
+ * code.
+ * @param new_country_code The new country code.
+ * @param new_area_code The new area code.
+ * @param new_number The new number.
+ * @param listflag A flag, which indicates if you would use the blacklist
+ * (BLACKLIST_FLAG) or the whitelist (WHITELIST_FLAG).<br>
+ *
+ * @return If the number was changed 1, otherwise 0.
+ */
+int change_number(int country_code,
+                  int area_code,
+                  unsigned long long number,
+                  int new_country_code,
+                  int new_area_code,
+                  unsigned long long new_number,
+                  int listflag);
+
+/**
+ * Changes the reason of the entry. For the unique identification you need to
+ * enter the country code, area code and the number because this tripple
+ * identifies the entry.
+ *
+ * @param country_code The country code (for example 39 for Italy, 43 for
+ * Austria, and so one)
+ * @param area_code The area code which indicates your mobile operator.
+ * @param number The telephone number of the person (without country and area
+ * code.
+ * @param new_reason The new reason.
+ * @param listflag A flag, which indicates if you would use the blacklist
+ * (BLACKLIST_FLAG) or the whitelist (WHITELIST_FLAG).<br>
+ *
+ * @return If the number was changed 1, otherwise 0.
+ */
+int change_reason(int country_code,
+                  int area_code,
+                  unsigned long long number,
+                  char *new_reason,
+                  int listflag);
+
+/**
+ * Changes the priority of the entry. For the unique identification you need to
+ * enter the country code, area code and the number because this tripple
+ * identifies the entry.
+ *
+ * @param country_code The country code (for example 39 for Italy, 43 for
+ * Austria, and so one)
+ * @param area_code The area code which indicates your mobile operator.
+ * @param number The telephone number of the person (without country and area
+ * code.
+ * @param new_priority The new priority.
+ * @param listflag A flag, which indicates if you would use the blacklist
+ * (BLACKLIST_FLAG) or the whitelist (WHITELIST_FLAG).<br>
+ *
+ * @return If the number was changed 1, otherwise 0.
+ */
+int change_priority(int country_code,
+                    int area_code,
+                    unsigned long long number,
+                    int new_priority,
+                    int listflag);

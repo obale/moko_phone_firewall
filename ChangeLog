@@ -1,3 +1,46 @@
+2008-11-01 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* src/pf_search.c
+	* src/pf_administration.c:
+	Substituting the rather long switch case statement witch the shorter
+	"x ? a : b" statement for all black- and whitelist distinctions.
+
+	Finishing the implementation of the edit function. 
+	XXX: The seams to have an error, please test further to be sure all
+	goes right. Adding one (cunit-)test for change_name(..), but fails
+	with a segfault. The test is commented out.
+
+	* Makefile:
+	Deleting the compile statement for a testing program which was
+	deleted (see src_test/main_test.c below).
+
+	Changing -fpic to -fPIC for the object files pf_search,
+	pf_administraion and logfile.
+
+	Substituting the relativ path in the clean part with the variables to
+	be more flexible.
+
+	* src_test/main_test.c:
+	Deleting the temporary main program which purpose was only to test the
+	search functions next to the CUnit tests.
+
+2008-10-20 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* Makefile:
+	Adding the logfile object to the library compilation for the arm
+	processor (was missing and was needed).
+
+	Renaming the testing file to *_x86.{c,h,o}, because they running on
+	the x86 architecture and not on the mobile device.
+
+	* src/pf_administration.{h,c}:
+	Beginning with the implementation of the edit functions.
+	Starting with the function "change_name(...)" as a test
+	implementation. 
+
+	* run.sh:
+	Adapting the program name to the new name (see Makefile above).
+
 2008-10-14 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* Makefile:

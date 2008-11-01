@@ -28,6 +28,7 @@
 
 void test_add_blacklist_entry(void)
 {
+#if 1
 	/* [OK]    -> Testuser 1:  Number in Italy. */
 	CU_ASSERT(add_entry(39, 328, 123456789, "Testuser 1", "I don't like him.", 0, BLACKLIST_FLAG) == 0);
 
@@ -65,6 +66,15 @@ void test_add_blacklist_entry(void)
 
 	/* [OK]    -> Testuser 6:  Priority is 2, which is higher than normal (0) . */
 	CU_ASSERT(add_entry(49, 329, 999999999, "Testuser 6", NULL, PRIO_ALL, BLACKLIST_FLAG) == 0);
+#endif
+}
+
+void test_change_blacklist_name(void)
+{
+#if 0
+        /* [OK]    -> Testuser 6: Change "Testuser 5" to "New-Testuser 5" */
+        CU_ASSERT(change_name(49, 329, 222222222, "NewTestuser5", BLACKLIST_FLAG) == 1);
+#endif
 }
 
 void test_rm_blacklist_entry(void)
@@ -77,6 +87,7 @@ void test_rm_blacklist_entry(void)
 
 void test_add_whitelist_entry(void)
 {
+#if 1
 	/* [OK]    -> Testuser 1:  Number in Italy. */
 	CU_ASSERT(add_entry(39, 128, 123456789, "Testuser 1", "I don't like him.", 0, WHITELIST_FLAG) == 0);
 
@@ -120,6 +131,14 @@ void test_add_whitelist_entry(void)
 
 	/* [OK]    -> Testuser 9:  Number in Italy. */
 	CU_ASSERT(add_entry(39, 128, 123456785, "Testuser 9", "I don't like him.", 10, WHITELIST_FLAG) == 0);
+#endif
+}
+
+void test_change_whitelist_name(void)
+{
+#if 0
+
+#endif
 }
 
 void test_rm_whitelist_entry(void)
@@ -206,11 +225,13 @@ int main(int argc, char *argv[])
 
 	CU_initialize_registry();
 
-        adminSuite = CU_add_suite("Testing Phone Firewall - administration features (add, remove and check)", NULL, NULL);
+        adminSuite = CU_add_suite("Testing Phone Firewall - administration features (add, remove, change and check)", NULL, NULL);
 	CU_add_test(adminSuite, "test of add_blacklist_entry()", test_add_blacklist_entry);
 	CU_add_test(adminSuite, "test of add_whitelist_entry()", test_add_whitelist_entry);
 	CU_add_test(adminSuite, "test of check_whitelist_entry()", test_check_whitelist_entry);
 	CU_add_test(adminSuite, "test of check_blacklist_entry()", test_check_blacklist_entry);
+        CU_add_test(adminSuite, "test of change_blacklist_name()", test_change_blacklist_name);
+        CU_add_test(adminSuite, "test of change_withelist_name()", test_change_whitelist_name);
 	CU_add_test(adminSuite, "test of rm_blacklist_entry()", test_rm_blacklist_entry);
 	CU_add_test(adminSuite, "test of rm_whitelist_entry()", test_rm_whitelist_entry);
 

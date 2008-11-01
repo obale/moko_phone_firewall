@@ -53,15 +53,15 @@ else
                         exit
                         ;;
                         "CUnit")
-                        ./bin_test/testphonefirewall;
+                        ./bin_test/phonefirewall_x86;
                         exit
                         ;;
                         "CUnit+Valgrind+verbose")
-                        valgrind -v --leak-check=full ./bin_test/testphonefirewall
+                        valgrind -v --leak-check=full ./bin_test/phonefirewall_x86
                         exit
                         ;;
                         "CUnit+Valgrind")
-                        valgrind ./bin_test/testphonefirewall
+                        valgrind ./bin_test/phonefirewall_x86
                         exit
                         ;;
                 esac
