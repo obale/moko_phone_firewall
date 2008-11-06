@@ -2,9 +2,10 @@ Package: phonefirewall-dev
 Section: libs
 Source: http://moko.networld.to/?p=gsm/phone-firewall.git;a=summary
 Priority: optional
-Version: 0.01_dbc3dd2a7ae8b043
+Version: 0.01_4b47985a18de62b3
 Architecture: armv4t
 Maintainer: Alex Oberhauser <oberhauseralex@networld.to>
 Depends: libsqlite3-0 
-Description: Phone Firewall is a program which manages a black- and whitelist.
-        So you have the possibility to block or accept contacts.
+Description: With the phone firewall you can block or accept certain contacts.
+        It uses a black- and whitelist to differ from the accepted and
+        rejected contacts.
