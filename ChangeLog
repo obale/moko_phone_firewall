@@ -1,5 +1,17 @@
 2008-11-06 Alex Oberhauser <oberhauseralex@networld.to>
 
+	* src/libphonefirewall.h:
+	Changing the path to the database to:
+
+		"/var/lib/moksec/phonefirewall.db"
+
+	* src/logfile.h:
+	Changingn the path to the logfile to:
+
+		"/var/log/moksec/phonefirewall.log"
+
+2008-11-06 Alex Oberhauser <oberhauseralex@networld.to>
+
 	* src/pf_administration.c:
 	Adding the functions check_entry_string and evaluate_stmt_string to
 	treat a number as a unique string. So it's possible to integrate the

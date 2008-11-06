@@ -18,7 +18,7 @@
  * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#define LOGFILE "/tmp/phonefirewall.log"
+#define LOGFILE "/var/lib/moksec/phonefirewall.log"
 #define MAX_ENTRY_LENGTH 128
 
 #define UNKNOWN     0 /** Not specified                              */
