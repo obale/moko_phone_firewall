@@ -34,11 +34,23 @@ Include dependency graph for pf_administration.c:</div>
 <tr><td colspan="2"><br><h2>Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="pf__administration_8c.html#f306b60195d745190ef3e30e7d0a107e">evaluate_stmt</a> (sqlite3_stmt *pp_stmt, struct <a class="el" href="structEntry.html">Entry</a> *p_entry)</td></tr>
 
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="pf__administration_8c.html#e78f5e5ff300ed4d4ff4c1c987bda7c4">evaluate_stmt_string</a> (sqlite3_stmt *pp_stmt, char *number, int priority)</td></tr>
+
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="pf__administration_8c.html#6c03680796f887d3851428fb2b9ecbc5">add_entry</a> (int country_code, int area_code, unsigned long long number, char *name, char *reason, int priority, int listflag)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="pf__administration_8c.html#ab5a3f8ece1e8f7c4f11d003a10f7403">rm_entry</a> (int country_code, int area_code, unsigned long long number, int listflag)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="pf__administration_8c.html#754e9a8891128a285fc17132b5480a07">check_entry</a> (int country_code, int area_code, unsigned long long number, int priority, int listflag)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="pf__administration_8c.html#2edf8cd83efaa23984150c5c7e62d628">check_entry_string</a> (char *number, int priority, int listflag)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="pf__administration_8c.html#a3f4effcf850afd9ac912fe3ec7c7b16">change_name</a> (int country_code, int area_code, unsigned long long number, char *new_name, int listflag)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="pf__administration_8c.html#2dff06b890556fd5ac9f992c925d5550">change_number</a> (int country_code, int area_code, unsigned long long number, int new_country_code, int new_area_code, unsigned long long new_number, int listflag)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="pf__administration_8c.html#f57945a657640ebf2333991484bd8a4c">change_reason</a> (int country_code, int area_code, unsigned long long number, char *new_reason, int listflag)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="pf__administration_8c.html#985dd7c968f457400d40538864fee0c0">change_priority</a> (int country_code, int area_code, unsigned long long number, int new_priority, int listflag)</td></tr>
 
 </table>
 <hr><h2>Function Documentation</h2>
@@ -114,9 +126,275 @@ Add a number to the blacklist/whitelist. The number will be blocked after that.<
 The value "PRIO_ALL" stands for all priorities.<p>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If all goes well 0 (zero) otherwise -1 and the errno variable will be set.. </dd></dl>
 
-<p>Definition at line <a class="el" href="pf__administration_8c-source.html#l00074">74</a> of file <a class="el" href="pf__administration_8c-source.html">pf_administration.c</a>.</p>
+<p>Definition at line <a class="el" href="pf__administration_8c-source.html#l00110">110</a> of file <a class="el" href="pf__administration_8c-source.html">pf_administration.c</a>.</p>
 
-<p>References <a class="el" href="libphonefirewall_8h-source.html#l00049">BLACKLIST_FLAG</a>, <a class="el" href="libphonefirewall_8h-source.html#l00038">DB_FILE</a>, <a class="el" href="logfile_8h-source.html#l00030">ERR_LOG</a>, <a class="el" href="libphonefirewall_8h-source.html#l00040">MAX_LINE_LENGTH</a>, <a class="el" href="libphonefirewall_8h-source.html#l00037">PRIO_ALL</a>, <a class="el" href="libphonefirewall_8h-source.html#l00039">STMT_SIZE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00043">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00045">TB_NAME</a>, <a class="el" href="libphonefirewall_8h-source.html#l00044">TB_NUMBER</a>, <a class="el" href="libphonefirewall_8h-source.html#l00047">TB_PRIORITY</a>, <a class="el" href="libphonefirewall_8h-source.html#l00046">TB_REASON</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00050">WHITELIST_FLAG</a>.</p>
+<p>References <a class="el" href="libphonefirewall_8h-source.html#l00037">DB_FILE</a>, <a class="el" href="logfile_8h-source.html#l00030">ERR_LOG</a>, <a class="el" href="libphonefirewall_8h-source.html#l00039">MAX_LINE_LENGTH</a>, <a class="el" href="libphonefirewall_8h-source.html#l00036">PRIO_ALL</a>, <a class="el" href="libphonefirewall_8h-source.html#l00038">STMT_SIZE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00041">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00044">TB_NAME</a>, <a class="el" href="libphonefirewall_8h-source.html#l00043">TB_NUMBER</a>, <a class="el" href="libphonefirewall_8h-source.html#l00046">TB_PRIORITY</a>, <a class="el" href="libphonefirewall_8h-source.html#l00045">TB_REASON</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00049">WHITELIST_FLAG</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="a3f4effcf850afd9ac912fe3ec7c7b16"></a><!-- doxytag: member="pf_administration.c::change_name" ref="a3f4effcf850afd9ac912fe3ec7c7b16" args="(int country_code, int area_code, unsigned long long number, char *new_name, int listflag)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int change_name           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>country_code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>area_code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned long long&nbsp;</td>
+          <td class="paramname"> <em>number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>new_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>listflag</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Changes the name of the <a class="el" href="structentry.html" title="Includes all informations for an entry.">entry</a>. For the unique identification you need to enter the country code, area code and the number because this tripple identifies the <a class="el" href="structentry.html" title="Includes all informations for an entry.">entry</a>.<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>country_code</em>&nbsp;</td><td>The country code (for example 39 for Italy, 43 for Austria, and so one) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>area_code</em>&nbsp;</td><td>The area code which indicates your mobile operator. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>number</em>&nbsp;</td><td>The telephone number of the person (without country and area code. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>new_name</em>&nbsp;</td><td>The new name </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>listflag</em>&nbsp;</td><td>A flag, which indicates if you would use the blacklist (BLACKLIST_FLAG) or the whitelist (WHITELIST_FLAG).<br>
+</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>If the number was changed 1, otherwise 0. </dd></dl>
+
+<p>Definition at line <a class="el" href="pf__administration_8c-source.html#l00326">326</a> of file <a class="el" href="pf__administration_8c-source.html">pf_administration.c</a>.</p>
+
+<p>References <a class="el" href="libphonefirewall_8h-source.html#l00037">DB_FILE</a>, <a class="el" href="logfile_8h-source.html#l00030">ERR_LOG</a>, <a class="el" href="libphonefirewall_8h-source.html#l00039">MAX_LINE_LENGTH</a>, <a class="el" href="libphonefirewall_8h-source.html#l00038">STMT_SIZE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00041">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00044">TB_NAME</a>, <a class="el" href="libphonefirewall_8h-source.html#l00043">TB_NUMBER</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00049">WHITELIST_FLAG</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="2dff06b890556fd5ac9f992c925d5550"></a><!-- doxytag: member="pf_administration.c::change_number" ref="2dff06b890556fd5ac9f992c925d5550" args="(int country_code, int area_code, unsigned long long number, int new_country_code, int new_area_code, unsigned long long new_number, int listflag)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int change_number           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>country_code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>area_code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned long long&nbsp;</td>
+          <td class="paramname"> <em>number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>new_country_code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>new_area_code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned long long&nbsp;</td>
+          <td class="paramname"> <em>new_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>listflag</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Changes the number of the <a class="el" href="structentry.html" title="Includes all informations for an entry.">entry</a>. You need to enter the country code, area code and the number because this tripple identifies the <a class="el" href="structentry.html" title="Includes all informations for an entry.">entry</a>.<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>country_code</em>&nbsp;</td><td>The country code (for example 39 for Italy, 43 for Austria, and so one) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>area_code</em>&nbsp;</td><td>The area code which indicates your mobile operator. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>number</em>&nbsp;</td><td>The telephone number of the person (without country and area code. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>new_country_code</em>&nbsp;</td><td>The new country code. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>new_area_code</em>&nbsp;</td><td>The new area code. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>new_number</em>&nbsp;</td><td>The new number. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>listflag</em>&nbsp;</td><td>A flag, which indicates if you would use the blacklist (BLACKLIST_FLAG) or the whitelist (WHITELIST_FLAG).<br>
+</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>If the number was changed 1, otherwise 0. </dd></dl>
+
+<p>Definition at line <a class="el" href="pf__administration_8c-source.html#l00365">365</a> of file <a class="el" href="pf__administration_8c-source.html">pf_administration.c</a>.</p>
+
+<p>References <a class="el" href="libphonefirewall_8h-source.html#l00037">DB_FILE</a>, <a class="el" href="logfile_8h-source.html#l00030">ERR_LOG</a>, <a class="el" href="libphonefirewall_8h-source.html#l00039">MAX_LINE_LENGTH</a>, <a class="el" href="libphonefirewall_8h-source.html#l00038">STMT_SIZE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00041">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00043">TB_NUMBER</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00049">WHITELIST_FLAG</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="985dd7c968f457400d40538864fee0c0"></a><!-- doxytag: member="pf_administration.c::change_priority" ref="985dd7c968f457400d40538864fee0c0" args="(int country_code, int area_code, unsigned long long number, int new_priority, int listflag)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int change_priority           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>country_code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>area_code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned long long&nbsp;</td>
+          <td class="paramname"> <em>number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>new_priority</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>listflag</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Changes the priority of the <a class="el" href="structentry.html" title="Includes all informations for an entry.">entry</a>. For the unique identification you need to enter the country code, area code and the number because this tripple identifies the <a class="el" href="structentry.html" title="Includes all informations for an entry.">entry</a>.<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>country_code</em>&nbsp;</td><td>The country code (for example 39 for Italy, 43 for Austria, and so one) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>area_code</em>&nbsp;</td><td>The area code which indicates your mobile operator. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>number</em>&nbsp;</td><td>The telephone number of the person (without country and area code. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>new_priority</em>&nbsp;</td><td>The new priority. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>listflag</em>&nbsp;</td><td>A flag, which indicates if you would use the blacklist (BLACKLIST_FLAG) or the whitelist (WHITELIST_FLAG).<br>
+</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>If the number was changed 1, otherwise 0. </dd></dl>
+
+<p>Definition at line <a class="el" href="pf__administration_8c-source.html#l00445">445</a> of file <a class="el" href="pf__administration_8c-source.html">pf_administration.c</a>.</p>
+
+<p>References <a class="el" href="libphonefirewall_8h-source.html#l00037">DB_FILE</a>, <a class="el" href="logfile_8h-source.html#l00030">ERR_LOG</a>, <a class="el" href="libphonefirewall_8h-source.html#l00039">MAX_LINE_LENGTH</a>, <a class="el" href="libphonefirewall_8h-source.html#l00038">STMT_SIZE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00041">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00043">TB_NUMBER</a>, <a class="el" href="libphonefirewall_8h-source.html#l00046">TB_PRIORITY</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00049">WHITELIST_FLAG</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f57945a657640ebf2333991484bd8a4c"></a><!-- doxytag: member="pf_administration.c::change_reason" ref="f57945a657640ebf2333991484bd8a4c" args="(int country_code, int area_code, unsigned long long number, char *new_reason, int listflag)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int change_reason           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>country_code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>area_code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned long long&nbsp;</td>
+          <td class="paramname"> <em>number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>new_reason</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>listflag</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Changes the reason of the <a class="el" href="structentry.html" title="Includes all informations for an entry.">entry</a>. For the unique identification you need to enter the country code, area code and the number because this tripple identifies the <a class="el" href="structentry.html" title="Includes all informations for an entry.">entry</a>.<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>country_code</em>&nbsp;</td><td>The country code (for example 39 for Italy, 43 for Austria, and so one) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>area_code</em>&nbsp;</td><td>The area code which indicates your mobile operator. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>number</em>&nbsp;</td><td>The telephone number of the person (without country and area code. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>new_reason</em>&nbsp;</td><td>The new reason. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>listflag</em>&nbsp;</td><td>A flag, which indicates if you would use the blacklist (BLACKLIST_FLAG) or the whitelist (WHITELIST_FLAG).<br>
+</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>If the number was changed 1, otherwise 0. </dd></dl>
+
+<p>Definition at line <a class="el" href="pf__administration_8c-source.html#l00406">406</a> of file <a class="el" href="pf__administration_8c-source.html">pf_administration.c</a>.</p>
+
+<p>References <a class="el" href="libphonefirewall_8h-source.html#l00037">DB_FILE</a>, <a class="el" href="logfile_8h-source.html#l00030">ERR_LOG</a>, <a class="el" href="libphonefirewall_8h-source.html#l00039">MAX_LINE_LENGTH</a>, <a class="el" href="libphonefirewall_8h-source.html#l00038">STMT_SIZE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00041">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00043">TB_NUMBER</a>, <a class="el" href="libphonefirewall_8h-source.html#l00045">TB_REASON</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00049">WHITELIST_FLAG</a>.</p>
 
 </div>
 </div><p>
@@ -178,9 +456,9 @@ Checks if a number is on the blacklist/whitelist.<p>
 The value "PRIO_ALL" stands for all priorities.<p>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the number was found 1, otherwise 0. </dd></dl>
 
-<p>Definition at line <a class="el" href="pf__administration_8c-source.html#l00174">174</a> of file <a class="el" href="pf__administration_8c-source.html">pf_administration.c</a>.</p>
+<p>Definition at line <a class="el" href="pf__administration_8c-source.html#l00191">191</a> of file <a class="el" href="pf__administration_8c-source.html">pf_administration.c</a>.</p>
 
-<p>References <a class="el" href="libphonefirewall_8h-source.html#l00063">Entry::area_code</a>, <a class="el" href="libphonefirewall_8h-source.html#l00049">BLACKLIST_FLAG</a>, <a class="el" href="libphonefirewall_8h-source.html#l00062">Entry::country_code</a>, <a class="el" href="libphonefirewall_8h-source.html#l00038">DB_FILE</a>, <a class="el" href="logfile_8h-source.html#l00030">ERR_LOG</a>, <a class="el" href="pf__administration_8c-source.html#l00027">evaluate_stmt()</a>, <a class="el" href="logfile_8h-source.html#l00032">INFO_LOG</a>, <a class="el" href="libphonefirewall_8h-source.html#l00040">MAX_LINE_LENGTH</a>, <a class="el" href="libphonefirewall_8h-source.html#l00064">Entry::number</a>, <a class="el" href="libphonefirewall_8h-source.html#l00067">Entry::priority</a>, <a class="el" href="libphonefirewall_8h-source.html#l00039">STMT_SIZE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00043">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00044">TB_NUMBER</a>, <a class="el" href="libphonefirewall_8h-source.html#l00047">TB_PRIORITY</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00050">WHITELIST_FLAG</a>.</p>
+<p>References <a class="el" href="libphonefirewall_8h-source.html#l00062">Entry::area_code</a>, <a class="el" href="libphonefirewall_8h-source.html#l00048">BLACKLIST_FLAG</a>, <a class="el" href="libphonefirewall_8h-source.html#l00061">Entry::country_code</a>, <a class="el" href="libphonefirewall_8h-source.html#l00037">DB_FILE</a>, <a class="el" href="logfile_8h-source.html#l00030">ERR_LOG</a>, <a class="el" href="pf__administration_8c-source.html#l00027">evaluate_stmt()</a>, <a class="el" href="logfile_8h-source.html#l00032">INFO_LOG</a>, <a class="el" href="libphonefirewall_8h-source.html#l00039">MAX_LINE_LENGTH</a>, <a class="el" href="libphonefirewall_8h-source.html#l00063">Entry::number</a>, <a class="el" href="libphonefirewall_8h-source.html#l00066">Entry::priority</a>, <a class="el" href="libphonefirewall_8h-source.html#l00038">STMT_SIZE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00041">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00043">TB_NUMBER</a>, <a class="el" href="libphonefirewall_8h-source.html#l00046">TB_PRIORITY</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00049">WHITELIST_FLAG</a>.</p>
 
 <p>
 <div class="dynheader">
@@ -189,6 +467,64 @@ Here is the call graph for this function:</div>
 <p><center><img src="pf__administration_8c_754e9a8891128a285fc17132b5480a07_cgraph.png" border="0" usemap="#pf__administration_8c_754e9a8891128a285fc17132b5480a07_cgraph_map" alt=""></center>
 <map name="pf__administration_8c_754e9a8891128a285fc17132b5480a07_cgraph_map">
 <area shape="rect" href="pf__administration_8c.html#f306b60195d745190ef3e30e7d0a107e" title="evaluate_stmt" alt="" coords="153,5,265,32"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="2edf8cd83efaa23984150c5c7e62d628"></a><!-- doxytag: member="pf_administration.c::check_entry_string" ref="2edf8cd83efaa23984150c5c7e62d628" args="(char *number, int priority, int listflag)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int check_entry_string           </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>priority</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>listflag</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Checks if a number is on the blacklist/whitelist.<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>number</em>&nbsp;</td><td>The whole number with country code, area code and phone number. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>priority</em>&nbsp;</td><td>Gives the <a class="el" href="structentry.html" title="Includes all informations for an entry.">entry</a> a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>listflag</em>&nbsp;</td><td>A flag, which indicates if you would use the blacklist (BLACKLIST_FLAG) or the whitelist (WHITELIST_FLAG).<br>
+</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>If the number was found 1, otherwise 0. </dd></dl>
+
+<p>Definition at line <a class="el" href="pf__administration_8c-source.html#l00263">263</a> of file <a class="el" href="pf__administration_8c-source.html">pf_administration.c</a>.</p>
+
+<p>References <a class="el" href="libphonefirewall_8h-source.html#l00048">BLACKLIST_FLAG</a>, <a class="el" href="libphonefirewall_8h-source.html#l00037">DB_FILE</a>, <a class="el" href="logfile_8h-source.html#l00030">ERR_LOG</a>, <a class="el" href="pf__administration_8c-source.html#l00073">evaluate_stmt_string()</a>, <a class="el" href="logfile_8h-source.html#l00032">INFO_LOG</a>, <a class="el" href="libphonefirewall_8h-source.html#l00039">MAX_LINE_LENGTH</a>, <a class="el" href="libphonefirewall_8h-source.html#l00038">STMT_SIZE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00041">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00043">TB_NUMBER</a>, <a class="el" href="libphonefirewall_8h-source.html#l00046">TB_PRIORITY</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00049">WHITELIST_FLAG</a>.</p>
+
+<p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="pf__administration_8c_2edf8cd83efaa23984150c5c7e62d628_cgraph.png" border="0" usemap="#pf__administration_8c_2edf8cd83efaa23984150c5c7e62d628_cgraph_map" alt=""></center>
+<map name="pf__administration_8c_2edf8cd83efaa23984150c5c7e62d628_cgraph_map">
+<area shape="rect" href="pf__administration_8c.html#e78f5e5ff300ed4d4ff4c1c987bda7c4" title="evaluate_stmt_string" alt="" coords="196,5,351,32"></map>
 </div>
 
 </div>
@@ -222,9 +558,9 @@ Here is the call graph for this function:</div>
 
 <p>Definition at line <a class="el" href="pf__administration_8c-source.html#l00027">27</a> of file <a class="el" href="pf__administration_8c-source.html">pf_administration.c</a>.</p>
 
-<p>References <a class="el" href="libphonefirewall_8h-source.html#l00063">Entry::area_code</a>, <a class="el" href="libphonefirewall_8h-source.html#l00062">Entry::country_code</a>, <a class="el" href="libphonefirewall_8h-source.html#l00064">Entry::number</a>, <a class="el" href="libphonefirewall_8h-source.html#l00037">PRIO_ALL</a>, <a class="el" href="libphonefirewall_8h-source.html#l00067">Entry::priority</a>, <a class="el" href="libphonefirewall_8h-source.html#l00043">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00044">TB_NUMBER</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00047">TB_PRIORITY</a>.</p>
+<p>References <a class="el" href="libphonefirewall_8h-source.html#l00062">Entry::area_code</a>, <a class="el" href="libphonefirewall_8h-source.html#l00061">Entry::country_code</a>, <a class="el" href="libphonefirewall_8h-source.html#l00063">Entry::number</a>, <a class="el" href="libphonefirewall_8h-source.html#l00036">PRIO_ALL</a>, <a class="el" href="libphonefirewall_8h-source.html#l00066">Entry::priority</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00041">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00043">TB_NUMBER</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00046">TB_PRIORITY</a>.</p>
 
-<p>Referenced by <a class="el" href="pf__administration_8c-source.html#l00174">check_entry()</a>.</p>
+<p>Referenced by <a class="el" href="pf__administration_8c-source.html#l00191">check_entry()</a>.</p>
 
 <p>
 <div class="dynheader">
@@ -233,6 +569,56 @@ Here is the caller graph for this function:</div>
 <p><center><img src="pf__administration_8c_f306b60195d745190ef3e30e7d0a107e_icgraph.png" border="0" usemap="#pf__administration_8c_f306b60195d745190ef3e30e7d0a107e_icgraph_map" alt=""></center>
 <map name="pf__administration_8c_f306b60195d745190ef3e30e7d0a107e_icgraph_map">
 <area shape="rect" href="pf__administration_8h.html#754e9a8891128a285fc17132b5480a07" title="check_entry" alt="" coords="168,5,267,32"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="e78f5e5ff300ed4d4ff4c1c987bda7c4"></a><!-- doxytag: member="pf_administration.c::evaluate_stmt_string" ref="e78f5e5ff300ed4d4ff4c1c987bda7c4" args="(sqlite3_stmt *pp_stmt, char *number, int priority)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int evaluate_stmt_string           </td>
+          <td>(</td>
+          <td class="paramtype">sqlite3_stmt *&nbsp;</td>
+          <td class="paramname"> <em>pp_stmt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>priority</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="pf__administration_8c-source.html#l00073">73</a> of file <a class="el" href="pf__administration_8c-source.html">pf_administration.c</a>.</p>
+
+<p>References <a class="el" href="libphonefirewall_8h-source.html#l00036">PRIO_ALL</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00041">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00043">TB_NUMBER</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00046">TB_PRIORITY</a>.</p>
+
+<p>Referenced by <a class="el" href="pf__administration_8c-source.html#l00263">check_entry_string()</a>.</p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="pf__administration_8c_e78f5e5ff300ed4d4ff4c1c987bda7c4_icgraph.png" border="0" usemap="#pf__administration_8c_e78f5e5ff300ed4d4ff4c1c987bda7c4_icgraph_map" alt=""></center>
+<map name="pf__administration_8c_e78f5e5ff300ed4d4ff4c1c987bda7c4_icgraph_map">
+<area shape="rect" href="pf__administration_8h.html#2edf8cd83efaa23984150c5c7e62d628" title="check_entry_string" alt="" coords="211,5,352,32"></map>
 </div>
 
 </div>
@@ -287,13 +673,13 @@ Removes a number from the blacklist/whitelist.<p>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If all goes right 0, otherwise an error code. </dd></dl>
 
-<p>Definition at line <a class="el" href="pf__administration_8c-source.html#l00128">128</a> of file <a class="el" href="pf__administration_8c-source.html">pf_administration.c</a>.</p>
+<p>Definition at line <a class="el" href="pf__administration_8c-source.html#l00155">155</a> of file <a class="el" href="pf__administration_8c-source.html">pf_administration.c</a>.</p>
 
-<p>References <a class="el" href="libphonefirewall_8h-source.html#l00049">BLACKLIST_FLAG</a>, <a class="el" href="libphonefirewall_8h-source.html#l00038">DB_FILE</a>, <a class="el" href="logfile_8h-source.html#l00030">ERR_LOG</a>, <a class="el" href="libphonefirewall_8h-source.html#l00040">MAX_LINE_LENGTH</a>, <a class="el" href="libphonefirewall_8h-source.html#l00039">STMT_SIZE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00043">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00044">TB_NUMBER</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00050">WHITELIST_FLAG</a>.</p>
+<p>References <a class="el" href="libphonefirewall_8h-source.html#l00037">DB_FILE</a>, <a class="el" href="logfile_8h-source.html#l00030">ERR_LOG</a>, <a class="el" href="libphonefirewall_8h-source.html#l00039">MAX_LINE_LENGTH</a>, <a class="el" href="libphonefirewall_8h-source.html#l00038">STMT_SIZE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00041">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00043">TB_NUMBER</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00049">WHITELIST_FLAG</a>.</p>
 
 </div>
 </div><p>
-<hr size="1"><address style="text-align: right;"><small>Generated on Thu Oct 2 18:30:01 2008 for Phone Firewall by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Thu Nov 6 12:41:23 2008 for Phone Firewall by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

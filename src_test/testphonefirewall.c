@@ -1,7 +1,7 @@
 /*
  * testphonefirewall.c
  *
- * (C) 2008 by Networld Consulting, Ltd.
+ * (C) 2008 by MokSec Project
  * Written by Alex Oberhauser <oberhauseralex@networld.to>
  * All Rights Reserved
  *
@@ -162,6 +162,18 @@ void test_check_blacklist_entry(void)
 #endif
 }
 
+void test_check_blacklist_entry_string(void)
+{
+#if 1
+	CU_ASSERT(check_entry_string("39328123456789", 0, BLACKLIST_FLAG) == 1);
+	CU_ASSERT(check_entry_string("39328103456785", 0, BLACKLIST_FLAG) == 0);
+	CU_ASSERT(check_entry_string("49329999999999", 0, BLACKLIST_FLAG) == 1);
+	CU_ASSERT(check_entry_string("49329222222222", 0, BLACKLIST_FLAG) == 0);
+	CU_ASSERT(check_entry_string("49329222222222", 2, BLACKLIST_FLAG) == 1);
+	CU_ASSERT(check_entry_string("49329222222222", 3, BLACKLIST_FLAG) == 1);
+#endif
+}
+
 void test_check_whitelist_entry(void)
 {
 #if 1
@@ -171,6 +183,18 @@ void test_check_whitelist_entry(void)
 	CU_ASSERT(check_entry(49, 129, 222222222, 0, WHITELIST_FLAG) == 0);
 	CU_ASSERT(check_entry(49, 129, 222222222, 2, WHITELIST_FLAG) == 1);
 	CU_ASSERT(check_entry(49, 129, 222222222, 3, WHITELIST_FLAG) == 1);
+#endif
+}
+
+void test_check_whitelist_entry_string(void)
+{
+#if 1
+	CU_ASSERT(check_entry_string("39128123456789", 0, WHITELIST_FLAG) == 1);
+	CU_ASSERT(check_entry_string("39128103456785", 0, WHITELIST_FLAG) == 0);
+	CU_ASSERT(check_entry_string("49129999999999", 0, WHITELIST_FLAG) == 1);
+	CU_ASSERT(check_entry_string("49129222222222", 0, WHITELIST_FLAG) == 0);
+	CU_ASSERT(check_entry_string("49129222222222", 2, WHITELIST_FLAG) == 1);
+	CU_ASSERT(check_entry_string("49129222222222", 3, WHITELIST_FLAG) == 1);
 #endif
 }
 
@@ -229,7 +253,9 @@ int main(int argc, char *argv[])
 	CU_add_test(adminSuite, "test of add_blacklist_entry()", test_add_blacklist_entry);
 	CU_add_test(adminSuite, "test of add_whitelist_entry()", test_add_whitelist_entry);
 	CU_add_test(adminSuite, "test of check_whitelist_entry()", test_check_whitelist_entry);
+	CU_add_test(adminSuite, "test of check_whitelist_entry_string()", test_check_whitelist_entry_string);
 	CU_add_test(adminSuite, "test of check_blacklist_entry()", test_check_blacklist_entry);
+	CU_add_test(adminSuite, "test of check_blacklist_entry_string()", test_check_blacklist_entry_string);
         CU_add_test(adminSuite, "test of change_blacklist_name()", test_change_blacklist_name);
         CU_add_test(adminSuite, "test of change_withelist_name()", test_change_whitelist_name);
 	CU_add_test(adminSuite, "test of rm_blacklist_entry()", test_rm_blacklist_entry);
