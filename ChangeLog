@@ -1,3 +1,21 @@
+2008-11-06 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* src/pf_administration.c:
+	Adding the functions check_entry_string and evaluate_stmt_string to
+	treat a number as a unique string. So it's possible to integrate the
+	phone firewall over d-bus.
+
+	* src/pf_administration.h:
+	Declaring the functions check_entry_string and evaluate_stmt_string
+	with a doxygen description.
+
+	* src_test/testphonefirewall.c:
+	Adding the same tests for the newly implemented function as for the
+	old part with country code, area code and number divided.
+
+	* doc/*:
+	Compiling the doxygen documentation.
+
 2008-11-01 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* src/pf_search.c

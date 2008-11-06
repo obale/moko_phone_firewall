@@ -1,4 +1,4 @@
-.TH "logfile.h" 3 "2 Oct 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
+.TH "logfile.h" 3 "6 Nov 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -10,7 +10,7 @@ logfile.h \-
 
 .in +1c
 .ti -1c
-.RI "#define \fBLOGFILE\fP   'log/moksec.log'"
+.RI "#define \fBLOGFILE\fP   '/tmp/phonefirewall.log'"
 .br
 .ti -1c
 .RI "#define \fBMAX_ENTRY_LENGTH\fP   128"
@@ -58,7 +58,7 @@ Referenced by write_logentry().
 .PP
 Definition at line 30 of file logfile.h.
 .PP
-Referenced by add_entry(), check_entry(), get_entry_by_name(), get_entry_by_number(), get_entry_by_reason(), and rm_entry().
+Referenced by add_entry(), change_name(), change_number(), change_priority(), change_reason(), check_entry(), check_entry_string(), get_entry_by_name(), get_entry_by_number(), get_entry_by_reason(), and rm_entry().
 .SS "#define INFO_FLAG   3"
 .PP
 Definition at line 27 of file logfile.h.
@@ -68,8 +68,8 @@ Referenced by write_logentry().
 .PP
 Definition at line 32 of file logfile.h.
 .PP
-Referenced by check_entry().
-.SS "#define LOGFILE   'log/moksec.log'"
+Referenced by check_entry(), and check_entry_string().
+.SS "#define LOGFILE   '/tmp/phonefirewall.log'"
 .PP
 Definition at line 21 of file logfile.h.
 .PP
@@ -117,7 +117,7 @@ Writes a logfile enty.
 .PP
 
 .PP
-Definition at line 56 of file logfile.c.
+Definition at line 58 of file logfile.c.
 .PP
 References asctime(), ERR_FLAG, INFO_FLAG, LOGFILE, MAX_ENTRY_LENGTH, UNKNOWN, and WARN_FLAG.
 .SH "Author"

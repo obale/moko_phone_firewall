@@ -89,6 +89,23 @@ int check_entry(int country_code,
                 int listflag);
 
 /**
+ * Checks if a number is on the blacklist/whitelist.
+ * 
+ * @param number The whole number with country code, area code and phone
+ * number.
+ * @param priority Gives the entry a priority. 0 is standard. If the priority
+ * is higher the value will be also blocked/accepted if a higher priority is
+ * choosen.
+ * @param listflag A flag, which indicates if you would use the blacklist
+ * (BLACKLIST_FLAG) or the whitelist (WHITELIST_FLAG).<br>
+ *
+ * @return If the number was found 1, otherwise 0.
+ */
+int check_entry_string(char *number,
+                       int priority,
+                       int listflag);
+
+/**
  * Changes the name of the entry. For the unique identification you need to
  * enter the country code, area code and the number because this tripple
  * identifies the entry.

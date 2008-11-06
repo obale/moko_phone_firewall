@@ -50,7 +50,37 @@
 <a name="l00087"></a>00087                 <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="structEntry.html#1f2177afed89936f82c130ae13fb107c">number</a>,
 <a name="l00088"></a>00088                 <span class="keywordtype">int</span> <a class="code" href="structEntry.html#85af261b3171c257892b54a7200da061">priority</a>,
 <a name="l00089"></a>00089                 <span class="keywordtype">int</span> listflag);
-</pre></div><hr size="1"><address style="text-align: right;"><small>Generated on Thu Oct 2 18:29:55 2008 for Phone Firewall by&nbsp;
+<a name="l00090"></a>00090 
+<a name="l00104"></a>00104 <span class="keywordtype">int</span> <a class="code" href="pf__administration_8c.html#2edf8cd83efaa23984150c5c7e62d628">check_entry_string</a>(<span class="keywordtype">char</span> *<a class="code" href="structEntry.html#1f2177afed89936f82c130ae13fb107c">number</a>,
+<a name="l00105"></a>00105                        <span class="keywordtype">int</span> <a class="code" href="structEntry.html#85af261b3171c257892b54a7200da061">priority</a>,
+<a name="l00106"></a>00106                        <span class="keywordtype">int</span> listflag);
+<a name="l00107"></a>00107 
+<a name="l00124"></a>00124 <span class="keywordtype">int</span> <a class="code" href="pf__administration_8c.html#a3f4effcf850afd9ac912fe3ec7c7b16">change_name</a>(<span class="keywordtype">int</span> <a class="code" href="structEntry.html#138b4e79687ff5ff6de4554db0f061fd">country_code</a>,
+<a name="l00125"></a>00125                 <span class="keywordtype">int</span> <a class="code" href="structEntry.html#9de7b96e5b65796bd35e9dc730dcd8b3">area_code</a>,
+<a name="l00126"></a>00126                 <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="structEntry.html#1f2177afed89936f82c130ae13fb107c">number</a>,
+<a name="l00127"></a>00127                 <span class="keywordtype">char</span> *new_name,
+<a name="l00128"></a>00128                 <span class="keywordtype">int</span> listflag);
+<a name="l00129"></a>00129 
+<a name="l00147"></a>00147 <span class="keywordtype">int</span> <a class="code" href="pf__administration_8c.html#2dff06b890556fd5ac9f992c925d5550">change_number</a>(<span class="keywordtype">int</span> <a class="code" href="structEntry.html#138b4e79687ff5ff6de4554db0f061fd">country_code</a>,
+<a name="l00148"></a>00148                   <span class="keywordtype">int</span> <a class="code" href="structEntry.html#9de7b96e5b65796bd35e9dc730dcd8b3">area_code</a>,
+<a name="l00149"></a>00149                   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="structEntry.html#1f2177afed89936f82c130ae13fb107c">number</a>,
+<a name="l00150"></a>00150                   <span class="keywordtype">int</span> new_country_code,
+<a name="l00151"></a>00151                   <span class="keywordtype">int</span> new_area_code,
+<a name="l00152"></a>00152                   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> new_number,
+<a name="l00153"></a>00153                   <span class="keywordtype">int</span> listflag);
+<a name="l00154"></a>00154 
+<a name="l00171"></a>00171 <span class="keywordtype">int</span> <a class="code" href="pf__administration_8c.html#f57945a657640ebf2333991484bd8a4c">change_reason</a>(<span class="keywordtype">int</span> <a class="code" href="structEntry.html#138b4e79687ff5ff6de4554db0f061fd">country_code</a>,
+<a name="l00172"></a>00172                   <span class="keywordtype">int</span> <a class="code" href="structEntry.html#9de7b96e5b65796bd35e9dc730dcd8b3">area_code</a>,
+<a name="l00173"></a>00173                   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="structEntry.html#1f2177afed89936f82c130ae13fb107c">number</a>,
+<a name="l00174"></a>00174                   <span class="keywordtype">char</span> *new_reason,
+<a name="l00175"></a>00175                   <span class="keywordtype">int</span> listflag);
+<a name="l00176"></a>00176 
+<a name="l00193"></a>00193 <span class="keywordtype">int</span> <a class="code" href="pf__administration_8c.html#985dd7c968f457400d40538864fee0c0">change_priority</a>(<span class="keywordtype">int</span> <a class="code" href="structEntry.html#138b4e79687ff5ff6de4554db0f061fd">country_code</a>,
+<a name="l00194"></a>00194                     <span class="keywordtype">int</span> <a class="code" href="structEntry.html#9de7b96e5b65796bd35e9dc730dcd8b3">area_code</a>,
+<a name="l00195"></a>00195                     <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="structEntry.html#1f2177afed89936f82c130ae13fb107c">number</a>,
+<a name="l00196"></a>00196                     <span class="keywordtype">int</span> new_priority,
+<a name="l00197"></a>00197                     <span class="keywordtype">int</span> listflag);
+</pre></div><hr size="1"><address style="text-align: right;"><small>Generated on Thu Nov 6 12:41:18 2008 for Phone Firewall by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

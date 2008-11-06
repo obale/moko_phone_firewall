@@ -1,4 +1,4 @@
-This is pdfeTeX, Version 3.141592-1.30.5-2.2 (Web2C 7.5.5) (format=pdflatex 2008.6.16)  9 JUL 2008 11:12
+This is pdfeTeX, Version 3.141592-1.30.5-2.2 (Web2C 7.5.5) (format=pdflatex 2008.9.5)  6 NOV 2008 10:42
 entering extended mode
 **refman.tex
 (./refman.tex
@@ -598,8 +598,8 @@ LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
 
 Writing index file refman.idx
 (./refman.aux (./structentry.aux) (./logfile_8c.aux) (./logfile_8h.aux)
-(./pf__daemon_8c.aux) (./pf__daemon_8h.aux)
-(./phonefirewall__administration_8c.aux) (./phonefirewall__search_8c.aux))
+(./pf__administration_8c.aux) (./pf__administration_8h.aux)
+(./pf__search_8c.aux) (./pf__search_8h.aux))
 \openout1 = `refman.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
@@ -755,17 +755,19 @@ LaTeX Font Info:    Try loading font information for T1+pcr on input line 5.
  (/usr/share/texmf/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 7.
-LaTeX Font Info:    Try loading font information for TS1+ptm on input line 10.
+<structEntry__coll__graph.pdf, id=147, 87.32625pt x 30.1125pt>
+File: structEntry__coll__graph.pdf Graphic file (type pdf)
 
-(/usr/share/texmf/tex/latex/psnfss/ts1ptm.fd
+<use structEntry__coll__graph.pdf>
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 14.
+LaTeX Font Info:    Try loading font information for TS1+ptm on input line 17.
+ (/usr/share/texmf/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-) [5]) [6]
+) [5 <./structEntry__coll__graph.pdf>]) [6]
 \openout2 = `structentry.aux'.
 
- (./structentry.tex)
-[7
+ (./structentry.tex) [7
 
 ] [8
 
@@ -773,383 +775,304 @@ File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 ]
 Chapter 4.
 (./libphonefirewall_8h.tex
-<libphonefirewall_8h__dep__incl.pdf, id=198, 417.56pt x 88.33pt>
+<libphonefirewall_8h__incl.pdf, id=209, 277.035pt x 88.33pt>
+File: libphonefirewall_8h__incl.pdf Graphic file (type pdf)
+
+<use libphonefirewall_8h__incl.pdf>
+<libphonefirewall_8h__dep__incl.pdf, id=210, 204.765pt x 88.33pt>
 File: libphonefirewall_8h__dep__incl.pdf Graphic file (type pdf)
 
-<use libphonefirewall_8h__dep__incl.pdf> [9 <./libphonefirewall_8h__dep__incl.p
-df>] [10]
-LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <10> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 200.
- [11]
-Underfull \hbox (badness 10000) in paragraph at lines 218--219
-[]\T1/ptm/m/n/10 References DB_-FILE, ERR_-FLAG, MAX_-LINE_-LENGTH, PRIO_-ALL, 
-STMT_-SIZE, TB_-
+<use libphonefirewall_8h__dep__incl.pdf> [9 <./libphonefirewall_8h__incl.pdf> <
+./libphonefirewall_8h__dep__incl.pdf>]
+Underfull \hbox (badness 1635) in paragraph at lines 105--108
+[]\T1/ptm/m/n/10 Referenced by add_-entry(), change_-name(), change_-number(), 
+change_-priority(), change_-reason(),
  []
 
 
-Underfull \hbox (badness 2717) in paragraph at lines 218--219
-\T1/ptm/m/n/10 AREACODE, TB_-COUNTRYCODE, TB_-NAME, TB_-NUMBER, TB_-PRIORITY, T
-B_-REASON,
+Underfull \hbox (badness 1635) in paragraph at lines 116--119
+[]\T1/ptm/m/n/10 Referenced by add_-entry(), change_-name(), change_-number(), 
+change_-priority(), change_-reason(),
+ []
+
+[10]
+Underfull \hbox (badness 1635) in paragraph at lines 138--141
+[]\T1/ptm/m/n/10 Referenced by add_-entry(), change_-name(), change_-number(), 
+change_-priority(), change_-reason(),
  []
 
 
-<libphonefirewall_8h_36847ed3459e2a89038772ece42a017d_cgraph.pdf, id=284, 335.2
-525pt x 28.105pt>
-File: libphonefirewall_8h_36847ed3459e2a89038772ece42a017d_cgraph.pdf Graphic f
-ile (type pdf)
-
-<use libphonefirewall_8h_36847ed3459e2a89038772ece42a017d_cgraph.pdf>
-Underfull \hbox (badness 10000) in paragraph at lines 248--249
-[]\T1/ptm/m/n/10 References DB_-FILE, ERR_-FLAG, MAX_-LINE_-LENGTH, PRIO_-ALL, 
-STMT_-SIZE, TB_-
+Underfull \hbox (badness 1635) in paragraph at lines 149--152
+[]\T1/ptm/m/n/10 Referenced by add_-entry(), change_-name(), change_-number(), 
+change_-priority(), change_-reason(),
  []
 
 
-Underfull \hbox (badness 2717) in paragraph at lines 248--249
-\T1/ptm/m/n/10 AREACODE, TB_-COUNTRYCODE, TB_-NAME, TB_-NUMBER, TB_-PRIORITY, T
-B_-REASON,
- []
-
-[12 <./libphonefirewall_8h_36847ed3459e2a89038772ece42a017d_cgraph.pdf>]
-<libphonefirewall_8h_eec16cb88eb546b1a2490e6716d75f8b_cgraph.pdf, id=303, 337.2
-6pt x 28.105pt>
-File: libphonefirewall_8h_eec16cb88eb546b1a2490e6716d75f8b_cgraph.pdf Graphic f
-ile (type pdf)
-
-<use libphonefirewall_8h_eec16cb88eb546b1a2490e6716d75f8b_cgraph.pdf>
-<libphonefirewall_8h_f28c4b8fd3fdfe5e70df391cf40ca9f2_cgraph.pdf, id=304, 347.2
-975pt x 66.2475pt>
-File: libphonefirewall_8h_f28c4b8fd3fdfe5e70df391cf40ca9f2_cgraph.pdf Graphic f
-ile (type pdf)
-
-<use libphonefirewall_8h_f28c4b8fd3fdfe5e70df391cf40ca9f2_cgraph.pdf> [13 <./li
-bphonefirewall_8h_eec16cb88eb546b1a2490e6716d75f8b_cgraph.pdf> <./libphonefirew
-all_8h_f28c4b8fd3fdfe5e70df391cf40ca9f2_cgraph.pdf>]
-<libphonefirewall_8h_f144fe0aa2eb227fe646da21048388a5_cgraph.pdf, id=324, 349.3
-05pt x 66.2475pt>
-File: libphonefirewall_8h_f144fe0aa2eb227fe646da21048388a5_cgraph.pdf Graphic f
-ile (type pdf)
-
-<use libphonefirewall_8h_f144fe0aa2eb227fe646da21048388a5_cgraph.pdf>
-<libphonefirewall_8h_9d31efccbc01d9cef3876329cf9ed4a2_cgraph.pdf, id=325, 405.5
-15pt x 66.2475pt>
-File: libphonefirewall_8h_9d31efccbc01d9cef3876329cf9ed4a2_cgraph.pdf Graphic f
-ile (type pdf)
-
-<use libphonefirewall_8h_9d31efccbc01d9cef3876329cf9ed4a2_cgraph.pdf> [14 <./li
-bphonefirewall_8h_f144fe0aa2eb227fe646da21048388a5_cgraph.pdf> <./libphonefirew
-all_8h_9d31efccbc01d9cef3876329cf9ed4a2_cgraph.pdf>]
-Underfull \hbox (badness 1215) in paragraph at lines 420--421
-[]\T1/ptm/m/n/10 References DB_-FILE, ERR_-FLAG, MAX_-LINE_-LENGTH, STMT_-SIZE,
- TB_-AREACODE, TB_-
- []
-
-[15]
-<libphonefirewall_8h_4eee00c845ad4a60eaccef8c41151ea4_cgraph.pdf, id=361, 329.2
-3pt x 28.105pt>
-File: libphonefirewall_8h_4eee00c845ad4a60eaccef8c41151ea4_cgraph.pdf Graphic f
-ile (type pdf)
-
-<use libphonefirewall_8h_4eee00c845ad4a60eaccef8c41151ea4_cgraph.pdf>
-Underfull \hbox (badness 1215) in paragraph at lines 449--450
-[]\T1/ptm/m/n/10 References DB_-FILE, ERR_-FLAG, MAX_-LINE_-LENGTH, STMT_-SIZE,
- TB_-AREACODE, TB_-
+Underfull \hbox (badness 1635) in paragraph at lines 160--163
+[]\T1/ptm/m/n/10 Referenced by add_-entry(), change_-name(), change_-number(), 
+change_-priority(), change_-reason(),
  []
 
 
-<libphonefirewall_8h_307d220ee8e63926af279460532787ff_cgraph.pdf, id=362, 331.2
-375pt x 28.105pt>
-File: libphonefirewall_8h_307d220ee8e63926af279460532787ff_cgraph.pdf Graphic f
-ile (type pdf)
+Underfull \hbox (badness 1635) in paragraph at lines 182--185
+[]\T1/ptm/m/n/10 Referenced by add_-entry(), change_-name(), change_-number(), 
+change_-priority(), change_-reason(),
+ []
 
-<use libphonefirewall_8h_307d220ee8e63926af279460532787ff_cgraph.pdf>) [16 <./l
-ibphonefirewall_8h_4eee00c845ad4a60eaccef8c41151ea4_cgraph.pdf> <./libphonefire
-wall_8h_307d220ee8e63926af279460532787ff_cgraph.pdf>]
+[11])
+Underfull \hbox (badness 1635) in paragraph at lines 215--58
+[]\T1/ptm/m/n/10 Referenced by add_-entry(), change_-name(), change_-number(), 
+change_-priority(), change_-reason(),
+ []
+
+[12]
 \openout2 = `logfile_8c.aux'.
 
- (./logfile_8c.tex
-<logfile_8c__incl.pdf, id=382, 264.99pt x 88.33pt>
+ (./logfile_8c.tex <logfile_8c__incl.pdf, id=286, 264.99pt x 88.33pt>
 File: logfile_8c__incl.pdf Graphic file (type pdf)
- <use logfile_8c__incl.pdf>
-<logfile_8c_68a0e9d22417dfcf9c0be64261352e64_icgraph.pdf, id=383, 706.64pt x 40
-9.53pt>
+
+<use logfile_8c__incl.pdf>
+LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <10> not available
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 31.
+
+<logfile_8c_68a0e9d22417dfcf9c0be64261352e64_icgraph.pdf, id=287, 182.6825pt x 
+28.105pt>
 File: logfile_8c_68a0e9d22417dfcf9c0be64261352e64_icgraph.pdf Graphic file (typ
 e pdf)
  <use logfile_8c_68a0e9d22417dfcf9c0be64261352e64_icgraph.pdf>
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[13
 
- [17
-
- <./logfile_8c__incl.pdf>]
-<logfile_8c_f71f5daf2025b4e30a18ccedf7c34863_cgraph.pdf, id=401, 186.6975pt x 2
+ <./logfile_8c__incl.pdf> <./logfile_8c_68a0e9d22417dfcf9c0be64261352e64_icgrap
+h.pdf>]
+<logfile_8c_f71f5daf2025b4e30a18ccedf7c34863_cgraph.pdf, id=315, 186.6975pt x 2
 8.105pt>
 File: logfile_8c_f71f5daf2025b4e30a18ccedf7c34863_cgraph.pdf Graphic file (type
  pdf)
- <use logfile_8c_f71f5daf2025b4e30a18ccedf7c34863_cgraph.pdf>
-<logfile_8c_f71f5daf2025b4e30a18ccedf7c34863_icgraph.pdf, id=402, 616.3025pt x 
-409.53pt>
-File: logfile_8c_f71f5daf2025b4e30a18ccedf7c34863_icgraph.pdf Graphic file (typ
-e pdf)
- <use logfile_8c_f71f5daf2025b4e30a18ccedf7c34863_icgraph.pdf>)
-[18 <./logfile_8c_68a0e9d22417dfcf9c0be64261352e64_icgraph.pdf> <./logfile_8c_f
-71f5daf2025b4e30a18ccedf7c34863_cgraph.pdf>] [19 <./logfile_8c_f71f5daf2025b4e3
-0a18ccedf7c34863_icgraph.pdf>]
+ <use logfile_8c_f71f5daf2025b4e30a18ccedf7c34863_cgraph.pdf>) [14 <./logfile_8
+c_f71f5daf2025b4e30a18ccedf7c34863_cgraph.pdf>]
 \openout2 = `logfile_8h.aux'.
 
  (./logfile_8h.tex
-<logfile_8h__dep__incl.pdf, id=430, 477.785pt x 88.33pt>
+<logfile_8h__dep__incl.pdf, id=326, 234.8775pt x 146.5475pt>
 File: logfile_8h__dep__incl.pdf Graphic file (type pdf)
 
-<use logfile_8h__dep__incl.pdf> [20
+<use logfile_8h__dep__incl.pdf>
+Underfull \hbox (badness 1635) in paragraph at lines 67--70
+[]\T1/ptm/m/n/10 Referenced by add_-entry(), change_-name(), change_-number(), 
+change_-priority(), change_-reason(),
+ []
+
+[15
 
 
- <./logfile_8h__dep__incl.pdf>]
-<logfile_8h_f71f5daf2025b4e30a18ccedf7c34863_cgraph.pdf, id=462, 186.6975pt x 2
+ <./logfile_8h__dep__incl.pdf>] [16]
+<logfile_8h_f71f5daf2025b4e30a18ccedf7c34863_cgraph.pdf, id=379, 186.6975pt x 2
 8.105pt>
 File: logfile_8h_f71f5daf2025b4e30a18ccedf7c34863_cgraph.pdf Graphic file (type
  pdf)
- <use logfile_8h_f71f5daf2025b4e30a18ccedf7c34863_cgraph.pdf>
-<logfile_8h_f71f5daf2025b4e30a18ccedf7c34863_icgraph.pdf, id=463, 616.3025pt x 
-409.53pt>
-File: logfile_8h_f71f5daf2025b4e30a18ccedf7c34863_icgraph.pdf Graphic file (typ
-e pdf)
- <use logfile_8h_f71f5daf2025b4e30a18ccedf7c34863_icgraph.pdf>)
-Underfull \vbox (badness 10000) has occurred while \output is active []
+ <use logfile_8h_f71f5daf2025b4e30a18ccedf7c34863_cgraph.pdf>) [17 <./logfile_8
+h_f71f5daf2025b4e30a18ccedf7c34863_cgraph.pdf>]
+\openout2 = `pf__administration_8c.aux'.
 
- [21 <./logfile_8h_f71f5daf2025b4e30a18ccedf7c34863_cgraph.pdf>] [22 <./logfile
-_8h_f71f5daf2025b4e30a18ccedf7c34863_icgraph.pdf>]
-\openout2 = `pf__daemon_8c.aux'.
 
- (./pf__daemon_8c.tex
-<pf__daemon_8c__incl.pdf, id=489, 716.6775pt x 88.33pt>
-File: pf__daemon_8c__incl.pdf Graphic file (type pdf)
+(./pf__administration_8c.tex
+<pf__administration_8c__incl.pdf, id=390, 528.97626pt x 146.5475pt>
+File: pf__administration_8c__incl.pdf Graphic file (type pdf)
 
-<use pf__daemon_8c__incl.pdf>
-<pf__daemon_8c_db0a9558ddd4dc0bbad7b5ddfc5231c6_cgraph.pdf, id=490, 289.08pt x 
-28.105pt>
-File: pf__daemon_8c_db0a9558ddd4dc0bbad7b5ddfc5231c6_cgraph.pdf Graphic file (t
-ype pdf)
- <use pf__daemon_8c_db0a9558ddd4dc0bbad7b5ddfc5231c6_cgraph.pdf>
-<pf__daemon_8c_db0a9558ddd4dc0bbad7b5ddfc5231c6_icgraph.pdf, id=491, 156.585pt 
-x 28.105pt>
-File: pf__daemon_8c_db0a9558ddd4dc0bbad7b5ddfc5231c6_icgraph.pdf Graphic file (
+<use pf__administration_8c__incl.pdf> [18
+
+
+ <./pf__administration_8c__incl.pdf>]
+Underfull \hbox (badness 2368) in paragraph at lines 86--89
+[]\T1/ptm/m/n/10 References DB_-FILE, ERR_-LOG, MAX_-LINE_-LENGTH, STMT_-SIZE, 
+TB_-AREACODE, TB_-
+ []
+
+[19]
+Underfull \hbox (badness 2368) in paragraph at lines 107--110
+[]\T1/ptm/m/n/10 References DB_-FILE, ERR_-LOG, MAX_-LINE_-LENGTH, STMT_-SIZE, 
+TB_-AREACODE, TB_-
+ []
+
+
+Underfull \hbox (badness 2368) in paragraph at lines 128--131
+[]\T1/ptm/m/n/10 References DB_-FILE, ERR_-LOG, MAX_-LINE_-LENGTH, STMT_-SIZE, 
+TB_-AREACODE, TB_-
+ []
+
+[20]
+Underfull \hbox (badness 2368) in paragraph at lines 149--152
+[]\T1/ptm/m/n/10 References DB_-FILE, ERR_-LOG, MAX_-LINE_-LENGTH, STMT_-SIZE, 
+TB_-AREACODE, TB_-
+ []
+
+
+Underfull \hbox (badness 7203) in paragraph at lines 172--173
+[]\T1/ptm/m/n/10 References Entry::area_-code, BLACKLIST_-FLAG, Entry::country_
+-code, DB_-FILE, ERR_-LOG,
+ []
+
+
+<pf__administration_8c_754e9a8891128a285fc17132b5480a07_cgraph.pdf, id=442, 204
+.765pt x 28.105pt>
+File: pf__administration_8c_754e9a8891128a285fc17132b5480a07_cgraph.pdf Graphic
+ file (type pdf)
+
+<use pf__administration_8c_754e9a8891128a285fc17132b5480a07_cgraph.pdf>
+<pf__administration_8c_f306b60195d745190ef3e30e7d0a107e_icgraph.pdf, id=443, 20
+4.765pt x 28.105pt>
+File: pf__administration_8c_f306b60195d745190ef3e30e7d0a107e_icgraph.pdf Graphi
+c file (type pdf)
+
+<use pf__administration_8c_f306b60195d745190ef3e30e7d0a107e_icgraph.pdf>
+[21 <./pf__administration_8c_754e9a8891128a285fc17132b5480a07_cgraph.pdf>])
+Underfull \hbox (badness 2368) in paragraph at lines 224--60
+[]\T1/ptm/m/n/10 References DB_-FILE, ERR_-LOG, MAX_-LINE_-LENGTH, STMT_-SIZE, 
+TB_-AREACODE, TB_-
+ []
+
+[22 <./pf__administration_8c_f306b60195d745190ef3e30e7d0a107e_icgraph.pdf>]
+\openout2 = `pf__administration_8h.aux'.
+
+
+(./pf__administration_8h.tex
+<pf__administration_8h__dep__incl.pdf, id=469, 204.765pt x 146.5475pt>
+File: pf__administration_8h__dep__incl.pdf Graphic file (type pdf)
+
+<use pf__administration_8h__dep__incl.pdf> [23
+
+
+ <./pf__administration_8h__dep__incl.pdf>]
+Underfull \hbox (badness 2368) in paragraph at lines 78--81
+[]\T1/ptm/m/n/10 References DB_-FILE, ERR_-LOG, MAX_-LINE_-LENGTH, STMT_-SIZE, 
+TB_-AREACODE, TB_-
+ []
+
+
+Underfull \hbox (badness 2368) in paragraph at lines 99--102
+[]\T1/ptm/m/n/10 References DB_-FILE, ERR_-LOG, MAX_-LINE_-LENGTH, STMT_-SIZE, 
+TB_-AREACODE, TB_-
+ []
+
+[24]
+Underfull \hbox (badness 2368) in paragraph at lines 120--123
+[]\T1/ptm/m/n/10 References DB_-FILE, ERR_-LOG, MAX_-LINE_-LENGTH, STMT_-SIZE, 
+TB_-AREACODE, TB_-
+ []
+
+
+Underfull \hbox (badness 2368) in paragraph at lines 141--144
+[]\T1/ptm/m/n/10 References DB_-FILE, ERR_-LOG, MAX_-LINE_-LENGTH, STMT_-SIZE, 
+TB_-AREACODE, TB_-
+ []
+
+[25]
+Underfull \hbox (badness 7203) in paragraph at lines 164--165
+[]\T1/ptm/m/n/10 References Entry::area_-code, BLACKLIST_-FLAG, Entry::country_
+-code, DB_-FILE, ERR_-LOG,
+ []
+
+
+<pf__administration_8h_754e9a8891128a285fc17132b5480a07_cgraph.pdf, id=518, 204
+.765pt x 28.105pt>
+File: pf__administration_8h_754e9a8891128a285fc17132b5480a07_cgraph.pdf Graphic
+ file (type pdf)
+
+<use pf__administration_8h_754e9a8891128a285fc17132b5480a07_cgraph.pdf>)
+Underfull \hbox (badness 2368) in paragraph at lines 194--61
+[]\T1/ptm/m/n/10 References DB_-FILE, ERR_-LOG, MAX_-LINE_-LENGTH, STMT_-SIZE, 
+TB_-AREACODE, TB_-
+ []
+
+[26 <./pf__administration_8h_754e9a8891128a285fc17132b5480a07_cgraph.pdf>]
+\openout2 = `pf__search_8c.aux'.
+
+
+(./pf__search_8c.tex
+<pf__search_8c__incl.pdf, id=532, 528.97626pt x 146.5475pt>
+File: pf__search_8c__incl.pdf Graphic file (type pdf)
+
+<use pf__search_8c__incl.pdf> [27
+
+
+ <./pf__search_8c__incl.pdf>]
+<pf__search_8c_f6dce6f2b431c6fd1101e6f9e949c127_icgraph.pdf, id=569, 230.8625pt
+ x 104.39pt>
+File: pf__search_8c_f6dce6f2b431c6fd1101e6f9e949c127_icgraph.pdf Graphic file (
 type pdf)
- <use pf__daemon_8c_db0a9558ddd4dc0bbad7b5ddfc5231c6_icgraph.pdf>
-[23
-
-
- <./pf__daemon_8c__incl.pdf> <./pf__daemon_8c_db0a9558ddd4dc0bbad7b5ddfc5231c6_
-cgraph.pdf> <./pf__daemon_8c_db0a9558ddd4dc0bbad7b5ddfc5231c6_icgraph.pdf>]
-<pf__daemon_8c_898171fabd191568d79e2abf536d92e5_cgraph.pdf, id=529, 556.0775pt 
-x 28.105pt>
-File: pf__daemon_8c_898171fabd191568d79e2abf536d92e5_cgraph.pdf Graphic file (t
+ <use pf__search_8c_f6dce6f2b431c6fd1101e6f9e949c127_icgraph.pdf>
+<pf__search_8c_3947a1543660e9f6e666242efee44f89_cgraph.pdf, id=570, 242.9075pt 
+x 66.2475pt>
+File: pf__search_8c_3947a1543660e9f6e666242efee44f89_cgraph.pdf Graphic file (t
 ype pdf)
- <use pf__daemon_8c_898171fabd191568d79e2abf536d92e5_cgraph.pdf>
-<pf__daemon_8c_898171fabd191568d79e2abf536d92e5_icgraph.pdf, id=530, 176.66pt x
- 28.105pt>
-File: pf__daemon_8c_898171fabd191568d79e2abf536d92e5_icgraph.pdf Graphic file (
+ <use pf__search_8c_3947a1543660e9f6e666242efee44f89_cgraph.pdf>
+[28 <./pf__search_8c_f6dce6f2b431c6fd1101e6f9e949c127_icgraph.pdf> <./pf__searc
+h_8c_3947a1543660e9f6e666242efee44f89_cgraph.pdf>]
+<pf__search_8c_678d356be18c20e298d74a62bc6e8782_cgraph.pdf, id=591, 252.945pt x
+ 66.2475pt>
+File: pf__search_8c_678d356be18c20e298d74a62bc6e8782_cgraph.pdf Graphic file (t
+ype pdf)
+ <use pf__search_8c_678d356be18c20e298d74a62bc6e8782_cgraph.pdf>
+<pf__search_8c_b4e0af5dc1b0cf0bdd5812c973dcd353_cgraph.pdf, id=592, 248.93pt x 
+66.2475pt>
+File: pf__search_8c_b4e0af5dc1b0cf0bdd5812c973dcd353_cgraph.pdf Graphic file (t
+ype pdf)
+ <use pf__search_8c_b4e0af5dc1b0cf0bdd5812c973dcd353_cgraph.pdf>
+<pf__search_8c_76cce925419916be63b6a3da5e1fa263_icgraph.pdf, id=593, 252.945pt 
+x 104.39pt>
+File: pf__search_8c_76cce925419916be63b6a3da5e1fa263_icgraph.pdf Graphic file (
 type pdf)
- <use pf__daemon_8c_898171fabd191568d79e2abf536d92e5_icgraph.pdf>
-<pf__daemon_8c_3c04138a5bfe5d72780bb7e82a18e627_cgraph.pdf, id=531, 634.37pt x 
-133.49875pt>
-File: pf__daemon_8c_3c04138a5bfe5d72780bb7e82a18e627_cgraph.pdf Graphic file (t
+ <use pf__search_8c_76cce925419916be63b6a3da5e1fa263_icgraph.pdf>)
+[29 <./pf__search_8c_678d356be18c20e298d74a62bc6e8782_cgraph.pdf> <./pf__search
+_8c_b4e0af5dc1b0cf0bdd5812c973dcd353_cgraph.pdf>] [30 <./pf__search_8c_76cce925
+419916be63b6a3da5e1fa263_icgraph.pdf>]
+\openout2 = `pf__search_8h.aux'.
+
+ (./pf__search_8h.tex
+<pf__search_8h__dep__incl.pdf, id=624, 204.765pt x 146.5475pt>
+File: pf__search_8h__dep__incl.pdf Graphic file (type pdf)
+
+<use pf__search_8h__dep__incl.pdf>
+<pf__search_8h_3947a1543660e9f6e666242efee44f89_cgraph.pdf, id=625, 242.9075pt 
+x 66.2475pt>
+File: pf__search_8h_3947a1543660e9f6e666242efee44f89_cgraph.pdf Graphic file (t
 ype pdf)
- <use pf__daemon_8c_3c04138a5bfe5d72780bb7e82a18e627_cgraph.pdf>
-<pf__daemon_8c_d2299acc69fcb71b0a8e1aeb08873c77_cgraph.pdf, id=532, 427.5975pt 
-x 28.105pt>
-File: pf__daemon_8c_d2299acc69fcb71b0a8e1aeb08873c77_cgraph.pdf Graphic file (t
+ <use pf__search_8h_3947a1543660e9f6e666242efee44f89_cgraph.pdf>
+[31
+
+
+ <./pf__search_8h__dep__incl.pdf> <./pf__search_8h_3947a1543660e9f6e666242efee4
+4f89_cgraph.pdf>]
+<pf__search_8h_678d356be18c20e298d74a62bc6e8782_cgraph.pdf, id=656, 252.945pt x
+ 66.2475pt>
+File: pf__search_8h_678d356be18c20e298d74a62bc6e8782_cgraph.pdf Graphic file (t
 ype pdf)
- <use pf__daemon_8c_d2299acc69fcb71b0a8e1aeb08873c77_cgraph.pdf>
-<pf__daemon_8c_d2299acc69fcb71b0a8e1aeb08873c77_icgraph.pdf, id=533, 303.1325pt
- x 28.105pt>
-File: pf__daemon_8c_d2299acc69fcb71b0a8e1aeb08873c77_icgraph.pdf Graphic file (
-type pdf)
- <use pf__daemon_8c_d2299acc69fcb71b0a8e1aeb08873c77_icgraph.pdf>
-[24 <./pf__daemon_8c_898171fabd191568d79e2abf536d92e5_cgraph.pdf> <./pf__daemon
-_8c_898171fabd191568d79e2abf536d92e5_icgraph.pdf> <./pf__daemon_8c_3c04138a5bfe
-5d72780bb7e82a18e627_cgraph.pdf> <./pf__daemon_8c_d2299acc69fcb71b0a8e1aeb08873
-c77_cgraph.pdf> <./pf__daemon_8c_d2299acc69fcb71b0a8e1aeb08873c77_icgraph.pdf>]
-
-<pf__daemon_8c_0e2f72a981c64aefe314e745b28b6387_cgraph.pdf, id=571, 303.1325pt 
-x 28.105pt>
-File: pf__daemon_8c_0e2f72a981c64aefe314e745b28b6387_cgraph.pdf Graphic file (t
+ <use pf__search_8h_678d356be18c20e298d74a62bc6e8782_cgraph.pdf>
+<pf__search_8h_b4e0af5dc1b0cf0bdd5812c973dcd353_cgraph.pdf, id=657, 248.93pt x 
+66.2475pt>
+File: pf__search_8h_b4e0af5dc1b0cf0bdd5812c973dcd353_cgraph.pdf Graphic file (t
 ype pdf)
- <use pf__daemon_8c_0e2f72a981c64aefe314e745b28b6387_cgraph.pdf>
-<pf__daemon_8c_0e2f72a981c64aefe314e745b28b6387_icgraph.pdf, id=572, 168.63pt x
- 28.105pt>
-File: pf__daemon_8c_0e2f72a981c64aefe314e745b28b6387_icgraph.pdf Graphic file (
-type pdf)
- <use pf__daemon_8c_0e2f72a981c64aefe314e745b28b6387_icgraph.pdf>
-<pf__daemon_8c_725630dc6f9856b1349100761924050f_cgraph.pdf, id=573, 301.125pt x
- 28.105pt>
-File: pf__daemon_8c_725630dc6f9856b1349100761924050f_cgraph.pdf Graphic file (t
-ype pdf)
- <use pf__daemon_8c_725630dc6f9856b1349100761924050f_cgraph.pdf>
-<pf__daemon_8c_725630dc6f9856b1349100761924050f_icgraph.pdf, id=574, 421.575pt 
-x 47.17625pt>
-File: pf__daemon_8c_725630dc6f9856b1349100761924050f_icgraph.pdf Graphic file (
-type pdf)
- <use pf__daemon_8c_725630dc6f9856b1349100761924050f_icgraph.pdf>) [25 <./pf__d
-aemon_8c_0e2f72a981c64aefe314e745b28b6387_cgraph.pdf> <./pf__daemon_8c_0e2f72a9
-81c64aefe314e745b28b6387_icgraph.pdf> <./pf__daemon_8c_725630dc6f9856b134910076
-1924050f_cgraph.pdf> <./pf__daemon_8c_725630dc6f9856b1349100761924050f_icgraph.
-pdf>]
-\openout2 = `pf__daemon_8h.aux'.
-
- (./pf__daemon_8h.tex
-<pf__daemon_8h__dep__incl.pdf, id=605, 88.33pt x 88.33pt>
-File: pf__daemon_8h__dep__incl.pdf Graphic file (type pdf)
-
-<use pf__daemon_8h__dep__incl.pdf>) [26
+ <use pf__search_8h_b4e0af5dc1b0cf0bdd5812c973dcd353_cgraph.pdf>)
+[32 <./pf__search_8h_678d356be18c20e298d74a62bc6e8782_cgraph.pdf> <./pf__search
+_8h_b4e0af5dc1b0cf0bdd5812c973dcd353_cgraph.pdf>] (./refman.ind [33
 
 
- <./pf__daemon_8h__dep__incl.pdf>]
-\openout2 = `phonefirewall__administration_8c.aux'.
-
-
-(./phonefirewall__administration_8c.tex
-<phonefirewall__administration_8c__incl.pdf, id=632, 536.0025pt x 88.33pt>
-File: phonefirewall__administration_8c__incl.pdf Graphic file (type pdf)
-
-<use phonefirewall__administration_8c__incl.pdf> [27
-
-
- <./phonefirewall__administration_8c__incl.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 62--63
-[]\T1/ptm/m/n/10 References DB_-FILE, ERR_-FLAG, MAX_-LINE_-LENGTH, PRIO_-ALL, 
-STMT_-SIZE, TB_-
- []
-
-
-Underfull \hbox (badness 2717) in paragraph at lines 62--63
-\T1/ptm/m/n/10 AREACODE, TB_-COUNTRYCODE, TB_-NAME, TB_-NUMBER, TB_-PRIORITY, T
-B_-REASON,
- []
-
-
-<phonefirewall__administration_8c_36847ed3459e2a89038772ece42a017d_cgraph.pdf, 
-id=665, 335.2525pt x 28.105pt>
-File: phonefirewall__administration_8c_36847ed3459e2a89038772ece42a017d_cgraph.
-pdf Graphic file (type pdf)
-
-<use phonefirewall__administration_8c_36847ed3459e2a89038772ece42a017d_cgraph.p
-df>
-Underfull \hbox (badness 10000) in paragraph at lines 92--93
-[]\T1/ptm/m/n/10 References DB_-FILE, ERR_-FLAG, MAX_-LINE_-LENGTH, PRIO_-ALL, 
-STMT_-SIZE, TB_-
- []
-
-
-Underfull \hbox (badness 2717) in paragraph at lines 92--93
-\T1/ptm/m/n/10 AREACODE, TB_-COUNTRYCODE, TB_-NAME, TB_-NUMBER, TB_-PRIORITY, T
-B_-REASON,
- []
-
-
-<phonefirewall__administration_8c_eec16cb88eb546b1a2490e6716d75f8b_cgraph.pdf, 
-id=666, 337.26pt x 28.105pt>
-File: phonefirewall__administration_8c_eec16cb88eb546b1a2490e6716d75f8b_cgraph.
-pdf Graphic file (type pdf)
-
-<use phonefirewall__administration_8c_eec16cb88eb546b1a2490e6716d75f8b_cgraph.p
-df> [28 <./phonefirewall__administration_8c_36847ed3459e2a89038772ece42a017d_cg
-raph.pdf> <./phonefirewall__administration_8c_eec16cb88eb546b1a2490e6716d75f8b_
-cgraph.pdf>]
-<phonefirewall__administration_8c_f28c4b8fd3fdfe5e70df391cf40ca9f2_cgraph.pdf, 
-id=686, 347.2975pt x 66.2475pt>
-File: phonefirewall__administration_8c_f28c4b8fd3fdfe5e70df391cf40ca9f2_cgraph.
-pdf Graphic file (type pdf)
-
-<use phonefirewall__administration_8c_f28c4b8fd3fdfe5e70df391cf40ca9f2_cgraph.p
-df>
-<phonefirewall__administration_8c_f144fe0aa2eb227fe646da21048388a5_cgraph.pdf, 
-id=687, 349.305pt x 66.2475pt>
-File: phonefirewall__administration_8c_f144fe0aa2eb227fe646da21048388a5_cgraph.
-pdf Graphic file (type pdf)
-
-<use phonefirewall__administration_8c_f144fe0aa2eb227fe646da21048388a5_cgraph.p
-df> [29 <./phonefirewall__administration_8c_f28c4b8fd3fdfe5e70df391cf40ca9f2_cg
-raph.pdf> <./phonefirewall__administration_8c_f144fe0aa2eb227fe646da21048388a5_
-cgraph.pdf>]
-<phonefirewall__administration_8c_f306b60195d745190ef3e30e7d0a107e_icgraph.pdf,
- id=707, 258.9675pt x 66.2475pt>
-File: phonefirewall__administration_8c_f306b60195d745190ef3e30e7d0a107e_icgraph
-.pdf Graphic file (type pdf)
-
-<use phonefirewall__administration_8c_f306b60195d745190ef3e30e7d0a107e_icgraph.
-pdf>
-Underfull \hbox (badness 1215) in paragraph at lines 203--204
-[]\T1/ptm/m/n/10 References DB_-FILE, ERR_-FLAG, MAX_-LINE_-LENGTH, STMT_-SIZE,
- TB_-AREACODE, TB_-
- []
-
-
-<phonefirewall__administration_8c_4eee00c845ad4a60eaccef8c41151ea4_cgraph.pdf, 
-id=708, 329.23pt x 28.105pt>
-File: phonefirewall__administration_8c_4eee00c845ad4a60eaccef8c41151ea4_cgraph.
-pdf Graphic file (type pdf)
-
-<use phonefirewall__administration_8c_4eee00c845ad4a60eaccef8c41151ea4_cgraph.p
-df>
-Underfull \hbox (badness 1215) in paragraph at lines 232--233
-[]\T1/ptm/m/n/10 References DB_-FILE, ERR_-FLAG, MAX_-LINE_-LENGTH, STMT_-SIZE,
- TB_-AREACODE, TB_-
- []
-
-
-<phonefirewall__administration_8c_307d220ee8e63926af279460532787ff_cgraph.pdf, 
-id=709, 331.2375pt x 28.105pt>
-File: phonefirewall__administration_8c_307d220ee8e63926af279460532787ff_cgraph.
-pdf Graphic file (type pdf)
-
-<use phonefirewall__administration_8c_307d220ee8e63926af279460532787ff_cgraph.p
-df>) [30 <./phonefirewall__administration_8c_f306b60195d745190ef3e30e7d0a107e_i
-cgraph.pdf> <./phonefirewall__administration_8c_4eee00c845ad4a60eaccef8c41151ea
-4_cgraph.pdf>] [31 <./phonefirewall__administration_8c_307d220ee8e63926af279460
-532787ff_cgraph.pdf>]
-\openout2 = `phonefirewall__search_8c.aux'.
-
- (./phonefirewall__search_8c.tex
-<phonefirewall__search_8c__incl.pdf, id=739, 523.9575pt x 88.33pt>
-File: phonefirewall__search_8c__incl.pdf Graphic file (type pdf)
-
-<use phonefirewall__search_8c__incl.pdf> [32
-
-
- <./phonefirewall__search_8c__incl.pdf>]
-<phonefirewall__search_8c_bc4a987c792bc712e4f1804a6f8be6b2_icgraph.pdf, id=780,
- 315.1775pt x 28.105pt>
-File: phonefirewall__search_8c_bc4a987c792bc712e4f1804a6f8be6b2_icgraph.pdf Gra
-phic file (type pdf)
-
-<use phonefirewall__search_8c_bc4a987c792bc712e4f1804a6f8be6b2_icgraph.pdf>
-<phonefirewall__search_8c_9d31efccbc01d9cef3876329cf9ed4a2_cgraph.pdf, id=781, 
-405.515pt x 66.2475pt>
-File: phonefirewall__search_8c_9d31efccbc01d9cef3876329cf9ed4a2_cgraph.pdf Grap
-hic file (type pdf)
-
-<use phonefirewall__search_8c_9d31efccbc01d9cef3876329cf9ed4a2_cgraph.pdf>
-[33 <./phonefirewall__search_8c_bc4a987c792bc712e4f1804a6f8be6b2_icgraph.pdf> <
-./phonefirewall__search_8c_9d31efccbc01d9cef3876329cf9ed4a2_cgraph.pdf>])
-[34] (./refman.ind [35
-
-
-] [36]) (./refman.aux (./structentry.aux)
-(./logfile_8c.aux) (./logfile_8h.aux) (./pf__daemon_8c.aux)
-(./pf__daemon_8h.aux) (./phonefirewall__administration_8c.aux)
-(./phonefirewall__search_8c.aux)) ) 
+] [34])
+(./refman.aux (./structentry.aux) (./logfile_8c.aux) (./logfile_8h.aux)
+(./pf__administration_8c.aux) (./pf__administration_8h.aux)
+(./pf__search_8c.aux) (./pf__search_8h.aux)) ) 
 Here is how much of TeX's memory you used:
- 5415 strings out of 94432
- 82531 string characters out of 1175566
- 124083 words of memory out of 1000000
- 8216 multiletter control sequences out of 10000+50000
+ 5310 strings out of 94432
+ 75290 string characters out of 1175567
+ 123127 words of memory out of 1000000
+ 8147 multiletter control sequences out of 10000+50000
  39790 words of font info for 44 fonts, out of 500000 for 2000
  580 hyphenation exceptions out of 1000
- 32i,13n,43p,623b,360s stack positions out of 1500i,500n,5000p,200000b,5000s
+ 32i,13n,43p,745b,368s stack positions out of 1500i,500n,5000p,200000b,5000s
 PDF statistics:
- 961 PDF objects out of 300000
- 219 named destinations out of 131072
- 332 words of extra memory for PDF output out of 10000
+ 809 PDF objects out of 300000
+ 199 named destinations out of 131072
+ 252 words of extra memory for PDF output out of 10000
 
 ! pdfTeX warning (dest): name{libphonefirewall_8h-source} has been referenced b
 ut does not exist, replaced by a fixed one
@@ -1159,4 +1082,4 @@ rw/times/utmbi8a.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy10.pfb></usr/
 share/texmf/fonts/type1/bluesky/cm/cmmi10.pfb></usr/share/texmf/fonts/type1/urw
 /courier/ucrr8a.pfb></usr/share/texmf/fonts/type1/urw/times/utmb8a.pfb></usr/sh
 are/texmf/fonts/type1/urw/times/utmr8a.pfb>
-Output written on refman.pdf (40 pages, 406691 bytes).
+Output written on refman.pdf (38 pages, 318524 bytes).

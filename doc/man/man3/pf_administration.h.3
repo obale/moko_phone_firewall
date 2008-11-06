@@ -1,4 +1,4 @@
-.TH "pf_administration.h" 3 "2 Oct 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
+.TH "pf_administration.h" 3 "6 Nov 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -17,6 +17,21 @@ pf_administration.h \-
 .br
 .ti -1c
 .RI "int \fBcheck_entry\fP (int country_code, int area_code, unsigned long long number, int priority, int listflag)"
+.br
+.ti -1c
+.RI "int \fBcheck_entry_string\fP (char *number, int priority, int listflag)"
+.br
+.ti -1c
+.RI "int \fBchange_name\fP (int country_code, int area_code, unsigned long long number, char *new_name, int listflag)"
+.br
+.ti -1c
+.RI "int \fBchange_number\fP (int country_code, int area_code, unsigned long long number, int new_country_code, int new_area_code, unsigned long long new_number, int listflag)"
+.br
+.ti -1c
+.RI "int \fBchange_reason\fP (int country_code, int area_code, unsigned long long number, char *new_reason, int listflag)"
+.br
+.ti -1c
+.RI "int \fBchange_priority\fP (int country_code, int area_code, unsigned long long number, int new_priority, int listflag)"
 .br
 .in -1c
 .SH "Function Documentation"
@@ -52,9 +67,125 @@ If all goes well 0 (zero) otherwise -1 and the errno variable will be set..
 .PP
 
 .PP
-Definition at line 74 of file pf_administration.c.
+Definition at line 110 of file pf_administration.c.
 .PP
-References BLACKLIST_FLAG, DB_FILE, ERR_LOG, MAX_LINE_LENGTH, PRIO_ALL, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NAME, TB_NUMBER, TB_PRIORITY, TB_REASON, and WHITELIST_FLAG.
+References DB_FILE, ERR_LOG, MAX_LINE_LENGTH, PRIO_ALL, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NAME, TB_NUMBER, TB_PRIORITY, TB_REASON, and WHITELIST_FLAG.
+.SS "int change_name (int country_code, int area_code, unsigned long long number, char * new_name, int listflag)"
+.PP
+Changes the name of the \fBentry\fP. For the unique identification you need to enter the country code, area code and the number because this tripple identifies the \fBentry\fP.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcountry_code\fP The country code (for example 39 for Italy, 43 for Austria, and so one) 
+.br
+\fIarea_code\fP The area code which indicates your mobile operator. 
+.br
+\fInumber\fP The telephone number of the person (without country and area code. 
+.br
+\fInew_name\fP The new name 
+.br
+\fIlistflag\fP A flag, which indicates if you would use the blacklist (BLACKLIST_FLAG) or the whitelist (WHITELIST_FLAG).
+.br
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+If the number was changed 1, otherwise 0. 
+.RE
+.PP
+
+.PP
+Definition at line 326 of file pf_administration.c.
+.PP
+References DB_FILE, ERR_LOG, MAX_LINE_LENGTH, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NAME, TB_NUMBER, and WHITELIST_FLAG.
+.SS "int change_number (int country_code, int area_code, unsigned long long number, int new_country_code, int new_area_code, unsigned long long new_number, int listflag)"
+.PP
+Changes the number of the \fBentry\fP. You need to enter the country code, area code and the number because this tripple identifies the \fBentry\fP.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcountry_code\fP The country code (for example 39 for Italy, 43 for Austria, and so one) 
+.br
+\fIarea_code\fP The area code which indicates your mobile operator. 
+.br
+\fInumber\fP The telephone number of the person (without country and area code. 
+.br
+\fInew_country_code\fP The new country code. 
+.br
+\fInew_area_code\fP The new area code. 
+.br
+\fInew_number\fP The new number. 
+.br
+\fIlistflag\fP A flag, which indicates if you would use the blacklist (BLACKLIST_FLAG) or the whitelist (WHITELIST_FLAG).
+.br
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+If the number was changed 1, otherwise 0. 
+.RE
+.PP
+
+.PP
+Definition at line 365 of file pf_administration.c.
+.PP
+References DB_FILE, ERR_LOG, MAX_LINE_LENGTH, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NUMBER, and WHITELIST_FLAG.
+.SS "int change_priority (int country_code, int area_code, unsigned long long number, int new_priority, int listflag)"
+.PP
+Changes the priority of the \fBentry\fP. For the unique identification you need to enter the country code, area code and the number because this tripple identifies the \fBentry\fP.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcountry_code\fP The country code (for example 39 for Italy, 43 for Austria, and so one) 
+.br
+\fIarea_code\fP The area code which indicates your mobile operator. 
+.br
+\fInumber\fP The telephone number of the person (without country and area code. 
+.br
+\fInew_priority\fP The new priority. 
+.br
+\fIlistflag\fP A flag, which indicates if you would use the blacklist (BLACKLIST_FLAG) or the whitelist (WHITELIST_FLAG).
+.br
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+If the number was changed 1, otherwise 0. 
+.RE
+.PP
+
+.PP
+Definition at line 445 of file pf_administration.c.
+.PP
+References DB_FILE, ERR_LOG, MAX_LINE_LENGTH, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NUMBER, TB_PRIORITY, and WHITELIST_FLAG.
+.SS "int change_reason (int country_code, int area_code, unsigned long long number, char * new_reason, int listflag)"
+.PP
+Changes the reason of the \fBentry\fP. For the unique identification you need to enter the country code, area code and the number because this tripple identifies the \fBentry\fP.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcountry_code\fP The country code (for example 39 for Italy, 43 for Austria, and so one) 
+.br
+\fIarea_code\fP The area code which indicates your mobile operator. 
+.br
+\fInumber\fP The telephone number of the person (without country and area code. 
+.br
+\fInew_reason\fP The new reason. 
+.br
+\fIlistflag\fP A flag, which indicates if you would use the blacklist (BLACKLIST_FLAG) or the whitelist (WHITELIST_FLAG).
+.br
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+If the number was changed 1, otherwise 0. 
+.RE
+.PP
+
+.PP
+Definition at line 406 of file pf_administration.c.
+.PP
+References DB_FILE, ERR_LOG, MAX_LINE_LENGTH, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NUMBER, TB_REASON, and WHITELIST_FLAG.
 .SS "int check_entry (int country_code, int area_code, unsigned long long number, int priority, int listflag)"
 .PP
 Checks if a number is on the blacklist/whitelist.
@@ -82,9 +213,33 @@ If the number was found 1, otherwise 0.
 .PP
 
 .PP
-Definition at line 174 of file pf_administration.c.
+Definition at line 191 of file pf_administration.c.
 .PP
 References Entry::area_code, BLACKLIST_FLAG, Entry::country_code, DB_FILE, ERR_LOG, evaluate_stmt(), INFO_LOG, MAX_LINE_LENGTH, Entry::number, Entry::priority, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NUMBER, TB_PRIORITY, and WHITELIST_FLAG.
+.SS "int check_entry_string (char * number, int priority, int listflag)"
+.PP
+Checks if a number is on the blacklist/whitelist.
+.PP
+\fBParameters:\fP
+.RS 4
+\fInumber\fP The whole number with country code, area code and phone number. 
+.br
+\fIpriority\fP Gives the \fBentry\fP a priority. 0 is standard. If the priority is higher the value will be also blocked/accepted if a higher priority is choosen. 
+.br
+\fIlistflag\fP A flag, which indicates if you would use the blacklist (BLACKLIST_FLAG) or the whitelist (WHITELIST_FLAG).
+.br
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+If the number was found 1, otherwise 0. 
+.RE
+.PP
+
+.PP
+Definition at line 263 of file pf_administration.c.
+.PP
+References BLACKLIST_FLAG, DB_FILE, ERR_LOG, evaluate_stmt_string(), INFO_LOG, MAX_LINE_LENGTH, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NUMBER, TB_PRIORITY, and WHITELIST_FLAG.
 .SS "int rm_entry (int country_code, int area_code, unsigned long long number, int listlfag)"
 .PP
 Removes a number from the blacklist/whitelist.
@@ -108,9 +263,9 @@ If all goes right 0, otherwise an error code.
 .PP
 
 .PP
-Definition at line 128 of file pf_administration.c.
+Definition at line 155 of file pf_administration.c.
 .PP
-References BLACKLIST_FLAG, DB_FILE, ERR_LOG, MAX_LINE_LENGTH, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NUMBER, and WHITELIST_FLAG.
+References DB_FILE, ERR_LOG, MAX_LINE_LENGTH, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NUMBER, and WHITELIST_FLAG.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Phone Firewall from the source code.
