@@ -1,6 +1,7 @@
 The following points are to do (there are not complete):
 
 	- [DONE] Implementing the remove functions for the black- and whitelist
+        - [DONE] Creating a opkg package and distributing it over our server.
 	- Making a .bb (bitbake) file, which install the library (if we would
 	  use it also as a single part).
 	- Using a git tag for the .bb-file, so during the install process the

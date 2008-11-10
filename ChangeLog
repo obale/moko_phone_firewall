@@ -1,3 +1,18 @@
+2008-11-10 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* db/phonefirewall.db:
+	Renaming the phonefirewall database from phone-firewall.db to
+	phonefirewall.db
+
+	* TODO:
+	Adding the following task and marking it as done:
+
+	  Creating a opkg package and distributing it over our server.
+
+	* src/logfile.h:
+	Substituting Foobar with MokSec in the header.
+	Fixing the path to the logfile.
+
 2008-11-06 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* src/libphonefirewall.h:

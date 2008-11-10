@@ -60,7 +60,7 @@ clean:
 		 $(BINTESTDIR)/*\
 		 db/*\
 		 log/moksec.log
-	sqlite3 db/phone-firewall.db < phonefirewall.sql;
+	sqlite3 db/phonefirewall.db < phonefirewall.sql;
 
 .PHONY: clean-db
 clean-db:
