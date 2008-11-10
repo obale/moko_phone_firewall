@@ -1,7 +1,7 @@
 -- *******************************************************************
 --  phonefirewall: Script for creating black- and whitelist.
 --  Usage:
---        $ sqlite3 db/phone-firewall.db < phonefirewall.sql
+--        $ sqlite3 db/phonefirewall.db < phonefirewall.sql
 --
 -- *******************************************************************
 -- *******************************************************************

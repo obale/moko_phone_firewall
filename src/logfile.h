@@ -15,10 +15,10 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+ * along with MokSec.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#define LOGFILE "/var/lib/moksec/phonefirewall.log"
+#define LOGFILE "/var/log/moksec/phonefirewall.log"
 #define MAX_ENTRY_LENGTH 128
 
 #define UNKNOWN     0 /** Not specified                              */
