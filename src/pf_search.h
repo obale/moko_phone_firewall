@@ -1,7 +1,7 @@
 /*
  * pf_search.h
  *
- * (C) 2008 by Networld Consulting, Ltd.
+ * (C) 2008 by MokSec Project
  * Written by Alex Oberhauser <oberhauseralex@networld.to>
  * All Rights Reserved
  *

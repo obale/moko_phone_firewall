@@ -1,3 +1,13 @@
+2008-11-12 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* doc/:
+	Cleaning up the documentary directory (there were old files from which
+	we haven't any source code anymore.
+
+	* src/*.[ch]:
+	Substituting the "Networld [...]" string with "MokSec Project" in
+	different files.
+
 2008-11-10 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* db/phonefirewall.db:
