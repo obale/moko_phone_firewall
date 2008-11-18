@@ -1,7 +1,0 @@
-<area shape="rect" href="$pf__daemon_8c.html#db0a9558ddd4dc0bbad7b5ddfc5231c6" title="dbus_listen" alt="" coords="291,5,384,32">
-<area shape="rect" href="$pf__daemon_8c.html#898171fabd191568d79e2abf536d92e5" title="install_sigaction" alt="" coords="107,56,229,82">
-<area shape="rect" href="$pf__daemon_8c.html#725630dc6f9856b1349100761924050f" title="stop_daemon" alt="" coords="447,94,556,121">
-<area shape="rect" href="$pf__daemon_8c.html#0e2f72a981c64aefe314e745b28b6387" title="start_daemon" alt="" coords="445,145,557,172">
-<area shape="rect" href="$logfile_8c.html#f71f5daf2025b4e30a18ccedf7c34863" title="write_logentry" alt="" coords="607,94,716,121">
-<area shape="rect" href="$logfile_8c.html#68a0e9d22417dfcf9c0be64261352e64" title="asctime" alt="" coords="765,94,837,121">
-<area shape="rect" href="$pf__daemon_8c.html#d2299acc69fcb71b0a8e1aeb08873c77" title="react_to_signal" alt="" coords="279,56,396,82">

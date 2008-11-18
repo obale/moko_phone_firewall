@@ -36,9 +36,10 @@ struct Entry *insert_into_list(struct Entry *p_root,
                 p_root->country_code = p_entry->country_code;
                 p_root->area_code = p_entry->area_code;
                 p_root->number = p_entry->number;
-                p_root->name = (char *)calloc(0, strlen(p_entry->name));
+                p_root->name = calloc(1, strlen(p_entry->name));
                 strncpy(p_root->name, p_entry->name, strlen(p_entry->name));
-                p_root->reason = p_entry->reason;
+                p_root->reason = calloc(1, strlen(p_entry->reason));
+                strncpy(p_root->reason, p_entry->reason, strlen(p_entry->reason));
                 p_root->next = NULL;
                 #if DEBUG
                 printf("\n\n[DEBUG]: +%d %d %llu - %s - %s\n", p_root->country_code,
@@ -57,9 +58,10 @@ struct Entry *insert_into_list(struct Entry *p_root,
                 tmp_entry->country_code = p_entry->country_code;
                 tmp_entry->area_code = p_entry->area_code;
                 tmp_entry->number = p_entry->number;
-                tmp_entry->name = (char *)calloc(0, strlen(p_entry->name));
+                tmp_entry->name = calloc(1, strlen(p_entry->name));
                 strncpy(tmp_entry->name, p_entry->name, strlen(p_entry->name));
-                tmp_entry->reason = p_entry->reason;
+                tmp_entry->reason = calloc(1, strlen(p_entry->reason));
+                strncpy(tmp_entry->reason, p_entry->reason, strlen(p_entry->reason));
                 tmp_entry->next = NULL;
                 #if DEBUG
                 printf("[DEBUG]: +%d %d %llu - %s - %s\n", tmp_entry->country_code,
@@ -99,11 +101,8 @@ struct Entry *find_entry(sqlite3_stmt *pp_stmt)
                         p_entry->name = calloc(0, strlen(col_value));
                         strncpy(p_entry->name, col_value, strlen(col_value));
                 } else if ( 0 == strcmp(col_name, TB_REASON) ) {
-                        p_entry->reason = calloc(0, strlen(col_value));
-                        /* XXX: String copy seams not to work. */
-                        //strncpy(p_entry->reason, col_value, strlen(col_value));
-                        /* TODO: Implement this part or fix the part above. */
-                        p_entry->reason = NULL;
+                        p_entry->reason = calloc(1, strlen(col_value));
+                        strncpy(p_entry->reason, col_value, strlen(col_value));
                 }
         }
         return p_entry;

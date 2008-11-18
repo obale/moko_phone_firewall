@@ -34,7 +34,8 @@
 #include "logfile.h"
 
 #define PRIO_ALL -999
-#define DB_FILE "/var/lib/moksec/phonefirewall.db"
+//#define DB_FILE "/var/lib/moksec/phonefirewall.db"
+#define DB_FILE "db/phonefirewall.db"
 #define STMT_SIZE 1024
 #define MAX_LINE_LENGTH 512
 

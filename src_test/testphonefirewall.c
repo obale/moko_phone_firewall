@@ -30,16 +30,16 @@ void test_add_blacklist_entry(void)
 {
 #if 1
 	/* [OK]    -> Testuser 1:  Number in Italy. */
-	CU_ASSERT(add_entry(39, 328, 123456789, "Testuser 1", "I don't like him.", 0, BLACKLIST_FLAG) == 0);
+	CU_ASSERT(add_entry(39, 328, 123456789, "Testuser 1", "", 0, BLACKLIST_FLAG) == 0);
 
         /* [OK]    -> Temporary User */
-	CU_ASSERT(add_entry(39, 328, 100056789, "Testuser X", "I don't like him.", 0, BLACKLIST_FLAG) == 0);
+	CU_ASSERT(add_entry(39, 328, 100056789, "Testuser X", "He calls always at night.", 0, BLACKLIST_FLAG) == 0);
 
 	/* [FAILS] -> Testuser -1: The same number as "Testuser 1". */
-	CU_ASSERT(add_entry(39, 328, 123456789, "Testuser -1", "I don't like him.", 0, BLACKLIST_FLAG) == -1);
+	CU_ASSERT(add_entry(39, 328, 123456789, "Testuser -1", "Mad guy.", 0, BLACKLIST_FLAG) == -1);
 
 	/* [FAILS] -> Testuser -1: The country code is NULL. */
-	CU_ASSERT(add_entry(0, 328, 123456782, "Testuser -1", "I don't like him.", 0, BLACKLIST_FLAG) == -1);
+	CU_ASSERT(add_entry(0, 328, 123456782, "Testuser -1", "Wants only support for his Windows system.", 0, BLACKLIST_FLAG) == -1);
 
 	/* [FAILS] -> Testuser -1: The area code is NULL. */
 	CU_ASSERT(add_entry(39, 0, 123456782, "Testuser -1", "I don't like him.", 0, BLACKLIST_FLAG) == -1);
@@ -49,7 +49,7 @@ void test_add_blacklist_entry(void)
 
 	/* [OK]    -> Testuser 2:  The same area code and number as "Testuser
 	 * 1" but a different country code. */
-	CU_ASSERT(add_entry(49, 328, 123456789, "Testuser 2", "I don't like him.", 0, BLACKLIST_FLAG) == 0);
+	CU_ASSERT(add_entry(49, 328, 123456789, "Testuser 2", "Wants only support for his Windows system..", 0, BLACKLIST_FLAG) == 0);
 
 	/* [OK]    -> Testuser 3:  The same country code and number as "Testuser
 	 * 1" but a different area code. */
@@ -59,7 +59,7 @@ void test_add_blacklist_entry(void)
 	CU_ASSERT(add_entry(49, 329, 123456780, NULL, "I don't like him.", 0, BLACKLIST_FLAG) == 0);
 
 	/* [OK]    -> Testuser 4:  Reason is empty. */
-	CU_ASSERT(add_entry(49, 329, 123456781, "Testuser 4", NULL, 0, BLACKLIST_FLAG) == 0);
+	CU_ASSERT(add_entry(49, 329, 123456781, "Testuser 4", "öäüß$$$$", 0, BLACKLIST_FLAG) == 0);
 
 	/* [OK]    -> Testuser 5:  Priority is 2, which is higher than normal (0) . */
 	CU_ASSERT(add_entry(49, 329, 222222222, "Testuser 5", NULL, 2, BLACKLIST_FLAG) == 0);
@@ -89,33 +89,33 @@ void test_add_whitelist_entry(void)
 {
 #if 1
 	/* [OK]    -> Testuser 1:  Number in Italy. */
-	CU_ASSERT(add_entry(39, 128, 123456789, "Testuser 1", "I don't like him.", 0, WHITELIST_FLAG) == 0);
+	CU_ASSERT(add_entry(39, 128, 123456789, "Testuser 1", "I like him.", 0, WHITELIST_FLAG) == 0);
 
 	/* [FAILS] -> Testuser -1: The same number as "Testuser 1". */
-	CU_ASSERT(add_entry(39, 128, 123456789, "Testuser -1", "I don't like him.", 0, WHITELIST_FLAG) == -1);
+	CU_ASSERT(add_entry(39, 128, 123456789, "Testuser -1", "She is a family member.", 0, WHITELIST_FLAG) == -1);
 
 	/* [FAILS] -> Testuser -1: The country code is NULL. */
-	CU_ASSERT(add_entry(0, 128, 123456782, "Testuser -1", "I don't like him.", 0, WHITELIST_FLAG) == -1);
+	CU_ASSERT(add_entry(0, 128, 123456782, "Testuser -1", "My buddy.", 0, WHITELIST_FLAG) == -1);
 
 	/* [FAILS] -> Testuser -1: The area code is NULL. */
-	CU_ASSERT(add_entry(39, 0, 123456782, "Testuser -1", "I don't like him.", 0, WHITELIST_FLAG) == -1);
+	CU_ASSERT(add_entry(39, 0, 123456782, "Testuser -1", "Nice guy.", 0, WHITELIST_FLAG) == -1);
 
 	/* [FAILS] -> Testuser -1: The area code is NULL. */
-	CU_ASSERT(add_entry(39, 128, 0, "Testuser -1", "I don't like him.", 0, WHITELIST_FLAG) == -1);
+	CU_ASSERT(add_entry(39, 128, 0, "Testuser -1", "He owes me money.", 0, WHITELIST_FLAG) == -1);
 
 	/* [OK]    -> Testuser 2:  The same area code and number as "Testuser
 	 * 1" but a different country code. */
-	CU_ASSERT(add_entry(49, 128, 123456789, "Testuser 2", "I don't like him.", 0, WHITELIST_FLAG) == 0);
+	CU_ASSERT(add_entry(49, 128, 123456789, "Testuser 2", "I like her.", 0, WHITELIST_FLAG) == 0);
 
 	/* [OK]    -> Testuser 3:  The same country code and number as "Testuser
 	 * 1" but a different area code. */
-	CU_ASSERT(add_entry(49, 129, 123456789, "Testuser 3", "I don't like him.", 0, WHITELIST_FLAG) == 0);
+	CU_ASSERT(add_entry(49, 129, 123456789, "Testuser 3", "My wife.", 0, WHITELIST_FLAG) == 0);
 
 	/* [OK]    -> NULL      :  Username is empty. */
-	CU_ASSERT(add_entry(49, 129, 123456780, NULL, "I don't like him.", 0, WHITELIST_FLAG) == 0);
+	CU_ASSERT(add_entry(49, 129, 123456780, NULL, "My girlfriend.", 0, WHITELIST_FLAG) == 0);
 
 	/* [OK]    -> Testuser 4:  Reason is empty. */
-	CU_ASSERT(add_entry(49, 129, 123456781, "Testuser 4", NULL, 0, WHITELIST_FLAG) == 0);
+	CU_ASSERT(add_entry(49, 129, 123456781, "Testuser 4", "Another buddy.", 0, WHITELIST_FLAG) == 0);
 
 	/* [OK]    -> Testuser 5:  Priority is 2, which is higher than normal (0) . */
 	CU_ASSERT(add_entry(49, 129, 222222222, "Testuser 5", NULL, 2, WHITELIST_FLAG) == 0);
@@ -124,13 +124,13 @@ void test_add_whitelist_entry(void)
 	CU_ASSERT(add_entry(49, 129, 999999999, "Testuser 6", NULL, PRIO_ALL, WHITELIST_FLAG) == 0);
 
 	/* [OK]    -> Testuser 7:  Number in Italy. */
-	CU_ASSERT(add_entry(39, 128, 123456783, "Testuser 7", "I don't like him.", 2, WHITELIST_FLAG) == 0);
+	CU_ASSERT(add_entry(39, 128, 123456783, "Testuser 7", "", 2, WHITELIST_FLAG) == 0);
 
 	/* [OK]    -> Testuser 8:  Number in Italy. */
-	CU_ASSERT(add_entry(39, 128, 123456784, "Testuser 8", "I don't like him.", 5, WHITELIST_FLAG) == 0);
+	CU_ASSERT(add_entry(39, 128, 123456784, "Testuser 8", "I like him.", 5, WHITELIST_FLAG) == 0);
 
 	/* [OK]    -> Testuser 9:  Number in Italy. */
-	CU_ASSERT(add_entry(39, 128, 123456785, "Testuser 9", "I don't like him.", 10, WHITELIST_FLAG) == 0);
+	CU_ASSERT(add_entry(39, 128, 123456785, "Testuser 9", "I like him.", 10, WHITELIST_FLAG) == 0);
 #endif
 }
 
@@ -148,7 +148,6 @@ void test_rm_whitelist_entry(void)
 	CU_ASSERT(rm_entry(39, 128, 123456789, WHITELIST_FLAG) == 0);
 #endif
 }
-
 
 void test_check_blacklist_entry(void)
 {

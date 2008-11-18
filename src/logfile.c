@@ -1,7 +1,7 @@
 /*
  * logfile.c
  *
- * (C) 2008 by Networld Consulting, Ltd.
+ * (C) 2008 by MokSec Project
  * Written by Alex Oberhauser <oberhauseralex@networld.to>
  * All Rights Reserved
  *
@@ -15,7 +15,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+ * along with MokSec.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 #include <stdio.h>
