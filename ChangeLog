@@ -1,3 +1,16 @@
+2008-11-18 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* src/pf_search.c:
+	Fixing the bug "Memory corruption during a search of a name" [1].
+	Seams to be OK now. All tests (also with NULL, umlaute) passes.
+
+	Also implemented the read out of the value reason.
+
+	[1] https://moksec.networld.to/trac/ticket/15
+
+	* src_test/testphonefirewall.c:
+	Modifying the test, so that they are more accurate.
+
 2008-11-12 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* doc/:
