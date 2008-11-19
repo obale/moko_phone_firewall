@@ -1,3 +1,20 @@
+2008-11-19 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* Makefile:
+	Disabling DEBUG flag.
+
+	* src/pf_administration.c:
+	Adding the " to the SQL-Query when a string is used.
+
+	* src/pf_search.c:
+	Fixing the change something bug.
+
+	* src_test/testphonefirewall.c:
+	Activating one change name test, to test if the bug was really fixed.
+
+	Testing the search with the empty string. All entries will be shown in
+	the result, as expected.
+
 2008-11-18 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* src/pf_search.c:

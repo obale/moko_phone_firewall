@@ -71,9 +71,9 @@ void test_add_blacklist_entry(void)
 
 void test_change_blacklist_name(void)
 {
-#if 0
-        /* [OK]    -> Testuser 6: Change "Testuser 5" to "New-Testuser 5" */
-        CU_ASSERT(change_name(49, 329, 222222222, "NewTestuser5", BLACKLIST_FLAG) == 1);
+#if 1
+        /* [OK]    -> Testuser 5: Change "Testuser 5" to "New Testuser 5" */
+        CU_ASSERT(change_name(49, 329, 222222222, "New Testuser 5", BLACKLIST_FLAG) == 1);
 #endif
 }
 
@@ -136,8 +136,9 @@ void test_add_whitelist_entry(void)
 
 void test_change_whitelist_name(void)
 {
-#if 0
-
+#if 1
+        /* [OK]    -> Testuser 5: Change "Testuser 5" to "Newly Created Testuser ÖÄß" */
+        CU_ASSERT(change_name(49, 129, 222222222, "Newly Created Testuser ÖÄß", WHITELIST_FLAG));
 #endif
 }
 
@@ -201,7 +202,7 @@ void test_get_blacklist_entry_by_name(void)
 {
 #if 1
         struct Entry *tmp_entry = NULL;
-	tmp_entry = get_entry_by_name("user", BLACKLIST_FLAG);
+	tmp_entry = get_entry_by_name("", BLACKLIST_FLAG);
         int count = 0;
         printf("\n");
         while ( tmp_entry != NULL ) {
@@ -223,7 +224,7 @@ void test_get_whitelist_entry_by_name(void)
 {
 #if 1
         struct Entry *tmp_entry = NULL;
-	tmp_entry = get_entry_by_name("Test", WHITELIST_FLAG);
+	tmp_entry = get_entry_by_name("", WHITELIST_FLAG);
         int count = 0;
         printf("\n");
         while ( tmp_entry != NULL ) {
@@ -264,9 +265,9 @@ int main(int argc, char *argv[])
 	CU_add_test(searchSuite, "test of get_blacklist_entry_by_name()", test_get_blacklist_entry_by_name);
 	CU_add_test(searchSuite, "test of get_whitelist_entry_by_name()", test_get_whitelist_entry_by_name);
 
-        //CU_basic_set_mode(CU_BRM_NORMAL);
+        CU_basic_set_mode(CU_BRM_NORMAL);
         //CU_basic_set_mode(CU_BRM_SILENT);
-        CU_basic_set_mode(CU_BRM_VERBOSE);
+        //CU_basic_set_mode(CU_BRM_VERBOSE);
 
 	CU_basic_run_tests();
 	CU_cleanup_registry();

@@ -427,7 +427,7 @@ int change_reason(int country_code,
                 return 0;
         }
 
-        sprintf(stmt, "UPDATE %s SET %s = %s WHERE %s = %d AND %s = %d AND %s = %lld", listname, TB_REASON, new_reason, TB_COUNTRYCODE, country_code, TB_AREACODE, area_code, TB_NUMBER, number);
+        sprintf(stmt, "UPDATE %s SET %s = \"%s\" WHERE %s = %d AND %s = %d AND %s = %lld", listname, TB_REASON, new_reason, TB_COUNTRYCODE, country_code, TB_AREACODE, area_code, TB_NUMBER, number);
 
         rc = sqlite3_exec(db, stmt, NULL, 0, &errMsg);
         if ( SQLITE_OK != rc ) {
