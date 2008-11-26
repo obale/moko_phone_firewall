@@ -33,6 +33,7 @@
 #include "pf_administration.h"
 #include "logfile.h"
 
+#define VERSION "0.02"
 #define PRIO_ALL -999
 //#define DB_FILE "/var/lib/moksec/phonefirewall.db"
 #define DB_FILE "db/phonefirewall.db"
@@ -49,7 +50,7 @@
 #define BLACKLIST_FLAG 0x01
 #define WHITELIST_FLAG 0x02
 
-#define COMPONENT_NAME "phone firewall"
+#define COMPONENT_NAME "phone-firewall"
 
 /**
  * The struct which includes all information about entries (black- and

@@ -1,5 +1,6 @@
 GCC = /usr/bin/gcc
 RM = /bin/rm
+STRIP = /usr/local/openmoko/arm/bin/arm-angstrom-linux-gnueabi-strip
 CLFLAGS += --std=c99 -Wall -Werror #-DDEBUG -g -o -O0
 TEST_LIB = -lcunit -lphonefirewall_x86 `pkg-config --libs --cflags sqlite3`
 DOXYGEN = /usr/bin/doxygen
@@ -12,6 +13,7 @@ BINTESTDIR = bin_test
 test: logfile_x86.o phonefirewall_administration_x86.o phonefirewall_search_x86.o libphonefirewall_x86.so phonefirewall_x86
 
 all: 	libphonefirewall.so\
+	prepare\
 	test
 
 .PHONY: doc
@@ -32,6 +34,10 @@ logfile.o: $(SRCDIR)/logfile.c $(SRCDIR)/logfile.h
 
 libphonefirewall.so: $(SRCDIR)/pf_administration.o $(SRCDIR)/pf_search.o $(SRCDIR)/logfile.o
 	$(CC) -shared $(SRCDIR)/pf_administration.o $(SRCDIR)/pf_search.o $(SRCDIR)/logfile.o -o $(LIBDIR)/$@
+
+.PHONY: prepare
+prepare:
+	$(STRIP) $(LIBDIR)/libphonefirewall.so	
 
 # 
 # Begining of the testing part.

@@ -1,3 +1,13 @@
+2008-11-26 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* src/libphonefirewall.h:
+	Adding a version number to the header file. Now that all known bugs
+	are fixed a version of 0.02 seams OK to me.
+
+	* Makefile:
+	Adding a command "prepare" which stripps the libphonefirewall.so
+	library, so we save important memory on the device.
+
 2008-11-19 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* Makefile:
