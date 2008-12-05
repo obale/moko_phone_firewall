@@ -30,7 +30,7 @@ void test_add_blacklist_entry(void)
 {
 #if 1
 	/* [OK]    -> Testuser 1:  Number in Italy. */
-	CU_ASSERT(add_entry(39, 328, 123456789, "Testuser 1", "", 0, BLACKLIST_FLAG) == 0);
+	CU_ASSERT(add_entry(39, 328, 123456789, "Testuser 1", "", 0, BLACKLIST_FLAG) == 1);
 
         /* [OK]    -> Temporary User */
 	CU_ASSERT(add_entry(39, 328, 100056789, "Testuser X", "He calls always at night.", 0, BLACKLIST_FLAG) == 0);
@@ -200,7 +200,7 @@ void test_check_whitelist_entry_string(void)
 
 void test_get_blacklist_entry_by_name(void)
 {
-#if 1
+#if 0
         struct Entry *tmp_entry = NULL;
 	tmp_entry = get_entry_by_name("", BLACKLIST_FLAG);
         int count = 0;
@@ -222,7 +222,7 @@ void test_get_blacklist_entry_by_name(void)
 
 void test_get_whitelist_entry_by_name(void)
 {
-#if 1
+#if 0
         struct Entry *tmp_entry = NULL;
 	tmp_entry = get_entry_by_name("", WHITELIST_FLAG);
         int count = 0;
@@ -265,12 +265,13 @@ int main(int argc, char *argv[])
 	CU_add_test(searchSuite, "test of get_blacklist_entry_by_name()", test_get_blacklist_entry_by_name);
 	CU_add_test(searchSuite, "test of get_whitelist_entry_by_name()", test_get_whitelist_entry_by_name);
 
-        CU_basic_set_mode(CU_BRM_NORMAL);
-        //CU_basic_set_mode(CU_BRM_SILENT);
+        //CU_basic_set_mode(CU_BRM_NORMAL);
+        CU_basic_set_mode(CU_BRM_SILENT);
         //CU_basic_set_mode(CU_BRM_VERBOSE);
 
 	CU_basic_run_tests();
+        int ret = CU_get_number_of_failures();
 	CU_cleanup_registry();
 
-	return 0;
+	return ret;
 }

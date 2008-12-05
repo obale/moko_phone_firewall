@@ -1,3 +1,10 @@
+2008-12-05 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* src_test/testphonefirewall.c:
+	Fixing the CUnit tests. Now the functions returns the number of the
+	failed tests. It's possible to use this fact to write nice pre-commit
+	scripts in GIT.
+
 2008-11-26 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* src/libphonefirewall.h:
