@@ -1,3 +1,12 @@
+2008-12-06 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* Makefile:
+	Substituting the pkg-config command with -lsqlite3, because pkg-config
+	makes probelm with the pre-commit script.
+
+	* src_test/testphonefirewall.c:
+	Setting the output to NORMAL (from SILENT).
+
 2008-12-05 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* src_test/testphonefirewall.c:

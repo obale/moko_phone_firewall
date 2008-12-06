@@ -2,7 +2,7 @@ GCC = /usr/bin/gcc
 RM = /bin/rm
 STRIP = /usr/local/openmoko/arm/bin/arm-angstrom-linux-gnueabi-strip
 CLFLAGS += --std=c99 -Wall -Werror #-DDEBUG -g -o -O0
-TEST_LIB = -lcunit -lphonefirewall_x86 `pkg-config --libs --cflags sqlite3`
+TEST_LIB = -lcunit -lphonefirewall_x86 -lsqlite3
 DOXYGEN = /usr/bin/doxygen
 SRCDIR = src
 BINDIR = bin
