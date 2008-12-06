@@ -1,5 +1,11 @@
 2008-12-06 Alex Oberhauser <oberhauseralex@networld.to>
 
+	* README:
+	Adding a section with useful informations for developer. Adding the
+	shell commands for the pre-commit script.
+
+2008-12-06 Alex Oberhauser <oberhauseralex@networld.to>
+
 	* Makefile:
 	Substituting the pkg-config command with -lsqlite3, because pkg-config
 	makes probelm with the pre-commit script.
