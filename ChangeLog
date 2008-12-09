@@ -1,3 +1,10 @@
+2008-12-09 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* README:
+	Adding the line ". env-export" to the script code. This line reads in
+	all environment variables which are needed. And fixing the missing of
+	the return variables.
+
 2008-12-06 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* README:

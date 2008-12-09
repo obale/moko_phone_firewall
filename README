@@ -81,9 +81,10 @@ user $ cat > .git/hooks/pre-commit << EOF
 start_cunit_tests() {
         make clean &> /dev/null;
         make &> /dev/null;
-        ./bin_test/phonefirewall_x86; ret=$?
+        . env-export;
+        ./bin_test/phonefirewall_x86; ret=\$?
         make clean &> /dev/null;
-        return $ret;
+        return \$ret;
 }
 start_cunit_tests;
 EOF
