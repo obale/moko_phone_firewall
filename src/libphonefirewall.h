@@ -18,6 +18,9 @@
  * along with MokSec.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef _PF_H
+#define _PF_H
+
 /**
  * @mainfile
  * @file libphonefirewall.h
@@ -31,7 +34,6 @@
 
 #include "pf_search.h"
 #include "pf_administration.h"
-#include "logfile.h"
 
 #define VERSION "0.02"
 #define PRIO_ALL -999
@@ -69,3 +71,4 @@ struct Entry {
     struct Entry *next;
 };
 
+#endif /* libphonefirewall.h */

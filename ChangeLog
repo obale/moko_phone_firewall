@@ -1,3 +1,18 @@
+2008-12-14 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* src/pf_administration.c
+	* src/pf_search.c:
+	Substituting the own written logfile functions with syslog.
+
+	* src/pf_administration.h
+	* src/pf_search.h:
+	Adding a flag which blocks the manual including of the two header
+	files. Now it's only possible to include the libphonefirewall.h into a
+	written program.
+
+	* src/logfile*:
+	Deleting the own written logfile routines.
+
 2008-12-09 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* README:

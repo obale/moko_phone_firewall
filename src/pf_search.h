@@ -18,6 +18,10 @@
  * along with MokSec.  If not, see <http://www.gnu.org/licenses/>
  */
 
+#ifndef _PF_H
+# error "Never include the header file pf_search.h directly. Include insted libphonefirewall.h"
+#endif
+
 /**
  * Search a entry by name.
  *

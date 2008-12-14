@@ -21,6 +21,7 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <string.h>
+#include <syslog.h>
 #include <sqlite3.h>
 #include "libphonefirewall.h"
 
@@ -118,15 +119,13 @@ struct Entry *get_entry_by_name(char *name,
         sqlite3_stmt *pp_stmt = 0;
         const char **p_tail = 0;
         int rc;
-        char logmsg[MAX_LINE_LENGTH];
         struct Entry *p_root = NULL;
         struct Entry *p_entry = NULL;
 
         rc = sqlite3_open(DB_FILE, &db);
 
         if ( rc ) {
-                sprintf(logmsg, "Can't open database: %s", sqlite3_errmsg(db));
-                ERR_LOG(logmsg);
+                syslog(LOG_ERR, "[%s] Can't open database: %s", COMPONENT_NAME, sqlite3_errmsg(db));
                 sqlite3_close(db);
                 return NULL;
         }
@@ -136,8 +135,7 @@ struct Entry *get_entry_by_name(char *name,
         rc = sqlite3_prepare_v2(db, stmt, sizeof(stmt), &pp_stmt, p_tail);
 
         if ( rc != SQLITE_OK ) {
-                sprintf(logmsg, "SQL error: %s", sqlite3_errmsg(db));
-                ERR_LOG(logmsg);
+                syslog(LOG_ERR, "[%s] SQL error: %s", COMPONENT_NAME, sqlite3_errmsg(db));
                 sqlite3_close(db);
                 return NULL;
         }
@@ -166,15 +164,13 @@ struct Entry *get_entry_by_number(int country_code,
         sqlite3_stmt *pp_stmt = 0;
         const char **p_tail = 0;
         int rc;
-        char logmsg[MAX_LINE_LENGTH];
         struct Entry *p_root = NULL;
         struct Entry *p_entry = NULL;
 
         rc = sqlite3_open(DB_FILE, &db);
 
         if ( rc ) {
-                sprintf(logmsg, "Can't open database: %s", sqlite3_errmsg(db));
-                ERR_LOG(logmsg);
+                syslog(LOG_ERR, "[%s] Can't open database: %s", COMPONENT_NAME, sqlite3_errmsg(db));
                 sqlite3_close(db);
                 return NULL;
         }
@@ -184,8 +180,7 @@ struct Entry *get_entry_by_number(int country_code,
         rc = sqlite3_prepare_v2(db, stmt, sizeof(stmt), &pp_stmt, p_tail);
 
         if ( rc != SQLITE_OK ) {
-                sprintf(logmsg, "SQL error: %s", sqlite3_errmsg(db));
-                ERR_LOG(logmsg);
+                syslog(LOG_ERR, "[%s] SQL error: %s", COMPONENT_NAME, sqlite3_errmsg(db));
                 sqlite3_close(db);
                 return NULL;
         }
@@ -212,15 +207,13 @@ struct Entry *get_entry_by_reason(char *reason,
         sqlite3_stmt *pp_stmt = 0;
         const char **p_tail = 0;
         int rc;
-        char logmsg[MAX_LINE_LENGTH];
         struct Entry *p_root = NULL;
         struct Entry *p_entry = NULL;
 
         rc = sqlite3_open(DB_FILE, &db);
 
         if ( rc ) {
-                sprintf(logmsg, "Can't open database: %s", sqlite3_errmsg(db));
-                ERR_LOG(logmsg);
+                syslog(LOG_ERR, "[%s] Can't open database: %s", COMPONENT_NAME, sqlite3_errmsg(db));
                 sqlite3_close(db);
                 return NULL;
         }
@@ -230,7 +223,7 @@ struct Entry *get_entry_by_reason(char *reason,
         rc = sqlite3_prepare_v2(db, stmt, sizeof(stmt), &pp_stmt, p_tail);
 
         if ( rc != SQLITE_OK ) {
-                sprintf(logmsg, "SQL error: %s", sqlite3_errmsg(db));
+                syslog(LOG_ERR, "[%s] SQL error: %s", COMPONENT_NAME, sqlite3_errmsg(db));
                 sqlite3_close(db);
                 return NULL;
         }

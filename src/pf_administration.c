@@ -21,6 +21,7 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <string.h>
+#include <syslog.h>
 #include <sqlite3.h>
 #include "libphonefirewall.h"
 
@@ -126,13 +127,11 @@ int add_entry(int country_code,
         char *errMsg = 0;
         char stmt[STMT_SIZE];
         int rc;
-        char error[MAX_LINE_LENGTH];
 
         rc = sqlite3_open(DB_FILE, &db);
 
         if ( rc ) {
-                sprintf(error, "Can't open database: %s", sqlite3_errmsg(db));
-                ERR_LOG(error);
+                syslog(LOG_ERR, "[%s] Can't open database: %s", COMPONENT_NAME, sqlite3_errmsg(db));
                 sqlite3_close(db);
                 return -1;
         }
@@ -141,8 +140,7 @@ int add_entry(int country_code,
 
         rc = sqlite3_exec(db, stmt, NULL, 0, &errMsg);
         if ( SQLITE_OK != rc ) {
-                sprintf(error, "SQL error: %s", sqlite3_errmsg(db));
-                ERR_LOG(error);
+                syslog(LOG_ERR, "[%s] SQL error: %s", COMPONENT_NAME, sqlite3_errmsg(db));
                 sqlite3_close(db);
                 return -1;
         }
@@ -163,13 +161,11 @@ int rm_entry (int country_code,
         char *errMsg = 0;
         char stmt[STMT_SIZE];
         int rc;
-        char error[MAX_LINE_LENGTH];
 
         rc = sqlite3_open(DB_FILE, &db);
 
         if ( rc ) {
-                sprintf(error, "Can't open database: %s", sqlite3_errmsg(db));
-                ERR_LOG(error);
+                syslog(LOG_ERR, "[%s] Cant't open database: %s", COMPONENT_NAME, sqlite3_errmsg(db));
                 sqlite3_close(db);
                 return -1;
         }
@@ -178,8 +174,7 @@ int rm_entry (int country_code,
 
         rc = sqlite3_exec(db, stmt, NULL, 0, &errMsg);
         if ( SQLITE_OK != rc ) {
-                sprintf(error, "SQL error: %s", sqlite3_errmsg(db));
-                ERR_LOG(error);
+                syslog(LOG_ERR, "[%s] SQL error: %s", COMPONENT_NAME, sqlite3_errmsg(db));
                 sqlite3_close(db);
                 return -1;
         }
@@ -201,7 +196,6 @@ int check_entry(int country_code,
         sqlite3_stmt *pp_stmt = 0;  // The prepared statement
         const char **p_tail = 0;    // The unused part of stmt
         int rc;
-        char logmsg[MAX_LINE_LENGTH];
         int found_flag = 0;
 
         struct Entry *p_entry = (struct Entry *) malloc(sizeof(struct Entry));
@@ -213,8 +207,7 @@ int check_entry(int country_code,
         rc = sqlite3_open(DB_FILE, &db);
 
         if ( rc ) {
-                sprintf(logmsg, "Can't open database: %s", sqlite3_errmsg(db));
-                ERR_LOG(logmsg);
+                syslog(LOG_ERR, "[%s] Can't open database: %s", COMPONENT_NAME, sqlite3_errmsg(db));
                 sqlite3_close(db);
                 return -1;
         }
@@ -224,8 +217,7 @@ int check_entry(int country_code,
         rc = sqlite3_prepare_v2(db, stmt, sizeof(stmt), &pp_stmt, p_tail);
 
         if ( rc != SQLITE_OK ) {
-                sprintf(logmsg, "SQL error: %s", sqlite3_errmsg(db));
-                ERR_LOG(logmsg);
+                syslog(LOG_ERR, "[%s] SQL error: %s", COMPONENT_NAME, sqlite3_errmsg(db));
                 sqlite3_close(db);
                 return -1;
         }
@@ -237,15 +229,14 @@ int check_entry(int country_code,
                         if ( found_flag == 1) {
                                 switch (listflag) {
                                         case WHITELIST_FLAG:
-                                                sprintf(logmsg, "Number \"+%d %d %llu\" accepted successfully.", country_code, area_code, number);
+                                                syslog(LOG_DEBUG, "[%s] Number \"+%d %d %llu\" accepted successfully.", COMPONENT_NAME, country_code, area_code, number);
                                                 break;
                                         case BLACKLIST_FLAG:
-                                                sprintf(logmsg, "Number \"+%d %d %llu\" blocked successfully.", country_code, area_code, number);
+                                                syslog(LOG_DEBUG, "[%s] Number \"+%d %d %llu\" blocked successfully.", COMPONENT_NAME, country_code, area_code, number);
                                                 break;
                                         default:
-                                                sprintf(logmsg, "Something goes wrong...");
+                                                syslog(LOG_CRIT, "[%s] Stuff is no blacklist nor a whitelist.", COMPONENT_NAME);
                                 }
-                                INFO_LOG(logmsg);
                                 break;
                         }
                 }
@@ -271,14 +262,12 @@ int check_entry_string(char *number,
         sqlite3_stmt *pp_stmt = 0;  // The prepared statement
         const char **p_tail = 0;    // The unused part of stmt
         int rc;
-        char logmsg[MAX_LINE_LENGTH];
         int found_flag = 0;
 
         rc = sqlite3_open(DB_FILE, &db);
 
         if ( rc ) {
-                sprintf(logmsg, "Can't open database: %s", sqlite3_errmsg(db));
-                ERR_LOG(logmsg);
+                syslog(LOG_ERR, "[%s] Can't open database: %s", COMPONENT_NAME, sqlite3_errmsg(db));
                 sqlite3_close(db);
                 return -1;
         }
@@ -288,8 +277,7 @@ int check_entry_string(char *number,
         rc = sqlite3_prepare_v2(db, stmt, sizeof(stmt), &pp_stmt, p_tail);
 
         if ( rc != SQLITE_OK ) {
-                sprintf(logmsg, "SQL error: %s", sqlite3_errmsg(db));
-                ERR_LOG(logmsg);
+                syslog(LOG_ERR, "[%s] SQL error: %s", COMPONENT_NAME, sqlite3_errmsg(db));
                 sqlite3_close(db);
                 return -1;
         }
@@ -301,15 +289,14 @@ int check_entry_string(char *number,
                         if ( found_flag == 1) {
                                 switch (listflag) {
                                         case WHITELIST_FLAG:
-                                                sprintf(logmsg, "Number \"%s\" accepted successfully.", number);
+                                                syslog(LOG_DEBUG, "[%s] Number \"%s\" accepted successfully.", COMPONENT_NAME, number);
                                                 break;
                                         case BLACKLIST_FLAG:
-                                                sprintf(logmsg, "Number \"%s\" blocked successfully.", number);
+                                                syslog(LOG_DEBUG, "[%s] Number \"%s\" blocked successfully.", COMPONENT_NAME, number);
                                                 break;
                                         default:
-                                                sprintf(logmsg, "Something goes wrong...");
+                                                syslog(LOG_CRIT, "[%s] Stuff is no blacklist nor a whitelist.", COMPONENT_NAME);
                                 }
-                                INFO_LOG(logmsg);
                                 break;
                         }
                 }
@@ -334,15 +321,12 @@ int change_name(int country_code,
         sqlite3 *db;
         char stmt[STMT_SIZE];       // The SQL statement as text string.
         char *errMsg = 0;
-        char error[MAX_LINE_LENGTH];
         int rc;
-        char logmsg[MAX_LINE_LENGTH];
 
         rc = sqlite3_open(DB_FILE, &db);
 
         if ( rc ) {
-                sprintf(logmsg, "Can't open database: %s", sqlite3_errmsg(db));
-                ERR_LOG(logmsg);
+                syslog(LOG_ERR, "[%s] Can't open database: %s", COMPONENT_NAME, sqlite3_errmsg(db));
                 sqlite3_close(db);
                 return 0;
         }
@@ -351,8 +335,7 @@ int change_name(int country_code,
 
         rc = sqlite3_exec(db, stmt, NULL, 0, &errMsg);
         if ( SQLITE_OK != rc ) {
-                sprintf(error, "SQL error: %s", sqlite3_errmsg(db));
-                ERR_LOG(error);
+                syslog(LOG_ERR, "[%s] SQL error: %s", COMPONENT_NAME, sqlite3_errmsg(db));
                 sqlite3_close(db);
                 return 0;
         }
@@ -375,15 +358,12 @@ int change_number(int country_code,
         sqlite3 *db;
         char stmt[STMT_SIZE];       // The SQL statement as text string.
         char *errMsg = 0;
-        char error[MAX_LINE_LENGTH];
         int rc;
-        char logmsg[MAX_LINE_LENGTH];
 
         rc = sqlite3_open(DB_FILE, &db);
 
         if ( rc ) {
-                sprintf(logmsg, "Can't open database: %s", sqlite3_errmsg(db));
-                ERR_LOG(logmsg);
+                syslog(LOG_ERR, "[%s] Can't open database: %s", COMPONENT_NAME, sqlite3_errmsg(db));
                 sqlite3_close(db);
                 return 0;
         }
@@ -392,8 +372,7 @@ int change_number(int country_code,
 
         rc = sqlite3_exec(db, stmt, NULL, 0, &errMsg);
         if ( SQLITE_OK != rc ) {
-                sprintf(error, "SQL error: %s", sqlite3_errmsg(db));
-                ERR_LOG(error);
+                syslog(LOG_ERR, "[%s] SQL error: %s", COMPONENT_NAME, sqlite3_errmsg(db));
                 sqlite3_close(db);
                 return 0;
         }
@@ -414,15 +393,12 @@ int change_reason(int country_code,
         sqlite3 *db;
         char stmt[STMT_SIZE];       // The SQL statement as text string.
         char *errMsg = 0;
-        char error[MAX_LINE_LENGTH];
         int rc;
-        char logmsg[MAX_LINE_LENGTH];
 
         rc = sqlite3_open(DB_FILE, &db);
 
         if ( rc ) {
-                sprintf(logmsg, "Can't open database: %s", sqlite3_errmsg(db));
-                ERR_LOG(logmsg);
+                syslog(LOG_ERR, "[%s] Can't open database: %s", COMPONENT_NAME, sqlite3_errmsg(db));
                 sqlite3_close(db);
                 return 0;
         }
@@ -431,8 +407,7 @@ int change_reason(int country_code,
 
         rc = sqlite3_exec(db, stmt, NULL, 0, &errMsg);
         if ( SQLITE_OK != rc ) {
-                sprintf(error, "SQL error: %s", sqlite3_errmsg(db));
-                ERR_LOG(error);
+                syslog(LOG_ERR, "[%s] SQL error: %s", COMPONENT_NAME, sqlite3_errmsg(db));
                 sqlite3_close(db);
                 return 0;
         }
@@ -453,15 +428,12 @@ int change_priority(int country_code,
         sqlite3 *db;
         char stmt[STMT_SIZE];       // The SQL statement as text string.
         char *errMsg = 0;
-        char error[MAX_LINE_LENGTH];
         int rc;
-        char logmsg[MAX_LINE_LENGTH];
 
         rc = sqlite3_open(DB_FILE, &db);
 
         if ( rc ) {
-                sprintf(logmsg, "Can't open database: %s", sqlite3_errmsg(db));
-                ERR_LOG(logmsg);
+                syslog(LOG_ERR, "[%s] Can't open database: %s", COMPONENT_NAME, sqlite3_errmsg(db));
                 sqlite3_close(db);
                 return 0;
         }
@@ -470,8 +442,7 @@ int change_priority(int country_code,
 
         rc = sqlite3_exec(db, stmt, NULL, 0, &errMsg);
         if ( SQLITE_OK != rc ) {
-                sprintf(error, "SQL error: %s", sqlite3_errmsg(db));
-                ERR_LOG(error);
+                syslog(LOG_ERR, "[%s] SQL error: %s", COMPONENT_NAME, sqlite3_errmsg(db));
                 sqlite3_close(db);
                 return 0;
         }
