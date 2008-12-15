@@ -1,3 +1,19 @@
+2008-12-15 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* src_test/testphonefirewall.c:
+	Including the creation and deletion of the database into the CUnit
+	tests as initial and cleanup function. So now it's not needful to
+	recreate the database manually before each run.
+
+	Switching from the base tests to the automation tests. So that we have
+	a nice XML file which we could publish after each push. If the tests
+	fails, the errors will be shown, otherwise no output is printed.
+	That's very useful if the tests run automatically before a commit.
+
+	* db/phonefirewall.db:
+	Deleting the database file. Now it will be created on each run of the
+	CUnit tests.
+
 2008-12-14 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* src/pf_administration.c

@@ -22,7 +22,9 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <string.h>
+#include <sqlite3.h>
 #include <CUnit/Basic.h>
+#include <CUnit/Automated.h>
 #include "../src/libphonefirewall.h"
 
 
@@ -242,6 +244,60 @@ void test_get_whitelist_entry_by_name(void)
 #endif
 }
 
+int init(void)
+{
+        sqlite3 *db;
+        char stmt[STMT_SIZE];
+        int rc;
+
+        rc = sqlite3_open(DB_FILE, &db);
+
+        if ( rc ) {
+                printf("Can't open database: %s", sqlite3_errmsg(db));
+                return -1;
+        }
+
+        sprintf(stmt, "CREATE TABLE IF NOT EXISTS whitelist ( priority INTEGER, ");
+        strcat(stmt, "countrycode INTEGER, ");
+        strcat(stmt, "areacode INTEGER, ");
+        strcat(stmt, "number BIGINT, ");
+        strcat(stmt, "name varchar(64), ");
+        strcat(stmt, "reason varchar(256), ");
+        strcat(stmt, "PRIMARY KEY(countrycode, areacode, number) );");
+
+        rc = sqlite3_exec(db, stmt, NULL, 0, NULL);
+
+        if ( SQLITE_OK != rc ) {
+                printf("SQL error: %s", sqlite3_errmsg(db));
+        }
+
+        sprintf(stmt, "CREATE TABLE IF NOT EXISTS blacklist ( priority INTEGER, ");
+        strcat(stmt, "countrycode INTEGER, ");
+        strcat(stmt, "areacode INTEGER, ");
+        strcat(stmt, "number BIGINT, ");
+        strcat(stmt, "name varchar(64), ");
+        strcat(stmt, "reason varchar(256), ");
+        strcat(stmt, "PRIMARY KEY(countrycode, areacode, number) );");
+
+        rc = sqlite3_exec(db, stmt, NULL, 0, NULL);
+
+        if ( SQLITE_OK != rc ) {
+                printf("SQL error: %s", sqlite3_errmsg(db));
+        }
+
+        sqlite3_close(db);
+
+        return 0;
+}
+
+int cleanup(void)
+{
+        if (remove(DB_FILE) != 0) {
+                printf("Database file couldn't be deleted.\n");
+        }
+        return 0;
+}
+
 int main(int argc, char *argv[])
 {
 	CU_pSuite adminSuite = NULL;
@@ -249,7 +305,7 @@ int main(int argc, char *argv[])
 
 	CU_initialize_registry();
 
-        adminSuite = CU_add_suite("Testing Phone Firewall - administration features (add, remove, change and check)", NULL, NULL);
+        adminSuite = CU_add_suite("Testing Phone Firewall - administration features (add, remove, change and check)", init, NULL);
 	CU_add_test(adminSuite, "test of add_blacklist_entry()", test_add_blacklist_entry);
 	CU_add_test(adminSuite, "test of add_whitelist_entry()", test_add_whitelist_entry);
 	CU_add_test(adminSuite, "test of check_whitelist_entry()", test_check_whitelist_entry);
@@ -261,15 +317,24 @@ int main(int argc, char *argv[])
 	CU_add_test(adminSuite, "test of rm_blacklist_entry()", test_rm_blacklist_entry);
 	CU_add_test(adminSuite, "test of rm_whitelist_entry()", test_rm_whitelist_entry);
 
-	searchSuite = CU_add_suite("Testing Phone Firewall - searching features (by name, by number ...)", NULL, NULL);
+	searchSuite = CU_add_suite("Testing Phone Firewall - searching features (by name, by number ...)", NULL, cleanup);
 	CU_add_test(searchSuite, "test of get_blacklist_entry_by_name()", test_get_blacklist_entry_by_name);
 	CU_add_test(searchSuite, "test of get_whitelist_entry_by_name()", test_get_whitelist_entry_by_name);
 
-        CU_basic_set_mode(CU_BRM_NORMAL);
-        //CU_basic_set_mode(CU_BRM_SILENT);
-        //CU_basic_set_mode(CU_BRM_VERBOSE);
+        /*
+         * CU_basic_set_mode(CU_BRM_NORMAL);
+         * CU_basic_set_mode(CU_BRM_SILENT);
+         * CU_basic_set_mode(CU_BRM_VERBOSE);
+         */
+        CU_set_output_filename("tests/CUnitAutomated");
+        CU_automated_run_tests();
+        CU_list_tests_to_file();
 
-	CU_basic_run_tests();
+	//CU_basic_run_tests();
+        printf("\n");
+        CU_basic_show_failures(CU_get_failure_list());
+        printf("\n");
+
         int ret = CU_get_number_of_failures();
 	CU_cleanup_registry();
 

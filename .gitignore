@@ -14,3 +14,4 @@ blacklist*
 whitelist*
 bin_test/*
 bin/*
+phonefirewall.db
