@@ -32,18 +32,22 @@
 <a name="l00018"></a>00018 <span class="comment"> * along with MokSec.  If not, see &lt;http://www.gnu.org/licenses/&gt;</span>
 <a name="l00019"></a>00019 <span class="comment"> */</span>
 <a name="l00020"></a>00020 
-<a name="l00030"></a>00030 <span class="keyword">struct </span><a class="code" href="structEntry.html">Entry</a> *<a class="code" href="pf__search_8c.html#3947a1543660e9f6e666242efee44f89">get_entry_by_name</a>(<span class="keywordtype">char</span> *<a class="code" href="structEntry.html#272e382d3efed5f970c7939742ec9603">name</a>,
-<a name="l00031"></a>00031                                 <span class="keywordtype">int</span> listflag);
-<a name="l00032"></a>00032 
-<a name="l00046"></a>00046 <span class="keyword">struct </span><a class="code" href="structEntry.html">Entry</a> *<a class="code" href="pf__search_8c.html#678d356be18c20e298d74a62bc6e8782">get_entry_by_number</a>(<span class="keywordtype">int</span> <a class="code" href="structEntry.html#138b4e79687ff5ff6de4554db0f061fd">country_code</a>,
-<a name="l00047"></a>00047                                   <span class="keywordtype">int</span> <a class="code" href="structEntry.html#9de7b96e5b65796bd35e9dc730dcd8b3">area_code</a>,
-<a name="l00048"></a>00048                                   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="structEntry.html#1f2177afed89936f82c130ae13fb107c">number</a>,
-<a name="l00049"></a>00049                                   <span class="keywordtype">int</span> listflag);
-<a name="l00050"></a>00050 
-<a name="l00060"></a>00060 <span class="keyword">struct </span><a class="code" href="structEntry.html">Entry</a> *<a class="code" href="pf__search_8c.html#b4e0af5dc1b0cf0bdd5812c973dcd353">get_entry_by_reason</a>(<span class="keywordtype">char</span> *<a class="code" href="structEntry.html#2082cdbb815dfa8b81309cd395d32986">reason</a>,
-<a name="l00061"></a>00061                                   <span class="keywordtype">int</span> listflag);
-<a name="l00062"></a>00062 
-</pre></div><hr size="1"><address style="text-align: right;"><small>Generated on Wed Nov 12 21:52:48 2008 for Phone Firewall by&nbsp;
+<a name="l00021"></a>00021 <span class="preprocessor">#ifndef _PF_H</span>
+<a name="l00022"></a>00022 <span class="preprocessor"></span><span class="preprocessor"># error "Never include the header file pf_search.h directly. Include insted libphonefirewall.h"</span>
+<a name="l00023"></a>00023 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00024"></a>00024 <span class="preprocessor"></span>
+<a name="l00034"></a>00034 <span class="keyword">struct </span><a class="code" href="structEntry.html">Entry</a> *<a class="code" href="pf__search_8c.html#3947a1543660e9f6e666242efee44f89">get_entry_by_name</a>(<span class="keywordtype">char</span> *<a class="code" href="structEntry.html#272e382d3efed5f970c7939742ec9603">name</a>,
+<a name="l00035"></a>00035                                 <span class="keywordtype">int</span> listflag);
+<a name="l00036"></a>00036 
+<a name="l00050"></a>00050 <span class="keyword">struct </span><a class="code" href="structEntry.html">Entry</a> *<a class="code" href="pf__search_8c.html#678d356be18c20e298d74a62bc6e8782">get_entry_by_number</a>(<span class="keywordtype">int</span> <a class="code" href="structEntry.html#138b4e79687ff5ff6de4554db0f061fd">country_code</a>,
+<a name="l00051"></a>00051                                   <span class="keywordtype">int</span> <a class="code" href="structEntry.html#9de7b96e5b65796bd35e9dc730dcd8b3">area_code</a>,
+<a name="l00052"></a>00052                                   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="structEntry.html#1f2177afed89936f82c130ae13fb107c">number</a>,
+<a name="l00053"></a>00053                                   <span class="keywordtype">int</span> listflag);
+<a name="l00054"></a>00054 
+<a name="l00064"></a>00064 <span class="keyword">struct </span><a class="code" href="structEntry.html">Entry</a> *<a class="code" href="pf__search_8c.html#b4e0af5dc1b0cf0bdd5812c973dcd353">get_entry_by_reason</a>(<span class="keywordtype">char</span> *<a class="code" href="structEntry.html#2082cdbb815dfa8b81309cd395d32986">reason</a>,
+<a name="l00065"></a>00065                                   <span class="keywordtype">int</span> listflag);
+<a name="l00066"></a>00066 
+</pre></div><hr size="1"><address style="text-align: right;"><small>Generated on Mon Dec 15 11:05:27 2008 for Phone Firewall by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

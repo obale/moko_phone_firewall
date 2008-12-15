@@ -305,6 +305,12 @@ int main(int argc, char *argv[])
 
 	CU_initialize_registry();
 
+        /*
+         * The first test suite should call the init(void) function for the
+         * creation of the database and the last test suite should call the
+         * cleanup(void) function to remove the database. So it's always sure
+         * that we have a clean testing environment.
+         */
         adminSuite = CU_add_suite("Testing Phone Firewall - administration features (add, remove, change and check)", init, NULL);
 	CU_add_test(adminSuite, "test of add_blacklist_entry()", test_add_blacklist_entry);
 	CU_add_test(adminSuite, "test of add_whitelist_entry()", test_add_whitelist_entry);
@@ -321,21 +327,17 @@ int main(int argc, char *argv[])
 	CU_add_test(searchSuite, "test of get_blacklist_entry_by_name()", test_get_blacklist_entry_by_name);
 	CU_add_test(searchSuite, "test of get_whitelist_entry_by_name()", test_get_whitelist_entry_by_name);
 
-        /*
-         * CU_basic_set_mode(CU_BRM_NORMAL);
-         * CU_basic_set_mode(CU_BRM_SILENT);
-         * CU_basic_set_mode(CU_BRM_VERBOSE);
-         */
         CU_set_output_filename("tests/CUnitAutomated");
         CU_automated_run_tests();
         CU_list_tests_to_file();
 
-	//CU_basic_run_tests();
-        printf("\n");
-        CU_basic_show_failures(CU_get_failure_list());
-        printf("\n");
-
         int ret = CU_get_number_of_failures();
+        if ( 0 != ret ) {
+                CU_basic_show_failures(CU_get_failure_list());
+                printf("\n");
+        } else
+                printf("Congratulation, all tests run successfully!\n");
+
 	CU_cleanup_registry();
 
 	return ret;

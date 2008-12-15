@@ -6,6 +6,7 @@
 {\tt \#include $<$stdlib.h$>$}\par
 {\tt \#include $<$errno.h$>$}\par
 {\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$syslog.h$>$}\par
 {\tt \#include $<$sqlite3.h$>$}\par
 {\tt \#include \char`\"{}libphonefirewall.h\char`\"{}}\par
 
@@ -14,7 +15,7 @@ Include dependency graph for pf\_\-administration.c:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=281pt]{pf__administration_8c__incl}
+\includegraphics[width=309pt]{pf__administration_8c__incl}
 \end{center}
 \end{figure}
 \subsection*{Functions}
@@ -64,9 +65,9 @@ The value \char`\"{}PRIO\_\-ALL\char`\"{} stands for all priorities.
 \item[Returns:]If all goes well 0 (zero) otherwise -1 and the errno variable will be set.. \end{Desc}
 
 
-Definition at line 110 of file pf\_\-administration.c.
+Definition at line 111 of file pf\_\-administration.c.
 
-References DB\_\-FILE, ERR\_\-LOG, MAX\_\-LINE\_\-LENGTH, PRIO\_\-ALL, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NAME, TB\_\-NUMBER, TB\_\-PRIORITY, TB\_\-REASON, and WHITELIST\_\-FLAG.\hypertarget{pf__administration_8c_a3f4effcf850afd9ac912fe3ec7c7b16}{
+References COMPONENT\_\-NAME, DB\_\-FILE, PRIO\_\-ALL, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NAME, TB\_\-NUMBER, TB\_\-PRIORITY, TB\_\-REASON, and WHITELIST\_\-FLAG.\hypertarget{pf__administration_8c_a3f4effcf850afd9ac912fe3ec7c7b16}{
 \index{pf\_\-administration.c@{pf\_\-administration.c}!change\_\-name@{change\_\-name}}
 \index{change\_\-name@{change\_\-name}!pf_administration.c@{pf\_\-administration.c}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}int change\_\-name (int {\em country\_\-code}, int {\em area\_\-code}, unsigned long long {\em number}, char $\ast$ {\em new\_\-name}, int {\em listflag})}}
@@ -85,9 +86,9 @@ Changes the name of the \hyperlink{structentry}{entry}. For the unique identific
 \item[Returns:]If the number was changed 1, otherwise 0. \end{Desc}
 
 
-Definition at line 326 of file pf\_\-administration.c.
+Definition at line 313 of file pf\_\-administration.c.
 
-References DB\_\-FILE, ERR\_\-LOG, MAX\_\-LINE\_\-LENGTH, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NAME, TB\_\-NUMBER, and WHITELIST\_\-FLAG.\hypertarget{pf__administration_8c_2dff06b890556fd5ac9f992c925d5550}{
+References COMPONENT\_\-NAME, DB\_\-FILE, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NAME, TB\_\-NUMBER, and WHITELIST\_\-FLAG.\hypertarget{pf__administration_8c_2dff06b890556fd5ac9f992c925d5550}{
 \index{pf\_\-administration.c@{pf\_\-administration.c}!change\_\-number@{change\_\-number}}
 \index{change\_\-number@{change\_\-number}!pf_administration.c@{pf\_\-administration.c}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}int change\_\-number (int {\em country\_\-code}, int {\em area\_\-code}, unsigned long long {\em number}, int {\em new\_\-country\_\-code}, int {\em new\_\-area\_\-code}, unsigned long long {\em new\_\-number}, int {\em listflag})}}
@@ -106,9 +107,9 @@ Changes the number of the \hyperlink{structentry}{entry}. You need to enter the 
 \item[Returns:]If the number was changed 1, otherwise 0. \end{Desc}
 
 
-Definition at line 365 of file pf\_\-administration.c.
+Definition at line 348 of file pf\_\-administration.c.
 
-References DB\_\-FILE, ERR\_\-LOG, MAX\_\-LINE\_\-LENGTH, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NUMBER, and WHITELIST\_\-FLAG.\hypertarget{pf__administration_8c_985dd7c968f457400d40538864fee0c0}{
+References COMPONENT\_\-NAME, DB\_\-FILE, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NUMBER, and WHITELIST\_\-FLAG.\hypertarget{pf__administration_8c_985dd7c968f457400d40538864fee0c0}{
 \index{pf\_\-administration.c@{pf\_\-administration.c}!change\_\-priority@{change\_\-priority}}
 \index{change\_\-priority@{change\_\-priority}!pf_administration.c@{pf\_\-administration.c}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}int change\_\-priority (int {\em country\_\-code}, int {\em area\_\-code}, unsigned long long {\em number}, int {\em new\_\-priority}, int {\em listflag})}}
@@ -127,9 +128,9 @@ Changes the priority of the \hyperlink{structentry}{entry}. For the unique ident
 \item[Returns:]If the number was changed 1, otherwise 0. \end{Desc}
 
 
-Definition at line 445 of file pf\_\-administration.c.
+Definition at line 420 of file pf\_\-administration.c.
 
-References DB\_\-FILE, ERR\_\-LOG, MAX\_\-LINE\_\-LENGTH, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NUMBER, TB\_\-PRIORITY, and WHITELIST\_\-FLAG.\hypertarget{pf__administration_8c_f57945a657640ebf2333991484bd8a4c}{
+References COMPONENT\_\-NAME, DB\_\-FILE, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NUMBER, TB\_\-PRIORITY, and WHITELIST\_\-FLAG.\hypertarget{pf__administration_8c_f57945a657640ebf2333991484bd8a4c}{
 \index{pf\_\-administration.c@{pf\_\-administration.c}!change\_\-reason@{change\_\-reason}}
 \index{change\_\-reason@{change\_\-reason}!pf_administration.c@{pf\_\-administration.c}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}int change\_\-reason (int {\em country\_\-code}, int {\em area\_\-code}, unsigned long long {\em number}, char $\ast$ {\em new\_\-reason}, int {\em listflag})}}
@@ -148,9 +149,9 @@ Changes the reason of the \hyperlink{structentry}{entry}. For the unique identif
 \item[Returns:]If the number was changed 1, otherwise 0. \end{Desc}
 
 
-Definition at line 406 of file pf\_\-administration.c.
+Definition at line 385 of file pf\_\-administration.c.
 
-References DB\_\-FILE, ERR\_\-LOG, MAX\_\-LINE\_\-LENGTH, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NUMBER, TB\_\-REASON, and WHITELIST\_\-FLAG.\hypertarget{pf__administration_8c_754e9a8891128a285fc17132b5480a07}{
+References COMPONENT\_\-NAME, DB\_\-FILE, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NUMBER, TB\_\-REASON, and WHITELIST\_\-FLAG.\hypertarget{pf__administration_8c_754e9a8891128a285fc17132b5480a07}{
 \index{pf\_\-administration.c@{pf\_\-administration.c}!check\_\-entry@{check\_\-entry}}
 \index{check\_\-entry@{check\_\-entry}!pf_administration.c@{pf\_\-administration.c}}
 \subsubsection{\setlength{\rightskip}{0pt plus 5cm}int check\_\-entry (int {\em country\_\-code}, int {\em area\_\-code}, unsigned long long {\em number}, int {\em priority}, int {\em listflag})}}
@@ -171,9 +172,9 @@ The value \char`\"{}PRIO\_\-ALL\char`\"{} stands for all priorities.
 \item[Returns:]If the number was found 1, otherwise 0. \end{Desc}
 
 
-Definition at line 191 of file pf\_\-administration.c.
+Definition at line 186 of file pf\_\-administration.c.
 
-References Entry::area\_\-code, BLACKLIST\_\-FLAG, Entry::country\_\-code, DB\_\-FILE, ERR\_\-LOG, evaluate\_\-stmt(), INFO\_\-LOG, MAX\_\-LINE\_\-LENGTH, Entry::number, Entry::priority, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NUMBER, TB\_\-PRIORITY, and WHITELIST\_\-FLAG.
+References Entry::area\_\-code, BLACKLIST\_\-FLAG, COMPONENT\_\-NAME, Entry::country\_\-code, DB\_\-FILE, evaluate\_\-stmt(), Entry::number, Entry::priority, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NUMBER, TB\_\-PRIORITY, and WHITELIST\_\-FLAG.
 
 Here is the call graph for this function:\nopagebreak
 \begin{figure}[H]
@@ -201,9 +202,9 @@ Checks if a number is on the blacklist/whitelist.
 \item[Returns:]If the number was found 1, otherwise 0. \end{Desc}
 
 
-Definition at line 263 of file pf\_\-administration.c.
+Definition at line 254 of file pf\_\-administration.c.
 
-References BLACKLIST\_\-FLAG, DB\_\-FILE, ERR\_\-LOG, evaluate\_\-stmt\_\-string(), INFO\_\-LOG, MAX\_\-LINE\_\-LENGTH, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NUMBER, TB\_\-PRIORITY, and WHITELIST\_\-FLAG.
+References BLACKLIST\_\-FLAG, COMPONENT\_\-NAME, DB\_\-FILE, evaluate\_\-stmt\_\-string(), STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NUMBER, TB\_\-PRIORITY, and WHITELIST\_\-FLAG.
 
 Here is the call graph for this function:\nopagebreak
 \begin{figure}[H]
@@ -221,7 +222,7 @@ Here is the call graph for this function:\nopagebreak
 
 
 
-Definition at line 27 of file pf\_\-administration.c.
+Definition at line 28 of file pf\_\-administration.c.
 
 References Entry::area\_\-code, Entry::country\_\-code, Entry::number, PRIO\_\-ALL, Entry::priority, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NUMBER, and TB\_\-PRIORITY.
 
@@ -243,7 +244,7 @@ Here is the caller graph for this function:\nopagebreak
 
 
 
-Definition at line 73 of file pf\_\-administration.c.
+Definition at line 74 of file pf\_\-administration.c.
 
 References PRIO\_\-ALL, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NUMBER, and TB\_\-PRIORITY.
 
@@ -275,6 +276,6 @@ Removes a number from the blacklist/whitelist.
 \item[Returns:]If all goes right 0, otherwise an error code. \end{Desc}
 
 
-Definition at line 155 of file pf\_\-administration.c.
+Definition at line 153 of file pf\_\-administration.c.
 
-References DB\_\-FILE, ERR\_\-LOG, MAX\_\-LINE\_\-LENGTH, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NUMBER, and WHITELIST\_\-FLAG.
+References COMPONENT\_\-NAME, DB\_\-FILE, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NUMBER, and WHITELIST\_\-FLAG.

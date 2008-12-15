@@ -1,5 +1,28 @@
 2008-12-15 Alex Oberhauser <oberhauseralex@networld.to>
 
+	* doc/:
+	Compiling the doxygen documentation, because a few things have
+	changed, for example the logfile*.[ch] files has been deleted.
+
+	Changing the version from v0.01 to v0.02.
+
+	* src_test/testphonefirewall.c:
+	Printing a string when all tests succeeds, otherwise print the errors.
+
+	Deleting the commented part of the basic CUnit calls.
+
+	* NEWS:
+	Adding an entry that the bug in the insert_into_list is fixed.
+
+	* TODO:
+	Deleting the part with the autoconf. Is not necessary at the moment.
+
+	* .gitignore:
+	Adding the xml files to the ignore file. The xml files are the output
+	of the automated tests and should be created on each change.
+
+2008-12-15 Alex Oberhauser <oberhauseralex@networld.to>
+
 	* src_test/testphonefirewall.c:
 	Including the creation and deletion of the database into the CUnit
 	tests as initial and cleanup function. So now it's not needful to

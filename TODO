@@ -9,8 +9,6 @@ The following points are to do (there are not complete):
 	  version v0.01 finished).
 	- [FIXED] Changing the compiling process that all works well at the 
           OpenMoko
-	- Using autoconf to compile the stuff. (see the openmoko-sample2 in
-	  the toolchain direcotry).
 	- Adding the filtering by time and by location (GPS!?! GSM Cells!?!)
 	- Designing and implementing a GUI which is suitable for a mobile
 	  device (for example the Neo 1973/FreeRunner)

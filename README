@@ -69,6 +69,7 @@ If you want compile only special parts use:
 	                              # architecture.
 	$ make pf_daemon	      # Compiles the daemon.
 
+
 Tip for development
 ===================
 

@@ -1,4 +1,4 @@
-.TH "pf_search.c" 3 "12 Nov 2008" "Version v0.01" "Phone Firewall" \" -*- nroff -*-
+.TH "pf_search.c" 3 "15 Dec 2008" "Version v0.02" "Phone Firewall" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -13,6 +13,8 @@ pf_search.c \-
 \fC#include <errno.h>\fP
 .br
 \fC#include <string.h>\fP
+.br
+\fC#include <syslog.h>\fP
 .br
 \fC#include <sqlite3.h>\fP
 .br
@@ -49,14 +51,14 @@ pf_search.c \-
 .PP 
 .SS "#define ASCII_PERCENT_CHAR   37"
 .PP
-Definition at line 27 of file pf_search.c.
+Definition at line 28 of file pf_search.c.
 .PP
 Referenced by get_entry_by_name(), get_entry_by_number(), and get_entry_by_reason().
 .SH "Function Documentation"
 .PP 
 .SS "struct \fBEntry\fP* find_entry (sqlite3_stmt * pp_stmt)\fC [read]\fP"
 .PP
-Definition at line 76 of file pf_search.c.
+Definition at line 79 of file pf_search.c.
 .PP
 References Entry::area_code, Entry::country_code, Entry::name, Entry::number, Entry::priority, Entry::reason, TB_AREACODE, TB_COUNTRYCODE, TB_NAME, TB_NUMBER, TB_PRIORITY, and TB_REASON.
 .PP
@@ -82,7 +84,7 @@ Search a \fBentry\fP by name.
 .PP
 Definition at line 112 of file pf_search.c.
 .PP
-References ASCII_PERCENT_CHAR, DB_FILE, ERR_LOG, find_entry(), insert_into_list(), MAX_LINE_LENGTH, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NAME, TB_NUMBER, TB_PRIORITY, TB_REASON, and WHITELIST_FLAG.
+References ASCII_PERCENT_CHAR, COMPONENT_NAME, DB_FILE, find_entry(), insert_into_list(), STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NAME, TB_NUMBER, TB_PRIORITY, TB_REASON, and WHITELIST_FLAG.
 .SS "struct \fBEntry\fP* get_entry_by_number (int country_code, int area_code, unsigned long long number, int listflag)\fC [read]\fP"
 .PP
 Search a entries by number (country code + area code + number).
@@ -106,9 +108,9 @@ Search a entries by number (country code + area code + number).
 .PP
 
 .PP
-Definition at line 158 of file pf_search.c.
+Definition at line 155 of file pf_search.c.
 .PP
-References ASCII_PERCENT_CHAR, DB_FILE, ERR_LOG, find_entry(), insert_into_list(), MAX_LINE_LENGTH, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NAME, TB_NUMBER, TB_PRIORITY, TB_REASON, and WHITELIST_FLAG.
+References ASCII_PERCENT_CHAR, COMPONENT_NAME, DB_FILE, find_entry(), insert_into_list(), STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NAME, TB_NUMBER, TB_PRIORITY, TB_REASON, and WHITELIST_FLAG.
 .SS "struct \fBEntry\fP* get_entry_by_reason (char * reason, int listflag)\fC [read]\fP"
 .PP
 Search a entries by reason.
@@ -128,12 +130,12 @@ Search a entries by reason.
 .PP
 
 .PP
-Definition at line 206 of file pf_search.c.
+Definition at line 200 of file pf_search.c.
 .PP
-References ASCII_PERCENT_CHAR, DB_FILE, ERR_LOG, find_entry(), insert_into_list(), MAX_LINE_LENGTH, STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NAME, TB_NUMBER, TB_PRIORITY, TB_REASON, and WHITELIST_FLAG.
+References ASCII_PERCENT_CHAR, COMPONENT_NAME, DB_FILE, find_entry(), insert_into_list(), STMT_SIZE, TB_AREACODE, TB_COUNTRYCODE, TB_NAME, TB_NUMBER, TB_PRIORITY, TB_REASON, and WHITELIST_FLAG.
 .SS "struct \fBEntry\fP* insert_into_list (struct \fBEntry\fP * p_root, struct \fBEntry\fP * p_entry)\fC [read]\fP"
 .PP
-Definition at line 29 of file pf_search.c.
+Definition at line 30 of file pf_search.c.
 .PP
 References Entry::area_code, Entry::country_code, Entry::name, Entry::next, Entry::number, and Entry::reason.
 .PP
