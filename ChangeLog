@@ -1,3 +1,10 @@
+2008-12-16 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* tests/:
+	Adding the two xml file (Result and Listing) until we have a
+	possibility to run the test remotly. This two files will be published
+	than on http://ci.networld.to
+
 2008-12-15 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* doc/:
