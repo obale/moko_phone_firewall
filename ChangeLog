@@ -1,6 +1,11 @@
 2008-12-16 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* tests/:
+	Test commit to test the post-update hook script.
+
+2008-12-16 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* tests/:
 	Adding the two xml file (Result and Listing) until we have a
 	possibility to run the test remotly. This two files will be published
 	than on http://ci.networld.to
