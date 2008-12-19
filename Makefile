@@ -20,8 +20,8 @@ all: 	libphonefirewall.so\
 doc: 
 	@ echo -en 'Creating a documentation with doxygen \t\t\t\t\t\t'; 
 	@ $(DOXYGEN) &> /dev/null\
-	 && ( echo -e '[\E[32mDONE\033[0m]'; tput sgr0 )\
-	 || ( echo -e '[\E[31mFAILED\033[0m]'; tput sgr0 )
+	 && ( echo -e '[\E[32mDONE\033[0m]' )\
+	 || ( echo -e '[\E[31mFAILED\033[0m]' )
 
 pf_administration.o: $(SRCDIR)/pf_administration.c $(SRCDIR)/libphonefirewall.h
 	$(CC) $(CLFLAGS) -fPIC -c $(SRCDIR)/pf_administration.c -o $(SRCDIR)/$@
