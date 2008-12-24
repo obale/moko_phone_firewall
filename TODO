@@ -14,3 +14,4 @@ The following points are to do (there are not complete):
 	  device (for example the Neo 1973/FreeRunner)
 	- [FIXED] [BUG] Fix the checking function.
 	- [FIXED] [BUG] Segmentation fault at the end of the CUnit tests.
+        - Implementing unicode support.
