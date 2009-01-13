@@ -1,5 +1,5 @@
 /*
- * phonefirewall_search.c
+ * pf_search.c
  *
  * (C) 2008 by MokSec Project
  * Written by Alex Oberhauser <oberhauseralex@networld.to>

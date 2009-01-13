@@ -1,5 +1,5 @@
 /*
- * phonefirewall_administration.c
+ * pf_administration.c
  *
  * (C) 2008 by MokSec Project
  * Written by Alex Oberhauser <oberhauseralex@networld.to>
@@ -119,7 +119,10 @@ int add_entry(int country_code,
         if ( priority < PRIO_ALL
                         || 0 == country_code
                         || 0 == area_code
-                        || 0 == number ) return -1;
+                        || 0 == number ) {
+                syslog(LOG_ERR, "[%s] Please fill out the obligation fields.", COMPONENT_NAME);
+                return -1;
+        }
 
         char *listname = (WHITELIST_FLAG == listflag) ? "whitelist" : "blacklist";
 

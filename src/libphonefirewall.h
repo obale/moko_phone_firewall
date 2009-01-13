@@ -30,6 +30,7 @@
  * The header file of the Phone Firewall. Blocks or accepts incoming
  * phone calls, so it's possible to prevent disturbing phone calls.
  * Provides a API which can used by other application to build nice programs.
+ * For more function see the header files pf_search.h and pf_administration.h.
  */
 
 #include "pf_search.h"

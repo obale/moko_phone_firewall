@@ -1,3 +1,20 @@
+2009-01-13 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* pf_search.c:
+	Changing the name in the header from phonefirewall_search.c to
+	pf_search.c
+
+	* pf_administration.c:
+	Changing the name in the header from phonefirewall_administration.c
+	to pf_administration.c.
+
+	Adding a syslog write statement to the beginning check of the
+	parameters.
+
+	* TODO:
+	Changing the part of the GUI to [NOFIX], because the GUI is not part
+	of this software subproject.
+
 2008-12-24 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* TODO:
