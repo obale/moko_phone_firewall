@@ -224,13 +224,14 @@ void test_get_blacklist_entry_by_name(void)
 
 void test_get_whitelist_entry_by_name(void)
 {
-#if 0
+#if 1
         struct Entry *tmp_entry = NULL;
 	tmp_entry = get_entry_by_name("", WHITELIST_FLAG);
         int count = 0;
         printf("\n");
         while ( tmp_entry != NULL ) {
-                printf("[CUNIT] result #%d: +%d %d %llu - %s - %s\n", count,
+                printf("[CUNIT] result #%d: %d: +%d %d %llu - %s - %s\n", count,
+                                                                      tmp_entry->priority,
                                                                       tmp_entry->country_code,
                                                                       tmp_entry->area_code,
                                                                       tmp_entry->number,

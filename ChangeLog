@@ -1,3 +1,8 @@
+2009-01-14 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* pf_search.c:
+	Fixing the bug that the priority don't will be saved.
+
 2009-01-13 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* pf_search.c:

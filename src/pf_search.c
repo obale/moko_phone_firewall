@@ -34,6 +34,7 @@ struct Entry *insert_into_list(struct Entry *p_root,
         if ( NULL == p_root ) {
                 if ( NULL == (p_root = (struct Entry *) malloc(sizeof(struct Entry)) ) )
                         return NULL;
+                p_root->priority = p_entry->priority;
                 p_root->country_code = p_entry->country_code;
                 p_root->area_code = p_entry->area_code;
                 p_root->number = p_entry->number;
@@ -56,6 +57,7 @@ struct Entry *insert_into_list(struct Entry *p_root,
                 if ( NULL == (tmp_entry->next = (struct Entry *) malloc(sizeof(struct Entry)) ) )
                         return NULL;
                 tmp_entry = tmp_entry->next;
+                tmp_entry->priority = p_entry->priority;
                 tmp_entry->country_code = p_entry->country_code;
                 tmp_entry->area_code = p_entry->area_code;
                 tmp_entry->number = p_entry->number;
