@@ -224,7 +224,7 @@ void test_get_blacklist_entry_by_name(void)
 
 void test_get_whitelist_entry_by_name(void)
 {
-#if 1
+#if 0
         struct Entry *tmp_entry = NULL;
 	tmp_entry = get_entry_by_name("", WHITELIST_FLAG);
         int count = 0;
