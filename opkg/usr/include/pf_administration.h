@@ -1,7 +1,7 @@
 /*
  * pf_administration.h
  *
- * (C) 2008 by Networld Consulting, Ltd.
+ * (C) 2008 by MokSec Project
  * Written by Alex Oberhauser <oberhauseralex@networld.to>
  * All Rights Reserved
  *
@@ -17,6 +17,10 @@
  * You should have received a copy of the GNU General Public License
  * along with MokSec.  If not, see <http://www.gnu.org/licenses/>
  */
+
+#ifndef _PF_H
+# error "Never include the header file pf_administration.h directly. Include insted libphonefirewall.h"
+#endif
 
 /**
  * Add a number to the blacklist/whitelist. The number will be blocked after that.

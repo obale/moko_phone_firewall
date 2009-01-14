@@ -2,7 +2,7 @@ Package: phonefirewall-dev
 Section: libs
 Source: http://moko.networld.to/?p=gsm/phone-firewall.git;a=summary
 Priority: optional
-Version: 0.01_4b47985a18de62b3
+Version: 0.02_b8e6cd50880d2ce2
 Architecture: armv4t
 Maintainer: Alex Oberhauser <oberhauseralex@networld.to>
 Depends: libsqlite3-0 
