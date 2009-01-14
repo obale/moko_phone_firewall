@@ -19,6 +19,13 @@ DESCRIPTION: The full news text
 NEWS
 ====
 
+DATE:        15-12-2008
+TAG:         [BUGFIX]
+SUMMARY:     Fixed the major bug in search a name function (from 15-08-2008)
+DESCRIPTION: A few days ago the bug in the insert_into_list function was
+             fixed. Now the library should work for the daily use. This was
+             the unique known problem.
+
 DATE:        15-08-2008
 TAG:         [BUG]
 SUMMARY:     Major bug in search a name function

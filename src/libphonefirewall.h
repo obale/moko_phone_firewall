@@ -18,6 +18,9 @@
  * along with MokSec.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef _PF_H
+#define _PF_H
+
 /**
  * @mainfile
  * @file libphonefirewall.h
@@ -27,12 +30,13 @@
  * The header file of the Phone Firewall. Blocks or accepts incoming
  * phone calls, so it's possible to prevent disturbing phone calls.
  * Provides a API which can used by other application to build nice programs.
+ * For more function see the header files pf_search.h and pf_administration.h.
  */
 
 #include "pf_search.h"
 #include "pf_administration.h"
-#include "logfile.h"
 
+#define VERSION "0.02"
 #define PRIO_ALL -999
 //#define DB_FILE "/var/lib/moksec/phonefirewall.db"
 #define DB_FILE "db/phonefirewall.db"
@@ -49,7 +53,7 @@
 #define BLACKLIST_FLAG 0x01
 #define WHITELIST_FLAG 0x02
 
-#define COMPONENT_NAME "phone firewall"
+#define COMPONENT_NAME "phone-firewall"
 
 /**
  * The struct which includes all information about entries (black- and
@@ -68,3 +72,4 @@ struct Entry {
     struct Entry *next;
 };
 
+#endif /* libphonefirewall.h */

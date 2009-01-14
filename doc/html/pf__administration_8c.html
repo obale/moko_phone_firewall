@@ -16,6 +16,7 @@
 <code>#include &lt;stdlib.h&gt;</code><br>
 <code>#include &lt;errno.h&gt;</code><br>
 <code>#include &lt;string.h&gt;</code><br>
+<code>#include &lt;syslog.h&gt;</code><br>
 <code>#include &lt;sqlite3.h&gt;</code><br>
 <code>#include &quot;<a class="el" href="libphonefirewall_8h-source.html">libphonefirewall.h</a>&quot;</code><br>
 
@@ -25,7 +26,7 @@ Include dependency graph for pf_administration.c:</div>
 <div class="dynsection">
 <p><center><img src="pf__administration_8c__incl.png" border="0" usemap="#pf_administration.c_map" alt=""></center>
 <map name="pf_administration.c_map">
-<area shape="rect" href="libphonefirewall_8h.html" title="API of the phone firewall." alt="" coords="467,84,597,111"><area shape="rect" href="pf__search_8h.html" title="pf_search.h" alt="" coords="340,161,436,188"><area shape="rect" href="pf__administration_8h.html" title="pf_administration.h" alt="" coords="460,161,604,188"><area shape="rect" href="logfile_8h.html" title="logfile.h" alt="" coords="628,161,697,188"></map>
+<area shape="rect" href="libphonefirewall_8h.html" title="API of the phone firewall." alt="" coords="563,84,693,111"><area shape="rect" href="pf__search_8h.html" title="pf_search.h" alt="" coords="508,161,604,188"><area shape="rect" href="pf__administration_8h.html" title="pf_administration.h" alt="" coords="628,161,772,188"></map>
 </div>
 
 <p>
@@ -126,9 +127,9 @@ Add a number to the blacklist/whitelist. The number will be blocked after that.<
 The value "PRIO_ALL" stands for all priorities.<p>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If all goes well 0 (zero) otherwise -1 and the errno variable will be set.. </dd></dl>
 
-<p>Definition at line <a class="el" href="pf__administration_8c-source.html#l00110">110</a> of file <a class="el" href="pf__administration_8c-source.html">pf_administration.c</a>.</p>
+<p>Definition at line <a class="el" href="pf__administration_8c-source.html#l00111">111</a> of file <a class="el" href="pf__administration_8c-source.html">pf_administration.c</a>.</p>
 
-<p>References <a class="el" href="libphonefirewall_8h-source.html#l00037">DB_FILE</a>, <a class="el" href="logfile_8h-source.html#l00030">ERR_LOG</a>, <a class="el" href="libphonefirewall_8h-source.html#l00039">MAX_LINE_LENGTH</a>, <a class="el" href="libphonefirewall_8h-source.html#l00036">PRIO_ALL</a>, <a class="el" href="libphonefirewall_8h-source.html#l00038">STMT_SIZE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00041">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00044">TB_NAME</a>, <a class="el" href="libphonefirewall_8h-source.html#l00043">TB_NUMBER</a>, <a class="el" href="libphonefirewall_8h-source.html#l00046">TB_PRIORITY</a>, <a class="el" href="libphonefirewall_8h-source.html#l00045">TB_REASON</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00049">WHITELIST_FLAG</a>.</p>
+<p>References <a class="el" href="libphonefirewall_8h-source.html#l00055">COMPONENT_NAME</a>, <a class="el" href="libphonefirewall_8h-source.html#l00041">DB_FILE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00039">PRIO_ALL</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">STMT_SIZE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00046">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00045">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00048">TB_NAME</a>, <a class="el" href="libphonefirewall_8h-source.html#l00047">TB_NUMBER</a>, <a class="el" href="libphonefirewall_8h-source.html#l00050">TB_PRIORITY</a>, <a class="el" href="libphonefirewall_8h-source.html#l00049">TB_REASON</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00053">WHITELIST_FLAG</a>.</p>
 
 </div>
 </div><p>
@@ -189,9 +190,9 @@ Changes the name of the <a class="el" href="structentry.html" title="Includes al
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the number was changed 1, otherwise 0. </dd></dl>
 
-<p>Definition at line <a class="el" href="pf__administration_8c-source.html#l00326">326</a> of file <a class="el" href="pf__administration_8c-source.html">pf_administration.c</a>.</p>
+<p>Definition at line <a class="el" href="pf__administration_8c-source.html#l00313">313</a> of file <a class="el" href="pf__administration_8c-source.html">pf_administration.c</a>.</p>
 
-<p>References <a class="el" href="libphonefirewall_8h-source.html#l00037">DB_FILE</a>, <a class="el" href="logfile_8h-source.html#l00030">ERR_LOG</a>, <a class="el" href="libphonefirewall_8h-source.html#l00039">MAX_LINE_LENGTH</a>, <a class="el" href="libphonefirewall_8h-source.html#l00038">STMT_SIZE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00041">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00044">TB_NAME</a>, <a class="el" href="libphonefirewall_8h-source.html#l00043">TB_NUMBER</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00049">WHITELIST_FLAG</a>.</p>
+<p>References <a class="el" href="libphonefirewall_8h-source.html#l00055">COMPONENT_NAME</a>, <a class="el" href="libphonefirewall_8h-source.html#l00041">DB_FILE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">STMT_SIZE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00046">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00045">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00048">TB_NAME</a>, <a class="el" href="libphonefirewall_8h-source.html#l00047">TB_NUMBER</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00053">WHITELIST_FLAG</a>.</p>
 
 </div>
 </div><p>
@@ -266,9 +267,9 @@ Changes the number of the <a class="el" href="structentry.html" title="Includes 
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the number was changed 1, otherwise 0. </dd></dl>
 
-<p>Definition at line <a class="el" href="pf__administration_8c-source.html#l00365">365</a> of file <a class="el" href="pf__administration_8c-source.html">pf_administration.c</a>.</p>
+<p>Definition at line <a class="el" href="pf__administration_8c-source.html#l00348">348</a> of file <a class="el" href="pf__administration_8c-source.html">pf_administration.c</a>.</p>
 
-<p>References <a class="el" href="libphonefirewall_8h-source.html#l00037">DB_FILE</a>, <a class="el" href="logfile_8h-source.html#l00030">ERR_LOG</a>, <a class="el" href="libphonefirewall_8h-source.html#l00039">MAX_LINE_LENGTH</a>, <a class="el" href="libphonefirewall_8h-source.html#l00038">STMT_SIZE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00041">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00043">TB_NUMBER</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00049">WHITELIST_FLAG</a>.</p>
+<p>References <a class="el" href="libphonefirewall_8h-source.html#l00055">COMPONENT_NAME</a>, <a class="el" href="libphonefirewall_8h-source.html#l00041">DB_FILE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">STMT_SIZE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00046">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00045">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00047">TB_NUMBER</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00053">WHITELIST_FLAG</a>.</p>
 
 </div>
 </div><p>
@@ -329,9 +330,9 @@ Changes the priority of the <a class="el" href="structentry.html" title="Include
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the number was changed 1, otherwise 0. </dd></dl>
 
-<p>Definition at line <a class="el" href="pf__administration_8c-source.html#l00445">445</a> of file <a class="el" href="pf__administration_8c-source.html">pf_administration.c</a>.</p>
+<p>Definition at line <a class="el" href="pf__administration_8c-source.html#l00420">420</a> of file <a class="el" href="pf__administration_8c-source.html">pf_administration.c</a>.</p>
 
-<p>References <a class="el" href="libphonefirewall_8h-source.html#l00037">DB_FILE</a>, <a class="el" href="logfile_8h-source.html#l00030">ERR_LOG</a>, <a class="el" href="libphonefirewall_8h-source.html#l00039">MAX_LINE_LENGTH</a>, <a class="el" href="libphonefirewall_8h-source.html#l00038">STMT_SIZE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00041">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00043">TB_NUMBER</a>, <a class="el" href="libphonefirewall_8h-source.html#l00046">TB_PRIORITY</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00049">WHITELIST_FLAG</a>.</p>
+<p>References <a class="el" href="libphonefirewall_8h-source.html#l00055">COMPONENT_NAME</a>, <a class="el" href="libphonefirewall_8h-source.html#l00041">DB_FILE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">STMT_SIZE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00046">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00045">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00047">TB_NUMBER</a>, <a class="el" href="libphonefirewall_8h-source.html#l00050">TB_PRIORITY</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00053">WHITELIST_FLAG</a>.</p>
 
 </div>
 </div><p>
@@ -392,9 +393,9 @@ Changes the reason of the <a class="el" href="structentry.html" title="Includes 
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the number was changed 1, otherwise 0. </dd></dl>
 
-<p>Definition at line <a class="el" href="pf__administration_8c-source.html#l00406">406</a> of file <a class="el" href="pf__administration_8c-source.html">pf_administration.c</a>.</p>
+<p>Definition at line <a class="el" href="pf__administration_8c-source.html#l00385">385</a> of file <a class="el" href="pf__administration_8c-source.html">pf_administration.c</a>.</p>
 
-<p>References <a class="el" href="libphonefirewall_8h-source.html#l00037">DB_FILE</a>, <a class="el" href="logfile_8h-source.html#l00030">ERR_LOG</a>, <a class="el" href="libphonefirewall_8h-source.html#l00039">MAX_LINE_LENGTH</a>, <a class="el" href="libphonefirewall_8h-source.html#l00038">STMT_SIZE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00041">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00043">TB_NUMBER</a>, <a class="el" href="libphonefirewall_8h-source.html#l00045">TB_REASON</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00049">WHITELIST_FLAG</a>.</p>
+<p>References <a class="el" href="libphonefirewall_8h-source.html#l00055">COMPONENT_NAME</a>, <a class="el" href="libphonefirewall_8h-source.html#l00041">DB_FILE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">STMT_SIZE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00046">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00045">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00047">TB_NUMBER</a>, <a class="el" href="libphonefirewall_8h-source.html#l00049">TB_REASON</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00053">WHITELIST_FLAG</a>.</p>
 
 </div>
 </div><p>
@@ -456,9 +457,9 @@ Checks if a number is on the blacklist/whitelist.<p>
 The value "PRIO_ALL" stands for all priorities.<p>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the number was found 1, otherwise 0. </dd></dl>
 
-<p>Definition at line <a class="el" href="pf__administration_8c-source.html#l00191">191</a> of file <a class="el" href="pf__administration_8c-source.html">pf_administration.c</a>.</p>
+<p>Definition at line <a class="el" href="pf__administration_8c-source.html#l00186">186</a> of file <a class="el" href="pf__administration_8c-source.html">pf_administration.c</a>.</p>
 
-<p>References <a class="el" href="libphonefirewall_8h-source.html#l00062">Entry::area_code</a>, <a class="el" href="libphonefirewall_8h-source.html#l00048">BLACKLIST_FLAG</a>, <a class="el" href="libphonefirewall_8h-source.html#l00061">Entry::country_code</a>, <a class="el" href="libphonefirewall_8h-source.html#l00037">DB_FILE</a>, <a class="el" href="logfile_8h-source.html#l00030">ERR_LOG</a>, <a class="el" href="pf__administration_8c-source.html#l00027">evaluate_stmt()</a>, <a class="el" href="logfile_8h-source.html#l00032">INFO_LOG</a>, <a class="el" href="libphonefirewall_8h-source.html#l00039">MAX_LINE_LENGTH</a>, <a class="el" href="libphonefirewall_8h-source.html#l00063">Entry::number</a>, <a class="el" href="libphonefirewall_8h-source.html#l00066">Entry::priority</a>, <a class="el" href="libphonefirewall_8h-source.html#l00038">STMT_SIZE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00041">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00043">TB_NUMBER</a>, <a class="el" href="libphonefirewall_8h-source.html#l00046">TB_PRIORITY</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00049">WHITELIST_FLAG</a>.</p>
+<p>References <a class="el" href="libphonefirewall_8h-source.html#l00066">Entry::area_code</a>, <a class="el" href="libphonefirewall_8h-source.html#l00052">BLACKLIST_FLAG</a>, <a class="el" href="libphonefirewall_8h-source.html#l00055">COMPONENT_NAME</a>, <a class="el" href="libphonefirewall_8h-source.html#l00065">Entry::country_code</a>, <a class="el" href="libphonefirewall_8h-source.html#l00041">DB_FILE</a>, <a class="el" href="pf__administration_8c-source.html#l00028">evaluate_stmt()</a>, <a class="el" href="libphonefirewall_8h-source.html#l00067">Entry::number</a>, <a class="el" href="libphonefirewall_8h-source.html#l00070">Entry::priority</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">STMT_SIZE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00046">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00045">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00047">TB_NUMBER</a>, <a class="el" href="libphonefirewall_8h-source.html#l00050">TB_PRIORITY</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00053">WHITELIST_FLAG</a>.</p>
 
 <p>
 <div class="dynheader">
@@ -514,9 +515,9 @@ Checks if a number is on the blacklist/whitelist.<p>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the number was found 1, otherwise 0. </dd></dl>
 
-<p>Definition at line <a class="el" href="pf__administration_8c-source.html#l00263">263</a> of file <a class="el" href="pf__administration_8c-source.html">pf_administration.c</a>.</p>
+<p>Definition at line <a class="el" href="pf__administration_8c-source.html#l00254">254</a> of file <a class="el" href="pf__administration_8c-source.html">pf_administration.c</a>.</p>
 
-<p>References <a class="el" href="libphonefirewall_8h-source.html#l00048">BLACKLIST_FLAG</a>, <a class="el" href="libphonefirewall_8h-source.html#l00037">DB_FILE</a>, <a class="el" href="logfile_8h-source.html#l00030">ERR_LOG</a>, <a class="el" href="pf__administration_8c-source.html#l00073">evaluate_stmt_string()</a>, <a class="el" href="logfile_8h-source.html#l00032">INFO_LOG</a>, <a class="el" href="libphonefirewall_8h-source.html#l00039">MAX_LINE_LENGTH</a>, <a class="el" href="libphonefirewall_8h-source.html#l00038">STMT_SIZE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00041">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00043">TB_NUMBER</a>, <a class="el" href="libphonefirewall_8h-source.html#l00046">TB_PRIORITY</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00049">WHITELIST_FLAG</a>.</p>
+<p>References <a class="el" href="libphonefirewall_8h-source.html#l00052">BLACKLIST_FLAG</a>, <a class="el" href="libphonefirewall_8h-source.html#l00055">COMPONENT_NAME</a>, <a class="el" href="libphonefirewall_8h-source.html#l00041">DB_FILE</a>, <a class="el" href="pf__administration_8c-source.html#l00074">evaluate_stmt_string()</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">STMT_SIZE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00046">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00045">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00047">TB_NUMBER</a>, <a class="el" href="libphonefirewall_8h-source.html#l00050">TB_PRIORITY</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00053">WHITELIST_FLAG</a>.</p>
 
 <p>
 <div class="dynheader">
@@ -556,11 +557,11 @@ Here is the call graph for this function:</div>
 
 <p>
 
-<p>Definition at line <a class="el" href="pf__administration_8c-source.html#l00027">27</a> of file <a class="el" href="pf__administration_8c-source.html">pf_administration.c</a>.</p>
+<p>Definition at line <a class="el" href="pf__administration_8c-source.html#l00028">28</a> of file <a class="el" href="pf__administration_8c-source.html">pf_administration.c</a>.</p>
 
-<p>References <a class="el" href="libphonefirewall_8h-source.html#l00062">Entry::area_code</a>, <a class="el" href="libphonefirewall_8h-source.html#l00061">Entry::country_code</a>, <a class="el" href="libphonefirewall_8h-source.html#l00063">Entry::number</a>, <a class="el" href="libphonefirewall_8h-source.html#l00036">PRIO_ALL</a>, <a class="el" href="libphonefirewall_8h-source.html#l00066">Entry::priority</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00041">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00043">TB_NUMBER</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00046">TB_PRIORITY</a>.</p>
+<p>References <a class="el" href="libphonefirewall_8h-source.html#l00066">Entry::area_code</a>, <a class="el" href="libphonefirewall_8h-source.html#l00065">Entry::country_code</a>, <a class="el" href="libphonefirewall_8h-source.html#l00067">Entry::number</a>, <a class="el" href="libphonefirewall_8h-source.html#l00039">PRIO_ALL</a>, <a class="el" href="libphonefirewall_8h-source.html#l00070">Entry::priority</a>, <a class="el" href="libphonefirewall_8h-source.html#l00046">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00045">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00047">TB_NUMBER</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00050">TB_PRIORITY</a>.</p>
 
-<p>Referenced by <a class="el" href="pf__administration_8c-source.html#l00191">check_entry()</a>.</p>
+<p>Referenced by <a class="el" href="pf__administration_8c-source.html#l00186">check_entry()</a>.</p>
 
 <p>
 <div class="dynheader">
@@ -606,11 +607,11 @@ Here is the caller graph for this function:</div>
 
 <p>
 
-<p>Definition at line <a class="el" href="pf__administration_8c-source.html#l00073">73</a> of file <a class="el" href="pf__administration_8c-source.html">pf_administration.c</a>.</p>
+<p>Definition at line <a class="el" href="pf__administration_8c-source.html#l00074">74</a> of file <a class="el" href="pf__administration_8c-source.html">pf_administration.c</a>.</p>
 
-<p>References <a class="el" href="libphonefirewall_8h-source.html#l00036">PRIO_ALL</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00041">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00043">TB_NUMBER</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00046">TB_PRIORITY</a>.</p>
+<p>References <a class="el" href="libphonefirewall_8h-source.html#l00039">PRIO_ALL</a>, <a class="el" href="libphonefirewall_8h-source.html#l00046">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00045">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00047">TB_NUMBER</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00050">TB_PRIORITY</a>.</p>
 
-<p>Referenced by <a class="el" href="pf__administration_8c-source.html#l00263">check_entry_string()</a>.</p>
+<p>Referenced by <a class="el" href="pf__administration_8c-source.html#l00254">check_entry_string()</a>.</p>
 
 <p>
 <div class="dynheader">
@@ -673,13 +674,13 @@ Removes a number from the blacklist/whitelist.<p>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If all goes right 0, otherwise an error code. </dd></dl>
 
-<p>Definition at line <a class="el" href="pf__administration_8c-source.html#l00155">155</a> of file <a class="el" href="pf__administration_8c-source.html">pf_administration.c</a>.</p>
+<p>Definition at line <a class="el" href="pf__administration_8c-source.html#l00153">153</a> of file <a class="el" href="pf__administration_8c-source.html">pf_administration.c</a>.</p>
 
-<p>References <a class="el" href="libphonefirewall_8h-source.html#l00037">DB_FILE</a>, <a class="el" href="logfile_8h-source.html#l00030">ERR_LOG</a>, <a class="el" href="libphonefirewall_8h-source.html#l00039">MAX_LINE_LENGTH</a>, <a class="el" href="libphonefirewall_8h-source.html#l00038">STMT_SIZE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00041">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00043">TB_NUMBER</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00049">WHITELIST_FLAG</a>.</p>
+<p>References <a class="el" href="libphonefirewall_8h-source.html#l00055">COMPONENT_NAME</a>, <a class="el" href="libphonefirewall_8h-source.html#l00041">DB_FILE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00042">STMT_SIZE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00046">TB_AREACODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00045">TB_COUNTRYCODE</a>, <a class="el" href="libphonefirewall_8h-source.html#l00047">TB_NUMBER</a>, and <a class="el" href="libphonefirewall_8h-source.html#l00053">WHITELIST_FLAG</a>.</p>
 
 </div>
 </div><p>
-<hr size="1"><address style="text-align: right;"><small>Generated on Wed Nov 12 21:52:56 2008 for Phone Firewall by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Dec 19 11:17:27 2008 for Phone Firewall by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.4 </small></address>
 </body>

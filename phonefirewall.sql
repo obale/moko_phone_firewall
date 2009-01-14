@@ -22,3 +22,4 @@ CREATE TABLE IF NOT EXISTS blacklist ( priority INTEGER,
 			 reason varchar(256),
 			 PRIMARY KEY(countrycode, areacode, number) );
 
+PRAGMA encoding = "UTF-8";

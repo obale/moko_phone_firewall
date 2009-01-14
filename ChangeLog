@@ -1,3 +1,152 @@
+2009-01-14 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* pf_search.c:
+	Fixing the bug that the priority don't will be saved.
+
+2009-01-13 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* pf_search.c:
+	Changing the name in the header from phonefirewall_search.c to
+	pf_search.c
+
+	* pf_administration.c:
+	Changing the name in the header from phonefirewall_administration.c
+	to pf_administration.c.
+
+	Adding a syslog write statement to the beginning check of the
+	parameters.
+
+	* TODO:
+	Changing the part of the GUI to [NOFIX], because the GUI is not part
+	of this software subproject.
+
+2008-12-24 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* TODO:
+	Adding a task for the implementation of the unicode support.
+
+2008-12-16 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* tests/:
+	Test commit to test the post-update hook script.
+
+2008-12-16 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* tests/:
+	Adding the two xml file (Result and Listing) until we have a
+	possibility to run the test remotly. This two files will be published
+	than on http://ci.networld.to
+
+2008-12-15 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* doc/:
+	Compiling the doxygen documentation, because a few things have
+	changed, for example the logfile*.[ch] files has been deleted.
+
+	Changing the version from v0.01 to v0.02.
+
+	* src_test/testphonefirewall.c:
+	Printing a string when all tests succeeds, otherwise print the errors.
+
+	Deleting the commented part of the basic CUnit calls.
+
+	* NEWS:
+	Adding an entry that the bug in the insert_into_list is fixed.
+
+	* TODO:
+	Deleting the part with the autoconf. Is not necessary at the moment.
+
+	* .gitignore:
+	Adding the xml files to the ignore file. The xml files are the output
+	of the automated tests and should be created on each change.
+
+2008-12-15 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* src_test/testphonefirewall.c:
+	Including the creation and deletion of the database into the CUnit
+	tests as initial and cleanup function. So now it's not needful to
+	recreate the database manually before each run.
+
+	Switching from the base tests to the automation tests. So that we have
+	a nice XML file which we could publish after each push. If the tests
+	fails, the errors will be shown, otherwise no output is printed.
+	That's very useful if the tests run automatically before a commit.
+
+	* db/phonefirewall.db:
+	Deleting the database file. Now it will be created on each run of the
+	CUnit tests.
+
+2008-12-14 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* src/pf_administration.c
+	* src/pf_search.c:
+	Substituting the own written logfile functions with syslog.
+
+	* src/pf_administration.h
+	* src/pf_search.h:
+	Adding a flag which blocks the manual including of the two header
+	files. Now it's only possible to include the libphonefirewall.h into a
+	written program.
+
+	* src/logfile*:
+	Deleting the own written logfile routines.
+
+2008-12-09 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* README:
+	Adding the line ". env-export" to the script code. This line reads in
+	all environment variables which are needed. And fixing the missing of
+	the return variables.
+
+2008-12-06 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* README:
+	Adding a section with useful informations for developer. Adding the
+	shell commands for the pre-commit script.
+
+2008-12-06 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* Makefile:
+	Substituting the pkg-config command with -lsqlite3, because pkg-config
+	makes probelm with the pre-commit script.
+
+	* src_test/testphonefirewall.c:
+	Setting the output to NORMAL (from SILENT).
+
+2008-12-05 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* src_test/testphonefirewall.c:
+	Fixing the CUnit tests. Now the functions returns the number of the
+	failed tests. It's possible to use this fact to write nice pre-commit
+	scripts in GIT.
+
+2008-11-26 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* src/libphonefirewall.h:
+	Adding a version number to the header file. Now that all known bugs
+	are fixed a version of 0.02 seams OK to me.
+
+	* Makefile:
+	Adding a command "prepare" which stripps the libphonefirewall.so
+	library, so we save important memory on the device.
+
+2008-11-19 Alex Oberhauser <oberhauseralex@networld.to>
+
+	* Makefile:
+	Disabling DEBUG flag.
+
+	* src/pf_administration.c:
+	Adding the " to the SQL-Query when a string is used.
+
+	* src/pf_search.c:
+	Fixing the change something bug.
+
+	* src_test/testphonefirewall.c:
+	Activating one change name test, to test if the bug was really fixed.
+
+	Testing the search with the empty string. All entries will be shown in
+	the result, as expected.
+
 2008-11-18 Alex Oberhauser <oberhauseralex@networld.to>
 
 	* src/pf_search.c:

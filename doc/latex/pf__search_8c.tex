@@ -6,6 +6,7 @@
 {\tt \#include $<$stdlib.h$>$}\par
 {\tt \#include $<$errno.h$>$}\par
 {\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$syslog.h$>$}\par
 {\tt \#include $<$sqlite3.h$>$}\par
 {\tt \#include \char`\"{}libphonefirewall.h\char`\"{}}\par
 
@@ -14,7 +15,7 @@ Include dependency graph for pf\_\-search.c:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=281pt]{pf__search_8c__incl}
+\includegraphics[width=309pt]{pf__search_8c__incl}
 \end{center}
 \end{figure}
 \subsection*{Defines}
@@ -47,7 +48,7 @@ struct \hyperlink{structEntry}{Entry} $\ast$ \hyperlink{pf__search_8c_b4e0af5dc1
 
 
 
-Definition at line 27 of file pf\_\-search.c.
+Definition at line 28 of file pf\_\-search.c.
 
 Referenced by get\_\-entry\_\-by\_\-name(), get\_\-entry\_\-by\_\-number(), and get\_\-entry\_\-by\_\-reason().
 
@@ -61,7 +62,7 @@ Referenced by get\_\-entry\_\-by\_\-name(), get\_\-entry\_\-by\_\-number(), and 
 
 
 
-Definition at line 76 of file pf\_\-search.c.
+Definition at line 79 of file pf\_\-search.c.
 
 References Entry::area\_\-code, Entry::country\_\-code, Entry::name, Entry::number, Entry::priority, Entry::reason, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NAME, TB\_\-NUMBER, TB\_\-PRIORITY, and TB\_\-REASON.
 
@@ -95,7 +96,7 @@ Search a \hyperlink{structentry}{entry} by name.
 
 Definition at line 112 of file pf\_\-search.c.
 
-References ASCII\_\-PERCENT\_\-CHAR, DB\_\-FILE, ERR\_\-LOG, find\_\-entry(), insert\_\-into\_\-list(), MAX\_\-LINE\_\-LENGTH, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NAME, TB\_\-NUMBER, TB\_\-PRIORITY, TB\_\-REASON, and WHITELIST\_\-FLAG.
+References ASCII\_\-PERCENT\_\-CHAR, COMPONENT\_\-NAME, DB\_\-FILE, find\_\-entry(), insert\_\-into\_\-list(), STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NAME, TB\_\-NUMBER, TB\_\-PRIORITY, TB\_\-REASON, and WHITELIST\_\-FLAG.
 
 Here is the call graph for this function:\nopagebreak
 \begin{figure}[H]
@@ -123,9 +124,9 @@ Search a entries by number (country code + area code + number).
 \item[Returns:]\hyperlink{structentry}{entry} Returns the entries which are found in a linked list. \end{Desc}
 
 
-Definition at line 158 of file pf\_\-search.c.
+Definition at line 155 of file pf\_\-search.c.
 
-References ASCII\_\-PERCENT\_\-CHAR, DB\_\-FILE, ERR\_\-LOG, find\_\-entry(), insert\_\-into\_\-list(), MAX\_\-LINE\_\-LENGTH, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NAME, TB\_\-NUMBER, TB\_\-PRIORITY, TB\_\-REASON, and WHITELIST\_\-FLAG.
+References ASCII\_\-PERCENT\_\-CHAR, COMPONENT\_\-NAME, DB\_\-FILE, find\_\-entry(), insert\_\-into\_\-list(), STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NAME, TB\_\-NUMBER, TB\_\-PRIORITY, TB\_\-REASON, and WHITELIST\_\-FLAG.
 
 Here is the call graph for this function:\nopagebreak
 \begin{figure}[H]
@@ -153,9 +154,9 @@ Search a entries by reason.
 \item[Returns:]\hyperlink{structentry}{entry} Returns the entries which are found in a linked list. \end{Desc}
 
 
-Definition at line 206 of file pf\_\-search.c.
+Definition at line 200 of file pf\_\-search.c.
 
-References ASCII\_\-PERCENT\_\-CHAR, DB\_\-FILE, ERR\_\-LOG, find\_\-entry(), insert\_\-into\_\-list(), MAX\_\-LINE\_\-LENGTH, STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NAME, TB\_\-NUMBER, TB\_\-PRIORITY, TB\_\-REASON, and WHITELIST\_\-FLAG.
+References ASCII\_\-PERCENT\_\-CHAR, COMPONENT\_\-NAME, DB\_\-FILE, find\_\-entry(), insert\_\-into\_\-list(), STMT\_\-SIZE, TB\_\-AREACODE, TB\_\-COUNTRYCODE, TB\_\-NAME, TB\_\-NUMBER, TB\_\-PRIORITY, TB\_\-REASON, and WHITELIST\_\-FLAG.
 
 Here is the call graph for this function:\nopagebreak
 \begin{figure}[H]
@@ -173,7 +174,7 @@ Here is the call graph for this function:\nopagebreak
 
 
 
-Definition at line 29 of file pf\_\-search.c.
+Definition at line 30 of file pf\_\-search.c.
 
 References Entry::area\_\-code, Entry::country\_\-code, Entry::name, Entry::next, Entry::number, and Entry::reason.
 

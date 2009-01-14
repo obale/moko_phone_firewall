@@ -70,6 +70,28 @@ If you want compile only special parts use:
 	$ make pf_daemon	      # Compiles the daemon.
 
 
+Tip for development
+===================
+
+If you want to develop seriously we recommend to use the following git
+pre-commit script. So every time you commit your changes, the CUnit tests will
+be started. If the tests fails no commit is possible.
+
+user $ rm .git/hooks/pre-commit
+user $ cat > .git/hooks/pre-commit << EOF
+start_cunit_tests() {
+        make clean &> /dev/null;
+        make &> /dev/null;
+        . env-export;
+        ./bin_test/phonefirewall_x86; ret=\$?
+        make clean &> /dev/null;
+        return \$ret;
+}
+start_cunit_tests;
+EOF
+user $ chmod +x .git/hooks/pre-commit
+
+
 Troubleshouting
 ===============
 
