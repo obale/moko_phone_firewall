@@ -19,7 +19,7 @@
  */
 
 #ifndef _PF_H
-# error "Never include the header file pf_administration.h directly. Include insted libphonefirewall.h"
+# error "Never include the header file pf_administration.h directly. Include instead libphonefirewall.h"
 #endif
 
 /**
